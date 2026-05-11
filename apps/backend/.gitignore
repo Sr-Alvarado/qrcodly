@@ -13,6 +13,7 @@
 # misc
 .DS_Store
 *.pem
+!certs/*.pem
 
 # debugda
 npm-debug.log*
