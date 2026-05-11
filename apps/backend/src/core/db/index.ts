@@ -4,6 +4,10 @@ import { env } from '../config/env';
 import * as schema from './schemas';
 import mysql from 'mysql2/promise';
 import { DB_LOGGING } from '../config/constants';
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
+
+const certPath = resolve(process.cwd(), 'certs', 'isrgrootx1.pem');
 
 export const poolConnection = mysql.createPool({
 	host: env.DB_HOST,
@@ -12,6 +16,7 @@ export const poolConnection = mysql.createPool({
 	database: env.NODE_ENV === 'test' ? env.TEST_DB_NAME : env.DB_NAME,
 	port: Number(env.DB_PORT),
 	ssl: {
+		ca: readFileSync(certPath),
 		rejectUnauthorized: true,
 	},
 	connectionLimit: env.DB_MIGRATING || env.DB_SEEDING ? 1 : 50,
