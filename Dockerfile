@@ -22,14 +22,7 @@ RUN cd apps/backend && pnpm build
 FROM base AS runtime
 ENV NODE_ENV=production
 ENV TZ=America/Lima
-COPY --from=build /app/apps/backend/build apps/backend/build
-COPY --from=build /app/packages/shared/dist packages/shared/dist
-COPY --from=build /app/packages/db/dist packages/db/dist
-COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/apps/backend/node_modules apps/backend/node_modules/
-COPY --from=build /app/package.json ./
-COPY --from=build /app/pnpm-workspace.yaml ./
-COPY --from=build /app/apps/backend/package.json apps/backend/
+COPY --from=build /app /app
 WORKDIR /app/apps/backend
 EXPOSE 5001
 CMD ["sh", "-c", "DB_MIGRATING=true node build/src/core/db/migrate.js && TZ=America/Lima node build/src/index.js"]
