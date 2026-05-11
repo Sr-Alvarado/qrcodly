@@ -30,7 +30,6 @@ COPY --from=build /app/apps/backend/node_modules apps/backend/node_modules/
 COPY --from=build /app/package.json ./
 COPY --from=build /app/pnpm-workspace.yaml ./
 COPY --from=build /app/apps/backend/package.json apps/backend/
-COPY --from=build /app/apps/backend/src apps/backend/src/
 WORKDIR /app/apps/backend
 EXPOSE 5001
-CMD ["pnpm", "run", "start"]
+CMD ["sh", "-c", "DB_MIGRATING=true node build/src/core/db/migrate.js && TZ=America/Lima node build/src/index.js"]
