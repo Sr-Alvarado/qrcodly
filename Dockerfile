@@ -1,5 +1,4 @@
 FROM node:22-slim AS base
-RUN apt-get update && apt-get install -y libc6-compat && rm -rf /var/lib/apt/lists/*
 RUN corepack enable && corepack prepare pnpm@9.15.9 --activate
 WORKDIR /app
 
