@@ -80,16 +80,6 @@ const config = {
 				hostname: 'localhost',
 				port: '9000',
 			},
-			{
-				protocol: 'https',
-				hostname: 'cdn.qrcodly.de',
-				pathname: '/**',
-			},
-			{
-				protocol: 'https',
-				hostname: 'cdn-stage.qrcodly.de',
-				pathname: '/**',
-			},
 		],
 		formats: ['image/avif', 'image/webp'],
 	},

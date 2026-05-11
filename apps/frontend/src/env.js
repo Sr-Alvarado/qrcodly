@@ -8,8 +8,8 @@ export const env = createEnv({
 	 */
 	server: {
 		NODE_ENV: z.enum(['development', 'test', 'production']),
-		AXIOM_TOKEN: z.string(),
-		AXIOM_DATASET: z.string(),
+		AXIOM_TOKEN: z.string().optional().default(''),
+		AXIOM_DATASET: z.string().optional().default(''),
 		CLERK_SECRET_KEY: z.string(),
 		INTERNAL_API_SECRET: z.string().min(32),
 	},
@@ -25,13 +25,13 @@ export const env = createEnv({
 		NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z.string(),
 		NEXT_PUBLIC_POSTHOG_KEY: z.string().optional(),
 		NEXT_PUBLIC_POSTHOG_HOST: z.string().optional(),
-		NEXT_PUBLIC_SENTRY_DSN: z.string(),
+		NEXT_PUBLIC_SENTRY_DSN: z.string().optional().default(''),
 		NEXT_PUBLIC_SENTRY_ENVIRONMENT: z.string().default('production'),
-		NEXT_PUBLIC_STRIPE_PRO_PRICE_ID_MONTHLY: z.string(),
-		NEXT_PUBLIC_STRIPE_PRO_PRICE_ID_ANNUAL: z.string(),
+		NEXT_PUBLIC_STRIPE_PRO_PRICE_ID_MONTHLY: z.string().optional().default(''),
+		NEXT_PUBLIC_STRIPE_PRO_PRICE_ID_ANNUAL: z.string().optional().default(''),
 		NEXT_PUBLIC_STRIPE_PRO_PRICE_ID_MONTHLY_LEGACY: z.string().optional(),
 		NEXT_PUBLIC_STRIPE_PRO_PRICE_ID_ANNUAL_LEGACY: z.string().optional(),
-		NEXT_PUBLIC_GOOGLE_API_KEY: z.string(),
+		NEXT_PUBLIC_GOOGLE_API_KEY: z.string().optional().default(''),
 	},
 
 	/**

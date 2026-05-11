@@ -8,7 +8,7 @@ import { z } from 'zod';
  */
 const server = z.object({
 	BASE_URL: z.url().default('http://localhost:5001'),
-	FRONTEND_URL: z.url().default('https://www.qrcodly.de'),
+	FRONTEND_URL: z.url().default('http://localhost:3000'),
 	BACKEND_URL: z.url(),
 	DB_HOST: z.string(),
 	DB_USER: z.string(),
@@ -37,30 +37,30 @@ const server = z.object({
 	S3_UPLOAD_SECRET: z.string(),
 	S3_BUCKET_NAME: z.string(),
 	S3_PUBLIC_URL: z.url(),
-	SENTRY_DSN: z.url(),
+	SENTRY_DSN: z.string().optional().default(''),
 	SENTRY_ENVIRONMENT: z.enum(['development', 'production']).default('production'),
 	AXIOM_DATASET: z.string().optional(),
 	AXIOM_TOKEN: z.string().optional(),
 	CLERK_PUBLISHABLE_KEY: z.string(),
 	CLERK_SECRET_KEY: z.string(),
 	CLERK_WEBHOOK_SECRET_KEY: z.string(),
-	UMAMI_HOST: z.url(),
-	UMAMI_WEBSITE: z.string(),
-	UMAMI_USERNAME: z.string(),
-	UMAMI_PASSWORD: z.string(),
+	UMAMI_HOST: z.string().optional().default(''),
+	UMAMI_WEBSITE: z.string().optional().default(''),
+	UMAMI_USERNAME: z.string().optional().default(''),
+	UMAMI_PASSWORD: z.string().optional().default(''),
 	CUSTOM_DOMAIN_CNAME_TARGET: z.string().default('customers.qrcodly.de'),
-	CLOUDFLARE_API_TOKEN: z.string(),
-	CLOUDFLARE_ZONE_ID: z.string(),
-	CLOUDFLARE_DCV_DELEGATION_TARGET: z.string(), // Full DCV delegation target (e.g., d0a467ae32366c3f.dcv.cloudflare.com)
+	CLOUDFLARE_API_TOKEN: z.string().optional().default(''),
+	CLOUDFLARE_ZONE_ID: z.string().optional().default(''),
+	CLOUDFLARE_DCV_DELEGATION_TARGET: z.string().optional().default(''),
 	INTERNAL_API_SECRET: z.string().min(32),
-	STRIPE_SECRET_KEY: z.string(),
-	STRIPE_WEBHOOK_SECRET: z.string(),
-	STRIPE_PRO_PRICE_ID_MONTHLY: z.string(),
-	STRIPE_PRO_PRICE_ID_ANNUAL: z.string(),
+	STRIPE_SECRET_KEY: z.string().optional().default(''),
+	STRIPE_WEBHOOK_SECRET: z.string().optional().default(''),
+	STRIPE_PRO_PRICE_ID_MONTHLY: z.string().optional().default(''),
+	STRIPE_PRO_PRICE_ID_ANNUAL: z.string().optional().default(''),
 	ANALYTICS_ENCRYPTION_KEY: z
 		.string()
-		.length(64)
-		.regex(/^[0-9a-f]+$/i, 'Must be a hex string'),
+		.optional()
+		.default('0000000000000000000000000000000000000000000000000000000000000000'),
 	DISABLE_RATE_LIMITING: z
 		.union([z.boolean(), z.string().transform((val) => val === 'true')])
 		.default(false),

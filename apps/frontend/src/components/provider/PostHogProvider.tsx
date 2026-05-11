@@ -14,10 +14,10 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
 		if (!env.NEXT_PUBLIC_POSTHOG_KEY || !env.NEXT_PUBLIC_POSTHOG_HOST) return;
 
 		posthog.init(env.NEXT_PUBLIC_POSTHOG_KEY, {
-			api_host: 'https://t.qrcodly.de',
+			api_host: env.NEXT_PUBLIC_POSTHOG_HOST,
 			ui_host: env.NEXT_PUBLIC_POSTHOG_HOST,
-			capture_pageview: false, // We capture pageviews manually
-			capture_pageleave: true, // Enable pageleave capture
+			capture_pageview: false,
+			capture_pageleave: true,
 			defaults: '2026-01-30',
 		});
 	}, []);

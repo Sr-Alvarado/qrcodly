@@ -172,7 +172,7 @@ export class UmamiAnalyticsService {
 			unit: 'day',
 			path: url,
 			compare: 'false',
-			timezone: 'Europe/Berlin',
+			timezone: 'America/Lima',
 		};
 		interface WebsiteStats {
 			pageviews: number;
@@ -197,7 +197,7 @@ export class UmamiAnalyticsService {
 			endAt: now,
 			unit: 'day',
 			path: url,
-			timezone: 'Europe/Berlin',
+			timezone: 'America/Lima',
 		};
 
 		const websiteStats = await this.fetchUmamiData(`websites/${this.umamiWebsiteId}/stats`, {

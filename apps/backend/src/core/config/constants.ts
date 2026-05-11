@@ -14,13 +14,11 @@ export const CLERK_JWT_TEMPLATE = 'QRcodly';
 export const RATE_LIMIT_TIME_WINDOW: string = '1 minute';
 export const ALLOWED_ORIGINS: string[] = [
 	'http://localhost:3000',
-	'https://www.qrcodly.de',
-	'https://stage.qrcodly.de',
 	env.FRONTEND_URL,
 ];
 export const UPLOAD_LIMIT = 2 * 1024 * 1024; // max 2MB
 export const MAX_QR_CODE_CSV_UPLOADS = 15;
-export const DEFAULT_TIME_ZONE: string = 'Europe/Berlin';
+export const DEFAULT_TIME_ZONE: string = 'America/Lima';
 
 // Lowest priority, meaning shut down happens after other groups
 export const LOWEST_SHUTDOWN_PRIORITY = 0;
@@ -34,7 +32,7 @@ export const LOGGER_REDACT_PATHS: string[] = ['password', 'user.password'];
 // ---------------------------
 // MAILER CONSTANTS
 // ---------------------------
-export const DEFAULT_FROM_MAIL: string = '"QRcodly" <info@qrcodly.de>';
+export const DEFAULT_FROM_MAIL: string = '"QRcodly" <noreply@localhost>';
 
 // ---------------------------
 // DATABASE CONSTANTS

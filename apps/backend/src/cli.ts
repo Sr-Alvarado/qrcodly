@@ -8,7 +8,7 @@ import { container } from 'tsyringe';
 import { fileURLToPath } from 'url';
 import { type AbstractCommand } from './core/command/abstract.command';
 
-process.env.TZ = 'Europe/Berlin';
+process.env.TZ = 'America/Lima';
 
 async function loadCommands(parentCommand: Command) {
 	// Get the current file's directory using fileURLToPath and dirname
