@@ -1,0 +1,99 @@
+import { SQL, sql } from 'drizzle-orm';
+import {
+	type MySqlSelect,
+	getTableConfig,
+	type MySqlTableWithColumns,
+	type MySqlSelectDynamic,
+} from 'drizzle-orm/mysql-core';
+import { v4 as uuidv4 } from 'uuid';
+import db from '@/core/db';
+import { type ISqlQueryFindBy, type WhereConditions } from '@/core/interface/repository.interface';
+import { convertWhereConditionToDrizzle } from '@/core/db/utils';
+import { DEFAULT_PAGE_SIZE } from '@/core/config/constants';
+import { container } from 'tsyringe';
+import { KeyCache } from '@/core/cache';
+import { TransactionContext } from '@/core/db/transaction-context';
+
+export default abstract class AbstractRepository<T> {
+	protected appCache: KeyCache;
+
+	constructor() {
+		this.appCache = container.resolve(KeyCache);
+	}
+
+	abstract table: MySqlTableWithColumns<any>;
+	abstract findAll({ limit, page, where }: ISqlQueryFindBy<T>): Promise<T[]>;
+	abstract findOneById(id: string): Promise<T | undefined>;
+	abstract create(item: T): Promise<void>;
+	abstract update(item: T, updates: Partial<T>): Promise<void>;
+	abstract delete(item: T): Promise<boolean>;
+
+	protected get db() {
+		return TransactionContext.db;
+	}
+
+	async countTotal(whereConditions?: WhereConditions<T> | SQL<T>): Promise<number> {
+		const cacheCount = (await this.appCache.get(this.getTotalCacheKey())) as string;
+
+		if (!cacheCount || whereConditions) {
+			let query = db
+				.select({
+					count: sql<number>`count(${this.table.id})`,
+				})
+				.from(this.table)
+				.$dynamic();
+
+			if (whereConditions) {
+				query = this.withWhere(query, whereConditions);
+			}
+
+			const result = await query.execute();
+			const count = result[0]?.count || 0;
+
+			if (!whereConditions) {
+				await this.appCache.set(this.getTotalCacheKey(), count);
+			}
+			return count;
+		}
+
+		return parseInt(cacheCount);
+	}
+
+	async clearCache(): Promise<void> {
+		try {
+			await this.appCache.del(this.getTotalCacheKey());
+		} catch {
+			// intentionally left blank
+		}
+	}
+
+	getTotalCacheKey(): string {
+		const { name } = getTableConfig(this.table);
+		return `${name}_table_count_total`;
+	}
+
+	generateId(): string {
+		return uuidv4();
+	}
+
+	withPagination<T extends MySqlSelect>(
+		qb: T,
+		page: number,
+		pageSize: number = DEFAULT_PAGE_SIZE,
+	): MySqlSelectDynamic<T> {
+		const safePage = Math.max(0, page - 1);
+		return qb
+			.limit(pageSize)
+			.offset(safePage * pageSize)
+			.$dynamic();
+	}
+
+	withWhere<T extends MySqlSelect>(
+		qb: T,
+		where: WhereConditions<unknown> | SQL,
+	): MySqlSelectDynamic<T> {
+		const whereDrizzle =
+			where instanceof SQL ? where : convertWhereConditionToDrizzle<T>(where, this.table);
+		return qb.where(whereDrizzle).$dynamic();
+	}
+}

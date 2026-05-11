@@ -1,0 +1,73 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { CpuChipIcon } from '@heroicons/react/24/outline';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useTranslations } from 'next-intl';
+
+interface MetricItem {
+	label: string;
+	count: number;
+}
+
+interface AnalyticsOsChartProps {
+	data: MetricItem[];
+}
+
+export const AnalyticsOsChart = ({ data }: AnalyticsOsChartProps) => {
+	const t = useTranslations();
+	const sorted = [...data].sort((a, b) => b.count - a.count);
+	const total = data.reduce((sum, item) => sum + item.count, 0);
+
+	return (
+		<Card>
+			<CardHeader>
+				<div className="flex items-center gap-2">
+					<div className="p-1.5 rounded-md bg-primary/10 text-primary">
+						<CpuChipIcon className="size-4" />
+					</div>
+					<CardTitle className="text-lg">{t('chart.title.osUsage')}</CardTitle>
+				</div>
+			</CardHeader>
+			<CardContent>
+				{data.length === 0 ? (
+					<p className="text-muted-foreground text-sm">{t('analytics.noData')}</p>
+				) : (
+					<div className="space-y-4">
+						{sorted.map((item, index) => {
+							const rawShare = total > 0 ? (item.count / total) * 100 : 0;
+							const share = Math.round(rawShare);
+							return (
+								<motion.div
+									key={`${item.label}-${index}`}
+									initial={{ opacity: 0, x: -15 }}
+									animate={{ opacity: 1, x: 0 }}
+									transition={{ delay: index * 0.05, duration: 0.3 }}
+								>
+									<div className="flex items-center justify-between mb-1.5">
+										<span className="text-sm font-medium">{item.label}</span>
+										<span className="text-sm text-muted-foreground tabular-nums">
+											{item.count} · {share === 0 && item.count > 0 ? '<1' : share}%
+										</span>
+									</div>
+									<div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
+										<motion.div
+											className="h-full rounded-full bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800"
+											initial={{ width: 0 }}
+											animate={{ width: `${Math.max(rawShare, item.count > 0 ? 1 : 0)}%` }}
+											transition={{
+												delay: index * 0.05 + 0.1,
+												duration: 0.5,
+												ease: 'easeOut',
+											}}
+										/>
+									</div>
+								</motion.div>
+							);
+						})}
+					</div>
+				)}
+			</CardContent>
+		</Card>
+	);
+};

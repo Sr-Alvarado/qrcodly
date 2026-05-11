@@ -1,0 +1,105 @@
+services:
+  db:
+    container_name: qrcodly-db
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: qrcodly
+    command:
+      - --max-connections=200
+      - --innodb-buffer-pool-size=512M
+      - --innodb-redo-log-capacity=256M
+      - --innodb-flush-log-at-trx-commit=2
+      - --innodb-flush-method=O_DIRECT
+    volumes:
+      - database:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+  phpmyadmin:
+    container_name: qrcodly-pma
+    image: phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      UPLOAD_LIMIT: 300M
+    ports:
+      - 8081:80
+
+  redis:
+    container_name: qrcodly-redis
+    image: redis:latest
+    restart: always
+    ports:
+      - 6379:6379
+  umami:
+    container_name: umami
+    image: ghcr.io/umami-software/umami:latest
+    ports:
+      - '3001:3000'
+    environment:
+      DATABASE_URL: postgresql://umami:umami@umami_db:5432/umami
+      APP_SECRET: replace-me-with-a-random-string
+      DISABLE_BOT_CHECK: 'true'
+    depends_on:
+      umami_db:
+        condition: service_healthy
+    init: true
+    restart: always
+    healthcheck:
+      test: ['CMD-SHELL', 'curl http://localhost:3001/api/heartbeat']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  umami_db:
+    container_name: umami-db
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: umami
+      POSTGRES_USER: umami
+      POSTGRES_PASSWORD: umami
+    volumes:
+      - umami-db-data:/var/lib/postgresql/data
+    restart: always
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  minio:
+    container_name: qrcodly-minio
+    image: minio/minio:latest
+    restart: always
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: testtest
+      MINIO_DEFAULT_BUCKETS: qrcodly
+      MINIO_STORAGE_USE_HTTPS: 0
+    volumes:
+      - minio-data:/data
+    ports:
+      - 9000:9000
+      - 9001:9001
+    command: server /data --console-address ":9001"
+
+  minio-setup:
+    container_name: qrcodly-minio-setup
+    image: minio/mc:latest
+    depends_on:
+      - minio
+    restart: 'no'
+    entrypoint: >
+      /bin/sh -c "
+      until (/usr/bin/mc alias set local http://minio:9000 minio testtest) do sleep 1; done;
+      /usr/bin/mc mb --ignore-existing local/qrcodly;
+      /usr/bin/mc anonymous set download local/qrcodly;
+      exit 0;
+      "
+
+volumes:
+  database:
+  minio-data:
+  umami-db-data:

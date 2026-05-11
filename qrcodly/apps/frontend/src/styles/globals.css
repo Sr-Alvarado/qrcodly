@@ -1,0 +1,374 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'fumadocs-ui/css/shadcn.css';
+@import 'fumadocs-ui/css/preset.css';
+@import 'fumadocs-openapi/css/preset.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@utility scrollbar-hide {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+	display: none;
+}
+
+@theme {
+	--breakpoint-xs: 25rem;
+	--font-sans:
+		var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+		'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+@theme inline {
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+	--color-chart-1: var(--chart-1);
+	--color-chart-2: var(--chart-2);
+	--color-chart-3: var(--chart-3);
+	--color-chart-4: var(--chart-4);
+	--color-chart-5: var(--chart-5);
+	--color-sidebar: var(--sidebar);
+	--color-sidebar-foreground: var(--sidebar-foreground);
+	--color-sidebar-primary: var(--sidebar-primary);
+	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+	--color-sidebar-accent: var(--sidebar-accent);
+	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+	--color-sidebar-border: var(--sidebar-border);
+	--color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+	--radius: 0.625rem;
+	--background: oklch(1 0 0);
+	--foreground: oklch(0.141 0.005 285.823);
+	--card: oklch(1 0 0);
+	--card-foreground: oklch(0.141 0.005 285.823);
+	--popover: oklch(1 0 0);
+	--popover-foreground: oklch(0.141 0.005 285.823);
+	--primary: oklch(0.21 0.006 285.885);
+	--primary-foreground: oklch(0.985 0 0);
+	--secondary: oklch(0.967 0.001 286.375);
+	--secondary-foreground: oklch(0.21 0.006 285.885);
+	--muted: oklch(0.967 0.001 286.375);
+	--muted-foreground: oklch(0.552 0.016 285.938);
+	--accent: oklch(0.967 0.001 286.375);
+	--accent-foreground: oklch(0.21 0.006 285.885);
+	--destructive: oklch(0.577 0.245 27.325);
+	--border: oklch(0.92 0.004 286.32);
+	--input: oklch(0.92 0.004 286.32);
+	--ring: oklch(0.705 0.015 286.067);
+	--chart-1: #2563eb;
+	--chart-2: #60a5fa;
+	--chart-3: #3b82f6;
+	--chart-4: #8b5cf6;
+	--chart-5: #f59e0b;
+	--sidebar: #fafafa;
+	--sidebar-foreground: oklch(0.141 0.005 285.823);
+	--sidebar-primary: oklch(0.21 0.006 285.885);
+	--sidebar-primary-foreground: oklch(0.985 0 0);
+	--sidebar-accent: oklch(0.967 0.001 286.375);
+	--sidebar-accent-foreground: oklch(0.21 0.006 285.885);
+	--sidebar-border: oklch(0.92 0.004 286.32);
+	--sidebar-ring: oklch(0.705 0.015 286.067);
+}
+
+.dark {
+	--background: oklch(0.141 0.005 285.823);
+	--foreground: oklch(0.985 0 0);
+	--card: oklch(0.21 0.006 285.885);
+	--card-foreground: oklch(0.985 0 0);
+	--popover: oklch(0.21 0.006 285.885);
+	--popover-foreground: oklch(0.985 0 0);
+	--primary: oklch(0.92 0.004 286.32);
+	--primary-foreground: oklch(0.21 0.006 285.885);
+	--secondary: oklch(0.274 0.006 286.033);
+	--secondary-foreground: oklch(0.985 0 0);
+	--muted: oklch(0.274 0.006 286.033);
+	--muted-foreground: oklch(0.705 0.015 286.067);
+	--accent: oklch(0.274 0.006 286.033);
+	--accent-foreground: oklch(0.985 0 0);
+	--destructive: oklch(0.704 0.191 22.216);
+	--border: oklch(1 0 0 / 10%);
+	--input: oklch(1 0 0 / 15%);
+	--ring: oklch(0.552 0.016 285.938);
+	--chart-1: oklch(0.488 0.243 264.376);
+	--chart-2: oklch(0.696 0.17 162.48);
+	--chart-3: oklch(0.769 0.188 70.08);
+	--chart-4: oklch(0.627 0.265 303.9);
+	--chart-5: oklch(0.645 0.246 16.439);
+	--sidebar: oklch(0.21 0.006 285.885);
+	--sidebar-foreground: oklch(0.985 0 0);
+	--sidebar-primary: oklch(0.488 0.243 264.376);
+	--sidebar-primary-foreground: oklch(0.985 0 0);
+	--sidebar-accent: oklch(0.274 0.006 286.033);
+	--sidebar-accent-foreground: oklch(0.985 0 0);
+	--sidebar-border: oklch(1 0 0 / 10%);
+	--sidebar-ring: oklch(0.552 0.016 285.938);
+}
+
+#nd-page {
+	--color-fd-accent: oklch(1 0 0);
+	--color-fd-border: oklch(0 0 0);
+
+	padding-bottom: 5rem;
+}
+
+#nd-page a {
+	border-color: transparent;
+}
+
+#nd-page a:hover {
+	border-color: oklch(0 0 0);
+}
+
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+	html {
+		scroll-padding-top: 6rem;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+}
+
+.canvas-wrap canvas {
+	width: 100%;
+	height: 100%;
+}
+
+.cl-avatarBox {
+	width: 40px;
+	height: 40px;
+}
+
+.cl-drawerRoot {
+	z-index: 100;
+}
+
+/* Dynamic Badge Attention Animation */
+@keyframes badge-attention {
+	0%,
+	100% {
+		transform: scale(1) translateY(0);
+		box-shadow: 0 0 0 0 rgb(20 184 166 / 0.4);
+	}
+	10%,
+	30% {
+		transform: scale(1.08) translateY(-2px);
+		box-shadow: 0 0 0 8px rgb(20 184 166 / 0);
+	}
+	20% {
+		transform: scale(1.05) translateY(-1px);
+		box-shadow: 0 0 0 4px rgb(20 184 166 / 0.2);
+	}
+	40%,
+	60% {
+		transform: scale(1) translateY(0);
+		box-shadow: 0 0 0 0 rgb(20 184 166 / 0);
+	}
+}
+
+.animate-badge-attention {
+	animation: badge-attention 2s ease-in-out;
+}
+
+/* QR Code Table Loader Animations */
+@keyframes qr-dot-pulse {
+	0%,
+	100% {
+		opacity: 0.12;
+	}
+	50% {
+		opacity: 1;
+	}
+}
+
+@keyframes dot-pulse {
+	0%,
+	100% {
+		opacity: 0.25;
+		transform: scale(0.85);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.animate-qr-dot-pulse {
+	animation: qr-dot-pulse 3s ease-in-out infinite;
+}
+
+.animate-dot-pulse {
+	animation: dot-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.animate-fade-in {
+	animation: fade-in 0.25s ease-out;
+}
+
+/* Print styles for legal pages */
+@media print {
+	/* Page setup */
+	@page {
+		size: A4;
+		margin: 20mm 25mm 25mm 25mm;
+
+		@bottom-center {
+			content: 'QRcodly — qrcodly.de';
+			font-size: 8pt;
+			color: #999;
+		}
+
+		@bottom-right {
+			content: 'Seite ' counter(page) ' von ' counter(pages);
+			font-size: 8pt;
+			color: #999;
+		}
+	}
+
+	/* Hide web UI elements */
+	header,
+	footer,
+	nav {
+		display: none !important;
+	}
+
+	/* Reset backgrounds and layout */
+	html,
+	body,
+	main {
+		background: white !important;
+		color: black !important;
+		padding: 0 !important;
+		margin: 0 !important;
+		font-size: 10.5pt !important;
+		line-height: 1.5 !important;
+	}
+
+	/* Typography */
+	.prose {
+		max-width: none !important;
+		font-size: 10.5pt !important;
+	}
+
+	.prose h1 {
+		font-size: 18pt !important;
+		margin-bottom: 4pt !important;
+		page-break-after: avoid;
+	}
+
+	.prose h2 {
+		font-size: 14pt !important;
+		margin-top: 18pt !important;
+		margin-bottom: 6pt !important;
+		page-break-after: avoid;
+	}
+
+	.prose h3 {
+		font-size: 12pt !important;
+		margin-top: 14pt !important;
+		page-break-after: avoid;
+	}
+
+	.prose h4 {
+		font-size: 11pt !important;
+		page-break-after: avoid;
+	}
+
+	.prose p,
+	.prose li {
+		font-size: 10.5pt !important;
+		line-height: 1.5 !important;
+		orphans: 3;
+		widows: 3;
+	}
+
+	/* Links: show as text, no decoration */
+	a[href] {
+		color: black !important;
+		text-decoration: none !important;
+	}
+
+	a[href]::after {
+		content: none !important;
+	}
+
+	/* Tables */
+	.prose table {
+		font-size: 9pt !important;
+		page-break-inside: avoid;
+	}
+
+	.prose th,
+	.prose td {
+		padding: 4pt 8pt !important;
+	}
+
+	/* Page breaks for Anlagen sections */
+	.prose h2[class*='border-t'] {
+		page-break-before: always;
+		border-top: none !important;
+		padding-top: 0 !important;
+	}
+
+	/* Avoid breaking inside list items and table rows */
+	li,
+	tr {
+		page-break-inside: avoid;
+	}
+
+	/* Muted text */
+	.text-muted-foreground {
+		color: #666 !important;
+	}
+}
+
+/* Sticky action column — keeps row actions visible on horizontal scroll */
+.sticky-action-cell {
+	background-color: var(--color-background);
+}
+
+tr:hover > .sticky-action-cell {
+	background-color: oklch(from var(--color-muted) l c h / 0.4);
+}
+
+tr[data-state='selected'] > .sticky-action-cell {
+	background-color: var(--color-muted);
+}

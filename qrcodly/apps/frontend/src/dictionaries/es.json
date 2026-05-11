@@ -1,0 +1,3325 @@
+{
+	"dashboard": {
+		"nav": {
+			"collection": "Colecciones",
+			"qrCodes": "Códigos QR",
+			"shortUrls": "Acortador de URLs",
+			"templates": "Plantillas",
+			"tags": "Etiquetas"
+		}
+	},
+	"shortUrl": {
+		"title": "URLs cortas",
+		"description": "Acorta, gestiona y rastrea tus enlaces con analíticas detalladas",
+		"createBtn": "Crear URL corta",
+		"searchPlaceholder": "Buscar URLs cortas...",
+		"table": {
+			"name": "Nombre",
+			"content": "Contenido",
+			"shortUrl": "URL corta",
+			"destination": "Destino",
+			"status": "Estado",
+			"views": "Visitas",
+			"created": "Creado"
+		},
+		"create": {
+			"title": "Crear URL corta",
+			"nameLabel": "Nombre",
+			"namePlaceholder": "p. ej. Campaña de marketing",
+			"destinationLabel": "URL de destino",
+			"destinationPlaceholder": "https://example.com/long-url",
+			"domainLabel": "Dominio de URL corta",
+			"submitBtn": "Crear",
+			"success": "URL corta creada correctamente",
+			"successDescription": "Hemos guardado tu URL corta en tu colección para uso posterior."
+		},
+		"edit": {
+			"title": "Editar URL corta",
+			"nameLabel": "Nombre",
+			"namePlaceholder": "p. ej. Campaña de marketing",
+			"submitBtn": "Actualizar",
+			"success": "URL corta actualizada correctamente"
+		},
+		"viewDetails": "Ver detalles",
+		"delete": {
+			"title": "Eliminar URL corta",
+			"confirm": "¿Estás seguro de que quieres eliminar esta URL corta? Esta acción no se puede deshacer.",
+			"success": "URL corta eliminada correctamente"
+		},
+		"empty": {
+			"title": "Aún no hay URLs cortas",
+			"description": "Crea tu primera URL corta para empezar"
+		},
+		"status": {
+			"active": "Activa",
+			"inactive": "Inactiva",
+			"enable": "Activar",
+			"disable": "Desactivar"
+		},
+		"error": {
+			"toggleActiveState": {
+				"title": "Error al cambiar el estado",
+				"message": "Se ha producido un error al cambiar el estado. Hemos sido notificados y solucionaremos el problema lo antes posible."
+			},
+			"create": {
+				"title": "Error al crear la URL corta",
+				"message": "Hubo un error al crear la URL corta. Por favor, inténtelo de nuevo."
+			},
+			"update": {
+				"title": "Error al actualizar la URL corta",
+				"message": "Hubo un error al actualizar la URL corta. Por favor, inténtelo de nuevo."
+			},
+			"delete": {
+				"title": "Error al eliminar la URL corta",
+				"message": "Hubo un error al eliminar la URL corta. Por favor, inténtelo de nuevo."
+			},
+			"load": {
+				"title": "Error al cargar las URLs cortas. Por favor, inténtelo de nuevo."
+			}
+		},
+		"featureBanner": {
+			"title": "Presentamos URLs cortas",
+			"description": "Ahora puedes crear y gestionar URLs cortas directamente — acorta enlaces, rastrea clics y consulta analíticas detalladas. Sin necesidad de código QR.",
+			"cta": "Pruébalo ahora"
+		}
+	},
+	"general": {
+		"signOut": "Cerrar sesión",
+		"proRequired": "Se requiere Plan Pro",
+		"comingSoon": "¡próximamente!",
+		"noName": "Sin nombre",
+		"back": "Volver",
+		"toCollection": "A la colección",
+		"backToOverview": "Volver a la colección",
+		"share": "Compartir",
+		"edit": "Editar",
+		"delete": "Eliminar",
+		"duplicate": "Duplicar",
+		"duplicating": "Duplicando...",
+		"duplicated": "Duplicado con éxito",
+		"duplicateError": "Error al duplicar",
+		"cancel": "Cancelar",
+		"notProvided": "No proporcionado",
+		"days": "Días",
+		"newBadge": "¡Nuevo!",
+		"dynamicDescription": "Los códigos QR dinámicos se pueden editar después de crearlos, rastrean cada escaneo y proporcionan estadísticas detalladas – sin necesidad de reimprimir el código.",
+		"dynamicBadgeTooltip": "Permite cambiar el contenido más tarde sin un nuevo código QR. <i>Pasa el cursor para más información</i>",
+		"copyFailed": "No se pudo copiar al portapapeles. Por favor, cópielo manualmente.",
+		"showMore": "Mostrar más",
+		"showLess": "Mostrar menos",
+		"apiKeyRequired": "Clave API requerida"
+	},
+	"hero": {
+		"badge": "Open Source y Gratis Para Siempre",
+		"title": "El Generador de Códigos QR Sin Límites",
+		"subtitle": "Genera códigos QR estáticos y dinámicos ilimitados de forma gratuita. Sin tarifas ocultas, sin restricciones. Creación de códigos QR potente y sencilla.",
+		"benefits": {
+			"unlimited": "Códigos QR Ilimitados",
+			"noSignup": "Códigos QR Dinámicos Gratis",
+			"noWatermark": "Sin Marcas de Agua"
+		},
+		"ctaPrimary": "Crea tu código QR",
+		"ctaSecondary": "Descubre las posibilidades"
+	},
+	"homeStats": {
+		"stat1Value": "100K+",
+		"stat1Label": "Códigos QR creados",
+		"stat2Value": "1.000+",
+		"stat2Label": "Usuarios activos",
+		"stat3Value": "10K+",
+		"stat3Label": "Escaneos y clics diarios",
+		"stat4Value": "< 50ms",
+		"stat4Label": "Velocidad de redirección"
+	},
+	"metadata": {
+		"title": "Generador de Códigos QR y Acortador de URLs Gratis | QRcodly",
+		"description": "Crea códigos QR y enlaces cortos gratis. Diseño propio, logo y plantillas. Acortador de URLs completo para enlaces personalizados. QR para WiFi, vCards y más.",
+		"keywords": "generador de códigos qr, crear código qr, generar código qr, gratis, libre, crear código qr gratis, generador de código qr gratis, código qr vcard, código qr enlace, qrgenerator, acortador de URLs, acortar enlace, enlace corto, acortador de links gratis",
+		"structuredData": {
+			"description": "Generador de códigos QR y acortador de URLs online gratis con diseños personalizados, logos y plantillas. Crea códigos QR dinámicos y enlaces cortos personalizados para URLs, WiFi, vCards y más.",
+			"features": [
+				"Generador de Códigos QR Gratis",
+				"Acortador de URLs",
+				"Diseño de Códigos QR Personalizado",
+				"Código QR con Logo",
+				"Códigos QR Dinámicos",
+				"Análisis de Códigos QR",
+				"Enlaces Cortos Personalizados",
+				"Creación Masiva de Códigos QR",
+				"Plantillas de Códigos QR",
+				"Códigos QR WiFi",
+				"Códigos QR vCard",
+				"Códigos QR URL"
+			]
+		}
+	},
+	"collection": {
+		"headline": "Tu colección",
+		"subHeadline": "Aquí puedes encontrar todos tus códigos QR y gestionarlos.",
+		"tabQrCode": "Códigos QR",
+		"tabTemplates": "Plantillas",
+		"addQrCodeBtn": "Agregar código QR",
+		"addTemplateBtn": "Crear plantilla",
+		"bulkImportLabel": "Seleccionar tipo de contenido",
+		"exportBtn": "Exportar",
+		"importExportLabel": "Importar y Exportar",
+		"bulkExport": {
+			"title": "Exportar códigos QR",
+			"description": "Descargar varios códigos QR como archivo ZIP.",
+			"format": "Formato",
+			"noQrCodes": "No se encontraron códigos QR.",
+			"exportAllLabel": "Exportar todos ({count})",
+			"deselectAll": "Deseleccionar página",
+			"selectAll": "Seleccionar página",
+			"selectedCount": "{count} de {total} seleccionados",
+			"errorTitle": "Error en la exportación",
+			"errorDescription": "Se produjo un error al exportar los códigos QR.",
+			"success": "Exportación completada",
+			"progress": "{current} de {total} exportados",
+			"downloading": "Descargando…",
+			"downloadBtn": "Descargar ZIP"
+		},
+		"filters": {
+			"searchPlaceholder": "Buscar códigos QR...",
+			"contentType": "Tipo de contenido",
+			"clearAll": "Borrar",
+			"customizeColumns": "Personalizar columnas",
+			"columns": "Columnas",
+			"toggleColumns": "Alternar columnas",
+			"actions": "Acciones"
+		}
+	},
+	"analytics": {
+		"totalViews": "Escaneos totales",
+		"totalClicks": "Total de clics",
+		"scansUnit": "Escaneos",
+		"clicksUnit": "Clics",
+		"viewDetailedAnalytics": "Ver análisis detallados",
+		"totalVisitors": "Número de visitantes",
+		"stateActive": "Activo",
+		"stateInactive": "Desactivado",
+		"activeDescription": "Activo: Los usuarios pueden acceder a la página de destino y se registran los escaneos.",
+		"inactiveDescription": "Desactivado: El acceso y el análisis están deshabilitados.",
+		"noData": "Aún no se han recopilado datos.",
+		"unknownLabel": "Desconocido",
+		"viewsInLastXDays": "{count} escaneos en los últimos {days} días",
+		"visitorsInLastXDays": "{count} visitantes en los últimos {days} días",
+		"bounceRate": "Tasa de rebote",
+		"avgTime": "Tiempo prom.",
+		"bounceRateHint": "Menor es mejor",
+		"visitorsUnit": "Visitantes",
+		"lastSevenDays": "Últimos 7 días",
+		"topInsights": "Datos destacados",
+		"topCountry": "País principal",
+		"topDevice": "Dispositivo principal",
+		"topBrowser": "Navegador principal",
+		"ofTraffic": "{pct}% del tráfico"
+	},
+	"chart": {
+		"title": {
+			"browserUsage": "Navegadores utilizados",
+			"deviceUsage": "Dispositivos utilizados",
+			"osUsage": "Sistemas operativos utilizados",
+			"countryDistribution": "Distribución por país",
+			"activityOverTime": "Actividad a lo largo del tiempo",
+			"activityOverTimeDescription": "Últimos 30 días"
+		}
+	},
+	"header": {
+		"collectionBtn": "Mi Colección",
+		"signInBtn": "Iniciar Sesión",
+		"settingsBtn": "Configuración",
+		"featuresBtn": "Funcionalidades",
+		"plansBtn": "Precios",
+		"productsBtn": "Productos",
+		"urlShortenerLink": "Acortador de URLs",
+		"qrCodesLink": "Códigos QR",
+		"analyticsLink": "Analíticas",
+		"urlShortenerDesc": "Acorta, personaliza y rastrea cada enlace",
+		"qrCodesDesc": "Crea y personaliza códigos QR dinámicos",
+		"analyticsDesc": "Mide el rendimiento en todos los canales"
+	},
+	"footer": {
+		"tagline": "La plataforma de códigos QR de código abierto. Crea, gestiona y rastrea códigos QR con facilidad.",
+		"product": "Plataforma",
+		"features": "Funciones",
+		"pricing": "Precios",
+		"urlShortener": "Acortador de URLs",
+		"qrCodes": "Códigos QR",
+		"analyticsProduct": "Analíticas",
+		"resources": "Recursos",
+		"faqLink": "FAQ",
+		"docs": "Documentación",
+		"github": "GitHub",
+		"legal": "Legal",
+		"legalNotice": "Aviso legal",
+		"privacyPolicy": "Política de privacidad",
+		"termsOfService": "Términos de servicio",
+		"contact": "Contacto",
+		"qrCodeCopyright": "QR code is a registered trademark of DENSO WAVE INCORPORATED"
+	},
+	"contentElements": {
+		"iconPicker": {
+			"openTrigger": "Abrir selector de iconos",
+			"dialogTitle": "Seleccionar un icono",
+			"dialogDescription": "Elige un icono y un color para tu selección.",
+			"searchPlaceholder": "Buscar un icono",
+			"clearBtn": "Limpiar",
+			"selectBtn": "Seleccionar"
+		},
+		"loader": {
+			"loading": "Cargando..."
+		},
+		"feedbackCta": {
+			"headline": "¿Preguntas o comentarios?",
+			"subHeadline1": "¿Tienes alguna pregunta sobre QRcodly o quieres compartir tu opinión? Estamos encantados de ayudarte y siempre buscamos mejorar.",
+			"emailBtn": "Contáctanos"
+		},
+		"browserExtensionTeaser": {
+			"badge": "Próximamente",
+			"headline": "Extensión del Navegador",
+			"description": "Crea códigos QR sobre la marcha — directamente desde tu navegador. Nuestra próxima extensión te permite generar y gestionar códigos QR para cualquier página con un solo clic."
+		},
+		"featuresCta": {
+			"headline": "Visión general de las características clave",
+			"subHeadline": "Con QRcodly puedes crear, editar, gestionar y analizar códigos QR de forma gratuita, todo en un solo lugar.",
+			"allFeatures": "Todas las funciones",
+			"emailBtn": "Envíanos un correo electrónico",
+			"editFeature": {
+				"headline": "Editar códigos QR en cualquier momento",
+				"subHeadline": "Crea códigos QR gratis y ajusta la URL de destino en cualquier momento, incluso después de la impresión."
+			},
+			"statisticFeature": {
+				"headline": "Estadísticas detalladas de códigos QR en tiempo real",
+				"subHeadline": "Mantén un registro de la frecuencia y el lugar desde donde se escanean tus códigos QR."
+			},
+			"overviewFeature": {
+				"headline": "Colección de códigos QR clara",
+				"subHeadline": "Mantén un seguimiento de todos tus códigos QR generados en una ubicación central."
+			},
+			"templateFeature": {
+				"headline": "Crear diseños con plantillas",
+				"subHeadline": "Ahorra tiempo y asegura una marca consistente. Crea plantillas con tus estilos preferidos y aplícalas fácilmente a nuevos códigos QR."
+			},
+			"customDomainFeature": {
+				"headline": "Mantén el control con tu propio dominio",
+				"subHeadline": "Usa tu propio dominio para códigos QR dinámicos. Mantén el control, conserva tu marca y sé dueño de cada enlace."
+			},
+			"tagFeature": {
+				"headline": "Organiza con etiquetas",
+				"subHeadline": "Etiqueta y categoriza tus códigos QR con tags personalizados. Filtra y encuentra lo que necesitas en segundos."
+			},
+			"exportImportFeature": {
+				"headline": "Exporta e importa códigos QR",
+				"subHeadline": "Haz copias de seguridad, migra o gestiona tus códigos QR en masa. Expórtalos e impórtalos con solo unos clics."
+			},
+			"teamFeature": {
+				"headline": "Colaborar en equipo",
+				"subHeadline": "Invita a miembros del equipo y trabajen juntos en códigos QR. Ideal para empresas, agencias y equipos."
+			},
+			"shortUrlFeature": {
+				"headline": "URLs cortas independientes",
+				"subHeadline": "Acorta, gestiona y rastrea tus enlaces con análisis detallados – sin necesidad de código QR.",
+				"actionLabel": "Pruébalo ahora"
+			},
+			"secureFeature": {
+				"headline": "Tus datos permanecen con nosotros",
+				"subHeadline": "QRcodly aloja todos los datos localmente en Alemania – sin compartirlos con servicios externos. Solo usamos Clerk para la autenticación."
+			},
+			"scrollLeft": "Desplazar a la izquierda",
+			"scrollRight": "Desplazar a la derecha"
+		}
+	},
+	"qrCodeDisabled": {
+		"title": "Código QR deshabilitado",
+		"description": "Lamentablemente, este código QR ya no está activo. El destino ya no está disponible.",
+		"note": "Si crees que se trata de un error, ponte en contacto con el propietario del código QR o inténtalo de nuevo más tarde.",
+		"button": "Ir a la página de inicio"
+	},
+	"qrCode": {
+		"table": {
+			"preview": "Vista previa",
+			"name": "Nombre",
+			"content": "Contenido",
+			"status": "Estado",
+			"scans": "Escaneos",
+			"created": "Creado",
+			"actions": "Acciones",
+			"tags": "Etiquetas",
+			"copyUrl": "Copiar URL",
+			"urlCopied": "URL copiada al portapapeles"
+		},
+		"storeBtn": "Guardar en la colección",
+		"updateBtn": "Actualizar código QR",
+		"error": {
+			"delete": {
+				"title": "Error al eliminar el código QR",
+				"message": "Se ha producido un error al eliminar tu código QR. Hemos sido notificados y solucionaremos el problema lo antes posible."
+			},
+			"update": {
+				"title": "Error al actualizar el código QR",
+				"message": "Se ha producido un error al actualizar tu código QR. Hemos sido notificados y solucionaremos el problema lo antes posible."
+			},
+			"noFound": "No se encontraron códigos QR",
+			"noFoundDescription": "Aún no has creado ningún código QR. Empieza a crear códigos QR ahora."
+		},
+		"confirmDeletePopup": {
+			"title": "Confirmar eliminación",
+			"description": "¿Estás seguro de que quieres eliminar el código QR?",
+			"confirmBtn": "Eliminar",
+			"cancelBtn": "Cancelar"
+		},
+		"deleting": {
+			"title": "Eliminando código QR...",
+			"description": "Estamos eliminando tu código QR."
+		},
+		"updateQrCodeName": {
+			"title": "Renombrar código QR",
+			"placeholder": "Introducir un nombre"
+		},
+		"update": {
+			"headline": "Actualizar código QR",
+			"successTitle": "Código QR actualizado",
+			"successDescription": "Tu código QR se ha actualizado correctamente.",
+			"errorTitle": "Error al actualizar el código QR",
+			"infoDialog": {
+				"dialogHeadline": "Nota sobre la actualización de un código QR",
+				"dialogDescription": "Solo los códigos QR dinámicos mantienen el mismo aspecto después de una edición. En el caso de los códigos QR estáticos, se genera un nuevo código, por lo que las versiones ya impresas dejan de estar actualizadas.",
+				"doNotShowAgain": "No mostrar este mensaje nuevamente.",
+				"cancelBtn": "Cancelar",
+				"understandBtn": "Entendido"
+			}
+		},
+		"actionsMenu": {
+			"title": "Acciones",
+			"view": "Ver detalles",
+			"edit": "Editar",
+			"delete": "Eliminar",
+			"disableShortUrl": "Desactivar",
+			"enableShortUrl": "Activar"
+		},
+		"download": {
+			"successTitle": "Nuevo código QR creado",
+			"successDescription": "Hemos guardado tu código QR en tu colección para su uso posterior.",
+			"downloadBtn": "Descargar",
+			"vcfFile": "Archivo VCF",
+			"icsFile": "Archivo ICS",
+			"errorTitle": "Error al guardar el código QR"
+		},
+		"saveInfo": "Guarda el código QR actual en tu colección.",
+		"savePopup": {
+			"title": "Guardar código QR",
+			"placeholder": "Nombre del código QR"
+		},
+		"share": {
+			"title": "Compartir código QR",
+			"description": "Crear un enlace público para compartir este código QR",
+			"warning": "Cualquier persona con este enlace puede ver tu código QR. El enlace permanece activo hasta que se elimine.",
+			"link": "Enlace para compartir",
+			"displayOptions": "Opciones de visualización",
+			"showName": "Mostrar nombre del código QR",
+			"showContent": "Mostrar detalles del contenido",
+			"showQrCode": "Mostrar imagen del código QR",
+			"showDownloadButton": "Mostrar botón de descarga",
+			"createLink": "Crear enlace para compartir",
+			"updateLink": "Actualizar configuración",
+			"deleteLink": "Eliminar enlace",
+			"linkCopied": {
+				"title": "Enlace copiado",
+				"description": "El enlace se copió al portapapeles"
+			},
+			"created": {
+				"title": "Enlace creado",
+				"description": "Tu código QR ahora es accesible públicamente"
+			},
+			"updated": {
+				"title": "Configuración actualizada",
+				"description": "La configuración del enlace ha sido actualizada"
+			},
+			"deleted": {
+				"title": "Enlace eliminado",
+				"description": "El enlace para compartir ha sido eliminado"
+			},
+			"error": {
+				"title": "Error",
+				"description": "Algo salió mal. Por favor, inténtalo de nuevo."
+			},
+			"copyError": {
+				"description": "No se pudo copiar el enlace al portapapeles. Por favor, cópialo manualmente."
+			},
+			"noVisibleContent": "Este código QR compartido no tiene contenido visible."
+		}
+	},
+	"loginDialog": {
+		"title": "Inicio de sesión requerido",
+		"description": "Debes iniciar sesión para usar esta función.",
+		"subDescription": "¡No te preocupes, es totalmente gratis!",
+		"cancelBtn": "Cancelar",
+		"loginBtn": "Iniciar sesión"
+	},
+	"nameDialog": {
+		"placeholder": "Nombre",
+		"cancelBtn": "Cancelar",
+		"saveBtn": "Guardar"
+	},
+	"templates": {
+		"pageDescription": "Gestiona y organiza tus plantillas de código QR guardadas.",
+		"tabs": {
+			"myTemplates": "Mis Plantillas",
+			"predefinedTemplates": "Predefinidas"
+		},
+		"noTemplates": "Aún no tienes plantillas.",
+		"search": {
+			"placeholder": "Buscar una plantilla",
+			"noResults": "No se encontraron plantillas para \"{searchName}\""
+		},
+		"noPredefinedTemplates": "No hay plantillas predefinidas disponibles en este momento.",
+		"templateCreatedTitle": "Nueva plantilla creada",
+		"templateCreatedDescription": "Tu plantilla se ha creado correctamente.",
+		"templateCreatedErrorTitle": "Error al crear la plantilla",
+		"saveAsBtn": "Guardar como plantilla",
+		"updateBtn": "Actualizar plantilla",
+		"saveInfo": "Guarda el diseño actual como una plantilla reutilizable.",
+		"savePopup": {
+			"title": "Guardar diseño actual como plantilla",
+			"placeholder": "Nombre de la plantilla"
+		},
+		"update": {
+			"headline": "Actualizar plantilla",
+			"successTitle": "Plantilla actualizada",
+			"successDescription": "Tu plantilla se ha actualizado correctamente.",
+			"errorTitle": "Error al actualizar la plantilla",
+			"errorDescription": "Se produjo un error al actualizar tu plantilla. Por favor, revisa los datos e inténtalo de nuevo.",
+			"updateName": {
+				"title": "Renombrar plantilla",
+				"placeholder": "Introduce un nuevo nombre"
+			}
+		},
+		"delete": {
+			"beingDeleted": "La plantilla se está eliminando",
+			"deletingInfo": "Estamos eliminando tu plantilla.",
+			"errorTitle": "No se pudo eliminar la plantilla",
+			"errorDescription": "Se ha producido un error al eliminar la plantilla. Hemos sido notificados y lo solucionaremos pronto."
+		},
+		"confirmPopup": {
+			"title": "Confirmar eliminación",
+			"description": "¿Estás seguro de que quieres eliminar la plantilla?",
+			"description2": "Esta acción no se puede deshacer.",
+			"confirmBtn": "Eliminar",
+			"cancelBtn": "Cancelar"
+		},
+		"actionsMenu": {
+			"qrCodeFromTemplate": "Código QR desde plantilla"
+		}
+	},
+	"generator": {
+		"sectionTitle": "Crea tu código QR",
+		"sectionSubtitle": "Elige un tipo de contenido, personaliza el diseño y descarga tu código QR al instante.",
+		"labelName": "Nombre",
+		"domainSelector": {
+			"label": "Dominio de URL corta",
+			"placeholder": "Seleccionar un dominio",
+			"description": "Elige qué dominio usar para tu URL corta",
+			"noDomains": "No hay dominios personalizados disponibles.",
+			"addDomain": "Agregar un dominio"
+		},
+		"tabs": {
+			"content": "Contenido",
+			"style": "Estilo",
+			"templates": "Plantillas"
+		},
+		"bulkImport": {
+			"title": "Crear varios códigos QR de {contentType}",
+			"successTitle": "Importación exitosa",
+			"successDescription": "Todos tus códigos QR se han importado correctamente.",
+			"errorTitle": "Error en la importación",
+			"step1": {
+				"title": "1. Diseñar QR Code",
+				"description": "Diseña tu QR Code o elige una plantilla."
+			},
+			"step2": {
+				"title": "2. Descargar plantilla CSV ({contentType})",
+				"description": "Descarga la plantilla CSV de {contentType} e ingresa tus datos.",
+				"button": "Descargar"
+			},
+			"step3": {
+				"title": "3. Subir plantilla",
+				"description": "Sube aquí el archivo CSV completado."
+			},
+			"info": {
+				"title": "Observa los límites y el inicio de sesión",
+				"description": "Con el archivo CSV puedes crear hasta 15 códigos QR a la vez. Para más, necesitas el plan Pro."
+			},
+			"createButton": "Crear códigos QR",
+			"csvErrors": {
+				"title": "Errores en el CSV",
+				"description": "Se encontraron {count} error(es) en tu archivo CSV. Corrige los problemas y vuelve a subir.",
+				"expectedFormat": "Formato esperado",
+				"delimiterHint": "Usa punto y coma (;) como separador de columnas",
+				"lineHeader": "Línea",
+				"retryButton": "Corregir y volver a subir",
+				"backButton": "Atrás"
+			}
+		},
+		"settingsForm": {
+			"tabGeneral": "General",
+			"tabShape": "Forma",
+			"tabIcon": "Icono",
+			"sizeLabel": "Tamaño (Calidad)",
+			"borderSpacingLabel": "Espaciado del borde",
+			"backgroundLabel": "Fondo",
+			"dotStyle": {
+				"label": "Estilo de punto",
+				"placeholder": "Seleccionar un estilo de punto",
+				"optionLabelSquare": "Cuadrado",
+				"optionLabelDots": "Puntos",
+				"optionLabelRounded": "Redondeado",
+				"optionLabelExtraRound": "Extra Redondeado",
+				"optionLabelClassy": "Con Clase",
+				"optionLabelClassyRounded": "Con Clase Redondeado"
+			},
+			"dotColor": "Color del punto",
+			"cornersSquareOptions": {
+				"placeholder": "Seleccionar un estilo",
+				"label": "Estilo de los cuadrados de las esquinas",
+				"optionLabelSquare": "Cuadrado",
+				"optionLabelDot": "Punto",
+				"optionLabelExtraRound": "Extra Redondeado"
+			},
+			"cornersSquareColor": "Color de los cuadrados de las esquinas",
+			"cornersDotOptions": {
+				"label": "Estilo de los puntos de las esquinas",
+				"placeholder": "Seleccionar un estilo",
+				"optionLabelSquare": "Cuadrado",
+				"optionLabelDot": "Punto"
+			},
+			"cornersDotColor": "Color de los puntos de las esquinas",
+			"iconLabel": "Icono",
+			"errorToLargeFile": "El archivo es demasiado grande. El tamaño máximo es de 1MB.",
+			"hideBackgroundDots": "Ocultar puntos de fondo",
+			"predefinedIconInfo": "También puedes elegir entre iconos predefinidos.",
+			"clearBtn": "Borrar icono",
+			"currentIcon": "Icono actual",
+			"uploadDragDrop": "Arrastra y suelta una imagen aquí, o haz clic para buscar",
+			"uploadFormats": "JPG, PNG, SVG, WebP (máx. 1 MB)"
+		},
+		"contentSwitch": {
+			"tab": {
+				"url": "URL",
+				"text": "TEXTO",
+				"wifi": "WIFI",
+				"vCard": "VCARD",
+				"email": "CORREO",
+				"location": "UBICACIÓN",
+				"event": "EVENTO",
+				"epc": "BANCO",
+				"socials": "REDES"
+			},
+			"cancel": "Cancelar",
+			"bulkModeBtn": "Creación masiva con CSV",
+			"text": {
+				"placeholder": "Introduce tu texto aquí"
+			},
+			"url": {
+				"placeholder": "Introduce tu URL https://ejemplo.com/",
+				"enableEditing": "Habilitar estadísticas y edición"
+			},
+			"wifi": {
+				"network": {
+					"label": "Red",
+					"placeholder": "Introduce el nombre de tu red"
+				},
+				"password": {
+					"label": "Contraseña",
+					"placeholder": "Introduce tu contraseña"
+				},
+				"encryption": {
+					"label": "Cifrado",
+					"optionLabelWpa": "WPA/WPA2",
+					"optionLabelWep": "WEP",
+					"optionNoPass": "Sin Contraseña"
+				}
+			},
+			"vCard": {
+				"title": {
+					"label": "Título",
+					"placeholder": "p.ej. Dr., Prof., Sr., Sra."
+				},
+				"firstName": {
+					"label": "Nombre",
+					"placeholder": "Introduce tu nombre"
+				},
+				"lastName": {
+					"label": "Apellido",
+					"placeholder": "Introduce tu apellido"
+				},
+				"email": {
+					"label": "Dirección de correo electrónico",
+					"placeholder": "Introduce tu correo electrónico"
+				},
+				"emailPrivate": {
+					"label": "E-mail (Privado)",
+					"placeholder": "Correo electrónico privado"
+				},
+				"emailBusiness": {
+					"label": "E-mail (Comercial)",
+					"placeholder": "Correo electrónico comercial"
+				},
+				"phone": {
+					"label": "Teléfono",
+					"placeholder": "Introduce tu número de teléfono"
+				},
+				"phonePrivate": {
+					"label": "Teléfono (Privado)",
+					"placeholder": "Número privado"
+				},
+				"phoneMobile": {
+					"label": "Teléfono (Móvil)",
+					"placeholder": "Número móvil"
+				},
+				"phoneBusiness": {
+					"label": "Teléfono (Comercial)",
+					"placeholder": "Número comercial"
+				},
+				"fax": {
+					"label": "Fax",
+					"placeholder": "Introduce tu número de fax"
+				},
+				"company": {
+					"label": "Empresa",
+					"placeholder": "Introduce el nombre de tu empresa"
+				},
+				"jobTitle": {
+					"label": "Cargo",
+					"placeholder": "Introduce tu cargo"
+				},
+				"addressPrivate": {
+					"title": "Dirección Privada"
+				},
+				"streetPrivate": {
+					"label": "Calle",
+					"placeholder": "Ingrese su calle"
+				},
+				"cityPrivate": {
+					"label": "Ciudad",
+					"placeholder": "Ingrese su ciudad"
+				},
+				"zipPrivate": {
+					"label": "Código Postal",
+					"placeholder": "Ingrese su código postal"
+				},
+				"statePrivate": {
+					"label": "Provincia",
+					"placeholder": "Ingrese su provincia"
+				},
+				"countryPrivate": {
+					"label": "País",
+					"placeholder": "Ingrese su país"
+				},
+				"addressBusiness": {
+					"title": "Dirección Comercial"
+				},
+				"streetBusiness": {
+					"label": "Calle",
+					"placeholder": "Ingrese su calle"
+				},
+				"cityBusiness": {
+					"label": "Ciudad",
+					"placeholder": "Ingrese su ciudad"
+				},
+				"zipBusiness": {
+					"label": "Código Postal",
+					"placeholder": "Ingrese su código postal"
+				},
+				"stateBusiness": {
+					"label": "Provincia",
+					"placeholder": "Ingrese su provincia"
+				},
+				"countryBusiness": {
+					"label": "País",
+					"placeholder": "Ingrese su país"
+				},
+				"website": {
+					"label": "Sitio web",
+					"placeholder": "Introduce la URL de tu sitio web"
+				},
+				"note": {
+					"label": "Nota",
+					"placeholder": "Información adicional o notas"
+				}
+			},
+			"email": {
+				"email": {
+					"label": "Correo electrónico",
+					"placeholder": "Introduce una dirección de correo"
+				},
+				"subject": {
+					"label": "Asunto",
+					"placeholder": "Asunto opcional"
+				},
+				"body": {
+					"label": "Mensaje",
+					"placeholder": "Mensaje opcional"
+				}
+			},
+			"location": {
+				"address": {
+					"label": "Dirección",
+					"placeholder": "Buscar dirección o lugar"
+				},
+				"latitude": {
+					"label": "Latitud"
+				},
+				"longitude": {
+					"label": "Longitud"
+				}
+			},
+			"event": {
+				"title": {
+					"label": "Título",
+					"placeholder": "Nombre del evento"
+				},
+				"summary": {
+					"label": "Resumen",
+					"placeholder": "Resumen opcional"
+				},
+				"description": {
+					"label": "Descripción",
+					"placeholder": "Descripción opcional"
+				},
+				"location": {
+					"label": "Ubicación",
+					"placeholder": "Lugar del evento"
+				},
+				"url": {
+					"label": "Url",
+					"placeholder": "URL opcional"
+				},
+				"startDate": {
+					"label": "Fecha de inicio"
+				},
+				"endDate": {
+					"label": "Fecha de fin"
+				}
+			},
+			"epc": {
+				"name": {
+					"label": "Nombre del beneficiario",
+					"placeholder": "Nombre del destinatario del pago"
+				},
+				"iban": {
+					"label": "IBAN",
+					"placeholder": "Ej. ES9121000418450200051332"
+				},
+				"bic": {
+					"label": "BIC/SWIFT",
+					"placeholder": "Ej. CAIXESBBXXX"
+				},
+				"amount": {
+					"label": "Importe",
+					"placeholder": "0,00"
+				},
+				"purpose": {
+					"label": "Concepto",
+					"placeholder": "Motivo del pago"
+				}
+			},
+			"social": {
+				"title": {
+					"label": "Título",
+					"placeholder": "p.ej. Sígueme"
+				},
+				"link": {
+					"placeholder": "URL del perfil o sitio web",
+					"add": "Añadir enlace",
+					"remove": "Eliminar"
+				}
+			}
+		},
+		"preview": {
+			"button": "Abrir Vista Previa",
+			"title": "Vista Previa del Código QR con Fondo",
+			"selectTitle": "Seleccionar Fondo",
+			"selectDescription": "Prueba cómo se ve tu código QR en diferentes fondos antes de imprimirlo o compartirlo.",
+			"selectBackground": "Selecciona un fondo para previsualizar tu código QR",
+			"changeBackground": "Cambiar Fondo",
+			"close": "Cerrar",
+			"predefined": {
+				"title": "Ejemplos",
+				"businessCards": "Tarjetas de Visita",
+				"brochures": "Folletos",
+				"posters": "Carteles",
+				"packaging": "Embalaje",
+				"websites": "Sitios Web",
+				"socialMedia": "Redes Sociales"
+			},
+			"website": {
+				"title": "Sitio Web",
+				"inputLabel": "URL del Sitio Web",
+				"inputPlaceholder": "Introduce URL (ej. https://ejemplo.com)",
+				"previewButton": "Vista Previa del Sitio Web",
+				"loadingIframe": "Cargando sitio web...",
+				"loadingScreenshot": "Capturando captura de pantalla...",
+				"capturingPreview": "Capturando vista previa...",
+				"info": "Introduce cualquier URL de sitio web para usarla como fondo para tu código QR",
+				"errors": {
+					"invalidUrl": "Por favor introduce una URL válida que comience con http:// o https://",
+					"loadFailed": "Error al cargar el sitio web. Por favor inténtalo de nuevo.",
+					"captureFailed": "Error al capturar el sitio web. Este sitio web puede no permitir la incrustación.",
+					"screenshotFailed": "Error al capturar la captura de pantalla. El servicio de capturas de pantalla puede no estar disponible o la URL no es válida.",
+					"networkError": "Error de red. Por favor verifica tu conexión."
+				},
+				"retry": "Reintentar"
+			},
+			"camera": {
+				"title": "Cámara",
+				"capture": "Capturar Fotograma",
+				"loading": "Inicializando cámara...",
+				"retry": "Reintentar Acceso a Cámara",
+				"error": {
+					"title": "Error de Cámara"
+				}
+			},
+			"upload": {
+				"title": "Subir",
+				"dragDrop": "Arrastra y suelta una imagen aquí",
+				"orClick": "o haz clic para buscar",
+				"formats": "JPG, PNG, WEBP (máx. 5MB)"
+			},
+			"contrast": {
+				"ratio": "Ratio",
+				"excellent": {
+					"title": "Visibilidad Excelente"
+				},
+				"good": {
+					"title": "Buena Visibilidad"
+				},
+				"poor": {
+					"title": "Poca Visibilidad"
+				},
+				"critical": {
+					"title": "Crítico - Puede No Escanear"
+				}
+			},
+			"controls": {
+				"reset": "Restablecer Posición",
+				"resize": "Arrastra la esquina para redimensionar",
+				"move": "Arrastra para reposicionar · Arrastra la esquina para redimensionar"
+			}
+		}
+	},
+	"pagination": {
+		"previous": "Anterior",
+		"next": "Siguiente",
+		"more": "Más páginas",
+		"previousAria": "Ir a la página anterior",
+		"nextAria": "Ir a la página siguiente"
+	},
+	"faq": {
+		"headline": "Preguntas Frecuentes",
+		"subtitle": "Todo lo que necesitas saber sobre códigos QR y QRcodly.",
+		"question1": "¿Qué es un Código QR?",
+		"answer1": "Un Código QR (Código de Respuesta Rápida) es un código de barras inteligente y bidimensional que puede almacenar diversos tipos de información, como enlaces a sitios web, texto o datos de contacto. Se puede capturar y descifrar fácilmente usando un smartphone o un escáner dedicado.",
+		"question2": "¿Cómo creo un Código QR?",
+		"answer2": "Con qrcodly.de, puedes crear tu Código QR personalizado en un abrir y cerrar de ojos: simplemente introduce el contenido deseado y descarga tu código recién generado directamente. ¡Rápido y sencillo!",
+		"question3": "¿Cuál es la diferencia entre Códigos QR estáticos y dinámicos?",
+		"answer3": "Los Códigos QR estáticos contienen información fija que no se puede cambiar después de la creación. Los Códigos QR dinámicos, por otro lado, ofrecen la máxima flexibilidad: puedes ajustar el contenido vinculado en cualquier momento después de la creación y también beneficiarte de funciones avanzadas como estadísticas de escaneo detalladas.",
+		"question4": "¿Es gratuito crear Códigos QR?",
+		"answer4": "Sí, la generación de códigos QR tanto estáticos como dinámicos es y seguirá siendo gratuita para siempre, tantos como desees. En el futuro, habrá limitaciones para las solicitudes de API y para las empresas que trabajen con varios usuarios.",
+		"question5": "¿Cuánto tiempo es válido un Código QR?",
+		"answer5": "Los Códigos QR estáticos no caducan y permanecen válidos permanentemente siempre que el contenido vinculado sea accesible en línea. Los Códigos QR dinámicos permanecen activos mientras se gestionen en nuestro sistema y no se apliquen restricciones específicas del proveedor.",
+		"question6": "¿Cuáles son las ventajas de los códigos QR dinámicos?",
+		"answer6": "Los códigos QR dinámicos se identifican con la insignia Dynamic. Se pueden actualizar en cualquier momento, incluso después de haber sido creados o impresos. Además, ofrecen estadísticas útiles de escaneo, como ubicación, hora y dispositivos utilizados, para analizar y optimizar tus campañas de manera efectiva.",
+		"question7": "¿Necesito una aplicación especial para escanear Códigos QR?",
+		"answer7": "No, en la mayoría de los casos, ¡no es necesario! La función de cámara integrada de los smartphones modernos ahora puede reconocer directamente los Códigos QR y abrir el contenido incrustado, sin necesidad de una aplicación adicional.",
+		"question8": "¿Qué estadísticas se recopilan para los Códigos QR dinámicos?",
+		"answer8": "Cuando habilitas las estadísticas, cada escaneo de tu Código QR dinámico registra y analiza información como el número de escaneos, visitantes, dispositivos utilizados, países, navegadores y sistemas operativos.",
+		"question9": "¿Puedo personalizar un Código QR con mi logotipo?",
+		"answer9": "Sí, con qrcodly.de, puedes diseñar tus Códigos QR exactamente a tu gusto: integra tu logotipo y usa los colores de tu marca sin afectar la capacidad de escaneo. ¡De esta manera, tus códigos seguirán siendo únicos y profesionales!",
+		"question10": "¿Funcionan los Códigos QR también en formato impreso?",
+		"answer10": "¡Absolutamente! Los Códigos QR están optimizados específicamente para la impresión y funcionan de manera fiable en diversos materiales, siempre que permanezcan claros y sin daños. ¡Asegura una buena calidad de impresión, y tus códigos estarán listos para usar en cualquier lugar!",
+		"question11": "¿Dónde se alojan mis datos?",
+		"answer11": "Todos los datos de QRcodly se almacenan exclusivamente en servidores ubicados en Alemania. Usamos Clerk para la autenticación y herramientas de análisis respetuosas con la privacidad para mejorar nuestro servicio. Tus datos no se venden ni se comparten con fines publicitarios.",
+		"viewAll": "Ver todas las preguntas frecuentes"
+	},
+	"productShowcase": {
+		"headline": "Panel de control potente.",
+		"subHeadline": "Interfaz elegante.",
+		"description": "Gestiona todos tus códigos QR, rastrea escaneos en tiempo real y personaliza diseños — todo desde un panel de control intuitivo."
+	},
+	"notFound": {
+		"message": "¡Ups! La página que buscas no existe.",
+		"goHome": "Volver al inicio"
+	},
+	"fileUpload": {
+		"maxFiles": "Se permiten como máximo {maxFiles} archivos",
+		"invalidType": "Tipo de archivo no aceptado",
+		"tooLarge": "Archivo demasiado grande",
+		"uploadZone": {
+			"dragDrop": "Arrastra los archivos aquí",
+			"or": "O haz clic para buscar (máx. 1 archivo)",
+			"browse": "Buscar archivos"
+		}
+	},
+	"settings": {
+		"nav": {
+			"title": "Configuración",
+			"profile": "Perfil",
+			"security": "Seguridad",
+			"billing": "Facturación",
+			"apiKeys": "Claves API",
+			"domains": "Dominios",
+			"integrations": "Integraciones"
+		},
+		"domains": {
+			"title": "Dominios Personalizados",
+			"description": "Usa tu propio subdominio para códigos QR dinámicos. Para instrucciones de configuración, consulta nuestra <link>documentación</link>.",
+			"backToCollection": "Volver a la Colección",
+			"howItWorks": "Cómo funciona",
+			"step1": "Añade tu dominio (ej., links.ejemplo.com)",
+			"step2": "Crea un registro TXT DNS para verificación",
+			"step3": "Después de la verificación, tu dominio está activo",
+			"step4": "Usa tu dominio al crear códigos QR",
+			"emptyTitle": "Aún no hay dominios personalizados",
+			"emptyDescription": "Añade tu primer dominio personalizado para códigos QR dinámicos.",
+			"errorTitle": "Error al cargar dominios",
+			"pageInfo": "Página {current} de {total}",
+			"domain": "Dominio",
+			"dnsStatus": "Registros DNS",
+			"status": "Estado",
+			"createdAt": "Creado",
+			"actions": "Acciones",
+			"ready": "Listo",
+			"setup": "Configuración requerida",
+			"default": "Predeterminado",
+			"txtVerified": "Registro TXT verificado",
+			"txtPending": "Registro TXT pendiente",
+			"cnameVerified": "Registro CNAME verificado",
+			"cnamePending": "Registro CNAME pendiente",
+			"addDomain": "Añadir Dominio",
+			"addDomainTitle": "Añadir Dominio Personalizado",
+			"addDomainDescription": "Introduce el dominio que deseas usar para tus códigos QR dinámicos. Debes verificar la propiedad y configurar los registros DNS.",
+			"domainHint": "Usa un subdominio como links.ejemplo.com",
+			"cancel": "Cancelar",
+			"add": "Añadir",
+			"close": "Cerrar",
+			"addSuccess": "Dominio añadido",
+			"addSuccessDescription": "El dominio {domain} fue añadido. Por favor completa la configuración DNS para activarlo.",
+			"addError": "Error al añadir dominio",
+			"delete": "Eliminar",
+			"deleteConfirmTitle": "¿Eliminar dominio?",
+			"deleteConfirmDescription": "¿Estás seguro de que deseas eliminar {domain}? Los códigos QR dinámicos con este dominio volverán al dominio predeterminado.",
+			"deleting": "Eliminando dominio...",
+			"deleted": "Dominio eliminado",
+			"deletedDescription": "El dominio {domain} fue eliminado.",
+			"deleteError": "Error al eliminar dominio",
+			"verifyTxt": "Verificar registro TXT",
+			"verifyCname": "Verificar registro CNAME",
+			"verifyingTxt": "Verificando registro TXT...",
+			"verifyingCname": "Verificando registro CNAME...",
+			"txtVerifiedDescription": "El registro TXT para {domain} ha sido verificado.",
+			"cnameVerifiedDescription": "El registro CNAME para {domain} ha sido verificado. Tu dominio está listo para usar.",
+			"verifyError": "Verificación fallida",
+			"checkingStatus": "Verificando estado...",
+			"statusUpdated": "Estado actualizado",
+			"statusUpdatedDescription": "Estado SSL actual: {status}. Continúa con la configuración DNS si aún no está completa.",
+			"txtVerifiedCnamePending": "Registro TXT verificado",
+			"txtVerifiedCnamePendingDescription": "El registro TXT de propiedad está verificado. El registro CNAME aún no pudo ser verificado. Por favor revisa tu configuración DNS e intenta más tarde.",
+			"cnameVerifiedTxtPending": "Registro CNAME verificado",
+			"cnameVerifiedTxtPendingDescription": "El registro CNAME está verificado. El registro TXT de propiedad aún no pudo ser verificado. Por favor revisa tu configuración DNS e intenta más tarde.",
+			"dnsNotVerified": "Registros DNS no verificados",
+			"dnsNotVerifiedDescription": "Los registros DNS aún no pudieron ser verificados. Por favor añade los registros requeridos e intenta más tarde. Los cambios DNS pueden tardar hasta 48 horas en propagarse.",
+			"dnsVerificationComplete": "¡Verificación DNS completa!",
+			"dnsVerificationCompleteDescription": "Tus registros DNS han sido verificados. Se está aprovisionando un certificado SSL. Revisa las instrucciones actualizadas para el registro de validación SSL.",
+			"fetchingSslInstructions": "Obteniendo instrucciones del certificado SSL...",
+			"sslInstructionsReady": "Instrucciones SSL listas",
+			"sslInstructionsReadyDescription": "El registro de validación SSL está ahora disponible. Añádelo a tu DNS para completar la configuración.",
+			"sslPhaseAlertTitle": "Paso final: Certificado SSL",
+			"sslPhaseAlertDescription": "La verificación DNS está completa. Añade el registro TXT a continuación para validar tu certificado SSL.",
+			"domainVerified": "¡Dominio verificado!",
+			"domainVerifiedDescription": "El certificado SSL para {domain} está ahora activo. Tu dominio está listo para usar.",
+			"viewInstructions": "Instrucciones de configuración",
+			"setupInstructions": "Instrucciones de configuración del dominio",
+			"setupInstructionsDescription": "Sigue estos pasos para activar tu dominio personalizado {domain}",
+			"setupInstructionsDescriptionDns": "Añade estos registros DNS para verificar la propiedad de {domain}",
+			"setupInstructionsDescriptionSsl": "¡DNS verificado! Añade el registro SSL para completar la configuración de {domain}",
+			"stepCompleted": "Completado",
+			"dcvDelegationStep": "Auto-renovación SSL (CNAME)",
+			"dcvDelegationDescription": "Este registro permite la emisión y renovación automática del certificado SSL. Altamente recomendado para evitar el vencimiento del certificado.",
+			"step4PendingDns": "Completa los pasos 1 - 3, luego haz clic en \"Verificar Estado\" para continuar.",
+			"step4LoadingSsl": "Cargando instrucciones del certificado SSL... Por favor haz clic en \"Verificar Estado\" para actualizar.",
+			"sslValidationStep": "Validación del Certificado SSL (TXT)",
+			"ownershipValidationStep": "Verificación de Propiedad del Dominio (TXT)",
+			"cnameRecordStep": "Registro CNAME (redirección)",
+			"checkStatus": "Verificar Estado",
+			"recordType": "Tipo de registro",
+			"recordHost": "Host / Nombre",
+			"recordValue": "Valor",
+			"pointsTo": "Apunta a",
+			"copied": "Copiado",
+			"copiedHostDescription": "El nombre del host ha sido copiado al portapapeles.",
+			"copiedTxtDescription": "El valor del registro TXT ha sido copiado al portapapeles.",
+			"copiedCnameDescription": "El destino CNAME ha sido copiado al portapapeles.",
+			"dnsNote": "Los cambios DNS pueden tardar hasta 48 horas. Puedes verificar cada registro individualmente una vez configurado.",
+			"openMenu": "Abrir menú",
+			"setAsDefault": "Establecer como predeterminado",
+			"settingDefault": "Estableciendo como predeterminado...",
+			"defaultSet": "Dominio predeterminado establecido",
+			"defaultSetDescription": "El dominio {domain} es ahora tu dominio predeterminado para códigos QR dinámicos.",
+			"setDefaultError": "Error al establecer predeterminado",
+			"systemDomain": "Sistema",
+			"systemDomainVerified": "El dominio del sistema siempre está verificado",
+			"defaultCleared": "Predeterminado restaurado",
+			"defaultClearedDescription": "El dominio del sistema se usa ahora como predeterminado para nuevos códigos QR dinámicos.",
+			"sslStatus": {
+				"active": "Activo",
+				"pending": "Pendiente",
+				"error": "Error",
+				"unknown": "Desconocido"
+			},
+			"sslStatusTooltip": {
+				"initializing": "Configurando certificado SSL...",
+				"pending_validation": "Esperando validación del registro TXT DNS. Añade el registro TXT mostrado en las instrucciones de configuración.",
+				"pending_issuance": "Registro TXT verificado. Se está emitiendo el certificado SSL.",
+				"pending_deployment": "Certificado SSL emitido. Desplegando a servidores edge...",
+				"active": "El certificado SSL está activo. Tu dominio está listo para usar.",
+				"pending_expiration": "El certificado SSL está por expirar. Se renovará automáticamente.",
+				"expired": "El certificado SSL ha expirado. Por favor contacta soporte.",
+				"deleted": "El certificado SSL ha sido eliminado.",
+				"validation_timed_out": "La validación del registro TXT expiró. Por favor revisa tu configuración DNS e intenta de nuevo."
+			},
+			"verificationStatus": {
+				"active": "Activo",
+				"dnsSetup": "Configuración DNS",
+				"dnsPartial": "DNS {count}/2",
+				"sslPending": "SSL Pendiente",
+				"error": "Error",
+				"unknown": "Desconocido"
+			},
+			"verificationStatusTooltip": {
+				"active": "Tu dominio está completamente verificado y listo para usar.",
+				"dnsSetup": "Añade los registros TXT y CNAME para verificar la propiedad del dominio.",
+				"dnsPartial": "Verificación DNS parcial. Continúa añadiendo los registros restantes.",
+				"sslPending": "DNS verificado. Esperando aprovisionamiento del certificado SSL.",
+				"error": "Verificación fallida. Revisa tu configuración DNS.",
+				"unknown": "Estado desconocido."
+			},
+			"badge": {
+				"ready": "Listo",
+				"dnsSetup": "Configuración DNS",
+				"dnsPartial": "DNS {count}/2",
+				"sslPending": "SSL Pendiente",
+				"error": "Error",
+				"setup": "Configuración",
+				"disabled": "Desactivado"
+			},
+			"domainsDisabledTitle": "Dominios personalizados desactivados",
+			"domainsDisabledDescription": "Sus dominios personalizados han sido desactivados porque su suscripción ha finalizado. Los códigos QR con dominios personalizados no funcionarán hasta que se vuelva a suscribir."
+		},
+		"apiKeys": {
+			"title": "Claves API",
+			"description": "Administra tus claves API para integraciones externas. Consulta la <link>documentación de la API</link> para comenzar.",
+			"name": "Nombre",
+			"descriptionLabel": "Descripción",
+			"descriptionPlaceholder": "Descripción (opcional)",
+			"createdAt": "Creado el",
+			"expiresAt": "Expiración",
+			"neverExpires": "Nunca expira",
+			"lastUsedAt": "Último uso",
+			"actions": "Acciones",
+			"emptyTitle": "Sin claves API",
+			"emptyDescription": "Aún no has creado ninguna clave API.",
+			"errorTitle": "Error al cargar claves API",
+			"errorDescription": "Ocurrió un error al cargar tus claves API.",
+			"openMenu": "Abrir menú",
+			"revoke": "Revocar",
+			"revokeConfirmTitle": "Revocar clave API",
+			"revokeConfirmDescription": "¿Estás seguro de que deseas revocar la clave API {name}? Esta acción no se puede deshacer.",
+			"cancel": "Cancelar",
+			"create": "Crear clave API",
+			"copied": "Copiado",
+			"copiedDescription": "La clave API ha sido copiada al portapapeles.",
+			"unnamed": "Sin nombre",
+			"createdTitle": "Clave API Creada",
+			"formTitle": "Añadir Nueva Clave API",
+			"formHint": "Introduce un nombre para crear una clave API. Puedes revocarla en cualquier momento.",
+			"namePlaceholder": "Introduce un nombre",
+			"expiresAtPlaceholder": "ej. 30",
+			"expiresAtDescription": "Opcional: Tiempo de expiración en días. Dejar vacío = nunca expira.",
+			"revealKeyInfo": "Tu clave API solo se mostrará una vez. Cópiala ahora ya que no será visible después.",
+			"close": "Cerrar",
+			"never": "Nunca",
+			"day": "Día",
+			"days": "Días",
+			"year": "Año",
+			"upgradeCta": "Actualizar a Pro",
+			"securityNote": "Mantén esta clave API en secreto — quien la posea obtiene cada permiso que habilites aquí.",
+			"scopesLabel": "Permisos",
+			"scopesDescription": "Elige qué puede hacer esta clave. Puedes cambiarlo más tarde.",
+			"scopeRead": "Leer",
+			"scopeReadHint": "Listar y ver tus recursos.",
+			"scopeWrite": "Escribir",
+			"scopeWriteHint": "Crear nuevos recursos.",
+			"scopeUpdate": "Actualizar",
+			"scopeUpdateHint": "Modificar recursos existentes.",
+			"scopeDelete": "Eliminar",
+			"scopeDeleteHint": "Eliminar recursos.",
+			"scopesRequired": "Selecciona al menos un permiso.",
+			"scopesFullAccess": "Acceso total",
+			"editPropagationNote": "Los cambios de permisos pueden tardar 1–2 minutos en surtir efecto.",
+			"editTitle": "Editar clave API",
+			"editFormHint": "Actualiza permisos, descripción o caducidad. La clave secreta no se mostrará de nuevo.",
+			"editSuccess": "Clave API actualizada.",
+			"edit": "Editar",
+			"save": "Guardar"
+		},
+		"billing": {
+			"title": "Facturación y Suscripción",
+			"description": "Administra tu plan de suscripción.",
+			"currentPlan": "Plan Actual",
+			"proDescription": "Tienes acceso a todas las funciones Pro incluyendo códigos QR ilimitados y analíticas avanzadas.",
+			"freeDescription": "Actualiza a Pro para desbloquear dominios personalizados, límites API más altos y funciones premium. <link>Ver planes</link>",
+			"includedFeatures": "Funciones Incluidas",
+			"billingCycle": "Ciclo de Facturación",
+			"perMonth": "mes",
+			"billedAnnually": "Facturado anualmente",
+			"billedMonthly": "Facturado mensualmente",
+			"renewsOn": "Se renueva el {date}",
+			"expiresOn": "Tu plan Pro expira el {date}",
+			"upgradeToPro": "Actualizar a Pro",
+			"renewSubscription": "Renovar Suscripción",
+			"manageSubscription": "Gestionar suscripción",
+			"manageBilling": "Facturas y pago"
+		},
+		"profile": {
+			"pageTitle": "Perfil",
+			"pageDescription": "Administra tu información personal y cuentas conectadas.",
+			"title": "Información Personal",
+			"description": "Actualiza tu foto de perfil y detalles personales.",
+			"noName": "Sin nombre establecido",
+			"edit": "Editar",
+			"editProfile": "Editar Perfil",
+			"editProfileDescription": "Actualiza tu información personal.",
+			"firstName": "Nombre",
+			"lastName": "Apellido",
+			"firstNamePlaceholder": "Introduce tu nombre",
+			"lastNamePlaceholder": "Introduce tu apellido",
+			"cancel": "Cancelar",
+			"save": "Guardar Cambios",
+			"profileUpdated": "Perfil actualizado exitosamente.",
+			"profileUpdateError": "Error al actualizar perfil. Por favor intenta de nuevo.",
+			"changePhoto": "Cambiar foto",
+			"imageUpdated": "Foto de perfil actualizada exitosamente.",
+			"imageUpdateError": "Error al actualizar foto de perfil. Por favor intenta de nuevo.",
+			"invalidImageType": "Por favor selecciona un archivo de imagen.",
+			"imageTooLarge": "La imagen debe ser menor a 10MB.",
+			"connectedAccountsTitle": "Cuentas Conectadas",
+			"connectedAccountsDescription": "Administra tus proveedores de inicio de sesión social y cuentas vinculadas.",
+			"verified": "Verificado",
+			"unknownAccount": "Cuenta desconocida",
+			"removeAccountTitle": "¿Eliminar cuenta conectada?",
+			"removeAccountDescription": "¿Estás seguro de que deseas desconectar {provider}? Ya no podrás iniciar sesión con esta cuenta.",
+			"removeAccount": "Eliminar",
+			"accountRemoved": "Cuenta desconectada exitosamente.",
+			"accountRemoveError": "Error al desconectar cuenta. Por favor intenta de nuevo.",
+			"noEmail": "Sin correo establecido",
+			"emailDescription": "Tu dirección de correo principal para notificaciones de cuenta.",
+			"changeEmail": "Cambiar",
+			"changeEmailTitle": "Cambiar Dirección de Correo",
+			"changeEmailDescription": "Introduce tu nueva dirección de correo. Te enviaremos un código de verificación para confirmarla.",
+			"newEmail": "Nueva Dirección de Correo",
+			"newEmailPlaceholder": "tu@ejemplo.com",
+			"sendVerificationCode": "Enviar Código",
+			"verificationCodeSent": "Código de verificación enviado a tu correo.",
+			"enterVerificationCode": "Introduce el código de 6 dígitos que enviamos a tu nueva dirección de correo.",
+			"back": "Atrás",
+			"verifyAndSave": "Verificar y Guardar",
+			"emailUpdated": "Dirección de correo actualizada exitosamente.",
+			"emailAddError": "Error al añadir dirección de correo. Por favor intenta de nuevo.",
+			"emailNotFound": "Dirección de correo no encontrada. Por favor intenta de nuevo.",
+			"verificationError": "Código de verificación inválido. Por favor intenta de nuevo.",
+			"currentPassword": "Contraseña Actual"
+		},
+		"security": {
+			"title": "Seguridad",
+			"description": "Administra tu contraseña, sesiones activas y configuraciones de seguridad de cuenta.",
+			"passwordTitle": "Contraseña",
+			"passwordDescription": "Actualiza tu contraseña para mantener tu cuenta segura.",
+			"currentPassword": "Contraseña Actual",
+			"newPassword": "Nueva Contraseña",
+			"confirmPassword": "Confirmar Nueva Contraseña",
+			"updatePassword": "Actualizar Contraseña",
+			"passwordUpdated": "Contraseña actualizada exitosamente.",
+			"passwordUpdatedDescription": "Tu contraseña ha sido cambiada. Has sido desconectado de todas las otras sesiones.",
+			"passwordUpdateError": "Error al actualizar contraseña. Por favor intenta de nuevo.",
+			"noPasswordAuth": "Te registraste usando un proveedor social. La gestión de contraseñas no está disponible para tu cuenta.",
+			"verificationTitle": "Verifica tu identidad",
+			"verificationDescription": "Hemos enviado un código de verificación a {email}. Por favor introdúcelo a continuación para continuar.",
+			"verificationError": "Verificación fallida. Por favor intenta de nuevo.",
+			"didNotReceiveCode": "¿No recibiste el código?",
+			"resendCode": "Reenviar código",
+			"resendIn": "Reenviar en {seconds}s",
+			"resending": "Enviando...",
+			"verify": "Verificar",
+			"sessionsTitle": "Sesiones Activas",
+			"sessionsDescription": "Administra dispositivos y navegadores donde tienes sesión iniciada actualmente.",
+			"currentSession": "Actual",
+			"lastActive": "Última actividad",
+			"unknownBrowser": "Navegador desconocido",
+			"unknownLocation": "Ubicación desconocida",
+			"unknown": "Desconocido",
+			"revoke": "Revocar",
+			"revoking": "Revocando...",
+			"revokeSessionTitle": "Revocar Sesión",
+			"revokeSessionDescription": "¿Estás seguro de que deseas cerrar sesión en esta sesión? Necesitarás iniciar sesión de nuevo en ese dispositivo.",
+			"revokeConfirm": "Revocar Sesión",
+			"revokeAllOther": "Cerrar todas las otras sesiones",
+			"revokeAllTitle": "Cerrar Todas las Otras Sesiones",
+			"revokeAllDescription": "Esto cerrará tu sesión en {count} otra(s) sesión(es). Necesitarás iniciar sesión de nuevo en esos dispositivos.",
+			"revokeAllConfirm": "Cerrar Todas",
+			"sessionRevoked": "Sesión revocada exitosamente.",
+			"allSessionsRevoked": "Todas las otras sesiones han sido revocadas.",
+			"sessionRevokeError": "Error al revocar sesión. Por favor intenta de nuevo.",
+			"noSessions": "No se encontraron sesiones activas.",
+			"cancel": "Cancelar",
+			"deleteAccountTitle": "Eliminar Cuenta",
+			"deleteAccountDescription": "Elimina permanentemente tu cuenta y todos los datos asociados.",
+			"deleteWarningTitle": "Esta acción no se puede deshacer. Esto:",
+			"deleteWarning1": "Eliminará permanentemente tu cuenta y perfil",
+			"deleteWarning2": "Eliminará todos tus códigos QR y plantillas",
+			"deleteWarning3": "Cancelará cualquier suscripción activa",
+			"deleteAccount": "Eliminar Cuenta",
+			"deleteConfirmTitle": "¿Estás absolutamente seguro?",
+			"deleteConfirmDescription": "Esta acción no se puede deshacer. Esto eliminará permanentemente tu cuenta, todos tus códigos QR, plantillas y cualquier dato asociado.",
+			"deleteConfirmInstruction": "Escribe \"{text}\" para confirmar",
+			"confirmationType": "Confirmación",
+			"deleteAccountPermanently": "Eliminar Cuenta Permanentemente",
+			"accountDeleted": "Tu cuenta ha sido eliminada.",
+			"accountDeleteError": "Error al eliminar cuenta. Por favor intenta de nuevo."
+		},
+		"integrations": {
+			"title": "Integraciones",
+			"description": "Amplía QRcodly con herramientas de terceros. Conecta proveedores de análisis, instala extensiones de navegador y mucho más.",
+			"configure": "Configurar",
+			"configureTitle": "Configurar",
+			"editTitle": "Editar",
+			"ga4Description": "Envía los escaneos de tus códigos QR directamente a Google Analytics.",
+			"matomoDescription": "Envía los escaneos de tus códigos QR a tu propia instancia de Matomo.",
+			"ga4Short": "Envía los escaneos de tus códigos QR directamente a Google Analytics.",
+			"matomoShort": "Envía los escaneos de tus códigos QR a tu propia instancia de Matomo.",
+			"measurementId": "ID de medición",
+			"apiSecret": "Secreto API",
+			"apiSecretPlaceholder": "Ingrese su secreto API de Measurement Protocol",
+			"matomoUrl": "URL de Matomo",
+			"siteId": "ID del sitio",
+			"authToken": "Token de autenticación",
+			"optional": "opcional",
+			"authTokenWillBeRemoved": "El token de autenticación se eliminará al guardar.",
+			"clear": "Borrar",
+			"undo": "Deshacer",
+			"ga4ManualVerificationTitle": "Verificación manual requerida",
+			"ga4ManualVerificationDescription": "Google Analytics no admite la verificación automática de credenciales. Por favor, verifique su ID de medición y su clave API, y compruebe que los datos se reciben en su panel de Google Analytics después de escanear un código QR.",
+			"privacyNoticeTitle": "Análisis con privacidad primero",
+			"privacyNoticeDescription": "Solo se envían datos no identificativos: URL de la página, referente, idioma, tipo de dispositivo y nombre del navegador. Las direcciones IP solo se transmiten de forma anonimizada. Los agentes de usuario y la información personal nunca se comparten.",
+			"cancel": "Cancelar",
+			"save": "Guardar",
+			"saving": "Guardando...",
+			"create": "Crear",
+			"created": "Integración creada",
+			"createdDescription": "Su integración de analytics se ha configurado correctamente.",
+			"updated": "Integración actualizada",
+			"updatedDescription": "Su integración de analytics se ha actualizado correctamente.",
+			"error": "Error",
+			"saveError": "No se pudo guardar la integración.",
+			"active": "Activo",
+			"inactive": "Inactivo",
+			"enabled": "Integración activada",
+			"enabledDescription": "Los datos de escaneo se enviarán a este proveedor.",
+			"disabled": "Integración desactivada",
+			"disabledDescription": "Los datos de escaneo ya no se enviarán a este proveedor.",
+			"toggleError": "No se pudo cambiar la integración.",
+			"edit": "Editar",
+			"test": "Probar",
+			"testing": "Probando...",
+			"testSuccess": "Credenciales verificadas",
+			"testSuccessDescription": "Conexión exitosa con el proveedor de analytics.",
+			"testFailed": "Credenciales inválidas",
+			"testFailedDescription": "No se pudo conectar con las credenciales proporcionadas.",
+			"testUnverifiable": "Conexión fallida",
+			"testUnverifiableDescription": "No se pudo conectar con el servidor de analytics. Verifique que la URL sea correcta y que el servidor esté accesible.",
+			"testError": "No se pudieron probar las credenciales.",
+			"delete": "Eliminar",
+			"deleteConfirmTitle": "¿Eliminar integración?",
+			"deleteConfirmDescription": "¿Está seguro de que desea eliminar la integración de {provider}?",
+			"deleted": "Integración eliminada",
+			"deletedDescription": "La integración de analytics se ha eliminado.",
+			"deleteError": "No se pudo eliminar la integración.",
+			"lastErrorTitle": "Último error",
+			"autoDisabled": "Esta integración se ha desactivado automáticamente después de 10 fallos consecutivos.",
+			"openMenu": "Abrir menú",
+			"integrationDisabledTitle": "Integración de análisis desactivada",
+			"integrationDisabledDescription": "Su integración de análisis ha sido desactivada porque su plan Pro ha expirado. Vuelva a suscribirse para reactivarla.",
+			"catalog": {
+				"tagAll": "Todas",
+				"tag": {
+					"analytics": "Analítica",
+					"browser": "Navegador",
+					"ai": "IA",
+					"design": "Diseño"
+				},
+				"installCta": "Instalar",
+				"comingSoonCta": "Próximamente",
+				"googleAnalytics": {
+					"name": "Google Analytics 4",
+					"description": "Envía los datos de escaneo de códigos QR directamente a Google Analytics."
+				},
+				"matomo": {
+					"name": "Matomo",
+					"description": "Reenvía eventos de escaneo a tu instancia autoalojada de Matomo."
+				},
+				"browserExtensionChrome": {
+					"name": "Extensión de Chrome",
+					"description": "Genera y gestiona códigos QR directamente desde tu navegador con un solo clic."
+				},
+				"chatgpt": {
+					"name": "ChatGPT",
+					"description": "Genera códigos QR a partir de prompts de chat. Próximamente."
+				},
+				"adobeIndesign": {
+					"name": "Adobe InDesign",
+					"description": "Coloca códigos QR directamente en tus diseños de InDesign, crea nuevos y gestiona los existentes — todo sin salir de InDesign.",
+					"cta": "Instalar plugin"
+				}
+			},
+			"moreIntegrationsTeaser": "Más integraciones en camino. <contact>Sugerir una integración</contact>"
+		}
+	},
+	"plans": {
+		"metaTitle": "Generador de Códigos QR Precios – Gratis y Pro",
+		"metaDescription": "Generador de códigos QR gratis con códigos ilimitados, diseño personalizado y análisis. Pro para dominios propios, importación masiva y soporte prioritario. Sin costos ocultos.",
+		"title": "Justo. Transparente. Sin costos ocultos.",
+		"subtitle": "QRcodly es gratuito – sin períodos de prueba, sin suscripciones automáticas. El plan Pro solo cubre funciones que requieren infraestructura adicional.",
+		"annual": "Anual",
+		"monthly": "Mensual",
+		"perMonth": "mes",
+		"perYear": "año",
+		"upgradeToPro": "Actualizar a Pro",
+		"renewSubscription": "Renovar Suscripción",
+		"manageSubscription": "Administrar Suscripción",
+		"subscriptionSuccess": "¡Suscrito exitosamente a Pro!",
+		"free": {
+			"name": "Gratis",
+			"description": "Completamente gratis. Accede a todas las funciones esenciales de códigos QR sin límites ni muros de pago."
+		},
+		"pro": {
+			"name": "Pro",
+			"description": "Apóyanos y desbloquea todas las funciones para tus códigos QR."
+		},
+		"features": {
+			"free": {
+				"unlimitedQrCodes": "Códigos QR y escaneos ilimitados",
+				"unlimitedShortUrls": "URLs cortas ilimitadas",
+				"staticDynamic": "Códigos QR estáticos y dinámicos",
+				"customStyling": "Estilos e iconos personalizados",
+				"detailedAnalytics": "Analíticas detalladas",
+				"noCreditCard": "Sin tarjeta de crédito requerida",
+				"unlimitedTags": "Etiquetas ilimitadas",
+				"limitedBulk": "Generación masiva de códigos QR limitada"
+			},
+			"pro": {
+				"everythingInFree": "Todo en Gratis",
+				"unlimitedTags": "Etiquetas ilimitadas",
+				"largerBulkImports": "Importaciones masivas más grandes (50 filas, 2MB)",
+				"customDomains": "Un dominio personalizado para códigos QR y URLs cortas",
+				"customShortCodes": "Rutas de URL cortas personalizadas (próximamente)",
+				"prioritySupport": "Soporte prioritario",
+				"teamFeatures": "Funciones de equipo (próximamente)",
+				"apiAccess": "Acceso a la API REST",
+				"marketplaceIntegrations": "Integraciones de terceros"
+			}
+		},
+		"featureInfoAriaLabel": "Más información"
+	},
+	"tags": {
+		"title": "Etiquetas",
+		"description": "Crea y gestiona etiquetas para organizar tus códigos QR.",
+		"createBtn": "Crear etiqueta",
+		"editBtn": "Guardar cambios",
+		"deleteConfirmTitle": "¿Eliminar etiqueta?",
+		"deleteConfirmDescription": "¿Estás seguro de que quieres eliminar esta etiqueta? Se eliminará de todos los códigos QR.",
+		"nameLabel": "Nombre",
+		"colorLabel": "Color",
+		"noTags": "Sin etiquetas aún",
+		"noTagsDescription": "Crea tu primera etiqueta para empezar a organizar tus códigos QR.",
+		"manageTags": "Gestionar etiquetas",
+		"filterByTags": "Filtrar por etiquetas",
+		"searchTags": "Buscar etiquetas...",
+		"noSearchResults": "No se encontraron etiquetas para \"{search}\"",
+		"toast": {
+			"createdTitle": "Etiqueta creada",
+			"createdDescription": "Tu etiqueta se ha creado correctamente.",
+			"updatedTitle": "Etiqueta actualizada",
+			"updatedDescription": "Tu etiqueta se ha actualizado correctamente.",
+			"deletedTitle": "Etiqueta eliminada",
+			"deletedDescription": "Tu etiqueta se ha eliminado correctamente.",
+			"tagsUpdatedTitle": "Etiquetas actualizadas",
+			"tagsUpdatedDescription": "Las etiquetas se han actualizado correctamente.",
+			"createErrorTitle": "Error al crear la etiqueta",
+			"updateErrorTitle": "Error al actualizar la etiqueta",
+			"deleteErrorTitle": "Error al eliminar la etiqueta",
+			"assignErrorTitle": "Error al actualizar las etiquetas",
+			"error": "Algo salió mal"
+		},
+		"actionsMenu": {
+			"title": "Acciones"
+		},
+		"table": {
+			"name": "Nombre",
+			"color": "Color",
+			"created": "Creado",
+			"usage": "Uso",
+			"qrCodes": "Códigos QR"
+		}
+	},
+	"featuresPage": {
+		"metaTitle": "Generador de Códigos QR Gratis – Funcionalidades",
+		"metaDescription": "Explora todas las funciones del generador de códigos QR: códigos QR dinámicos, análisis de escaneos, diseños personalizados con logo, creación masiva, plantillas y soporte para URLs, WiFi y vCards.",
+		"badge": "Funcionalidades",
+		"title": "Todo lo que necesitas para QR codes profesionales",
+		"subtitle": "Desde la creación hasta el análisis — QRcodly te ofrece herramientas potentes para crear, gestionar y rastrear tus QR codes.",
+		"spotlight": {
+			"dynamicQr": {
+				"tag": "Función Principal",
+				"title": "Códigos QR Dinámicos — Edita en Cualquier Momento",
+				"description": "Crea códigos QR que se pueden actualizar después de imprimir. Cambia la URL de destino, actívalos o desactívalos y rastrea cada escaneo — todo sin generar un nuevo código.",
+				"bullet1": "Actualiza el contenido en cualquier momento sin reimprimir",
+				"bullet2": "Rastrea cada escaneo con analíticas en tiempo real",
+				"bullet3": "Activa o desactiva códigos QR al instante"
+			},
+			"shortUrl": {
+				"tag": "Nueva Función",
+				"title": "URLs Cortas Independientes",
+				"description": "Crea y gestiona URLs cortas de forma independiente — sin necesidad de código QR. Acorta cualquier enlace, rastrea clics en tiempo real y obtén información con análisis detallados.",
+				"bullet1": "Acorta cualquier URL con un solo clic",
+				"bullet2": "Rastrea clics con análisis en tiempo real",
+				"bullet3": "Compatible con dominios personalizados para enlaces de marca"
+			},
+			"analytics": {
+				"tag": "Información",
+				"title": "Analíticas Detalladas en Tiempo Real",
+				"description": "Comprende el rendimiento de tus códigos QR con analíticas completas de escaneo. Descubre quién escanea, cuándo, dónde y con qué dispositivo.",
+				"bullet1": "Seguimiento de escaneos totales y visitantes únicos",
+				"bullet2": "Desglose por dispositivo, navegador y sistema operativo",
+				"bullet3": "Distribución geográfica por país"
+			},
+			"collection": {
+				"tag": "Gestión",
+				"title": "Tu Panel Central de Códigos QR",
+				"description": "Mantén todos tus códigos QR organizados en un panel potente. Busca, filtra, ordena y gestiona todo desde un solo lugar.",
+				"bullet1": "Panel central para todos los códigos QR",
+				"bullet2": "Búsqueda avanzada y filtrado por tipo de contenido",
+				"bullet3": "Acciones rápidas: editar, compartir, descargar, eliminar"
+			},
+			"templates": {
+				"tag": "Diseño",
+				"title": "Plantillas de Diseño Reutilizables",
+				"description": "Guarda tus diseños de códigos QR favoritos como plantillas y reutilízalas en todas tus campañas. Mantén la coherencia de tu marca sin recrear estilos cada vez.",
+				"bullet1": "Guarda cualquier diseño de código QR como plantilla reutilizable",
+				"bullet2": "Aplica plantillas a nuevos códigos con un solo clic",
+				"bullet3": "Mantén un branding consistente en todas las campañas"
+			},
+			"customDomain": {
+				"tag": "Branding",
+				"title": "Dominios Personalizados para URLs Cortas",
+				"description": "Usa tu propio dominio para las URLs cortas de códigos QR en lugar del nuestro. Fortalece la identidad de tu marca y genera confianza con tu audiencia.",
+				"bullet1": "Conecta tu propio dominio en minutos",
+				"bullet2": "Provisión automática de certificado SSL",
+				"bullet3": "Gestión DNS completa mediante integración con Cloudflare"
+			},
+			"tags": {
+				"tag": "Organización y analíticas",
+				"title": "Etiquetas para organizar, agrupar y analizar",
+				"description": "Asigna etiquetas de colores a tus códigos QR y URLs cortas para agruparlos por campaña, canal o cualquier categoría. Usa etiquetas para filtrar tu colección y analizar el rendimiento por grupo.",
+				"bullet1": "Etiqueta códigos QR y URLs cortas para agrupar campañas",
+				"bullet2": "Filtra, busca y compara por etiqueta",
+				"bullet3": "Analiza el rendimiento de escaneos y clics por etiqueta"
+			},
+			"bulkOperations": {
+				"tag": "Productividad",
+				"title": "Exportación e Importación Masiva a Gran Escala",
+				"description": "Trabaja con grandes cantidades de códigos QR de forma eficiente. Importa mediante CSV para crear muchos a la vez, o exporta toda tu colección como archivo ZIP.",
+				"bullet1": "Importa códigos QR en masa mediante carga CSV",
+				"bullet2": "Exporta todas las imágenes de códigos QR como archivo ZIP",
+				"bullet3": "Ideal para campañas de impresión a gran escala"
+			},
+			"contentTypes": {
+				"tag": "Versatilidad",
+				"title": "Más de 9 Tipos de Contenido Soportados",
+				"description": "Ve más allá de simples URLs. Crea códigos QR para redes WiFi, tarjetas de contacto, eventos de calendario, direcciones de correo electrónico, ubicaciones geográficas y más.",
+				"bullet1": "URL, WiFi, vCard, Email y Texto",
+				"bullet2": "Eventos de calendario con soporte completo de detalles",
+				"bullet3": "Ubicaciones geográficas y enlaces de pago"
+			},
+			"security": {
+				"tag": "Privacidad",
+				"title": "Enfocado en la Privacidad y Código Abierto",
+				"description": "Tus datos principales se alojan en servidores en Alemania. Utilizamos servicios de terceros de confianza como Clerk para la autenticación, y recopilamos analíticas mínimas para mejorar el producto. QRcodly es completamente de código abierto para total transparencia.",
+				"bullet1": "Infraestructura principal alojada en servidores alemanes",
+				"bullet2": "Totalmente de código abierto en GitHub — auditable en cualquier momento",
+				"bullet3": "Uso transparente de Clerk, Sentry y PostHog"
+			},
+			"integrations": {
+				"tag": "Integraciones",
+				"title": "Integraciones de Analítica de Terceros",
+				"description": "Reenvía los datos de escaneo a Google Analytics 4 o Matomo — tus propias herramientas de análisis. QRcodly solo envía datos anonimizados y no identificables, manteniendo su analítica integrada completamente activa.",
+				"bullet1": "Conecta Google Analytics 4 o Matomo en minutos",
+				"bullet2": "Solo se comparten IPs anonimizadas y datos no personales",
+				"bullet3": "La analítica integrada de QRcodly no se ve afectada"
+			},
+			"teams": {
+				"tag": "Próximamente",
+				"title": "Team Workspaces — Próximamente Este Año",
+				"description": "Gestiona códigos QR en equipo. Crea organizaciones, invita miembros y asigna roles — perfecto para agencias, equipos de marketing y empresas de cualquier tamaño.",
+				"bullet1": "Crear organizaciones e invitar miembros del equipo",
+				"bullet2": "Acceso basado en roles: Administrador, Editor y Visor",
+				"bullet3": "Colaborar en códigos QR con todo tu equipo"
+			}
+		},
+		"products": {
+			"qrCodes": {
+				"title": "Códigos QR",
+				"description": "Crea códigos QR dinámicos totalmente personalizables con logos, colores y plantillas. Rastrea cada escaneo en tiempo real."
+			},
+			"urlShortener": {
+				"title": "Acortador de URLs",
+				"description": "Acorta cualquier enlace, usa dominios personalizados de marca y rastrea cada clic con analíticas en tiempo real."
+			},
+			"analytics": {
+				"title": "Analíticas",
+				"description": "Rastrea cada escaneo y clic en todos tus códigos QR y URLs cortas con información detallada."
+			}
+		},
+		"moreFeatures": {
+			"title": "Y Mucho Más"
+		},
+		"cta": {
+			"title": "¿Listo para empezar?",
+			"subtitle": "Crea tu primer código QR en segundos. Gratis para siempre, sin tarjeta de crédito.",
+			"button": "Crear Código QR Ahora"
+		}
+	},
+	"smartTips": {
+		"tipLabel": "Consejo",
+		"gotIt": "Entendido",
+		"dontShowAgain": "No mostrar de nuevo",
+		"disableAll": "Desactivar todos los consejos",
+		"bulkExport": {
+			"title": "Exporta varios códigos QR a la vez",
+			"description": "Usa el menú Acciones para exportar todos tus códigos QR como archivo ZIP en lugar de descargarlos uno por uno."
+		},
+		"bulkImport": {
+			"title": "Crea códigos QR en masa",
+			"description": "Usa el menú Acciones para importar una hoja de cálculo y crear decenas de códigos QR a la vez."
+		},
+		"customDomain": {
+			"title": "Usa tu propio dominio",
+			"description": "Conecta un dominio personalizado para que las URLs cortas de tus códigos QR usen tu marca."
+		},
+		"organizeTags": {
+			"title": "Organiza con etiquetas",
+			"description": "Añade etiquetas a tus códigos QR para agruparlos, filtrarlos y encontrarlos más fácilmente."
+		}
+	},
+	"productsUrlShortener": {
+		"metaTitle": "Acortador de URLs - Acorta, Personaliza y Rastrea Enlaces",
+		"metaDescription": "Acorta cualquier URL, usa dominios personalizados de marca y rastrea cada clic con analíticas en tiempo real. Acortador de URLs gratuito de QRcodly.",
+		"badge": "Acortador de URLs",
+		"hero": {
+			"title": "Acorta Enlaces. Rastrea Clics. Crece Más Rápido.",
+			"subtitle": "Crea URLs cortas de marca, monitoriza el rendimiento en tiempo real y gestiona todos tus enlaces desde un potente panel de control.",
+			"ctaLabel": "Empieza a Acortar Gratis",
+			"inputLabel": "Introduce tu URL aquí",
+			"inputPlaceholder": "https://ejemplo.com/mi-url-larga",
+			"submitBtn": "Acortar enlace gratis",
+			"successMessage": "¡Tu enlace corto está listo!",
+			"copyBtn": "Copiar",
+			"copiedBtn": "¡Copiado!",
+			"createAnother": "Acortar otra URL"
+		},
+		"stats": {
+			"stat1Value": "1.000+",
+			"stat1Label": "Usuarios activos",
+			"stat2Value": "10K+",
+			"stat2Label": "Clics diarios",
+			"stat3Value": "< 50ms",
+			"stat3Label": "Velocidad de redirección",
+			"stat4Value": "24/7",
+			"stat4Label": "Disponibilidad"
+		},
+		"useCases": {
+			"title": "Diseñado para Cada Equipo",
+			"subtitle": "Desde creadores independientes hasta departamentos de marketing empresarial — el acortador de URLs de QRcodly se adapta a tus necesidades.",
+			"case1Title": "Equipos de Marketing",
+			"case1Description": "Rastrea el rendimiento de campañas en todos los canales con enlaces de marca y analíticas de clics detalladas.",
+			"case2Title": "Gestores de Redes Sociales",
+			"case2Description": "Crea enlaces limpios y de marca para cada publicación. Monitoriza la interacción en todas las plataformas desde un solo panel.",
+			"case3Title": "Ventas y Alianzas",
+			"case3Description": "Comparte enlaces rastreables en emails de prospección y propuestas. Observa quién hace clic, cuándo y desde dónde.",
+			"case4Title": "E-Commerce",
+			"case4Description": "Acorta enlaces de productos para anuncios y campañas de email. Rastrea conversiones desde cada punto de contacto.",
+			"case5Title": "Desarrolladores y APIs",
+			"case5Description": "Integra el acortamiento de URLs en tus aplicaciones a través de nuestra API REST. Documentación completa y soporte de SDK.",
+			"case6Title": "Agencias",
+			"case6Description": "Gestiona enlaces de clientes con dominios personalizados. URLs cortas de marca blanca con la identidad de tus clientes."
+		},
+		"features": {
+			"brandedLinks": {
+				"title": "Enlaces de Marca con Dominios Personalizados",
+				"description": "Reemplaza las URLs cortas genéricas con tu propio dominio de marca. Genera confianza, aumenta las tasas de clics y refuerza tu identidad con cada enlace que compartas.",
+				"bullet1": "Conecta tu propio dominio en minutos",
+				"bullet2": "Provisión automática de certificado SSL",
+				"bullet3": "Gestión DNS completa mediante Cloudflare"
+			},
+			"analytics": {
+				"title": "Analíticas de Clics en Tiempo Real",
+				"description": "Observa exactamente cómo rinden tus enlaces. Rastrea clics totales, visitantes únicos, distribución geográfica, dispositivos y navegadores — todo actualizado en tiempo real.",
+				"bullet1": "Seguimiento de clics totales y visitantes únicos",
+				"bullet2": "Desglose por dispositivo, navegador y sistema operativo",
+				"bullet3": "Distribución geográfica por país"
+			},
+			"management": {
+				"title": "Gestión Organizada de Enlaces",
+				"description": "Mantén todas tus URLs cortas organizadas con etiquetas, controles de estado y un panel de búsqueda. Activa o desactiva enlaces al instante y encuentra cualquier enlace en segundos.",
+				"bullet1": "Etiqueta y categoriza enlaces para filtrado fácil",
+				"bullet2": "Activa o desactiva enlaces con un solo clic",
+				"bullet3": "Busca y ordena toda tu biblioteca de enlaces"
+			},
+			"bulkOperations": {
+				"title": "Operaciones Masivas de Enlaces",
+				"comingSoon": "Próximamente",
+				"description": "Crea, exporta y gestiona cientos de URLs cortas a la vez. Perfecto para grandes campañas, catálogos de productos y flujos de trabajo empresariales.",
+				"bullet1": "Creación masiva mediante importación CSV",
+				"bullet2": "Exporta todos los enlaces con metadatos completos",
+				"bullet3": "Activa, desactiva o etiqueta enlaces en lote"
+			},
+			"apiAccess": {
+				"title": "API REST e Integraciones",
+				"description": "Integra el acortamiento de URLs en tus propias aplicaciones y flujos de trabajo. Nuestra API REST documentada hace que la gestión programática de enlaces sea sencilla.",
+				"bullet1": "API REST completa con autenticación por clave API",
+				"bullet2": "Crea, lee, actualiza y elimina enlaces programáticamente",
+				"bullet3": "Documentación completa de la API",
+				"actionLabel": "Ver documentación de la API"
+			}
+		},
+		"crossProducts": {
+			"title": "Explora Más Productos de QRcodly",
+			"qrCodes": {
+				"title": "Códigos QR",
+				"description": "Crea códigos QR dinámicos totalmente personalizables con logos, colores y seguimiento de escaneos en tiempo real."
+			},
+			"analytics": {
+				"title": "Analíticas",
+				"description": "Panel de analíticas unificado para todos tus códigos QR y URLs cortas con información sobre dispositivos, ubicación y navegadores."
+			}
+		},
+		"faq": {
+			"title": "Preguntas Frecuentes",
+			"q1": "¿Es gratuito el acortador de URLs?",
+			"a1": "¡Sí! El acortador de URLs de QRcodly es gratuito. Puedes crear URLs cortas, rastrear clics y gestionar tus enlaces sin coste alguno. Los planes Pro desbloquean funciones avanzadas como dominios personalizados.",
+			"q2": "¿Puedo usar mi propio dominio para URLs cortas?",
+			"a2": "Por supuesto. Conecta tu propio dominio para crear URLs cortas de marca como go.tumarca.com/u/x7k9m. Los dominios personalizados están disponibles en los planes Pro con provisión automática de SSL.",
+			"q3": "¿Cómo funciona el seguimiento de clics?",
+			"a3": "Cada vez que alguien hace clic en tu URL corta, QRcodly registra el clic junto con metadatos como tipo de dispositivo, navegador, sistema operativo y ubicación geográfica — todo en tiempo real.",
+			"q4": "¿Puedo editar una URL corta después de crearla?",
+			"a4": "Sí. Puedes actualizar la URL de destino, activar o desactivar la URL corta y gestionar etiquetas en cualquier momento desde tu panel de control sin cambiar la URL corta en sí.",
+			"q5": "¿Las URLs cortas caducan?",
+			"a5": "No. Las URLs cortas creadas con QRcodly nunca caducan. Permanecen activas mientras exista tu cuenta, y puedes desactivarlas manualmente si lo necesitas.",
+			"q6": "¿Cuál es la diferencia entre URLs cortas y códigos QR?",
+			"a6": "Las URLs cortas son enlaces clicables que compartes digitalmente (email, redes sociales, anuncios). Los códigos QR son imágenes escaneables para medios físicos (impresión, embalaje, señalización). Ambos rastrean analíticas y pueden usar dominios personalizados.",
+			"viewAll": "¿Más preguntas? Ver todas las FAQs"
+		}
+	},
+	"productsQrCodes": {
+		"metaTitle": "Generador de Códigos QR - Crea Códigos QR Dinámicos Personalizados",
+		"metaDescription": "Crea códigos QR dinámicos totalmente personalizables con logos, colores y plantillas. Rastrea cada escaneo con analíticas en tiempo real. Generador de códigos QR gratuito.",
+		"badge": "Códigos QR",
+		"hero": {
+			"title": "Crea Códigos QR Que Trabajan Más.",
+			"subtitle": "Diseña códigos QR impresionantes con colores personalizados, logos y estilos. Actualiza el contenido en cualquier momento, rastrea cada escaneo y gestiona todo desde un solo panel.",
+			"ctaLabel": "Crea Tu Código QR Gratis"
+		},
+		"stats": {
+			"stat1Value": "100K+",
+			"stat1Label": "Códigos QR creados",
+			"stat2Value": "9+",
+			"stat2Label": "Tipos de contenido",
+			"stat3Value": "10K+",
+			"stat3Label": "Escaneos por día",
+			"stat4Value": "1.000+",
+			"stat4Label": "Usuarios activos"
+		},
+		"useCases": {
+			"title": "Códigos QR para Cada Industria",
+			"subtitle": "Ya seas un pequeño negocio o una marca global, los códigos QR dinámicos impulsan la interacción en el mundo real.",
+			"case1Title": "Restaurantes y Hostelería",
+			"case1Description": "Menús digitales, acceso WiFi y pedidos en mesa — todo a través de un simple escaneo. Actualiza el contenido sin reimprimir.",
+			"case2Title": "Retail y E-Commerce",
+			"case2Description": "Información de productos, promociones y programas de fidelización en envases. Rastrea qué productos generan más escaneos.",
+			"case3Title": "Eventos y Conferencias",
+			"case3Description": "Entradas, programas e intercambio de contactos mediante códigos QR vCard. Perfecto para acreditaciones y materiales impresos.",
+			"case4Title": "Inmobiliario",
+			"case4Description": "Listados de propiedades, tours virtuales e información del agente en cartelería. Rastrea el interés por ubicación.",
+			"case5Title": "Educación",
+			"case5Description": "Conecta a los estudiantes con recursos, tareas y materiales de clase. Actualiza los destinos en cualquier momento.",
+			"case6Title": "Marketing y Publicidad",
+			"case6Description": "Conecta campañas impresas y digitales. Rastrea las tasas de escaneo en vallas, folletos y correo directo."
+		},
+		"features": {
+			"customization": {
+				"title": "Diseño Totalmente Personalizable",
+				"description": "Ve más allá de los códigos básicos en blanco y negro. Personaliza colores, estilos de esquinas y añade tu logo para crear códigos QR que se adapten perfectamente a la identidad de tu marca.",
+				"bullet1": "Colores personalizados de primer plano, fondo y esquinas",
+				"bullet2": "Múltiples estilos de puntos y cuadrados de esquina",
+				"bullet3": "Sube tu logo para códigos QR de marca"
+			},
+			"analytics": {
+				"title": "Analíticas y Seguimiento de Escaneos",
+				"description": "Cada código QR dinámico incluye analíticas integradas. Observa quién escanea, cuándo, dónde y con qué dispositivo — todo en tiempo real desde tu panel.",
+				"bullet1": "Seguimiento de escaneos y visitantes en tiempo real",
+				"bullet2": "Desglose por dispositivo, navegador y sistema operativo",
+				"bullet3": "Distribución geográfica por país"
+			},
+			"contentTypes": {
+				"title": "Más de 9 Tipos de Contenido Soportados",
+				"description": "Crea códigos QR para más que solo URLs. Soporte para redes WiFi, tarjetas de contacto, eventos de calendario, email, ubicaciones, pagos y más.",
+				"bullet1": "URL, WiFi, vCard, Email y Texto",
+				"bullet2": "Eventos de calendario con soporte completo de detalles",
+				"bullet3": "Ubicaciones geográficas y enlaces de pago EPC"
+			},
+			"dynamicUpdates": {
+				"title": "Actualizaciones de Contenido Dinámicas",
+				"description": "Cambia a dónde apunta tu código QR sin reimprimir. Actualiza URLs, cambia tipos de contenido o redirige a campañas estacionales — tus códigos QR impresos no cambian.",
+				"bullet1": "Actualiza las URLs de destino en cualquier momento",
+				"bullet2": "Cambia entre tipos de contenido sobre la marcha",
+				"bullet3": "Sin necesidad de reimprimir — nunca"
+			},
+			"bulkTemplates": {
+				"title": "Plantillas y Creación Masiva",
+				"description": "Guarda el diseño de código QR de tu marca como plantilla reutilizable. Luego crea cientos de códigos QR a la vez mediante importación CSV, todos con un estilo consistente.",
+				"bullet1": "Guarda y reutiliza plantillas de diseño de marca",
+				"bullet2": "Creación masiva mediante carga de CSV",
+				"bullet3": "Branding consistente en todos los códigos QR"
+			},
+			"apiAccess": {
+				"title": "API REST e integraciones",
+				"description": "Integra la generación de códigos QR en tus propias aplicaciones y flujos de trabajo. Nuestra API REST documentada facilita la creación y gestión programática de códigos QR.",
+				"bullet1": "API REST completa con autenticación por clave API",
+				"bullet2": "Crea, personaliza y gestiona códigos QR programáticamente",
+				"bullet3": "Documentación completa de la API",
+				"actionLabel": "Ver documentación de la API"
+			}
+		},
+		"crossProducts": {
+			"title": "Explora Más Productos de QRcodly",
+			"urlShortener": {
+				"title": "Acortador de URLs",
+				"description": "Acorta cualquier enlace, usa dominios personalizados y rastrea cada clic con analíticas en tiempo real."
+			},
+			"analytics": {
+				"title": "Analíticas",
+				"description": "Panel de analíticas unificado para todos tus códigos QR y URLs cortas con información sobre dispositivos, ubicación y navegadores."
+			}
+		},
+		"faq": {
+			"title": "Preguntas Frecuentes",
+			"q1": "¿Es gratuito el generador de códigos QR?",
+			"a1": "¡Sí! QRcodly te permite crear códigos QR estáticos y dinámicos ilimitados de forma gratuita. Sin costes ocultos, sin marcas de agua y sin necesidad de registro para códigos QR básicos.",
+			"q2": "¿Qué son los códigos QR dinámicos?",
+			"a2": "Los códigos QR dinámicos te permiten cambiar la URL de destino después de imprimir el código. También rastrean cada escaneo con analíticas detalladas — sin necesidad de reimprimir cuando cambia el contenido.",
+			"q3": "¿Puedo añadir mi logo a un código QR?",
+			"a3": "Por supuesto. Sube cualquier imagen como logo central para tu código QR. También puedes personalizar colores, estilos de esquinas y guardar diseños como plantillas reutilizables.",
+			"q4": "¿Qué tipos de contenido se soportan?",
+			"a4": "QRcodly soporta más de 9 tipos de contenido: URL, Texto, WiFi, vCard (tarjetas de contacto), Email, Ubicación, Eventos de Calendario, EPC (pagos) y perfiles de Redes Sociales.",
+			"q5": "¿Puedo rastrear los escaneos de códigos QR?",
+			"a5": "Sí. Cada código QR dinámico rastrea escaneos en tiempo real, mostrando escaneos totales, visitantes únicos, tipos de dispositivo, navegadores, sistemas operativos y ubicaciones geográficas.",
+			"q6": "¿Los códigos QR caducan?",
+			"a6": "No. Los códigos QR creados con QRcodly nunca caducan. Los códigos QR dinámicos permanecen totalmente funcionales y rastreables mientras exista tu cuenta.",
+			"viewAll": "¿Más preguntas? Ver todas las FAQs"
+		},
+		"cta": {
+			"title": "¿Listo para crear tu primer código QR?",
+			"subtitle": "Diseña códigos QR personalizados con seguimiento analítico completo. Gratis para siempre, sin tarjeta de crédito.",
+			"ctaLabel": "Crear Código QR Ahora"
+		}
+	},
+	"productsAnalytics": {
+		"metaTitle": "Analíticas - Rastrea el Rendimiento de Códigos QR y URLs Cortas",
+		"metaDescription": "Rastrea cada escaneo y clic en códigos QR y URLs cortas. Analíticas en tiempo real con información sobre dispositivos, navegadores, ubicación y canales. Analíticas gratuitas de QRcodly.",
+		"badge": "Analíticas",
+		"hero": {
+			"title": "Descubre qué hacen realmente tus códigos QR y enlaces.",
+			"subtitle": "Rastrea cada escaneo y clic en todos tus códigos QR y URLs cortas. Obtén información en tiempo real sobre dispositivos, ubicaciones, navegadores y rendimiento por canal.",
+			"ctaLabel": "Empieza a Rastrear Gratis"
+		},
+		"stats": {
+			"stat1Value": "Tiempo real",
+			"stat1Label": "Actualización de datos",
+			"stat2Value": "10K+",
+			"stat2Label": "Eventos diarios",
+			"stat3Value": "2",
+			"stat3Label": "Integraciones",
+			"stat4Value": "100%",
+			"stat4Label": "Privacidad primero"
+		},
+		"useCases": {
+			"title": "Analíticas que Impulsan Decisiones",
+			"subtitle": "Convierte los datos de escaneos y clics en información práctica para tu equipo.",
+			"case1Title": "Optimización de Campañas",
+			"case1Description": "Compara el rendimiento de códigos QR y URLs cortas lado a lado. Refuerza los canales que convierten.",
+			"case2Title": "Segmentación Geográfica",
+			"case2Description": "Observa desde dónde escanea tu audiencia. Optimiza campañas regionales basándote en datos reales.",
+			"case3Title": "Inteligencia de Dispositivos",
+			"case3Description": "Conoce los dispositivos y navegadores de tu audiencia. Optimiza las páginas de destino para las plataformas que importan.",
+			"case4Title": "Seguimiento de campañas",
+			"case4Description": "Usa etiquetas para agrupar códigos QR y URLs cortas por campaña. Compara resultados entre canales y periodos.",
+			"case5Title": "Pruebas A/B",
+			"case5Description": "Crea múltiples códigos QR o URLs cortas para el mismo destino. Compara qué diseño o ubicación rinde mejor.",
+			"case6Title": "Integración con Terceros",
+			"case6Description": "Envía datos a Google Analytics 4 o Matomo. Mantén tu stack de analíticas existente actualizado."
+		},
+		"features": {
+			"realTime": {
+				"title": "Métricas de Rendimiento en Tiempo Real",
+				"description": "Observa tus datos en el momento en que ocurren. Rastrea escaneos, clics y visitantes únicos en tiempo real con desgloses por dispositivo, navegador y sistema operativo.",
+				"bullet1": "Seguimiento de escaneos y clics en vivo",
+				"bullet2": "Desglose por dispositivo, navegador y sistema operativo",
+				"bullet3": "Identificación de visitantes únicos"
+			},
+			"channels": {
+				"title": "Seguimiento de campañas con etiquetas",
+				"comingSoon": "Próximamente",
+				"description": "Agrupa códigos QR y URLs cortas por campaña usando etiquetas. Compara el rendimiento entre campañas, canales y periodos — todo desde un panel.",
+				"bullet1": "Agrupación por etiquetas para campañas y canales",
+				"bullet2": "Compara el rendimiento de diferentes etiquetas lado a lado",
+				"bullet3": "Identifica tus mejores campañas de un vistazo"
+			},
+			"integrations": {
+				"title": "Integraciones de Terceros",
+				"description": "Reenvía datos de escaneos y clics a Google Analytics 4 o Matomo. Mantén tu flujo de trabajo de analíticas existente mientras las analíticas integradas de QRcodly permanecen completamente activas.",
+				"bullet1": "Conecta Google Analytics 4 o Matomo en minutos",
+				"bullet2": "Solo se comparten datos anonimizados y no personales",
+				"bullet3": "Las analíticas integradas de QRcodly no se ven afectadas"
+			},
+			"geographic": {
+				"title": "Información Geográfica",
+				"description": "Observa exactamente dónde está tu audiencia. Los datos de ubicación a nivel de país para cada escaneo y clic te ayudan a comprender los patrones de interacción regional.",
+				"bullet1": "Seguimiento de ubicación a nivel de país",
+				"bullet2": "Identifica las regiones con mejor rendimiento",
+				"bullet3": "Privacidad primero: las direcciones IP nunca se almacenan"
+			},
+			"exportReporting": {
+				"title": "Exportación de datos e informes",
+				"comingSoon": "Próximamente",
+				"description": "Exporta tus datos analíticos para informes personalizados y presentaciones. Filtra por rango de fechas, dispositivo o ubicación y descarga todo lo que necesites.",
+				"bullet1": "Exporta datos de escaneos y clics como CSV",
+				"bullet2": "Filtra por rango de fechas, dispositivo o ubicación",
+				"bullet3": "Perfecto para informes de equipo y presentaciones"
+			},
+			"privacy": {
+				"title": "Analíticas con privacidad",
+				"description": "Todos los datos se recopilan de forma anónima y sin identificadores personales. Las direcciones IP se truncan, los user agents se reducen a la categoría del dispositivo y no se usan cookies ni fingerprinting.",
+				"bullet1": "Las direcciones IP se truncan — nunca se almacenan completas",
+				"bullet2": "Los user agents se reducen a tipo de dispositivo, SO y navegador",
+				"bullet3": "Sin cookies, sin fingerprinting, sin datos personales"
+			}
+		},
+		"crossProducts": {
+			"title": "Explora Más Productos de QRcodly",
+			"urlShortener": {
+				"title": "Acortador de URLs",
+				"description": "Acorta cualquier enlace, usa dominios personalizados y rastrea cada clic con analíticas en tiempo real."
+			},
+			"qrCodes": {
+				"title": "Códigos QR",
+				"description": "Crea códigos QR dinámicos totalmente personalizables con logos, colores y seguimiento de escaneos en tiempo real."
+			}
+		},
+		"faq": {
+			"title": "Preguntas Frecuentes",
+			"q1": "¿Qué analíticas proporciona QRcodly?",
+			"a1": "QRcodly rastrea escaneos/clics totales, visitantes únicos, tipos de dispositivo, navegadores, sistemas operativos y ubicaciones geográficas tanto para códigos QR como para URLs cortas — todo en tiempo real.",
+			"q2": "¿Las analíticas están incluidas gratis?",
+			"a2": "¡Sí! Las analíticas integradas están incluidas gratis para todos los códigos QR dinámicos y URLs cortas. Obtienes seguimiento de escaneos/clics en tiempo real, desgloses de dispositivos e información geográfica sin coste alguno.",
+			"q3": "¿Puedo conectar Google Analytics?",
+			"a3": "Sí. Los usuarios del plan Pro pueden reenviar datos de escaneos y clics a Google Analytics 4 o Matomo. Solo se comparten datos anonimizados y no identificables, y las analíticas integradas de QRcodly permanecen completamente activas.",
+			"q4": "¿Cómo se recopilan los datos geográficos?",
+			"a4": "Los datos geográficos se derivan de la dirección IP en el momento del escaneo o clic. La IP se anonimiza y nunca se almacena. Solo se registra la ubicación a nivel de país.",
+			"q5": "¿Puedo comparar el rendimiento de códigos QR y URLs cortas?",
+			"a5": "Sí. Tu panel de QRcodly muestra analíticas unificadas de todos los códigos QR y URLs cortas, facilitando la comparación de canales e identificación de los que mejor rinden.",
+			"q6": "¿Los datos son en tiempo real?",
+			"a6": "Sí. Todos los datos analíticos en QRcodly se actualizan en tiempo real. Tan pronto como alguien escanea un código QR o hace clic en una URL corta, los datos aparecen en tu panel.",
+			"viewAll": "¿Más preguntas? Ver todas las FAQs"
+		},
+		"cta": {
+			"title": "¿Listo para ver lo que tus enlaces pueden decirte?",
+			"subtitle": "Rastrea cada escaneo y clic con analíticas en tiempo real. Gratis para siempre, sin tarjeta de crédito.",
+			"ctaLabel": "Empieza a Rastrear Gratis"
+		}
+	},
+	"faqPage": {
+		"metaTitle": "FAQ - Preguntas frecuentes",
+		"metaDescription": "Encuentre respuestas a preguntas comunes sobre códigos QR, acortamiento de URL, análisis y más.",
+		"heroTitle": "Preguntas frecuentes",
+		"heroSubtitle": "Todo lo que necesitas saber sobre QRcodly",
+		"searchPlaceholder": "Buscar preguntas...",
+		"noResults": "No se encontraron preguntas que coincidan con su búsqueda.",
+		"allCategory": "Todos",
+		"generalCategory": "General",
+		"qrCodesCategory": "Códigos QR",
+		"urlShortenerCategory": "Acortador de URL",
+		"analyticsCategory": "Análisis",
+		"pricingCategory": "Precios y cuenta",
+		"ctaTitle": "¿Todavía tienes preguntas?",
+		"ctaDescription": "No dudes en contactarnos — estaremos encantados de ayudarte.",
+		"ctaButton": "Contáctenos",
+		"categories": {
+			"general": {
+				"q1": "¿Qué es un código QR?",
+				"a1": "Un código QR (Quick Response Code) es un código de barras bidimensional inteligente que puede almacenar diversos tipos de información, como enlaces web, texto o datos de contacto. Se puede capturar y descifrar fácilmente con un smartphone o un escáner dedicado.",
+				"q2": "¿Cómo creo un código QR?",
+				"a2": "Con QRcodly, puede crear su código QR personalizado en un instante: simplemente ingrese el contenido deseado y descargue su código recién generado directamente. ¡Rápido y sencillo!",
+				"q3": "¿Necesito una aplicación especial para escanear códigos QR?",
+				"a3": "No, ¡en la mayoría de los casos no es necesario! La función de cámara integrada de los smartphones modernos puede reconocer directamente los códigos QR y abrir el contenido integrado — sin necesidad de aplicación adicional.",
+				"q4": "¿Los códigos QR también funcionan en impresión?",
+				"a4": "¡Por supuesto! Los códigos QR están específicamente optimizados para la impresión y funcionan de manera confiable en diversos materiales, siempre que permanezcan claros y sin daños.",
+				"q5": "¿Dónde se alojan mis datos?",
+				"a5": "Todos los datos de QRcodly se almacenan exclusivamente en servidores ubicados en Alemania. Usamos Clerk para la autenticación y herramientas de análisis respetuosas con la privacidad para mejorar nuestro servicio. Tus datos no se venden ni se comparten con fines publicitarios.",
+				"q6": "¿Es QRcodly de código abierto?",
+				"a6": "¡Sí! QRcodly es completamente de código abierto y está disponible en GitHub. Puede inspeccionar el código, contribuir o incluso alojar su propia instancia.",
+				"q7": "¿Puedo usar QRcodly con fines comerciales?",
+				"a7": "Por supuesto. QRcodly es gratuito tanto para uso personal como comercial. Cree códigos QR para su negocio, campañas de marketing, empaques de productos o cualquier otra aplicación comercial."
+			},
+			"qrCodes": {
+				"q1": "¿Es gratuito el generador de códigos QR?",
+				"a1": "¡Sí! QRcodly le permite crear códigos QR estáticos y dinámicos ilimitados de forma gratuita. Sin tarifas ocultas, sin marcas de agua y sin registro necesario para códigos QR básicos.",
+				"q2": "¿Qué son los códigos QR dinámicos?",
+				"a2": "Los códigos QR dinámicos le permiten cambiar la URL de destino después de imprimir el código. También rastrean cada escaneo con análisis detallados — no necesita reimprimir cuando cambia el contenido.",
+				"q3": "¿Puedo agregar mi logo a un código QR?",
+				"a3": "Por supuesto. Suba cualquier imagen como logo central para su código QR. También puede personalizar colores, estilos de esquinas y guardar diseños como plantillas reutilizables.",
+				"q4": "¿Qué tipos de contenido son compatibles?",
+				"a4": "QRcodly admite más de 9 tipos de contenido: URL, Texto, WiFi, vCard (tarjetas de contacto), Correo electrónico, Ubicación, Eventos de calendario, EPC (pago) y perfiles de redes sociales.",
+				"q5": "¿Puedo rastrear los escaneos de códigos QR?",
+				"a5": "Sí. Cada código QR dinámico rastrea los escaneos en tiempo real, mostrando escaneos totales, visitantes únicos, tipos de dispositivos, navegadores, sistemas operativos y ubicaciones geográficas.",
+				"q6": "¿Los códigos QR caducan?",
+				"a6": "No. Los códigos QR creados con QRcodly nunca caducan. Los códigos QR dinámicos permanecen completamente funcionales y rastreables mientras su cuenta exista.",
+				"q7": "¿Puedo crear códigos QR en masa?",
+				"a7": "¡Sí! Puedes crear códigos QR en masa mediante la importación CSV. Sube un archivo CSV con tu contenido y QRcodly generará todos los códigos a la vez. También puedes usar plantillas para un estilo consistente.",
+				"q8": "¿Qué es una plantilla de código QR?",
+				"a8": "Una plantilla de código QR guarda sus configuraciones de diseño preferidas — colores, logo, estilo de esquinas y más — para que pueda aplicarlas instantáneamente a nuevos códigos QR sin reconfigurar cada vez.",
+				"q9": "¿En qué formatos de imagen puedo descargar los códigos QR?",
+				"a9": "Puede descargar sus códigos QR como archivos PNG, SVG o WEBP. SVG es ideal para materiales impresos ya que escala sin perder calidad."
+			},
+			"urlShortener": {
+				"q1": "¿Es gratuito el acortador de URL?",
+				"a1": "¡Sí! El acortador de URL de QRcodly es gratuito. Puede crear URLs cortas, rastrear clics y gestionar sus enlaces sin costo. Los planes Pro desbloquean funciones avanzadas como dominios personalizados.",
+				"q2": "¿Puedo usar mi propio dominio para URLs cortas?",
+				"a2": "Por supuesto. Conecte su propio dominio para crear URLs cortas con marca como go.sumarca.com/u/x7k9m. Los dominios personalizados están disponibles en planes Pro con provisión SSL automática.",
+				"q3": "¿Cómo funciona el seguimiento de clics?",
+				"a3": "Cada vez que alguien hace clic en su URL corta, QRcodly registra el clic junto con metadatos como tipo de dispositivo, navegador, sistema operativo y ubicación geográfica — todo en tiempo real.",
+				"q4": "¿Puedo editar una URL corta después de crearla?",
+				"a4": "Sí. Puede actualizar la URL de destino, activar o desactivar la URL corta y gestionar etiquetas en cualquier momento desde su panel sin cambiar la URL corta en sí.",
+				"q5": "¿Las URLs cortas caducan?",
+				"a5": "No. Las URLs cortas creadas con QRcodly nunca caducan. Permanecen activas mientras su cuenta exista, y puede desactivarlas manualmente si es necesario.",
+				"q6": "¿Cuál es la diferencia entre URLs cortas y códigos QR?",
+				"a6": "Las URLs cortas son enlaces clicables que comparte digitalmente (correo electrónico, redes sociales, anuncios). Los códigos QR son imágenes escaneables para medios físicos (impresión, empaques, señalización). Ambos rastrean análisis y pueden usar dominios personalizados.",
+				"q7": "¿Qué pasa si elimino una URL corta?",
+				"a7": "Cuando elimina una URL corta, se vuelve permanentemente inactiva. Cualquier persona que haga clic en el enlace verá una página 404. Esta acción no se puede deshacer, así que considere desactivar la URL si puede necesitarla más adelante.",
+				"q8": "¿Puedo crear URLs cortas a través de la API?",
+				"a8": "Sí. QRcodly proporciona una API REST que le permite crear, actualizar y gestionar URLs cortas de forma programática. Consulte la documentación de la API para obtener detalles y configuración de autenticación."
+			},
+			"analytics": {
+				"q1": "¿Qué análisis proporciona QRcodly?",
+				"a1": "QRcodly rastrea escaneos/clics totales, visitantes únicos, tipos de dispositivos, navegadores, sistemas operativos y ubicaciones geográficas para códigos QR y URLs cortas — todo en tiempo real.",
+				"q2": "¿El análisis está incluido gratis?",
+				"a2": "¡Sí! Los análisis integrados están incluidos gratis para todos los códigos QR dinámicos y URLs cortas. Obtiene seguimiento de escaneos/clics en tiempo real, desglose de dispositivos e información geográfica sin costo.",
+				"q3": "¿Puedo conectar Google Analytics?",
+				"a3": "Sí. Los usuarios del plan Pro pueden reenviar datos de escaneos y clics a Google Analytics 4 o Matomo. Solo se comparten datos anonimizados y no identificables, y los análisis integrados de QRcodly permanecen completamente activos.",
+				"q4": "¿Cómo se recopilan los datos geográficos?",
+				"a4": "Los datos geográficos se derivan de la dirección IP en el momento del escaneo o clic. La IP se anonimiza y nunca se almacena. Solo se registra la ubicación a nivel de país.",
+				"q5": "¿Los datos son en tiempo real?",
+				"a5": "Sí. Todos los datos de análisis en QRcodly se actualizan en tiempo real. Tan pronto como alguien escanea un código QR o hace clic en una URL corta, los datos aparecen en su panel.",
+				"q6": "¿Puedo exportar mis datos de análisis?",
+				"a6": "La exportación de datos de análisis estará disponible pronto. Mientras tanto, puede ver todos sus análisis en tiempo real en su panel y conectar Google Analytics o Matomo para informes adicionales."
+			},
+			"pricing": {
+				"q1": "¿Qué incluye el plan gratuito?",
+				"a1": "El plan gratuito incluye códigos QR estáticos y dinámicos ilimitados, un acortador de URL con seguimiento de clics, análisis en tiempo real, diseños personalizados de códigos QR con logos y plantillas de códigos QR. Sin necesidad de tarjeta de crédito.",
+				"q2": "¿Cómo actualizo a Pro?",
+				"a2": "Puede actualizar a Pro directamente desde su panel. Vaya a la página de Planes, elija su ciclo de facturación preferido y complete el proceso de pago. Sus funciones Pro se activan instantáneamente.",
+				"q3": "¿Puedo cancelar mi suscripción en cualquier momento?",
+				"a3": "Sí. Puede cancelar su suscripción Pro en cualquier momento desde su panel. Seguirá teniendo acceso a las funciones Pro hasta el final de su período de facturación actual.",
+				"q4": "¿Necesito una cuenta para crear códigos QR?",
+				"a4": "¡No! Puede crear y descargar códigos QR estáticos sin una cuenta. Sin embargo, registrarse (gratis) desbloquea códigos QR dinámicos, análisis, acortamiento de URL y gestión del panel.",
+				"q5": "¿Puedo obtener facturas de mi suscripción Pro?",
+				"a5": "Sí. Después de adquirir el plan Pro, todas las facturas se generan automáticamente. Puede verlas y descargarlas en cualquier momento en su panel de control en Configuración → Facturación → Facturas y recibos."
+			}
+		}
+	},
+	"satisfactionSurvey": {
+		"title": "¿Qué tal tu experiencia con QRcodly?",
+		"subtitle": "Tu opinión nos ayuda a mejorar",
+		"thumbsUp": "¡Genial!",
+		"thumbsDown": "Podría mejorar",
+		"feedbackTitle": "Nos encantaría mejorar",
+		"feedbackPlaceholder": "Cuéntanos qué piensas...",
+		"submit": "Enviar comentario",
+		"skip": "Omitir",
+		"thankYouTitle": "¡Gracias!",
+		"thankYouMessage": "Tu opinión nos ayuda a crear un mejor producto."
+	},
+	"qrCodesRestaurants": {
+		"metaTitle": "Códigos QR para Restaurantes – Menús Digitales, WiFi y Más | QRcodly",
+		"metaDescription": "Cree códigos QR para su restaurante. Ofrezca menús digitales, acceso WiFi sencillo y realice seguimiento de la interacción — todo desde una sola plataforma.",
+		"hero": {
+			"title": "Códigos QR Diseñados para Restaurantes",
+			"subtitle": "Ofrezca a sus comensales acceso instantáneo a menús, WiFi y ofertas especiales. Actualice el contenido en cualquier momento sin necesidad de reimprimir.",
+			"ctaLabel": "Cree su Código QR para Restaurante"
+		},
+		"features": {
+			"feature1": {
+				"title": "Menús Digitales que se Actualizan al Instante",
+				"description": "Vincule un código QR a su menú en línea. Cambie precios, añada platos de temporada o actualice ofertas — los comensales siempre verán la versión más reciente.",
+				"bullet1": "Actualice los elementos del menú sin reimprimir",
+				"bullet2": "Enlace a PDF, página web o sistema de pedidos",
+				"bullet3": "Funciona en cualquier smartphone — no requiere app"
+			},
+			"feature2": {
+				"title": "Acceso WiFi en un Solo Escaneo",
+				"description": "Permita que los comensales se conecten a su WiFi al instante escaneando un código QR. Sin necesidad de preguntar contraseñas ni escribir credenciales largas.",
+				"bullet1": "Codifique el nombre y la contraseña de su red WiFi",
+				"bullet2": "Los comensales se conectan con un solo toque tras escanear",
+				"bullet3": "Colóquelo en mesas, paredes o mostradores de recepción"
+			}
+		},
+		"relatedUseCases": {
+			"title": "Códigos QR para Otras Industrias",
+			"subtitle": "Descubra cómo empresas de otros sectores utilizan códigos QR para conectar con su audiencia.",
+			"learnMore": "Más información"
+		},
+		"crossProducts": {
+			"title": "Explore Más Herramientas",
+			"urlShortener": {
+				"title": "Acortador de URL",
+				"description": "Cree enlaces cortos y personalizados para los pedidos en línea, las páginas de reserva y los perfiles sociales de su restaurante."
+			},
+			"analytics": {
+				"title": "Panel de Analíticas",
+				"description": "Profundice en los datos de escaneo con nuestra suite completa de analíticas. Comprenda el comportamiento de los comensales y optimice las ubicaciones."
+			}
+		},
+		"faq": {
+			"title": "Preguntas Frecuentes",
+			"q1": "¿Qué tamaño debo imprimir los códigos QR para las mesas?",
+			"a1": "Al menos 2×2 cm (aproximadamente 0,8×0,8 pulgadas). Para soportes de mesa, 3×3 cm funciona mejor. Siempre prueba al tamaño real antes de hacer un pedido grande de impresión.",
+			"q2": "¿Puede un solo código QR manejar tanto mi menú como el WiFi?",
+			"a2": "No — cada tipo de contenido necesita su propio código QR. Pero puedes colocarlos juntos en la misma tarjeta de mesa: uno para la URL del menú y otro código QR para WiFi.",
+			"q3": "¿Cómo gestiono varias ubicaciones con menús diferentes?",
+			"a3": "Crea códigos QR separados para cada ubicación, cada uno vinculado a la página del menú de esa sucursal. Usa etiquetas en tu panel para organizar los códigos por ubicación del restaurante.",
+			"q4": "¿Los comensales pueden dejar una reseña después de escanear?",
+			"a4": "Sí — vincula tu código QR a tu página de reseñas de Google Business o a un formulario de feedback. Con un código dinámico, puedes alternar entre tu menú y la página de reseñas según la temporada.",
+			"viewAll": "Ver todas las FAQs"
+		},
+		"cta": {
+			"title": "¿Listo para Modernizar tu Restaurante?",
+			"subtitle": "Crea tu primer código QR para restaurante en minutos. Menús digitales, acceso WiFi y analíticas — todo gratis para comenzar.",
+			"ctaLabel": "Comienza Gratis"
+		},
+		"steps": {
+			"title": "Cómo Crear Códigos QR para Tu Restaurante",
+			"subtitle": "Desde elegir un tipo de contenido hasta colocar los códigos en las mesas — aquí tienes la guía completa.",
+			"step1": {
+				"title": "Elige Tu Tipo de Contenido",
+				"description": "Decide qué deben ver los comensales al escanear: una URL del menú, credenciales WiFi o tu ubicación en el mapa."
+			},
+			"step2": {
+				"title": "Añade Tu Menú o Enlace",
+				"description": "Sube un menú en PDF o pega el enlace a tu página de pedidos en línea. Los códigos WiFi solo necesitan el nombre de tu red y la contraseña."
+			},
+			"step3": {
+				"title": "Adapta el Branding de Tu Restaurante",
+				"description": "Personaliza los colores, añade el logo de tu restaurante y elige un estilo que se ajuste a la identidad de tu marca."
+			},
+			"step4": {
+				"title": "Descarga para Imprimir",
+				"description": "Exporta como SVG para una salida nítida lista para imprimir — perfecta para tarjetas de mesa, pósters y adhesivos de ventana."
+			},
+			"step5": {
+				"title": "Coloca y Monitorea",
+				"description": "Pon los códigos en mesas, menús y expositores. Monitorea qué ubicaciones reciben más escaneos en tu panel."
+			}
+		},
+		"tips": {
+			"title": "Mejores Prácticas para Códigos QR en Restaurantes",
+			"tip1": {
+				"title": "Imprime al Menos 2×2 cm",
+				"description": "Los códigos más pequeños son más difíciles de escanear con fiabilidad. Para tarjetas y soportes de mesa, 3×3 cm es el punto ideal."
+			},
+			"tip2": {
+				"title": "Coloca a la Altura de los Ojos",
+				"description": "Usa soportes de mesa o montajes en la pared en lugar de superficies planas. Los códigos a la altura de los ojos se escanean 2× más a menudo."
+			},
+			"tip3": {
+				"title": "Prueba Antes de Imprimir",
+				"description": "Escanea con 3 teléfonos diferentes al tamaño de impresión real antes de hacer un pedido grande. Detecta los problemas a tiempo."
+			},
+			"tip4": {
+				"title": "Actualiza los Menús Antes de las Horas Punta",
+				"description": "Publica los cambios del menú el viernes por la tarde para captar el tráfico del fin de semana — tu ventana de escaneo más activa."
+			}
+		},
+		"stats": {
+			"stat1Value": "73%",
+			"stat1Label": "de los comensales prefieren menús digitales",
+			"stat2Value": "3×",
+			"stat2Label": "pedidos en mesa más rápidos",
+			"stat3Value": "45%",
+			"stat3Label": "menos costes de impresión",
+			"stat4Value": "< 2 seg",
+			"stat4Label": "tiempo promedio de escaneo"
+		}
+	},
+	"qrCodesRetail": {
+		"metaTitle": "Códigos QR para Comercio Minorista – Información de Productos, Promociones y Seguimiento | QRcodly",
+		"metaDescription": "Use códigos QR en el comercio minorista para detalles de productos, promociones y engagement del cliente. Realice seguimiento de escaneos y actualice el contenido en cualquier momento.",
+		"hero": {
+			"title": "Códigos QR Diseñados para el Comercio Minorista",
+			"subtitle": "Conecte productos físicos con experiencias digitales. Comparta información de productos, lance promociones y monitorice la interacción.",
+			"ctaLabel": "Cree su Código QR para Comercio"
+		},
+		"features": {
+			"feature1": {
+				"title": "Información del Producto de un Vistazo",
+				"description": "Añada códigos QR al empaquetado o a las etiquetas de estantería. Los clientes escanean para ver especificaciones detalladas, reseñas, vídeos instructivos o listas de ingredientes.",
+				"bullet1": "Enlace a páginas de producto o landing pages",
+				"bullet2": "Comparta guías de tallas, instrucciones de cuidado o tutoriales",
+				"bullet3": "Actualice el contenido vinculado sin cambiar el empaquetado"
+			},
+			"feature2": {
+				"title": "Lance Promociones en Tienda",
+				"description": "Impulse la interacción con códigos QR que enlazan a descuentos exclusivos, programas de fidelización u ofertas de temporada.",
+				"bullet1": "Enlace a páginas de cupones o códigos de descuento",
+				"bullet2": "Promueva inscripciones de fidelización o descargas de app",
+				"bullet3": "Cambie ofertas en tiempo real con códigos dinámicos"
+			}
+		},
+		"relatedUseCases": {
+			"title": "Códigos QR para Otras Industrias",
+			"subtitle": "Descubra cómo otros sectores aprovechan los códigos QR para conectar con su audiencia.",
+			"learnMore": "Más información"
+		},
+		"crossProducts": {
+			"title": "Explore Más Herramientas",
+			"urlShortener": {
+				"title": "Acortador de URL",
+				"description": "Cree enlaces cortos para páginas de productos, landing pages de promociones y encuestas de satisfacción."
+			},
+			"analytics": {
+				"title": "Panel de Analíticas",
+				"description": "Obtenga información detallada sobre patrones de escaneo, tipos de dispositivos y métricas de interacción con el cliente."
+			}
+		},
+		"faq": {
+			"title": "Preguntas Frecuentes",
+			"q1": "¿Cómo sé qué productos reciben más escaneos?",
+			"a1": "Crea un código QR separado para cada producto o expositor. Tu panel muestra los conteos de escaneos, horarios y datos de dispositivos para cada código individualmente.",
+			"q2": "¿Cuál es la mejor ubicación para códigos QR en tiendas?",
+			"a2": "Las etiquetas de estantería y el empaquetado de productos funcionan mejor. Asegúrate de que el código sea visible, no esté oculto por otros artículos, y añade un texto corto de llamada a la acción cerca.",
+			"q3": "¿Puedo hacer promociones con tiempo limitado usando códigos QR?",
+			"a3": "Sí. Usa códigos QR dinámicos y actualiza la URL de destino cuando la promoción termine. Redirige a una nueva oferta o a tu página de producto estándar — sin necesidad de reimprimir.",
+			"q4": "¿Cómo conecto los códigos QR a mi programa de fidelización?",
+			"a4": "Vincula los códigos QR a tu página de registro de fidelización o enlace de descarga de la app. Los clientes escanean, se registran y empiezan a ganar recompensas — sin entrada manual necesaria.",
+			"viewAll": "Ver todas las FAQs"
+		},
+		"cta": {
+			"title": "Mejora tu Experiencia de Comercio Minorista",
+			"subtitle": "Conecta productos con contenido digital mediante códigos QR. Fácil de crear, sencillo de actualizar, gratis para comenzar.",
+			"ctaLabel": "Comienza Gratis"
+		},
+		"steps": {
+			"title": "Cómo Usar Códigos QR en Tu Tienda",
+			"subtitle": "Desde las etiquetas de estantería hasta el punto de venta — una guía paso a paso para equipos de retail.",
+			"step1": {
+				"title": "Planifica las Ubicaciones",
+				"description": "Decide dónde van los códigos: empaquetado de productos, etiquetas de estantería, escaparates o señalización en tienda."
+			},
+			"step2": {
+				"title": "Crea Códigos de Producto o Promoción",
+				"description": "Vincula cada código QR a una página de detalles de producto, landing page de promoción o formulario de registro de fidelización."
+			},
+			"step3": {
+				"title": "Personaliza con Tu Marca",
+				"description": "Adapta los colores de tu marca, añade tu logo y elige un estilo que se ajuste a la identidad visual de tu tienda."
+			},
+			"step4": {
+				"title": "Imprime en Alta Calidad",
+				"description": "Descarga como SVG para una salida nítida en etiquetas, empaquetado y señalización a cualquier tamaño."
+			},
+			"step5": {
+				"title": "Analiza la Interacción en Tienda",
+				"description": "Monitorea qué productos y expositores reciben más escaneos. Usa los datos para optimizar diseños y promociones."
+			}
+		},
+		"tips": {
+			"title": "Mejores Prácticas para Códigos QR en Retail",
+			"tip1": {
+				"title": "Un Código por SKU",
+				"description": "Usa un código QR dedicado para cada producto para rastrear la interacción a nivel de artículo — no solo a nivel de expositor."
+			},
+			"tip2": {
+				"title": "Añade una Llamada a la Acción",
+				"description": "Imprime un texto breve cerca del código como 'Escanea para 10% de descuento' o 'Escanea para guía de tallas.' Los códigos con CTAs reciben 3× más escaneos."
+			},
+			"tip3": {
+				"title": "Coloca en el Borde de la Estantería",
+				"description": "Posiciona los códigos en las etiquetas de estantería donde sean visibles, no escondidos detrás de los productos. Los clientes escanean lo que pueden ver."
+			},
+			"tip4": {
+				"title": "Rota las Promociones Semanalmente",
+				"description": "Usa códigos dinámicos e intercambia destinos regularmente. Las ofertas frescas mantienen a los clientes escaneando."
+			}
+		},
+		"stats": {
+			"stat1Value": "58%",
+			"stat1Label": "de los compradores escanean códigos en tienda",
+			"stat2Value": "2.4×",
+			"stat2Label": "mayor interacción vs. solo impreso",
+			"stat3Value": "40%",
+			"stat3Label": "tasa de canje de cupones",
+			"stat4Value": "12 seg",
+			"stat4Label": "tiempo promedio de interacción"
+		}
+	},
+	"qrCodesEvents": {
+		"metaTitle": "Códigos QR para Eventos – Check-in, Programas y Networking | QRcodly",
+		"metaDescription": "Optimice sus eventos con códigos QR para check-in, programas y participación de asistentes. Cree y monitorice códigos QR para eventos fácilmente.",
+		"hero": {
+			"title": "Códigos QR Diseñados para Eventos",
+			"subtitle": "Simplifique el check-in, comparta programas y conecte asistentes. Un solo escaneo lo hace todo.",
+			"ctaLabel": "Cree su Código QR para Eventos"
+		},
+		"features": {
+			"feature1": {
+				"title": "Check-in Más Rápido para Asistentes",
+				"description": "Envíe códigos QR personalizados a los asistentes. El personal los escanea en la entrada para un check-in rápido y sin contacto.",
+				"bullet1": "Genere códigos únicos por asistente o entrada",
+				"bullet2": "Agilice las colas de entrada en cualquier tipo de sede",
+				"bullet3": "Funciona con cualquier smartphone o tablet con escáner"
+			},
+			"feature2": {
+				"title": "Programas y Actualizaciones en Tiempo Real",
+				"description": "Vincule códigos QR a su programa del evento. Actualice horarios de sesiones, cambios de sala o información de ponentes — los asistentes siempre tendrán la información más reciente.",
+				"bullet1": "Enlace a un programa o agenda en tiempo real",
+				"bullet2": "Envíe cambios de último momento sin reimprimir",
+				"bullet3": "Colóquelo en credenciales, señalización o programas impresos"
+			}
+		},
+		"relatedUseCases": {
+			"title": "Códigos QR para Otras Industrias",
+			"subtitle": "Explore cómo otras industrias utilizan códigos QR para conectar con su audiencia.",
+			"learnMore": "Más información"
+		},
+		"crossProducts": {
+			"title": "Explore Más Herramientas",
+			"urlShortener": {
+				"title": "Acortador de URL",
+				"description": "Cree enlaces cortos para páginas de registro de eventos, formularios de feedback y encuestas posteriores al evento."
+			},
+			"analytics": {
+				"title": "Panel de Analíticas",
+				"description": "Monitorice la actividad de escaneo en su evento. Vea qué sesiones, stands o materiales generan más interacción."
+			}
+		},
+		"faq": {
+			"title": "Preguntas Frecuentes",
+			"q1": "¿Cómo uso códigos QR para el check-in del evento?",
+			"a1": "Genera un código QR único por entrada o asistente. El personal escanea el código en la entrada usando cualquier smartphone — enlaza a una página de check-in que registra la asistencia al instante.",
+			"q2": "¿Puedo actualizar el programa del evento después de imprimir las credenciales?",
+			"a2": "Sí. Usa códigos QR dinámicos que enlacen a tu página de programa en línea. Cuando las sesiones cambien, actualiza la página — todos los códigos impresos en las credenciales siguen funcionando.",
+			"q3": "¿Cómo funcionan los códigos QR vCard para networking?",
+			"a3": "Un código QR vCard contiene los datos de contacto (nombre, email, teléfono, empresa). Al escanearlo, el teléfono ofrece guardar el contacto directamente — reemplazando las tarjetas de visita tradicionales.",
+			"q4": "¿Puedo medir qué sesiones fueron las más populares?",
+			"a4": "Crea códigos QR separados para cada sesión o conferencia. Compara los conteos de escaneos en tu panel para ver qué sesiones atrajeron a más asistentes.",
+			"viewAll": "Ver todas las FAQs"
+		},
+		"cta": {
+			"title": "Haz que tu Próximo Evento sea Impecable",
+			"subtitle": "Códigos QR para check-in, programas y networking. Créalos en minutos — gratis para comenzar.",
+			"ctaLabel": "Comienza Gratis"
+		},
+		"steps": {
+			"title": "Cómo Configurar Códigos QR para Tu Evento",
+			"subtitle": "Desde credenciales hasta señalización — todo lo que necesitas para una experiencia de evento fluida.",
+			"step1": {
+				"title": "Define Tu Caso de Uso",
+				"description": "Elige qué hará el código QR: check-in, enlazar al programa del evento o compartir un vCard para networking."
+			},
+			"step2": {
+				"title": "Crea Tus Códigos",
+				"description": "Genera códigos QR que enlacen a tu página de agenda, URL de check-in o tarjeta de contacto del asistente."
+			},
+			"step3": {
+				"title": "Aplica el Branding del Evento",
+				"description": "Personaliza los colores y añade el logo de tu evento para que los códigos combinen con tus credenciales, señalización y programas."
+			},
+			"step4": {
+				"title": "Imprime en los Materiales",
+				"description": "Añade códigos a las credenciales de asistentes, señalización de salas y programas impresos. Usa SVG para resultados nítidos."
+			},
+			"step5": {
+				"title": "Monitorea la Interacción en Vivo",
+				"description": "Monitorea los escaneos en tiempo real durante el evento. Mira qué sesiones y stands tienen más actividad."
+			}
+		},
+		"tips": {
+			"title": "Mejores Prácticas para Códigos QR en Eventos",
+			"tip1": {
+				"title": "Códigos Únicos por Sesión",
+				"description": "Crea un código QR separado para cada charla o taller. Compara los conteos de escaneos para medir el interés por sesión."
+			},
+			"tip2": {
+				"title": "Imprime Grande en las Credenciales",
+				"description": "Usa al menos 3×3 cm en las credenciales para un escaneo rápido y fiable — incluso con la iluminación tenue de una conferencia."
+			},
+			"tip3": {
+				"title": "Coloca los Programas en las Entradas",
+				"description": "Pon códigos QR del programa en cada entrada de sala para que los asistentes puedan consultar rápidamente los detalles de la sesión."
+			},
+			"tip4": {
+				"title": "Envía Credenciales Digitales con Anticipación",
+				"description": "Envía por email una credencial digital con un código QR antes del evento. Entrada más rápida y menos impresión."
+			}
+		},
+		"stats": {
+			"stat1Value": "67%",
+			"stat1Label": "más rápido en el check-in",
+			"stat2Value": "4×",
+			"stat2Label": "más contactos de networking",
+			"stat3Value": "85%",
+			"stat3Label": "tasa de adopción de asistentes",
+			"stat4Value": "30 seg",
+			"stat4Label": "ahorrados por entrada"
+		}
+	},
+	"qrCodesRealEstate": {
+		"metaTitle": "Códigos QR para Inmobiliaria – Listados de Propiedades, Visitas Virtuales y Más | QRcodly",
+		"metaDescription": "Use códigos QR en inmobiliaria para listados de propiedades, visitas virtuales e inscripciones a jornadas de puertas abiertas. Monitorice la interacción de compradores fácilmente.",
+		"hero": {
+			"title": "Códigos QR Diseñados para Inmobiliaria",
+			"subtitle": "Ofrezca a los compradores acceso instantáneo a los detalles de la propiedad, visitas virtuales e información de contacto — directamente desde el cartel de venta.",
+			"ctaLabel": "Cree su Código QR Inmobiliario"
+		},
+		"features": {
+			"feature1": {
+				"title": "Detalles de la Propiedad en Cada Cartel",
+				"description": "Añada un código QR a sus carteles de venta, folletos o catálogos. Los compradores escanean para ver el listado completo, fotos y datos clave.",
+				"bullet1": "Enlace a su página de listado o sitio web de la propiedad",
+				"bullet2": "Incluya fotos, planos y precios",
+				"bullet3": "Actualice los detalles del listado sin reimprimir carteles"
+			},
+			"feature2": {
+				"title": "Visitas Virtuales en un Solo Escaneo",
+				"description": "Vincule códigos QR a vídeos de visitas virtuales o recorridos 3D. Permita que los compradores exploren propiedades desde cualquier lugar.",
+				"bullet1": "Enlace a Matterport, YouTube o cualquier plataforma de visitas",
+				"bullet2": "Colóquelo en anuncios impresos, correos y fichas de jornadas abiertas",
+				"bullet3": "Cambie los enlaces de visitas cuando cambien las propiedades"
+			}
+		},
+		"relatedUseCases": {
+			"title": "Códigos QR para Otras Industrias",
+			"subtitle": "Vea cómo otras industrias utilizan códigos QR para conectar con su audiencia.",
+			"learnMore": "Más información"
+		},
+		"crossProducts": {
+			"title": "Explore Más Herramientas",
+			"urlShortener": {
+				"title": "Acortador de URL",
+				"description": "Cree enlaces cortos y limpios para listados de propiedades, inscripciones a jornadas abiertas y páginas de contacto del agente."
+			},
+			"analytics": {
+				"title": "Panel de Analíticas",
+				"description": "Obtenga información detallada sobre la interacción de compradores, ubicaciones de escaneo y desgloses de dispositivos para cada propiedad."
+			}
+		},
+		"faq": {
+			"title": "Preguntas Frecuentes",
+			"q1": "¿Puedo cambiar el listado sin reemplazar el cartel?",
+			"a1": "Sí. Los códigos QR dinámicos te permiten actualizar la URL de destino en cualquier momento. Cambia el listado, intercambia el enlace — el cartel impreso permanece exactamente igual.",
+			"q2": "¿A qué debería enlazar un código QR inmobiliario?",
+			"a2": "Las mejores opciones: tu página de listado MLS, una visita virtual, un sitio web dedicado de la propiedad o una página de programación de visitas. Elige lo que ayude a los compradores a dar el siguiente paso.",
+			"q3": "¿Cómo manejo múltiples listados a la vez?",
+			"a3": "Crea un código QR por propiedad. Usa etiquetas en tu panel (p. ej., 'centro', 'zona oeste') para organizar y filtrar rápidamente tus listados activos.",
+			"q4": "¿Qué tamaño funciona mejor para los carteles de venta?",
+			"a4": "Al menos 5×5 cm (2×2 pulgadas) en carteles de venta. Asegura un alto contraste entre el código y el fondo del cartel, y prueba escaneando desde 2 metros de distancia antes de imprimir.",
+			"viewAll": "Ver todas las FAQs"
+		},
+		"cta": {
+			"title": "Dale a Cada Listado una Ventaja Digital",
+			"subtitle": "Códigos QR que conectan a los compradores con los detalles de la propiedad, visitas y tu información de contacto. Gratis para comenzar.",
+			"ctaLabel": "Comienza Gratis"
+		},
+		"steps": {
+			"title": "Cómo Añadir Códigos QR a Tus Listados",
+			"subtitle": "Conecta la señalización física con los detalles digitales de la propiedad en cinco simples pasos.",
+			"step1": {
+				"title": "Elige Tu Contenido",
+				"description": "Enlaza a tu página de listado, un video de visita virtual o tu vCard de agente con datos de contacto."
+			},
+			"step2": {
+				"title": "Crea un Código QR Dinámico",
+				"description": "Usa un código dinámico para poder actualizar el enlace del listado después — incluso después de imprimir el cartel."
+			},
+			"step3": {
+				"title": "Añade el Branding de Tu Inmobiliaria",
+				"description": "Sube el logo de tu inmobiliaria y ajusta los colores de marca para una apariencia profesional y alineada con tu marca."
+			},
+			"step4": {
+				"title": "Imprime para Carteles y Folletos",
+				"description": "Descarga como SVG para carteles de venta, folletos, catálogos y postales. Se escala a cualquier tamaño."
+			},
+			"step5": {
+				"title": "Monitorea el Interés de los Compradores",
+				"description": "Mira cuántas personas escanean el código de cada propiedad. Compara el interés entre listados en tu panel."
+			}
+		},
+		"tips": {
+			"title": "Mejores Prácticas para Códigos QR Inmobiliarios",
+			"tip1": {
+				"title": "Un Código por Listado",
+				"description": "Monitorea el interés a nivel de propiedad creando un código único para cada listado. Mira exactamente qué casas atraen compradores."
+			},
+			"tip2": {
+				"title": "Enlaza a Páginas Optimizadas para Móvil",
+				"description": "La mayoría de los compradores escanean con sus teléfonos. Asegúrate de que tu página de listado, visita o formulario de contacto funcione bien en móvil."
+			},
+			"tip3": {
+				"title": "Añade un CTA Claro en los Carteles",
+				"description": "Imprime 'Escanea para Visita Virtual' o 'Escanea para Detalles' junto al código. Un texto de acción aumenta los escaneos significativamente."
+			},
+			"tip4": {
+				"title": "Redirige Cuando se Venda",
+				"description": "Cuando una propiedad se cierre, actualiza el código dinámico para enlazar a una página de 'Vendido' o a un listado similar cercano."
+			}
+		},
+		"stats": {
+			"stat1Value": "62%",
+			"stat1Label": "de los compradores escanean códigos de carteles",
+			"stat2Value": "3×",
+			"stat2Label": "más vistas de listados",
+			"stat3Value": "35%",
+			"stat3Label": "más solicitudes de visitas",
+			"stat4Value": "< 2 seg",
+			"stat4Label": "a los detalles completos del listado"
+		}
+	},
+	"qrCodesEducation": {
+		"metaTitle": "Códigos QR para Educación – Recursos del Aula, Tareas y Más | QRcodly",
+		"metaDescription": "Use códigos QR en educación para compartir recursos, tareas y materiales del aula. Involucre a los estudiantes con un simple escaneo.",
+		"hero": {
+			"title": "Códigos QR Diseñados para Educación",
+			"subtitle": "Conecte a los estudiantes con recursos, tareas y contenido interactivo con un simple escaneo.",
+			"ctaLabel": "Cree su Código QR Educativo"
+		},
+		"features": {
+			"feature1": {
+				"title": "Acceso Instantáneo a Materiales de Aprendizaje",
+				"description": "Coloque códigos QR en hojas de trabajo, pósters o libros de texto. Los estudiantes escanean para acceder a vídeos, artículos o ejercicios interactivos.",
+				"bullet1": "Enlace a vídeos educativos, PDFs o sitios web",
+				"bullet2": "Colóquelo en hojas de trabajo impresas o pósters del aula",
+				"bullet3": "Actualice los recursos sin reimprimir materiales"
+			},
+			"feature2": {
+				"title": "Simplifique la Distribución de Tareas",
+				"description": "Comparta tareas, listas de lectura y guías de estudio mediante códigos QR. Los estudiantes escanean y listo — sin escribir URLs largas.",
+				"bullet1": "Enlace a Google Docs, páginas LMS o unidades compartidas",
+				"bullet2": "Los estudiantes acceden a los materiales desde cualquier dispositivo",
+				"bullet3": "Cambie los enlaces cuando se actualicen las tareas"
+			}
+		},
+		"relatedUseCases": {
+			"title": "Códigos QR para Otras Industrias",
+			"subtitle": "Descubra cómo otros sectores utilizan códigos QR para conectar con su audiencia.",
+			"learnMore": "Más información"
+		},
+		"crossProducts": {
+			"title": "Explore Más Herramientas",
+			"urlShortener": {
+				"title": "Acortador de URL",
+				"description": "Cree enlaces cortos y fáciles de escribir para estudiantes que prefieren teclear URLs en lugar de escanear."
+			},
+			"analytics": {
+				"title": "Panel de Analíticas",
+				"description": "Vea qué recursos de aprendizaje generan más interacción y comprenda los patrones de acceso de los estudiantes."
+			}
+		},
+		"faq": {
+			"title": "Preguntas Frecuentes",
+			"q1": "¿Los estudiantes necesitan una app especial para escanear códigos QR?",
+			"a1": "No. Todos los smartphones modernos escanean códigos QR con la cámara integrada. Los estudiantes solo apuntan su cámara al código y tocan el enlace que aparece.",
+			"q2": "¿Puedo actualizar el recurso vinculado sin reimprimir?",
+			"a2": "Sí. Los códigos QR dinámicos te permiten cambiar la URL de destino en cualquier momento. Reutiliza la misma hoja de trabajo impresa el próximo semestre con enlaces completamente actualizados.",
+			"q3": "¿Cómo puedo usar códigos QR para una búsqueda del tesoro en el aula?",
+			"a3": "Crea múltiples códigos QR, cada uno enlazando a una página de pista o tarea. Colócalos por la escuela. Los estudiantes escanean cada código para avanzar en la actividad.",
+			"q4": "¿Los códigos QR son accesibles para estudiantes con discapacidades?",
+			"a4": "Los códigos QR son visuales, así que combínalos con una URL corta impresa debajo para estudiantes que usan lectores de pantalla. La página enlazada debe seguir las mejores prácticas de accesibilidad.",
+			"viewAll": "Ver todas las FAQs"
+		},
+		"cta": {
+			"title": "Lleva los Códigos QR a Tu Aula",
+			"subtitle": "Comparte recursos, tareas y contenido interactivo con un simple escaneo. Gratis para educadores.",
+			"ctaLabel": "Comienza Gratis"
+		},
+		"steps": {
+			"title": "Cómo Usar Códigos QR en Tu Aula",
+			"subtitle": "Una guía práctica para profesores que quieren conectar materiales impresos con recursos digitales.",
+			"step1": {
+				"title": "Elige Tu Recurso",
+				"description": "Selecciona qué vincular: un video, hoja de trabajo en PDF, URL de cuestionario, ejercicio interactivo o capítulo de libro de texto en línea."
+			},
+			"step2": {
+				"title": "Crea el Código QR",
+				"description": "Pega la URL del recurso y genera un código QR. Usa un código dinámico si planeas actualizar el enlace más adelante."
+			},
+			"step3": {
+				"title": "Añade Colores Amigables",
+				"description": "Personaliza con colores atractivos para los estudiantes y el logo de tu escuela. Hazlo visualmente llamativo."
+			},
+			"step4": {
+				"title": "Imprime en los Materiales",
+				"description": "Añade códigos a hojas de trabajo, pósters del aula, tarjetas de proyecto o etiquetas de libros de biblioteca."
+			},
+			"step5": {
+				"title": "Revisa la Interacción",
+				"description": "Consulta los datos de escaneo para ver qué recursos usan más los estudiantes. Ajusta tus materiales basándote en el uso real."
+			}
+		},
+		"tips": {
+			"title": "Mejores Prácticas para Códigos QR en Educación",
+			"tip1": {
+				"title": "Prueba en los Dispositivos de los Estudiantes Primero",
+				"description": "Antes de distribuir hojas de trabajo, escanea cada código con un teléfono similar al que usan los estudiantes. Detecta los problemas a tiempo."
+			},
+			"tip2": {
+				"title": "Imprime lo Suficientemente Grande",
+				"description": "Usa códigos de al menos 3×3 cm — más grandes para estudiantes más jóvenes. Los códigos pequeños frustran y desperdician tiempo de clase."
+			},
+			"tip3": {
+				"title": "Añade una Etiqueta Corta",
+				"description": "Imprime 'Escanea para ver el video' o 'Escanea para el cuestionario' junto a cada código. Las etiquetas les dicen a los estudiantes qué esperar y aumentan la interacción."
+			},
+			"tip4": {
+				"title": "Reutiliza Hojas de Trabajo entre Semestres",
+				"description": "Con códigos dinámicos, puedes actualizar el recurso vinculado sin reimprimir. Misma hoja de trabajo, contenido fresco cada trimestre."
+			}
+		},
+		"stats": {
+			"stat1Value": "89%",
+			"stat1Label": "de los estudiantes tienen smartphone",
+			"stat2Value": "2×",
+			"stat2Label": "acceso más rápido a los recursos",
+			"stat3Value": "70%",
+			"stat3Label": "prefieren escanear a escribir URLs",
+			"stat4Value": "5 min",
+			"stat4Label": "ahorrados por lección"
+		}
+	},
+	"qrCodesMarketing": {
+		"metaTitle": "Códigos QR para Marketing – Campañas Impresas, Pruebas A/B y Branding | QRcodly",
+		"metaDescription": "Conecte el marketing impreso y digital con códigos QR. Monitorice el rendimiento de campañas, personalice diseños y actualice destinos en cualquier momento.",
+		"hero": {
+			"title": "Códigos QR Diseñados para Marketing",
+			"subtitle": "Conecte materiales impresos con campañas digitales. Monitorice el rendimiento, personalice diseños y actualice contenido en tiempo real.",
+			"ctaLabel": "Cree su Código QR de Marketing"
+		},
+		"features": {
+			"feature1": {
+				"title": "Conecte lo Impreso con lo Digital",
+				"description": "Añada códigos QR a folletos, pósters, tarjetas de visita y empaquetado. Cada escaneo es un punto de contacto medible en su campaña.",
+				"bullet1": "Vincule materiales impresos a cualquier landing page",
+				"bullet2": "Monitorice tasas de escaneo en vallas, mailings y anuncios",
+				"bullet3": "Mida el ROI de campañas impresas con datos reales"
+			},
+			"feature2": {
+				"title": "Pruebe y Optimice Campañas",
+				"description": "Cree múltiples códigos QR para diferentes ubicaciones o diseños. Compare tasas de escaneo para encontrar lo que funciona mejor.",
+				"bullet1": "Cree códigos separados para cada ubicación",
+				"bullet2": "Compare el rendimiento entre canales",
+				"bullet3": "Intercambie destinos para probar diferentes landing pages"
+			}
+		},
+		"relatedUseCases": {
+			"title": "Códigos QR para Otras Industrias",
+			"subtitle": "Vea cómo otras industrias utilizan códigos QR para conectar con su audiencia.",
+			"learnMore": "Más información"
+		},
+		"crossProducts": {
+			"title": "Explore Más Herramientas",
+			"urlShortener": {
+				"title": "Acortador de URL",
+				"description": "Cree enlaces cortos personalizados para campañas. Combínelos con códigos QR para una estrategia completa de seguimiento offline-a-online."
+			},
+			"analytics": {
+				"title": "Panel de Analíticas",
+				"description": "Profundice en las analíticas de campañas. Vea escaneos por ubicación, dispositivo, hora y más para optimizar su marketing."
+			}
+		},
+		"faq": {
+			"title": "Preguntas Frecuentes",
+			"q1": "¿Cómo mido el ROI de campañas impresas con códigos QR?",
+			"a1": "Crea un código QR único por ubicación (valla, folleto, mailing). Compara los conteos de escaneos con el coste por ubicación. Añade parámetros UTM para vincular escaneos a conversiones en Google Analytics.",
+			"q2": "¿Puedo hacer pruebas A/B con diferentes landing pages?",
+			"a2": "Sí. Crea dos códigos QR que apunten a diferentes landing pages. Colócalos en versiones alternas de tu material impreso y compara las tasas de escaneo-a-conversión.",
+			"q3": "¿Cuál es el tamaño mínimo de impresión para códigos QR de marketing?",
+			"a3": "2×2 cm para materiales de corta distancia (folletos, tarjetas de visita). Para vallas o pósters vistos a distancia, agranda — un código de 15 cm funciona bien a 3 metros.",
+			"q4": "¿Cómo monitoreo la conversión de offline a online?",
+			"a4": "Cada código QR dinámico rastrea escaneos automáticamente. Combínalo con parámetros UTM en la URL de destino, y obtendrás visibilidad completa del embudo desde el escaneo físico hasta la conversión digital.",
+			"viewAll": "Ver todas las FAQs"
+		},
+		"cta": {
+			"title": "Haz que Cada Pieza Impresa sea Medible",
+			"subtitle": "Añade códigos QR a tus materiales de marketing y monitorea cada escaneo. Comienza gratis.",
+			"ctaLabel": "Comienza Gratis"
+		},
+		"steps": {
+			"title": "Cómo Añadir Códigos QR a Tu Campaña",
+			"subtitle": "Conecta el marketing impreso y digital con códigos QR rastreables en cinco pasos.",
+			"step1": {
+				"title": "Define el Objetivo de Tu Campaña",
+				"description": "Decide qué quieres medir: visitas a landing pages, descargas de app, envío de formularios o canje de cupones."
+			},
+			"step2": {
+				"title": "Crea un Código QR Dinámico",
+				"description": "Enlaza a la URL de tu campaña. Usa un código dinámico para poder cambiar destinos o añadir parámetros UTM después."
+			},
+			"step3": {
+				"title": "Adapta el Diseño de Tu Campaña",
+				"description": "Personaliza los colores, añade tu logo y elige un estilo que se integre perfectamente con tu creatividad impresa."
+			},
+			"step4": {
+				"title": "Añade a los Materiales Impresos",
+				"description": "Coloca el código en folletos, pósters, empaquetado o correo directo. Siempre incluye un CTA como 'Escanea para reclamar tu oferta.'"
+			},
+			"step5": {
+				"title": "Compara el Rendimiento por Ubicación",
+				"description": "Crea códigos únicos por ubicación. Compara los datos de escaneo entre canales para optimizar el ROI."
+			}
+		},
+		"tips": {
+			"title": "Mejores Prácticas para Códigos QR de Marketing",
+			"tip1": {
+				"title": "Un Código por Ubicación",
+				"description": "Usa códigos únicos para cada canal (valla, folleto, mailing) para aislar el rendimiento y medir el ROI por canal."
+			},
+			"tip2": {
+				"title": "Añade Parámetros UTM",
+				"description": "Agrega etiquetas UTM a tus URLs de destino para atribución completa en Google Analytics — desde el escaneo hasta la conversión."
+			},
+			"tip3": {
+				"title": "Prueba al Tamaño Real de Impresión",
+				"description": "Escanea tu código al tamaño final de impresión antes de la tirada completa. Lo que funciona en pantalla puede fallar en una tarjeta de visita pequeña."
+			},
+			"tip4": {
+				"title": "Siempre Incluye un CTA",
+				"description": "Coloca una llamada a la acción clara cerca del código: 'Escanea para reclamar tu oferta' o 'Escanea para acceso exclusivo.' Los códigos sin CTAs suelen ignorarse."
+			}
+		},
+		"stats": {
+			"stat1Value": "76%",
+			"stat1Label": "de los consumidores han escaneado un código QR",
+			"stat2Value": "2×",
+			"stat2Label": "mayor recuerdo vs. anuncios solo con URL",
+			"stat3Value": "34%",
+			"stat3Label": "conversión de impreso a digital",
+			"stat4Value": "5×",
+			"stat4Label": "ROI en campañas impresas"
+		}
+	},
+	"urlShortenerMarketingTeams": {
+		"metaTitle": "Acortador de URL para Equipos de Marketing – Enlaces Personalizados y Seguimiento de Campañas | QRcodly",
+		"metaDescription": "Acorte y personalice sus enlaces de marketing. Monitorice clics, gestione campañas y use dominios personalizados — todo en una sola plataforma.",
+		"hero": {
+			"title": "Enlaces Cortos Diseñados para Equipos de Marketing",
+			"subtitle": "Cree enlaces personalizados que generen confianza, monitorice clics en todas las campañas y gestione todas sus URLs en un solo lugar.",
+			"ctaLabel": "Acorte su Primer Enlace"
+		},
+		"features": {
+			"feature1": {
+				"title": "Enlaces Personalizados que Generan Confianza",
+				"description": "Use su propio dominio personalizado para enlaces cortos. Las URLs personalizadas obtienen más clics y refuerzan la identidad de su marca en cada canal.",
+				"bullet1": "Conecte su propio dominio para URLs cortas personalizadas",
+				"bullet2": "Los enlaces personalizados aumentan las tasas de clics",
+				"bullet3": "Branding consistente en email, redes sociales y anuncios"
+			},
+			"feature2": {
+				"title": "Seguimiento de Clics en Campañas",
+				"description": "Vea cómo funcionan sus enlaces en todos los canales. Monitorice clics, datos geográficos y tipos de dispositivos para cada enlace corto.",
+				"bullet1": "Seguimiento de clics en tiempo real para cada enlace",
+				"bullet2": "Filtre analíticas por rango de fechas",
+				"bullet3": "Vea desgloses geográficos y por dispositivo"
+			}
+		},
+		"relatedUseCases": {
+			"title": "Acortador de URL para Otros Equipos",
+			"subtitle": "Vea cómo otros equipos utilizan enlaces cortos para trabajar de forma más efectiva.",
+			"learnMore": "Más información"
+		},
+		"crossProducts": {
+			"title": "Explore Más Herramientas",
+			"qrCodes": {
+				"title": "Generador de Códigos QR",
+				"description": "Combine enlaces cortos con códigos QR para campañas impresas. Monitorice escaneos y clics desde un único panel de control."
+			},
+			"analytics": {
+				"title": "Panel de Analíticas",
+				"description": "Profundice en el rendimiento de los enlaces con analíticas detalladas de clics, datos de referencia e información geográfica."
+			}
+		},
+		"faq": {
+			"title": "Preguntas Frecuentes",
+			"q1": "¿Cómo mejoran los enlaces de marca las tasas de clics?",
+			"a1": "Los enlaces de marca muestran tu dominio en lugar de un acortador genérico. Esto genera confianza — los destinatarios reconocen al remitente, lo que lleva a tasas de clics significativamente más altas.",
+			"q2": "¿Puedo rastrear clics de diferentes campañas por separado?",
+			"a2": "Sí. Crea un enlace corto único para cada campaña o canal. Usa etiquetas para organizarlos y filtra tu panel para comparar el rendimiento lado a lado.",
+			"q3": "¿Cómo configuro un dominio personalizado para mi equipo?",
+			"a3": "Ve a Configuración → Dominios Personalizados, añade tu dominio y configura los registros DNS que se muestran. El SSL se provisiona automáticamente. Todos los enlaces nuevos usarán tu dominio.",
+			"q4": "¿Puedo cambiar el destino de un enlace después de compartirlo?",
+			"a4": "Sí. Edita la URL de destino en cualquier momento desde tu panel. El enlace corto permanece igual — los destinatarios que ya lo tienen serán redirigidos a la página actualizada.",
+			"viewAll": "Ver todas las FAQs"
+		},
+		"cta": {
+			"title": "Potencia tus Enlaces de Marketing",
+			"subtitle": "Enlaces cortos de marca con seguimiento de clics y organización de campañas. Gratis para comenzar.",
+			"ctaLabel": "Comienza Gratis"
+		},
+		"steps": {
+			"title": "Cómo Configurar Enlaces de Campaña",
+			"subtitle": "Desde acortar tu primera URL hasta comparar el rendimiento por canal — en minutos.",
+			"step1": {
+				"title": "Pega la URL de Tu Campaña",
+				"description": "Copia la URL larga de tu landing page, formulario o listing de app store y pégala en el acortador."
+			},
+			"step2": {
+				"title": "Personaliza el Enlace Corto",
+				"description": "Edita el slug para reconocimiento de marca (p. ej., /oferta-primavera-email). Usa tu dominio personalizado para un branding consistente."
+			},
+			"step3": {
+				"title": "Añade Etiquetas para el Seguimiento",
+				"description": "Etiqueta el enlace por campaña, canal o equipo. Las etiquetas te permiten filtrar y comparar el rendimiento después."
+			},
+			"step4": {
+				"title": "Comparte en Todos los Canales",
+				"description": "Coloca el enlace de marca en campañas de email, publicaciones sociales, anuncios pagados o comunicaciones de partners."
+			},
+			"step5": {
+				"title": "Monitorea y Optimiza",
+				"description": "Revisa los datos de clics en tiempo real en tu panel. Compara canales para ver dónde tu presupuesto rinde mejor."
+			}
+		},
+		"tips": {
+			"title": "Mejores Prácticas para Enlaces de Marketing",
+			"tip1": {
+				"title": "Un Enlace por Canal",
+				"description": "Crea un enlace corto único para cada canal (email, Instagram, anuncios) para aislar el rendimiento y atribuir clics con precisión."
+			},
+			"tip2": {
+				"title": "Usa Slugs Descriptivos",
+				"description": "Nombra los enlaces de forma significativa — 'oferta-primavera-email' te dice más que 'enlace1.' Tu equipo te lo agradecerá durante los informes."
+			},
+			"tip3": {
+				"title": "Configura el Dominio Personalizado Primero",
+				"description": "Configura tu dominio de marca antes de crear enlaces de campaña. Un branding consistente desde el día uno genera confianza y CTR."
+			},
+			"tip4": {
+				"title": "Revisa los Datos Semanalmente",
+				"description": "Revisa los datos de clics cada semana para reasignar presupuesto de canales con bajo rendimiento a los que mejor funcionan."
+			}
+		},
+		"stats": {
+			"stat1Value": "34%",
+			"stat1Label": "mayor CTR con enlaces de marca",
+			"stat2Value": "3×",
+			"stat2Label": "configuración de campaña más rápida",
+			"stat3Value": "87%",
+			"stat3Label": "de los marketers usan seguimiento de enlaces",
+			"stat4Value": "< 50 ms",
+			"stat4Label": "velocidad de redirección"
+		}
+	},
+	"urlShortenerSocialMedia": {
+		"metaTitle": "Acortador de URL para Redes Sociales – Enlaces Limpios y Seguimiento de Clics | QRcodly",
+		"metaDescription": "Cree enlaces cortos y limpios para publicaciones en redes sociales. Monitorice clics y vea qué contenido genera más interacción.",
+		"hero": {
+			"title": "Enlaces Cortos Diseñados para Redes Sociales",
+			"subtitle": "Enlaces limpios y personalizados que lucen genial en publicaciones y stories. Monitorice clics para ver qué contenido conecta.",
+			"ctaLabel": "Acorte su Primer Enlace"
+		},
+		"features": {
+			"feature1": {
+				"title": "Enlaces Limpios para Cada Publicación",
+				"description": "Reemplace URLs largas y antiestéticas por enlaces cortos y personalizados. Lucen mejor en publicaciones, biografías y stories — y son más fáciles de compartir.",
+				"bullet1": "Los enlaces cortos lucen más limpios en publicaciones sociales",
+				"bullet2": "Los dominios personalizados generan confianza entre seguidores",
+				"bullet3": "Funciona en todas las plataformas sociales"
+			},
+			"feature2": {
+				"title": "Monitorice la Interacción Social",
+				"description": "Vea cuántos clics recibe cada enlace. Compare el rendimiento entre plataformas y publicaciones para entender qué le importa a su audiencia.",
+				"bullet1": "Seguimiento de clics en tiempo real para cada enlace",
+				"bullet2": "Vea qué plataformas generan más tráfico",
+				"bullet3": "Comprenda a su audiencia con datos de dispositivos"
+			},
+			"feature3": {
+				"title": "Enlaces Dinámicos que Puede Actualizar",
+				"description": "Cambie a dónde apunta su enlace — incluso después de publicar. Redirija a sus seguidores a nuevo contenido sin editar su publicación.",
+				"bullet1": "Actualice URLs de destino después de publicar",
+				"bullet2": "Redirija campañas estacionales o con tiempo limitado",
+				"bullet3": "Corrija enlaces rotos sin volver a publicar"
+			}
+		},
+		"relatedUseCases": {
+			"title": "Acortador de URL para Otros Equipos",
+			"subtitle": "Descubra cómo otros equipos utilizan enlaces cortos para mejorar su flujo de trabajo.",
+			"learnMore": "Más información"
+		},
+		"crossProducts": {
+			"title": "Explore Más Herramientas",
+			"qrCodes": {
+				"title": "Generador de Códigos QR",
+				"description": "Cree códigos QR para sus perfiles sociales o landing pages de campañas. Ideal para promoción cruzada entre impreso y digital."
+			},
+			"analytics": {
+				"title": "Panel de Analíticas",
+				"description": "Obtenga analíticas detalladas de clics para todos sus enlaces sociales. Vea datos de referencia, ubicaciones y desgloses de dispositivos."
+			}
+		},
+		"faq": {
+			"title": "Preguntas Frecuentes",
+			"q1": "¿Los enlaces cortos funcionan en biografías e historias de Instagram?",
+			"a1": "Sí. Los enlaces cortos funcionan en todas partes — biografías, historias, pies de foto y comentarios. Son especialmente útiles en biografías donde el espacio de caracteres es limitado.",
+			"q2": "¿Puedo ver qué plataforma genera más clics?",
+			"a2": "Crea un enlace corto único para cada plataforma (uno para Instagram, uno para Twitter/X, uno para LinkedIn). Compara los conteos de clics en tu panel para encontrar la que mejor funciona.",
+			"q3": "¿Los enlaces cortos se marcarán como spam en las plataformas sociales?",
+			"a3": "No. Los enlaces de QRcodly usan redirecciones limpias y no están en ninguna lista de bloqueo. Usar tu propio dominio personalizado elimina aún más cualquier preocupación de spam.",
+			"q4": "¿Puedo cambiar a dónde va un enlace después de publicar?",
+			"a4": "Sí. Actualiza la URL de destino en cualquier momento sin editar tu publicación. Los seguidores que hagan clic en el mismo enlace serán redirigidos al nuevo contenido.",
+			"viewAll": "Ver todas las FAQs"
+		},
+		"cta": {
+			"title": "Mejora tus Enlaces Sociales",
+			"subtitle": "Enlaces cortos y de marca con seguimiento de clics para todo tu contenido social. Comienza gratis.",
+			"ctaLabel": "Comienza Gratis"
+		},
+		"steps": {
+			"title": "Cómo Crear Enlaces para Redes Sociales",
+			"subtitle": "Enlaces limpios y rastreables para cada publicación y biografía — listos en segundos.",
+			"step1": {
+				"title": "Pega Tu URL Larga",
+				"description": "Copia la URL que quieres compartir — artículo de blog, página de producto o landing page — y pégala en el acortador."
+			},
+			"step2": {
+				"title": "Personaliza el Slug",
+				"description": "Edita el slug del enlace corto para una URL limpia y memorable que luzca genial en biografías y pies de foto."
+			},
+			"step3": {
+				"title": "Copia y Publica",
+				"description": "Copia el enlace corto y añádelo a tu publicación social, historia, biografía o comentario. Funciona en todas las plataformas."
+			},
+			"step4": {
+				"title": "Monitorea los Clics por Publicación",
+				"description": "Revisa tu panel para ver qué publicaciones generan más clics. Compara el rendimiento entre plataformas."
+			}
+		}
+	},
+	"urlShortenerSales": {
+		"metaTitle": "Acortador de URL para Equipos de Ventas – Enlaces Rastreables para Prospección | QRcodly",
+		"metaDescription": "Cree enlaces cortos rastreables para la prospección comercial. Vea cuándo los prospectos hacen clic y mida la interacción en todas las campañas.",
+		"hero": {
+			"title": "Enlaces Cortos Diseñados para Equipos de Ventas",
+			"subtitle": "Envíe enlaces rastreables en emails y propuestas de prospección. Sepa cuándo los prospectos interactúan con su contenido.",
+			"ctaLabel": "Acorte su Primer Enlace"
+		},
+		"features": {
+			"feature1": {
+				"title": "Enlaces Rastreables para Prospección",
+				"description": "Añada enlaces cortos a emails, propuestas y presentaciones. Monitorice cada clic para ver qué prospectos están interactuando.",
+				"bullet1": "Vea el recuento de clics para cada enlace que comparte",
+				"bullet2": "Monitorice los horarios y la frecuencia de interacción",
+				"bullet3": "Use dominios personalizados para una apariencia profesional"
+			},
+			"feature2": {
+				"title": "Los Enlaces Personalizados Generan Credibilidad",
+				"description": "Use el dominio de su empresa para los enlaces cortos. Los prospectos confían más en URLs personalizadas que en acortadores genéricos.",
+				"bullet1": "Conecte su dominio personalizado",
+				"bullet2": "Apariencia profesional en emails y propuestas",
+				"bullet3": "Branding consistente en todos los puntos de contacto"
+			},
+			"feature3": {
+				"title": "Mida el Rendimiento de la Prospección",
+				"description": "Compare tasas de clics entre campañas y canales. Comprenda qué mensajes y contenido generan más interacción.",
+				"bullet1": "Compare clics entre campañas y canales",
+				"bullet2": "Vea desgloses geográficos y por dispositivo",
+				"bullet3": "Identifique qué contenido conecta con los prospectos"
+			}
+		},
+		"relatedUseCases": {
+			"title": "Acortador de URL para Otros Equipos",
+			"subtitle": "Vea cómo otros equipos utilizan enlaces cortos para mejorar sus resultados.",
+			"learnMore": "Más información"
+		},
+		"crossProducts": {
+			"title": "Explore Más Herramientas",
+			"qrCodes": {
+				"title": "Generador de Códigos QR",
+				"description": "Añada códigos QR a propuestas impresas, catálogos y materiales de presentación. Monitorice escaneos junto con los clics en enlaces."
+			},
+			"analytics": {
+				"title": "Panel de Analíticas",
+				"description": "Analíticas detalladas de clics para cada enlace. Vea cuándo hacen clic los prospectos, desde dónde y en qué dispositivo."
+			}
+		},
+		"faq": {
+			"title": "Preguntas Frecuentes",
+			"q1": "¿Puedo saber cuándo un prospecto específico hace clic en mi enlace?",
+			"a1": "Las marcas de tiempo de clics y la información del dispositivo se rastrean por enlace. Si envías un enlace corto único a cada prospecto, verás exactamente cuándo interactúan con tu contenido.",
+			"q2": "¿Cómo ayudan los enlaces de marca en la prospección comercial?",
+			"a2": "Los enlaces de acortadores genéricos lucen sospechosos en emails profesionales. Un enlace en el dominio de tu empresa (p. ej., go.tuempresa.com/propuesta) genera confianza y obtiene significativamente más clics.",
+			"q3": "¿Puedo rastrear la interacción de todo mi equipo de ventas?",
+			"a3": "Sí. Todos los enlaces creados en tu cuenta son visibles en un solo panel. Usa etiquetas (p. ej., nombre del representante, etapa del negocio) para filtrar y comparar el rendimiento del equipo.",
+			"q4": "¿Qué pasa si necesito actualizar una propuesta compartida?",
+			"a4": "Cambia la URL de destino en tu panel. El enlace corto ya enviado al prospecto permanece igual — verán la propuesta actualizada cuando hagan clic.",
+			"viewAll": "Ver todas las FAQs"
+		},
+		"cta": {
+			"title": "Monitorea Cada Clic en tu Prospección",
+			"subtitle": "Enlaces cortos de marca con seguimiento de clics en tiempo real. Sabe cuándo los prospectos interactúan. Comienza gratis.",
+			"ctaLabel": "Comienza Gratis"
+		},
+		"steps": {
+			"title": "Cómo Usar Enlaces Rastreables en la Prospección",
+			"subtitle": "Sabe exactamente cuándo los prospectos interactúan con tu contenido.",
+			"step1": {
+				"title": "Crea un Enlace para Tu Contenido",
+				"description": "Acorta la URL de tu propuesta, caso de estudio, página de precios o formulario de reserva de demo."
+			},
+			"step2": {
+				"title": "Usa el Dominio de Tu Empresa",
+				"description": "Configura tu dominio personalizado para que los enlaces luzcan profesionales — p. ej., go.tuempresa.com/propuesta."
+			},
+			"step3": {
+				"title": "Añade a Emails y Mensajes",
+				"description": "Coloca el enlace corto de marca en tu email de prospección, mensaje de LinkedIn o presentación."
+			},
+			"step4": {
+				"title": "Monitorea la Interacción de Prospectos",
+				"description": "Revisa tu panel para ver las marcas de tiempo de clics y datos de dispositivo. Mira exactamente cuándo un prospecto abre tu enlace."
+			}
+		}
+	},
+	"urlShortenerEcommerce": {
+		"metaTitle": "Acortador de URL para E-Commerce – Enlaces de Productos y Seguimiento por Canal | QRcodly",
+		"metaDescription": "Cree enlaces cortos para páginas de productos, monitorice clics en todos los canales de venta y gestione URLs de campañas estacionales con facilidad.",
+		"hero": {
+			"title": "Enlaces Cortos Diseñados para E-Commerce",
+			"subtitle": "Enlaces de productos limpios para cada canal. Monitorice clics, gestione campañas y mantenga sus URLs organizadas.",
+			"ctaLabel": "Acorte su Primer Enlace"
+		},
+		"features": {
+			"feature1": {
+				"title": "Enlaces Cortos para Páginas de Productos",
+				"description": "Convierta URLs largas de productos en enlaces limpios y compartibles. Perfectos para publicaciones sociales, campañas de email y anuncios.",
+				"bullet1": "URLs limpias para páginas de productos y colecciones",
+				"bullet2": "Fácil de compartir en todos los canales de venta",
+				"bullet3": "Dominio personalizado para una apariencia profesional"
+			},
+			"feature2": {
+				"title": "Monitorice Clics en Todos los Canales",
+				"description": "Vea qué canales generan más tráfico a sus productos. Compare el rendimiento de clics entre email, redes sociales, anuncios y más.",
+				"bullet1": "Enlaces separados por canal para una atribución clara",
+				"bullet2": "Seguimiento e informes de clics en tiempo real",
+				"bullet3": "Desgloses geográficos y por dispositivo"
+			}
+		},
+		"relatedUseCases": {
+			"title": "Acortador de URL para Otros Equipos",
+			"subtitle": "Descubra cómo otros equipos aprovechan los enlaces cortos para obtener mejores resultados.",
+			"learnMore": "Más información"
+		},
+		"crossProducts": {
+			"title": "Explore Más Herramientas",
+			"qrCodes": {
+				"title": "Generador de Códigos QR",
+				"description": "Añada códigos QR al empaquetado de productos, insertos y materiales impresos. Vincule a los clientes con páginas de productos, reseñas o soporte."
+			},
+			"analytics": {
+				"title": "Panel de Analíticas",
+				"description": "Analíticas detalladas para cada enlace de producto. Comprenda qué productos reciben más clics y desde qué canales."
+			}
+		},
+		"faq": {
+			"title": "Preguntas Frecuentes",
+			"q1": "¿Puedo rastrear qué canal genera más clics en productos?",
+			"a1": "Sí. Crea enlaces cortos separados para cada canal (email, Instagram, anuncios). Compara los conteos de clics en tu panel para identificar tu fuente de tráfico con mejor rendimiento.",
+			"q2": "¿Cómo manejo los enlaces de productos estacionales?",
+			"a2": "Usa enlaces cortos y actualiza el destino cuando cambie la temporada. Tu enlace de Black Friday puede redirigir a una página de Rebajas de Primavera después — misma URL, contenido fresco.",
+			"q3": "¿Puedo acortar enlaces de Shopify, WooCommerce o Amazon?",
+			"a3": "Sí. El acortador de URLs funciona con cualquier URL. Pega tu enlace de producto de cualquier plataforma y crea un enlace corto de marca al instante.",
+			"q4": "¿Los enlaces cortos afectan el SEO de mi tienda?",
+			"a4": "No. Los enlaces cortos usan redirecciones 301, que transmiten el valor SEO completo a la página de destino. Tu posicionamiento en buscadores no se ve afectado.",
+			"viewAll": "Ver todas las FAQs"
+		},
+		"cta": {
+			"title": "Simplifica tus Enlaces de E-Commerce",
+			"subtitle": "Enlaces cortos, limpios y rastreables para cada producto y campaña. Gratis para comenzar.",
+			"ctaLabel": "Comienza Gratis"
+		},
+		"steps": {
+			"title": "Cómo Acortar Enlaces de Productos",
+			"subtitle": "Enlaces limpios y rastreables para cada producto y campaña — configurados en minutos.",
+			"step1": {
+				"title": "Copia la URL de Tu Producto",
+				"description": "Toma la URL larga de la página de producto de tu Shopify, WooCommerce, Amazon o cualquier otra tienda."
+			},
+			"step2": {
+				"title": "Crea un Enlace Corto de Marca",
+				"description": "Acorta la URL y personaliza el slug para legibilidad (p. ej., /vestido-verano o /black-friday)."
+			},
+			"step3": {
+				"title": "Etiqueta y Organiza",
+				"description": "Añade etiquetas por categoría, temporada o campaña. Las etiquetas facilitan filtrar y gestionar cientos de enlaces de productos."
+			},
+			"step4": {
+				"title": "Comparte en Todos los Canales",
+				"description": "Usa el enlace corto en campañas de email, publicaciones sociales, anuncios pagados y colaboraciones con influencers."
+			},
+			"step5": {
+				"title": "Optimiza por Canal",
+				"description": "Compara las tasas de clics por canal. Redirige el gasto publicitario a donde tus enlaces rinden mejor."
+			}
+		},
+		"tips": {
+			"title": "Mejores Prácticas para Enlaces de E-Commerce",
+			"tip1": {
+				"title": "Usa Slugs Descriptivos",
+				"description": "Slugs memorables como /black-friday o /rebajas-verano son más fáciles de reconocer y generan más confianza que caracteres aleatorios."
+			},
+			"tip2": {
+				"title": "Un Enlace por Producto por Canal",
+				"description": "Crea enlaces separados para Instagram, email y anuncios. Esto te da datos precisos de atribución por canal."
+			},
+			"tip3": {
+				"title": "Etiqueta por Temporada o Colección",
+				"description": "Organiza los enlaces con etiquetas como 'Q4-navidad' o 'primavera-2026.' Encuentra y gestiona enlaces de campaña rápidamente después."
+			},
+			"tip4": {
+				"title": "Redirige Promociones Expiradas",
+				"description": "Cuando una promoción termine, redirige el enlace corto a tu página principal o a un producto relacionado — nunca lo dejes apuntando a un 404."
+			}
+		},
+		"stats": {
+			"stat1Value": "28%",
+			"stat1Label": "mayor CTR vs. URLs sin acortar",
+			"stat2Value": "2×",
+			"stat2Label": "más compartidos en redes sociales",
+			"stat3Value": "45%",
+			"stat3Label": "de los clics vienen de móvil",
+			"stat4Value": "99.9%",
+			"stat4Label": "garantía de disponibilidad"
+		}
+	},
+	"urlShortenerDevelopers": {
+		"metaTitle": "API de Acortador de URL para Desarrolladores – REST API y Dominios Personalizados | QRcodly",
+		"metaDescription": "Integre el acortamiento de URLs en sus aplicaciones con nuestra REST API. Cree, gestione y monitorice enlaces cortos de forma programática.",
+		"hero": {
+			"title": "API de Acortador de URL para Desarrolladores",
+			"subtitle": "Integre la creación de enlaces cortos en sus aplicaciones y flujos de trabajo con nuestra REST API. Documentación completa incluida.",
+			"ctaLabel": "Ver Documentación de la API"
+		},
+		"features": {
+			"feature1": {
+				"title": "REST API Sencilla",
+				"description": "Cree, actualice y gestione enlaces cortos de forma programática. Nuestra REST API es directa con documentación clara y ejemplos de código.",
+				"bullet1": "Endpoints RESTful para operaciones CRUD",
+				"bullet2": "Formato de solicitud y respuesta en JSON",
+				"bullet3": "Documentación completa de la API"
+			},
+			"feature2": {
+				"title": "Autenticación por API Key",
+				"description": "Autentíquese con API keys para la integración servidor a servidor. Genere y gestione claves desde su panel de control.",
+				"bullet1": "Genere API keys desde su panel de control",
+				"bullet2": "Autenticación segura de servidor a servidor",
+				"bullet3": "Limitación de tasa integrada para un uso justo"
+			},
+			"feature3": {
+				"title": "Integración con Dominio Personalizado",
+				"description": "Use su propio dominio para los enlaces cortos creados mediante la API. Dominio personalizado para una experiencia de usuario integrada.",
+				"bullet1": "Todos los enlaces creados por API usan su dominio personalizado",
+				"bullet2": "Configure dominios a través del panel de control o la API",
+				"bullet3": "Guías de configuración DNS incluidas en la documentación"
+			}
+		},
+		"relatedUseCases": {
+			"title": "Acortador de URL para Otros Equipos",
+			"subtitle": "Vea cómo equipos no técnicos utilizan enlaces cortos en su trabajo.",
+			"learnMore": "Más información"
+		},
+		"crossProducts": {
+			"title": "Explore Más Herramientas",
+			"qrCodes": {
+				"title": "Generador de Códigos QR",
+				"description": "Genere códigos QR a través de la API también. Cree códigos QR dinámicos de forma programática para aplicaciones, entradas o empaquetado."
+			},
+			"analytics": {
+				"title": "Panel de Analíticas",
+				"description": "Acceda a analíticas de clics para enlaces creados por API. Consulte datos de rendimiento en el panel de control o recupérelos a través de la API."
+			}
+		},
+		"faq": {
+			"title": "Preguntas Frecuentes",
+			"q1": "¿Qué método de autenticación usa la API?",
+			"a1": "Autenticación por token Bearer. Genera una API key desde tu panel e inclúyela en el encabezado Authorization: Authorization: Bearer TU_API_KEY.",
+			"q2": "¿Puedo definir un slug personalizado a través de la API?",
+			"a2": "Sí. Incluye un campo customSlug en el cuerpo de la solicitud. Si se omite, se genera automáticamente un código corto aleatorio.",
+			"q3": "¿Hay un límite de tasa en las solicitudes de la API?",
+			"a3": "Sí. Los límites de tasa dependen de tu plan. Las cuentas gratuitas tienen límites más estrictos; las cuentas Pro obtienen mayor capacidad. Consulta los encabezados de respuesta para ver tu uso actual.",
+			"q4": "¿Puedo obtener analíticas de clics a través de la API?",
+			"a4": "Sí. Los endpoints de analíticas devuelven conteos de clics, marcas de tiempo, datos de dispositivo e información geográfica para cada enlace corto de forma programática.",
+			"viewAll": "Ver todas las FAQs"
+		},
+		"cta": {
+			"title": "Comienza a Construir con Nuestra API",
+			"subtitle": "REST API para enlaces cortos con documentación completa. Integra el acortamiento de URLs en tus aplicaciones hoy.",
+			"ctaLabel": "Ver Documentación de la API"
+		},
+		"steps": {
+			"title": "Cómo Integrar la API del Acortador de URL",
+			"subtitle": "Desde la API key hasta tu primer enlace corto — en cuatro pasos.",
+			"step1": {
+				"title": "Genera una API Key",
+				"description": "Ve a la configuración de tu panel y crea una API key. Este es tu token Bearer para todas las solicitudes de la API."
+			},
+			"step2": {
+				"title": "Envía una Solicitud POST",
+				"description": "Llama al endpoint /api/v1/short-url con tu URL larga y un slug personalizado opcional en el cuerpo JSON."
+			},
+			"step3": {
+				"title": "Recibe el Enlace Corto",
+				"description": "La API devuelve una respuesta JSON con la URL corta, la marca de tiempo de creación y el ID del enlace para referencia futura."
+			},
+			"step4": {
+				"title": "Consulta las Analíticas de Clics",
+				"description": "Usa los endpoints de analíticas para obtener conteos de clics, marcas de tiempo, datos de dispositivo e información geográfica por enlace."
+			}
+		}
+	},
+	"urlShortenerAgencies": {
+		"metaTitle": "Acortador de URL para Agencias – Dominios de Clientes, Enlaces Personalizados y Analíticas | QRcodly",
+		"metaDescription": "Gestione enlaces cortos para múltiples clientes con dominios personalizados, URLs personalizadas y analíticas por enlace. Diseñado para agencias.",
+		"hero": {
+			"title": "Enlaces Cortos Diseñados para Agencias",
+			"subtitle": "Gestione enlaces personalizados para todos sus clientes. Use dominios personalizados, monitorice el rendimiento y entregue resultados.",
+			"ctaLabel": "Acorte su Primer Enlace"
+		},
+		"features": {
+			"feature1": {
+				"title": "Dominios Personalizados para Cada Cliente",
+				"description": "Conecte múltiples dominios personalizados — uno para cada cliente. Cada enlace corto lleva la marca del cliente.",
+				"bullet1": "Conecte dominios personalizados por cliente",
+				"bullet2": "URLs cortas personalizadas para una entrega profesional",
+				"bullet3": "Configuración DNS sencilla con instrucciones guiadas"
+			},
+			"feature2": {
+				"title": "Analíticas por Enlace",
+				"description": "Monitorice el rendimiento de clics para cada enlace. Revise los datos de analíticas con los clientes y demuestre los resultados de las campañas.",
+				"bullet1": "Seguimiento de clics para cada enlace creado",
+				"bullet2": "Analíticas por enlace para revisar con los clientes",
+				"bullet3": "Desgloses geográficos y por dispositivo"
+			},
+			"feature3": {
+				"title": "Gestión de Enlaces Organizada",
+				"description": "Etiquete y organice enlaces por cliente, campaña o canal. Busque y filtre para encontrar cualquier enlace al instante.",
+				"bullet1": "Etiquete enlaces por cliente o proyecto",
+				"bullet2": "Busque y filtre entre todos los enlaces",
+				"bullet3": "Mantenga el trabajo de cada cliente separado y organizado"
+			}
+		},
+		"relatedUseCases": {
+			"title": "Acortador de URL para Otros Equipos",
+			"subtitle": "Vea cómo otros equipos utilizan enlaces cortos para alcanzar sus objetivos.",
+			"learnMore": "Más información"
+		},
+		"crossProducts": {
+			"title": "Explore Más Herramientas",
+			"qrCodes": {
+				"title": "Generador de Códigos QR",
+				"description": "Cree códigos QR personalizados para las campañas de sus clientes. Combínelos con enlaces cortos para un seguimiento completo de offline a online."
+			},
+			"analytics": {
+				"title": "Panel de Analíticas",
+				"description": "Analíticas completas de clics para todos los enlaces de clientes. Filtre por cliente, campaña o período de tiempo."
+			}
+		},
+		"faq": {
+			"title": "Preguntas Frecuentes",
+			"q1": "¿Puedo conectar un dominio diferente para cada cliente?",
+			"a1": "Sí. Añade múltiples dominios personalizados en tu configuración. Al crear un enlace, selecciona qué dominio usar. Cada cliente obtiene sus propias URLs cortas de marca.",
+			"q2": "¿Cómo mantengo organizados los enlaces de los clientes?",
+			"a2": "Usa etiquetas para identificar cada enlace por cliente, proyecto y campaña. Filtra el panel para ver solo los enlaces de un cliente a la vez para una gestión enfocada.",
+			"q3": "¿Puedo compartir datos de clics con los clientes?",
+			"a3": "Sí. Exporta las analíticas de enlaces o comparte capturas de pantalla del panel. Cada enlace muestra conteos de clics, datos geográficos y desgloses de dispositivos.",
+			"q4": "¿Hay un límite en cuántos dominios personalizados puedo añadir?",
+			"a4": "Las cuentas Pro soportan múltiples dominios personalizados. El límite exacto depende de tu nivel de plan — consulta la página de precios para más detalles.",
+			"viewAll": "Ver todas las FAQs"
+		},
+		"cta": {
+			"title": "Escala la Gestión de Enlaces de tu Agencia",
+			"subtitle": "Dominios personalizados, enlaces de marca y analíticas para cada cliente. Gratis para comenzar.",
+			"ctaLabel": "Comienza Gratis"
+		},
+		"steps": {
+			"title": "Cómo Gestionar Enlaces de Clientes a Escala",
+			"subtitle": "Dominios personalizados, paneles organizados y analíticas compartibles para cada cliente.",
+			"step1": {
+				"title": "Conecta los Dominios de los Clientes",
+				"description": "Añade el dominio personalizado de cada cliente en la configuración del panel. Sigue la guía de configuración DNS para una configuración rápida."
+			},
+			"step2": {
+				"title": "Crea Enlaces Cortos de Marca",
+				"description": "Al crear un enlace, selecciona el dominio del cliente. La URL corta lleva automáticamente su marca."
+			},
+			"step3": {
+				"title": "Etiqueta por Cliente y Campaña",
+				"description": "Añade etiquetas como el nombre del cliente y el título de la campaña. Esto te permite filtrar el panel a los enlaces de un solo cliente al instante."
+			},
+			"step4": {
+				"title": "Comparte Informes de Rendimiento",
+				"description": "Exporta las analíticas de clics por cliente. Revisa los datos de rendimiento juntos y úsalos para planificar la próxima campaña."
+			}
+		}
+	},
+	"helpSupport": {
+		"fabLabel": "Ayuda y Soporte",
+		"title": "¿Necesitas ayuda?",
+		"description": "Estamos aquí para ayudarte a sacar el máximo partido de QRcodly.",
+		"faq": {
+			"title": "FAQ",
+			"subtitle": "Consulta las preguntas frecuentes"
+		},
+		"docs": {
+			"title": "Documentación",
+			"subtitle": "Guías, referencia de API y más"
+		},
+		"email": {
+			"title": "Soporte por correo",
+			"subtitle": "Ponte en contacto con nuestro equipo"
+		}
+	}
+}

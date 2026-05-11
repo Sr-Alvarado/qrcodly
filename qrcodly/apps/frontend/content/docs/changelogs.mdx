@@ -1,0 +1,538 @@
+---
+title: Changelogs
+description: See what's new in QRcodly
+---
+
+Welcome to the **QRcodly Changelog**! 📦  
+Here you can see all recent updates, new features, improvements, and fixes — explained in a simple way.
+
+<Callout type="info">Stay up-to-date with the latest features and improvements in QRcodly.</Callout>
+
+## Latest Release: 1.10.0 - 2026-03-12
+
+<Card
+  title="v1.10.0 Latest"
+  description={
+    <div>
+      <p>🚀 <strong>Release Notes – Version 1.10.0</strong></p>
+      <h4>✨ New Features</h4>
+      <ul className="list-disc ml-5 space-y-1">
+        <li><strong>Short URL Management:</strong> Full standalone short URL experience — create, edit, delete, and view short URLs with a dedicated dashboard, detail pages with analytics, paginated searchable lists, and a hero form for quick creation.</li>
+        <li><strong>Short URL Tagging:</strong> Full tagging system for short URLs — assign, remove, and filter by tags, with tag management integrated into the list and detail views.</li>
+        <li><strong>Product Pages:</strong> Dedicated product pages for URL Shortener, QR Codes, and Analytics with hero sections, feature details, mockups, FAQs, and CTAs.</li>
+        <li><strong>Products Navigation Dropdown:</strong> New products dropdown menu in the header for easy access to all product pages.</li>
+        <li><strong>URL Validation:</strong> HTTP URL validation for QR code and short URL creation, ensuring only valid URLs are accepted.</li>
+      </ul>
+
+      <h4>🎨 UI & UX Improvements</h4>
+      <ul className="list-disc ml-5 space-y-1">
+        <li><strong>Dashboard Polish:</strong> Reordered sidebar navigation, improved short URL list with search, sort, and tag filtering.</li>
+        <li><strong>Product Showcase:</strong> CrossProductCards and ProductUseCases components for cross-linking between product pages.</li>
+        <li><strong>Stats Bar:</strong> New stats bar on the home page showcasing key product metrics.</li>
+        <li><strong>Footer & Header:</strong> Language dropdown opens upward, refined header navigation with products dropdown.</li>
+      </ul>
+
+      <h4>🛠 Technical Improvements</h4>
+      <ul className="list-disc ml-5 space-y-1">
+        <li><strong>Backend Architecture:</strong> Full module structure for short URL management — entities, repositories, use cases, controllers, and event handlers.</li>
+        <li><strong>Expanded Test Coverage:</strong> Comprehensive backend tests for short URL CRUD, tag flows, URL validation, and edge cases.</li>
+        <li><strong>PostHog & Sentry:</strong> Event tracking and error reporting for short URL operations.</li>
+      </ul>
+
+      <h4>🐛 Bug Fixes</h4>
+      <ul className="list-disc ml-5 space-y-1">
+        <li>Fixed delete error toast showing confirmation title instead of error message.</li>
+        <li>Fixed toggle mutation refetching wrong query key.</li>
+        <li>Fixed stale detail page after short URL edit.</li>
+        <li>Fixed tag update toast showing wrong label for short URL tags.</li>
+        <li>Fixed page clamping when result set shrinks after deletion.</li>
+      </ul>
+
+      <h4>🌍 Translations</h4>
+      <ul className="list-disc ml-5 space-y-1">
+        <li>Updated translations across all supported languages (English, German, Spanish, French, Italian, Dutch, Polish, Russian).</li>
+        <li>Added new translation keys for short URL management, product pages, tagging, and dashboard features.</li>
+      </ul>
+    </div>
+
+}
+/>
+
+## Previous Releases
+
+<Cards>
+  <Card
+    title="v1.9.0 - 2026-03-04"
+    description={
+      <div>
+        <p>🚀 <strong>Release Notes – Version 1.9.0</strong></p>
+        <h4>✨ New Features</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li><strong>Analytics Integrations (Pro):</strong> Connect Google Analytics 4 or Matomo to receive QR code scan events directly in your own analytics dashboard. Configure your tracking credentials, test the connection, and enable or disable providers — all from the new Integrations settings page. Credentials are stored encrypted for security.</li>
+          <li><strong>Browser Extension Overhaul:</strong> Completely redesigned browser extension with built-in authentication, the full QR code generator, and a polished new look.</li>
+          <li><strong>Smart Tips:</strong> Contextual tips that help you discover features as you use the dashboard.</li>
+          <li><strong>Create Template Dialog:</strong> Save your current QR code design as a reusable template with one click.</li>
+          <li><strong>Client-Side CSV Validation:</strong> Bulk import now checks your CSV file before uploading, with a detailed error view to fix issues quickly.</li>
+          <li><strong>Analytics Integrations Guide:</strong> New documentation guide with setup instructions and troubleshooting tips for GA4 and Matomo.</li>
+        </ul>
+
+        <h4>💳 Billing & Subscription</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li><strong>Stripe Billing:</strong> Subscription management is now powered by Stripe for a more reliable and flexible experience.</li>
+          <li><strong>Improved Subscription Emails:</strong> Better email notifications for subscription events like welcome, renewal, and cancellation.</li>
+          <li><strong>Pro Feature Enforcement:</strong> Pro-only features (Custom Domains, Analytics Integrations) are automatically disabled when a subscription expires and re-enabled when reactivated.</li>
+          <li><strong>Unlimited Tags on Pro:</strong> Pro plan users can now create unlimited tags.</li>
+        </ul>
+
+        <h4>🎨 UI & UX Improvements</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li><strong>Updated Pricing Page:</strong> Refreshed layout with clearer plan comparisons.</li>
+          <li><strong>New Logo & Branding:</strong> New QRcodly logo across the app, updated favicons, and logo in email templates.</li>
+          <li><strong>Dashboard Polish:</strong> Improved sidebar, header buttons, and QR code list actions.</li>
+          <li><strong>Team Workspaces Preview:</strong> Sneak peek at the upcoming Team Workspaces feature on the features page.</li>
+        </ul>
+
+        <h4>🛠 Technical Improvements</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li><strong>Backend & Frontend Refactoring:</strong> Cleaner code structure with extracted components and improved patterns.</li>
+          <li><strong>Short URL Soft-Delete:</strong> Deleted short URLs are now soft-deleted for safer data management.</li>
+          <li><strong>Performance:</strong> Added caching for scan counts and subscription plans for faster page loads.</li>
+          <li><strong>SEO:</strong> Fixed canonical URLs, added API robots.txt, and improved navigation.</li>
+        </ul>
+
+        <h4>🔐 Security</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li><strong>SSRF Hardening:</strong> Strengthened protections against server-side request forgery, including HTTPS enforcement and private IP range blocking.</li>
+          <li><strong>IPv6 Anonymization:</strong> Improved IP address anonymization for better privacy compliance.</li>
+          <li><strong>Encrypted Credentials:</strong> Analytics integration credentials are encrypted at rest.</li>
+        </ul>
+
+        <h4>🌍 Translations</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Updated translations across all supported languages (English, German, Spanish, French, Italian, Dutch, Polish, Russian).</li>
+          <li>Added new translation keys for analytics integrations, billing, smart tips, and more.</li>
+        </ul>
+      </div>
+
+    }
+  />
+  <Card
+    title="v1.8.1 - 2026-02-19"
+    description={
+      <div>
+        <p>🚀 <strong>Release Notes – Version 1.8.1</strong></p>
+        <p>QRcodly gets a completely redesigned landing page! A new dedicated Features page, a product showcase section, and a refreshed layout make it easier than ever to discover everything QRcodly has to offer.</p>
+
+        <h4>✨ New Features</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li><strong>Dedicated Features Page:</strong> A new /features page with detailed spotlights on every major feature — from Dynamic QR Codes and Analytics to Tags, Templates, and Custom Domains.</li>
+          <li><strong>Feature Slider:</strong> A horizontal scrolling carousel on the landing page showcasing key features at a glance.</li>
+          <li><strong>Product Showcase:</strong> A new section with a dashboard preview, giving visitors a first look at the powerful management interface.</li>
+        </ul>
+
+        <h4>🎨 UI & UX Improvements</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li><strong>Redesigned Landing Page Layout:</strong> Full-width sections with better spacing and visual hierarchy for a more modern, polished feel.</li>
+          <li><strong>Redesigned Footer:</strong> Organized into clear sections (Product, Resources, Legal) with a tagline and social links.</li>
+          <li><strong>Updated CTA Section:</strong> Cleaner, more professional contact and feedback section.</li>
+          <li><strong>Improved Header Navigation:</strong> Added Features link, optimized responsive breakpoints for better mobile navigation.</li>
+          <li><strong>Updated OG Image:</strong> New Open Graph image for better social media previews.</li>
+        </ul>
+
+        <h4>🌍 Translations</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Updated translations across all supported languages (English, German, Spanish, French, Italian, Dutch, Polish, Russian).</li>
+          <li>Added new translation keys for the features page, product showcase, and redesigned footer.</li>
+        </ul>
+
+        <h4>🛠 Technical Improvements</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li><strong>Component Cleanup:</strong> Removed unused AnimatedIcon and old Features components.</li>
+          <li><strong>Responsive Icon Picker:</strong> Fixed responsive layout for the QR code icon picker.</li>
+        </ul>
+      </div>
+
+  }
+  />
+
+  <Card
+    title="v1.8.0 - 2026-02-14"
+    description={
+      <div>
+        <p>🚀 <strong>Release Notes – Version 1.8.0</strong></p>
+        <p>QRcodly gets a redesigned dashboard with powerful new organization tools! Manage your QR codes more efficiently with tags, advanced filtering, customizable views, and bulk export capabilities.</p>
+
+        <h4>✨ New Features</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li><strong>Tag Management System:</strong> Organize and categorize your QR codes with custom tags for easy discovery and grouping.</li>
+          <li><strong>QR Code Filtering by Tags & Content Type:</strong> Quickly find the QR codes you need by filtering based on assigned tags or content type.</li>
+          <li><strong>Customizable Table Column Visibility:</strong> Personalize your QR code list view by showing or hiding columns to focus on what matters most.</li>
+          <li><strong>Bulk Export:</strong> Export multiple QR codes at once with support for various format options.</li>
+        </ul>
+
+        <h4>🎨 UI & UX Improvements</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li><strong>Reorganized Dashboard Navigation:</strong> Improved routing structure and sidebar navigation for a cleaner, more intuitive dashboard experience.</li>
+          <li><strong>Enhanced Search & Filtering:</strong> More powerful search and filtering capabilities to manage large QR code collections with ease.</li>
+          <li><strong>Improved Layouts & Accessibility:</strong> Refined UI layouts and accessibility enhancements across all dashboard pages.</li>
+        </ul>
+
+        <h4>🛠 Technical Improvements</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li><strong>PUT Request Support:</strong> Added support for PUT requests in API communications for more flexible data updates.</li>
+        </ul>
+
+        <h4>🌍 Translations</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Updated translations across all supported languages (English, German, Spanish, French, Italian, Dutch, Polish, Russian).</li>
+          <li>Added new translation keys for tag management, filtering, and dashboard features.</li>
+        </ul>
+      </div>
+
+  }
+  />
+
+  <Card
+    title="v1.7.0 - 2026-01-20"
+    description={
+      <div>
+        <p>🚀 <strong>Release Notes – Version 1.7.0</strong></p>
+        <p>QRcodly now supports Custom Domains for your QR codes! Connect your own domain to serve QR code redirects, giving your links a professional, branded appearance that builds trust with your audience.</p>
+
+        <h4>✨ Custom Domain Features</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li><strong>Custom Domain Configuration:</strong> Add and manage your own domains directly from the settings page.</li>
+          <li><strong>Cloudflare SSL Integration:</strong> Automatic SSL certificate verification through Cloudflare ensures your custom domains are secure.</li>
+          <li><strong>Domain Validation Workflow:</strong> Step-by-step domain verification process with clear status indicators and DNS configuration guidance.</li>
+          <li><strong>QR Code Domain Assignment:</strong> Assign custom domains to individual QR codes for maximum branding flexibility.</li>
+        </ul>
+
+        <h4>🔐 Security Enhancements</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li><strong>New Security Profile Page:</strong> Dedicated security section in user profiles for managing account security settings.</li>
+          <li><strong>Enhanced Domain Controls:</strong> Secure validation and verification workflows for custom domain configurations.</li>
+        </ul>
+
+        <h4>💳 Subscription & Billing</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li><strong>Subscription Management:</strong> New infrastructure for managing subscription plans and billing.</li>
+          <li><strong>Subscription Event Tracking:</strong> Improved lifecycle management and event tracking for subscriptions.</li>
+        </ul>
+
+        <h4>🎨 UI & UX Improvements</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li><strong>Custom Settings Form:</strong> Intuitive form interface for configuring custom domain settings.</li>
+          <li><strong>Feature Cards:</strong> New UI components for showcasing features and capabilities.</li>
+          <li><strong>Responsive Design:</strong> Optimized layouts for better mobile and tablet experiences.</li>
+        </ul>
+
+        <h4>🌍 Translations</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Updated translations across all supported languages (English, German, Spanish, French, Italian, Dutch, Polish, Russian).</li>
+          <li>Added new translation keys for domain control validation and custom domain features.</li>
+        </ul>
+
+        <h4>🛠 Technical Improvements</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li><strong>Optimized Logging:</strong> Standardized and optimized logging implementation across the application.</li>
+          <li><strong>Expanded Test Coverage:</strong> Comprehensive test coverage updates for QR code content types and custom domain functionality.</li>
+          <li><strong>TypeScript Fixes:</strong> Resolved TypeScript errors and improved type safety throughout the codebase.</li>
+        </ul>
+      </div>
+
+  }
+  />
+
+  <Card
+    title="v1.6.1 - 2026-01-08"
+    description={
+      <div>
+        <p>🚀 <strong>Release Notes – Version 1.6.1</strong></p>
+        <p>This release adds an exciting new way to preview your QR codes! You can now see how your QR code will look in real-world scenarios by placing it on website screenshots or choosing from beautiful background images.</p>
+
+        <h4>✨ New Features</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li><strong>Website Preview:</strong> Upload any website URL and see your QR code placed on a screenshot of that website. Great for mockups and presentations!</li>
+          <li><strong>Background Image Gallery:</strong> Choose from a collection of professional background images to showcase your QR code.</li>
+          <li><strong>Enhanced Preview Modal:</strong> Improved preview window with better controls for positioning and sizing your QR code.</li>
+          <li><strong>Screenshot Service:</strong> Automatic website screenshot capture powered by a reliable screenshot API.</li>
+        </ul>
+
+        <h4>🎨 Preview Improvements</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li><strong>Background Selector:</strong> Easily switch between website screenshots and predefined backgrounds.</li>
+          <li><strong>Better Camera Controls:</strong> Smoother camera handling when using device camera for preview backgrounds.</li>
+          <li><strong>Improved QR Positioning:</strong> More intuitive controls to position and resize your QR code on backgrounds.</li>
+        </ul>
+
+        <h4>🌍 Translations</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Updated translations across all supported languages (English, German, Spanish, French, Italian, Dutch, Polish, Russian).</li>
+          <li>Added new translation keys for preview features.</li>
+        </ul>
+
+        <h4>🛠 Technical Improvements</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li><strong>Logging:</strong> Added comprehensive logging to screenshot service for better monitoring and debugging.</li>
+          <li><strong>Code Quality:</strong> Removed unused contrast detection hook and cleaned up preview components.</li>
+          <li><strong>Type Safety:</strong> Improved TypeScript types for preview functionality.</li>
+        </ul>
+      </div>
+
+  }
+  />
+  <Card
+    title="v1.6.0 - 2025-12-31"
+    description={
+      <div>
+        <p>🚀 <strong>Release Notes – Version 1.6.0</strong></p>
+        <p>QRcodly now supports three exciting new QR code types: Email, Location, and Event! You can now create QR codes that open email clients, show map locations, or add calendar events with just a scan. We've also made downloading dynamic QR codes much easier and improved the overall app performance.</p>
+
+        <h4>✨ New QR Code Types</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li><strong>Email QR Codes:</strong> Create QR codes that open your email app with pre-filled recipient, subject, and message.</li>
+          <li><strong>Location QR Codes:</strong> Generate QR codes that open map apps with specific coordinates or addresses.</li>
+          <li><strong>Event QR Codes:</strong> Make QR codes that add calendar events (iCal format) with title, time, location, and description.</li>
+        </ul>
+
+        <h4>📥 Improved Download System</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li><strong>Direct Downloads:</strong> Download dynamic QR codes (events, vCards) directly without logging in.</li>
+          <li><strong>Smart File Formats:</strong> Event QR codes download as .ics calendar files, vCard QR codes as .vcf contact files.</li>
+          <li><strong>Better Download Buttons:</strong> Cleaner, more reliable download experience across all QR code types.</li>
+        </ul>
+
+        <h4>🎨 UI & UX Improvements</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li><strong>Dynamic Badge:</strong> Visual indicator showing which QR codes are dynamic (trackable and editable).</li>
+          <li><strong>Required Field Markers:</strong> Clear visual indicators showing which form fields are required.</li>
+          <li><strong>Optimized Content Switch:</strong> Faster and smoother switching between different QR code types.</li>
+          <li><strong>Improved List View:</strong> Cleaner, more organized QR code collection view.</li>
+        </ul>
+
+        <h4>⚡ Performance & Code Quality</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li><strong>Frontend Refactoring:</strong> Broke down large components into smaller, focused pieces for better performance.</li>
+          <li><strong>Better Error Handling:</strong> More reliable error messages and recovery.</li>
+          <li><strong>Code Cleanup:</strong> Removed duplicate code and improved TypeScript type safety.</li>
+        </ul>
+
+        <h4>🧪 Testing & Reliability</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Added comprehensive backend tests for new download functionality.</li>
+          <li>Improved test coverage for QR code content types.</li>
+        </ul>
+
+        <h4>🔒 Security</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Moved API keys to secure environment variables.</li>
+          <li>Improved security for analytics integration.</li>
+        </ul>
+      </div>
+
+  }
+  />
+
+  <Card
+    title="v1.5.0 - 2025-12-20"
+    description={
+      <div>
+        <p>🚀 <strong>Release Notes – Version 1.5.0</strong></p>
+        <p>QRcodly now lets you import multiple QR codes at once using CSV files. This makes creating lots of QR codes faster and easier. We've also improved backend support, added rate limits, and updated translations to make everything more reliable.</p>
+
+        <h4>✨ New Features</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Bulk Import (CSV): Upload structured CSV files to create multiple QR codes at once.</li>
+          <li>New Bulk Import UI: Step-by-step guided interface for uploading and validating CSV files.</li>
+          <li>Bulk Import API & Use Case: Reliable server-side processing for bulk imports.</li>
+          <li>CSV Templates: Ready-to-download CSV templates for URL, Text, WiFi, and vCard QR codes.</li>
+        </ul>
+
+        <h4>🔒 Rate Limiting</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Introduced a rate-limit system to prevent abuse.</li>
+          <li>Dedicated limit for the bulk import endpoint.</li>
+        </ul>
+
+        <h4>🧩 Types & DTOs</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Added new DTOs and schemas for bulk import content types.</li>
+          <li>Improved HTTP request typings (authenticated vs. unauthenticated requests).</li>
+          <li>General TypeScript safety and consistency improvements.</li>
+        </ul>
+
+        <h4>🌍 Translations</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Updated and extended translations for bulk import UI and messages.</li>
+        </ul>
+
+        <h4>🛠 Maintenance & Cleanup</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Formatting and linting cleanups.</li>
+          <li>Lockfile formatting updates.</li>
+          <li>Minor fixes and internal refactors.</li>
+        </ul>
+      </div>
+
+}
+/>
+
+ <Card
+    title="v1.4.0 - 2025-12-18"
+    description={
+      <div>
+        <p>🚀 <strong>Release Notes – Version 1.4.0</strong></p>
+        <p>This release brings faster performance, more design options, improved documentation, and better automation features.</p>
+
+        <h4>✨ New Features</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>New Documentation Page: Easily find guides, tips, and examples in the docs.</li>
+          <li>API Keys: Secure and simple access for automated QR code generation.</li>
+        </ul>
+
+        <h4>📱 UI & UX Improvements</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Smoother and faster experience thanks to behind-the-scenes upgrades.</li>
+          <li>Visual and layout improvements for a cleaner, more user-friendly interface.</li>
+        </ul>
+
+        <h4>🐛 Bug Fixes & Stability</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Backend improvements for better reliability.</li>
+          <li>Minor fixes and formatting updates across the app.</li>
+        </ul>
+      </div>
+    }
+
+/>
+
+  <Card
+    title="v1.3.0 - 2025-12-06"
+    description={
+      <div>
+        <p>🚀 <strong>Release Notes – Version 1.3.0</strong></p>
+        <p>This release introduces new template management features and fixes for QR code editing.</p>
+
+        <h4>✨ New Features</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Template Collection View: View and edit templates directly in your collection.</li>
+        </ul>
+
+        <h4>🐛 Bug Fixes & Performance</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Fixes and improvements related to QR code editing.</li>
+        </ul>
+      </div>
+    }
+
+/>
+
+  <Card
+    title="v1.2.0 - 2025-12-05"
+    description={
+      <div>
+        <p>🚀 <strong>Release Notes – Version 1.2.0</strong></p>
+        <p>This release improves QR code editing and app usability.</p>
+
+        <h4>✨ New Features</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>QR Code Editing: Detailed edit pages for all QR code types.</li>
+          <li>Dynamic QR Code Detail Pages: Only dynamic QR codes have full detail pages now.</li>
+        </ul>
+
+        <h4>🌐 Translations & Localization</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Updated translations for multilingual support.</li>
+        </ul>
+
+        <h4>📱 UI & UX Improvements</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Improved responsive design and mobile usability.</li>
+        </ul>
+
+        <h4>🐛 Bug Fixes & Performance</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Various small fixes to improve stability and performance.</li>
+        </ul>
+      </div>
+    }
+
+/>
+
+  <Card
+    title="v1.1.4 - 2025-11-06"
+    description={
+      <div>
+        <p>🚀 <strong>Release Notes – Version 1.1.4</strong></p>
+        <p>Cleaner links, better translations, and navigation improvements make working with QRcodly smoother.</p>
+
+        <h4>✨ New Features & Improvements</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Updated npm packages and type fixes.</li>
+          <li>vCard UTF-8 support improved.</li>
+        </ul>
+      </div>
+    }
+
+/>
+
+  <Card
+    title="v1.1.2 - 2025-06-04"
+    description={
+      <div>
+        <p>🚀 <strong>Release Notes – Version 1.1.2</strong></p>
+        <p>Added support for RGBA colors and transparent backgrounds for more design flexibility.</p>
+      </div>
+    }
+  />
+  <Card
+    title="v1.1.1 - 2025-05-22"
+    description={
+      <div>
+        <p>🚀 <strong>Release Notes – Version 1.1.1</strong></p>
+        <p>Bug fixes and minor improvements:</p>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Fixed hydration and browser translation errors.</li>
+          <li>Added collection pagination for easier navigation.</li>
+        </ul>
+      </div>
+    }
+  />
+  <Card
+    title="v1.1.0 - 2025-05-12"
+    description={
+      <div>
+        <p>🚀 <strong>Release Notes – Initial Feature Update</strong></p>
+        <p>The first major QRcodly release with QR codes, short URLs, analytics, and multi-language support.</p>
+
+        <h4>✨ New Features</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>QR Code System with Short URLs: Create, view, and update QR codes easily.</li>
+          <li>URL Tracking & Analytics: Track QR code scans and view insights in a dashboard.</li>
+          <li>Multi-language Support: German and other languages, with a frontend language switcher.</li>
+        </ul>
+
+        <h4>📱 UI & UX Enhancements</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Detail and disabled pages for QR codes.</li>
+          <li>Feature teaser section for upcoming Teams feature.</li>
+          <li>Improved navigation and dashboard layout.</li>
+        </ul>
+
+        <h4>🛠 Improvements</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Optimized QR code generation and template selection.</li>
+          <li>Improved database structure and tracking for short URLs.</li>
+          <li>Frontend build and performance improvements.</li>
+        </ul>
+
+        <h4>🐛 Bug Fixes</h4>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Fixed build, translation, display, and analytics issues.</li>
+        </ul>
+      </div>
+    }
+
+/>
+
+</Cards>

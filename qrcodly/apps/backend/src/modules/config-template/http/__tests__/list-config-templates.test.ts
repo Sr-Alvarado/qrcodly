@@ -1,0 +1,149 @@
+import { API_BASE_PATH } from '@/core/config/constants';
+import { faker } from '@faker-js/faker';
+import { getTestContext, resetTestState } from '@/tests/shared/test-context';
+import { type FastifyInstance } from 'fastify';
+import { QrCodeDefaults, type TCreateConfigTemplateDto } from '@shared/schemas';
+import { container } from 'tsyringe';
+import { type User } from '@clerk/fastify';
+import qs from 'qs';
+import { CreateConfigTemplateUseCase } from '../../useCase/create-config-template.use-case';
+
+const CONFIG_TEMPLATE_API_PATH = `${API_BASE_PATH}/config-template`;
+
+/**
+ * Generates a new random Config Template DTO.
+ */
+const generateConfigTemplateDto = (): TCreateConfigTemplateDto => ({
+	name: faker.lorem.words(3).substring(0, 50),
+	config: QrCodeDefaults,
+});
+
+/**
+ * List Config Templates API Tests
+ */
+describe('listConfigTemplates', () => {
+	let testServer: FastifyInstance;
+	let accessToken: string;
+	let accessToken2: string;
+	let user: User;
+	let user2: User;
+
+	const listConfigTemplatesRequest = async (
+		queryParams: Record<string, any> = {},
+		token?: string,
+	) =>
+		testServer.inject({
+			method: 'GET',
+			url: `${CONFIG_TEMPLATE_API_PATH}?${qs.stringify(queryParams)}`,
+			headers: {
+				Authorization: token ? `Bearer ${token}` : '',
+			},
+		});
+
+	beforeAll(async () => {
+		await resetTestState();
+		const ctx = await getTestContext();
+		testServer = ctx.testServer;
+		accessToken = ctx.accessToken;
+		accessToken2 = ctx.accessToken2;
+		user = ctx.user;
+		user2 = ctx.user2;
+
+		// Create Config Templates for user1
+		for (let i = 0; i < 3; i++) {
+			const createConfigTemplateDto = generateConfigTemplateDto();
+			await container
+				.resolve(CreateConfigTemplateUseCase)
+				.execute(createConfigTemplateDto, user.id);
+		}
+
+		// Create Config Templates for user2
+		for (let i = 0; i < 2; i++) {
+			const createConfigTemplateDto = generateConfigTemplateDto();
+			await container
+				.resolve(CreateConfigTemplateUseCase)
+				.execute(createConfigTemplateDto, user2.id);
+		}
+	});
+
+	it('should fetch only the signed-in user’s Config Templates and return status code 200', async () => {
+		const response = await listConfigTemplatesRequest({}, accessToken);
+
+		expect(response).toHaveStatusCode(200);
+
+		const { data, total, page, limit } = JSON.parse(response.payload);
+		expect(Array.isArray(data)).toBe(true);
+		expect(total).toBe(3);
+		expect(page).toBe(1);
+		expect(limit).toBe(10);
+		data.forEach((configTemplate: any) => {
+			expect(configTemplate.createdBy).toBe(user.id);
+			expect(configTemplate.isPredefined).toBeUndefined();
+		});
+	});
+
+	it('should respect pagination parameters', async () => {
+		const response = await listConfigTemplatesRequest({ page: 1, limit: 2 }, accessToken);
+
+		expect(response).toHaveStatusCode(200);
+
+		const { data, total, page, limit } = JSON.parse(response.payload);
+		expect(data.length).toBe(2);
+		expect(total).toBe(3);
+		expect(page).toBe(1);
+		expect(limit).toBe(2);
+		data.forEach((configTemplate: any) => {
+			expect(configTemplate.createdBy).toBe(user.id);
+			expect(configTemplate.isPredefined).toBeUndefined();
+		});
+	});
+
+	it('should ignore the createdBy param and still get only current user config templates', async () => {
+		const response = await listConfigTemplatesRequest(
+			{
+				where: {
+					createdBy: {
+						eq: user2.id,
+					},
+				},
+			},
+			accessToken,
+		);
+
+		expect(response).toHaveStatusCode(200);
+
+		const { data, total, page, limit } = JSON.parse(response.payload);
+		expect(Array.isArray(data)).toBe(true);
+		expect(total).toBe(3);
+		expect(page).toBe(1);
+		expect(limit).toBe(10);
+		data.forEach((configTemplate: any) => {
+			expect(configTemplate.createdBy).toBe(user.id);
+			expect(configTemplate.isPredefined).toBeUndefined();
+		});
+	});
+
+	it('ensure the list works without page and limit parameters', async () => {
+		const response = await listConfigTemplatesRequest({}, accessToken2);
+
+		expect(response).toHaveStatusCode(200);
+
+		const { data, total } = JSON.parse(response.payload);
+		expect(Array.isArray(data)).toBe(true);
+		expect(data.length).toBe(2);
+		expect(total).toBe(2);
+		data.forEach((configTemplate: any) => {
+			expect(configTemplate.createdBy).toBe(user2.id);
+			expect(configTemplate.isPredefined).toBeUndefined();
+		});
+	});
+
+	it('should return 401 if no authorization token is provided', async () => {
+		const response = await listConfigTemplatesRequest();
+
+		expect(response).toHaveStatusCode(401);
+
+		const { message } = JSON.parse(response.payload);
+		expect(message).toBeDefined();
+	});
+});

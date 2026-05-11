@@ -1,0 +1,113 @@
+import { API_BASE_PATH } from '@/core/config/constants';
+import { faker } from '@faker-js/faker';
+import { getTestContext, resetTestState } from '@/tests/shared/test-context';
+import { type FastifyInstance } from 'fastify';
+import {
+	QrCodeDefaults,
+	type TConfigTemplateResponseDto,
+	type TCreateConfigTemplateDto,
+} from '@shared/schemas';
+import { container } from 'tsyringe';
+import ConfigTemplateRepository from '../../domain/repository/config-template.repository';
+
+const CONFIG_TEMPLATE_API_PATH = `${API_BASE_PATH}/config-template`;
+
+/**
+ * Generates a new random Config Template DTO.
+ */
+const generateConfigTemplateDto = (): TCreateConfigTemplateDto => ({
+	name: faker.lorem.words(3).substring(0, 50),
+	config: QrCodeDefaults,
+});
+
+/**
+ * Create Config Template API Tests
+ */
+describe('createConfigTemplate', () => {
+	let testServer: FastifyInstance;
+	let accessToken: string;
+
+	const createConfigTemplateRequest = async (payload: object, token?: string) =>
+		testServer.inject({
+			method: 'POST',
+			url: CONFIG_TEMPLATE_API_PATH,
+			payload,
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: token ? `Bearer ${token}` : '',
+			},
+		});
+
+	beforeAll(async () => {
+		await resetTestState();
+		const ctx = await getTestContext();
+		testServer = ctx.testServer;
+		accessToken = ctx.accessToken;
+	});
+
+	it('should create a Config Template and return status code 201', async () => {
+		const createConfigTemplateDto = generateConfigTemplateDto();
+		const response = await createConfigTemplateRequest(createConfigTemplateDto, accessToken);
+
+		expect(response).toHaveStatusCode(201);
+
+		const receivedConfigTemplate = JSON.parse(response.payload) as TConfigTemplateResponseDto;
+		expect(receivedConfigTemplate).toMatchObject({
+			id: expect.any(String),
+			name: createConfigTemplateDto.name,
+			config: createConfigTemplateDto.config,
+			createdAt: expect.any(String),
+		});
+
+		expect(
+			typeof receivedConfigTemplate.previewImage === 'string' ||
+				receivedConfigTemplate.previewImage === null,
+		).toBe(true);
+
+		expect(
+			typeof receivedConfigTemplate.updatedAt === 'string' ||
+				receivedConfigTemplate.updatedAt === null,
+		).toBe(true);
+
+		// @ts-expect-error - Ensure isPredefined is not set
+		expect(receivedConfigTemplate.isPredefined).toBeUndefined();
+	});
+
+	it('should create a Config Template and make sure isPredefined cannot be set by user', async () => {
+		const createConfigTemplateDto = {
+			...generateConfigTemplateDto(),
+			isPredefined: true,
+		};
+		const response = await createConfigTemplateRequest(createConfigTemplateDto, accessToken);
+
+		expect(response).toHaveStatusCode(201);
+
+		const receivedConfigTemplate = JSON.parse(response.payload) as TConfigTemplateResponseDto;
+
+		const configTemplate = await container
+			.resolve(ConfigTemplateRepository)
+			.findOneById(receivedConfigTemplate.id);
+
+		expect(configTemplate?.isPredefined).toBe(false);
+	});
+
+	it('should return a 401 when not authenticated', async () => {
+		const createConfigTemplateDto = generateConfigTemplateDto();
+		const response = await createConfigTemplateRequest(createConfigTemplateDto);
+		expect(response).toHaveStatusCode(401);
+
+		const { message } = JSON.parse(response.payload);
+		expect(message).toBeDefined();
+	});
+
+	it('should return 400 for invalid request body', async () => {
+		const response = await createConfigTemplateRequest({}, accessToken);
+		expect(response).toHaveStatusCode(400);
+
+		const { message, code, fieldErrors } = JSON.parse(response.payload);
+		expect(message).toBeDefined();
+		expect(code).toBe(400);
+		expect(Array.isArray(fieldErrors)).toBe(true);
+		expect((fieldErrors as []).length).toBeGreaterThan(0);
+	});
+});

@@ -1,0 +1,55 @@
+import { type TQrCodeContentType } from '@shared/schemas';
+
+export enum PlanName {
+	FREE = 'free',
+	PRO = 'pro',
+}
+
+export const QR_CODE_PLAN_LIMITS: Record<
+	PlanName,
+	Partial<Record<TQrCodeContentType, number | null>>
+> = {
+	free: {},
+	pro: {},
+};
+
+/**
+ * Plan limits for custom domains.
+ * - free: 0 domains (not available)
+ * - pro: 1 domain max
+ */
+export const CUSTOM_DOMAIN_PLAN_LIMITS: Record<PlanName, number> = {
+	free: 0,
+	pro: 1,
+};
+
+/**
+ * Plan limits for Bulk imports
+ *  - free: 10 CSV Lines and 0.5 MB filesize
+ *  - pro: 50 CSV Lines and 1 MB filesize
+ */
+export type BulkImportLimits = {
+	maxRows: number;
+	maxFileSizeBytes: number;
+};
+
+/**
+ * Plan limits for analytics integrations.
+ * - free: 0 integrations (not available)
+ * - pro: 1 integration (either GA4 or Matomo)
+ */
+export const ANALYTICS_INTEGRATION_PLAN_LIMITS: Record<PlanName, number> = {
+	free: 0,
+	pro: 1,
+};
+
+export const BULK_IMPORT_PLAN_LIMITS: Record<PlanName, BulkImportLimits> = {
+	free: {
+		maxRows: 10,
+		maxFileSizeBytes: 0.5 * 1024 * 1024, // 0.5MB
+	},
+	pro: {
+		maxRows: 50,
+		maxFileSizeBytes: 1024 * 1024, // 1MB
+	},
+};

@@ -1,0 +1,31 @@
+node_modules
+.DS_Store
+.tmp
+tmp
+dist
+npm-debug.log*
+yarn.lock
+.env
+.vscode/*
+!.vscode/settings.json
+.claude
+.claude-flow
+.swarm
+.idea
+**/package-lock.json
+*.tsbuildinfo
+*.swp
+CHANGELOG-*.md
+*.mdx
+
+# Load test results & secrets
+load-tests/results/*.json
+load-tests/results/*.csv
+load-tests/.env
+
+# Desktop app build outputs
+apps/desktop/out/
+apps/desktop/release/
+*.dmg
+*.exe
+*.blockmap

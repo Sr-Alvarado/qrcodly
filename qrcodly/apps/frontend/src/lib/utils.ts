@@ -1,0 +1,252 @@
+import { env } from '@/env';
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+import qs from 'qs';
+
+import { ApiError } from './api/ApiError';
+import type { z } from 'zod';
+import type {
+	TCustomDomainResponseDto,
+	TShortUrlResponseDto,
+	TShortUrlWithCustomDomainResponseDto,
+} from '@shared/schemas';
+import type { useUser } from '@clerk/nextjs';
+export function cn(...inputs: ClassValue[]) {
+	return twMerge(clsx(inputs));
+}
+
+/**
+ * Extracts the system domain from NEXT_PUBLIC_FRONTEND_URL (e.g., "qrcodly.de" from "https://www.qrcodly.de").
+ */
+export function getSystemDomain(): string {
+	try {
+		const url = new URL(env.NEXT_PUBLIC_FRONTEND_URL);
+		return url.hostname.replace(/^www\./, '');
+	} catch {
+		return 'qrcodly.de';
+	}
+}
+
+/**
+ * Creates a full URL from a short URL object.
+ * Automatically uses the custom domain if set, otherwise falls back to system domain.
+ * @param shortUrl - The short URL object containing shortCode and optional customDomain
+ * @param options - Options object
+ * @param options.short - If true, returns a shortened URL without protocol (for display)
+ * @param options.customDomain - Optional custom domain to use (for when shortUrl only has customDomainId)
+ * @returns The full or shortened URL
+ */
+export function createLinkFromShortUrl(
+	shortUrl: TShortUrlWithCustomDomainResponseDto | TShortUrlResponseDto,
+	options: { short?: boolean; customDomain?: TCustomDomainResponseDto | null } = {},
+): string {
+	const { short = false, customDomain: providedDomain } = options;
+	const { shortCode } = shortUrl;
+
+	// Use embedded customDomain first, then fall back to provided domain
+	const customDomain =
+		'customDomain' in shortUrl ? shortUrl.customDomain : (providedDomain ?? undefined);
+
+	let url: string;
+	if (customDomain) {
+		url = `https://${customDomain.domain}/u/${shortCode}`;
+	} else {
+		// System domain uses /u/ prefix (e.g., qrcodly.de/u/abc12)
+		url = `${env.NEXT_PUBLIC_FRONTEND_URL}/u/${shortCode}`;
+	}
+
+	if (!short) return url;
+
+	return url.replace(/^https?:\/\//, '').replace(/^www\./, '');
+}
+
+export function getPageNumbers(currentPage: number, totalPages: number) {
+	if (totalPages <= 5) {
+		return Array.from({ length: totalPages }, (_, i) => i + 1);
+	}
+	if (currentPage <= 3) {
+		return [1, 2, 3, 4, 5];
+	}
+	if (currentPage >= totalPages - 2) {
+		return Array.from({ length: 5 }, (_, i) => totalPages - 4 + i);
+	}
+	return Array.from({ length: 5 }, (_, i) => currentPage - 2 + i);
+}
+
+export const sleep = (ms: number): Promise<void> =>
+	new Promise((resolve) => setTimeout(resolve, ms));
+
+export function toSnakeCase(str: string) {
+	return str.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`);
+}
+
+export function toSnakeCaseKeys(obj: object) {
+	return Object.fromEntries(Object.entries(obj).map(([key, value]) => [toSnakeCase(key), value]));
+}
+
+export const svgToBase64 = (svgString: string): string => {
+	const base64 = window.btoa(svgString);
+	return `data:image/svg+xml;base64,${base64}`;
+};
+
+export const fetchImageAsBase64 = async (url: string) => {
+	const response = await fetch(url);
+	const blob = await response.blob();
+	return new Promise<string>((resolve, reject) => {
+		const reader = new FileReader();
+		reader.onloadend = () => resolve(reader.result as string);
+		reader.onerror = reject;
+		reader.readAsDataURL(blob);
+	});
+};
+
+export const formatDate = (date: Date | string, options?: { hideTime?: boolean }): string => {
+	const formatOptions: Intl.DateTimeFormatOptions = {
+		year: 'numeric',
+		month: 'numeric',
+		day: 'numeric',
+		...(options?.hideTime ? {} : { hour: '2-digit', minute: '2-digit' }),
+	};
+	return new Intl.DateTimeFormat(undefined, formatOptions).format(new Date(date));
+};
+
+/**
+ * Format a currency amount for display
+ * @param amount - Amount in cents
+ * @param currency - Currency code (e.g., 'USD')
+ * @param locale - Locale for formatting (defaults to 'en-US')
+ */
+export function formatCurrency(amount: number, currency: string, locale = 'en-US'): string {
+	return new Intl.NumberFormat(locale, {
+		style: 'currency',
+		currency: currency.toUpperCase(),
+	}).format(amount / 100);
+}
+
+/**
+ * Converts an RGBA color string to a hexadecimal color string.
+ * @param {string} colorStr - The RGBA color string (e.g., "rgba(255, 0, 0, 0.5)").
+ * @param {boolean} [forceRemoveAlpha=false] - If true, removes the alpha value from the output.
+ * @returns {string} - The hexadecimal color string (e.g., "#ff0000").
+ */
+export function rgbaToHex(colorStr: string, forceRemoveAlpha = false): string {
+	// Check if the input string contains '/'
+	const hasSlash = colorStr.includes('/');
+
+	if (hasSlash) {
+		// Extract the RGBA values from the input string
+		const rgbaRegex = /(\d+)\s+(\d+)\s+(\d+)\s+\/\s+([\d.]+)/;
+		const rgbaValues = rgbaRegex.exec(colorStr);
+
+		if (!rgbaValues) {
+			return colorStr; // Return the original string if it doesn't match the expected format
+		}
+
+		const [red, green, blue, alpha] = rgbaValues.slice(1, 5).map(parseFloat);
+
+		// Convert the RGB values to hexadecimal format
+		const redHex = red?.toString(16).padStart(2, '0');
+		const greenHex = green?.toString(16).padStart(2, '0');
+		const blueHex = blue?.toString(16).padStart(2, '0');
+
+		// Convert alpha to a hexadecimal format (assuming it's already a decimal value in the range [0, 1])
+		const alphaHex = forceRemoveAlpha
+			? ''
+			: Math.round((alpha ?? 0) * 255)
+					.toString(16)
+					.padStart(2, '0');
+
+		// Combine the hexadecimal values to form the final hex color string
+		const hexColor = `#${redHex}${greenHex}${blueHex}${alphaHex}`;
+
+		return hexColor;
+	} else {
+		// Use the second code block for the case when '/' is not present
+		return (
+			'#' +
+			colorStr
+				.replace(/^rgba?\(|\s+|\)$/g, '') // Get's rgba / rgb string values
+				.split(',') // splits them at ","
+				.filter((_string, index) => !forceRemoveAlpha || index !== 3)
+				.map((string) => parseFloat(string)) // Converts them to numbers
+				.map((number, index) => (index === 3 ? Math.round(number * 255) : number)) // Converts alpha to 255 number
+				.map((number) => number.toString(16)) // Converts numbers to hex
+				.map((string) => (string.length === 1 ? '0' + string : string)) // Adds 0 when length of one number is 1
+				.join('')
+		);
+	}
+}
+
+// API request helper
+export async function apiRequest<T>(
+	endpoint: string,
+	options: RequestInit,
+	queryParams?: Record<string, unknown>,
+): Promise<T> {
+	// Construct query string if queryParams are provided
+	const queryString = queryParams ? `?${qs.stringify(queryParams)}` : '';
+
+	let response: Response;
+	try {
+		response = await fetch(`${env.NEXT_PUBLIC_API_URL}${endpoint}${queryString}`, options);
+	} catch {
+		throw new ApiError(
+			'Could not connect to the server. Please check your internet connection or disable any ad blockers and try again.',
+			0,
+		);
+	}
+
+	if (!response.ok) {
+		const errorBody = (await response.json().catch(() => ({}))) as Record<string, unknown>;
+		throw new ApiError(
+			(errorBody?.message as string | undefined) ?? 'An error occurred while fetching data',
+			response.status,
+			errorBody.fieldErrors as z.core.$ZodIssue[],
+		);
+	}
+	return (await response.json()) as T;
+}
+
+export function getQrCodeEditLink(qrCodeId: string) {
+	return `/dashboard/qr-codes/${qrCodeId}/edit`;
+}
+
+export type UserResource = ReturnType<typeof useUser>['user'];
+export function getUserInitials(user: UserResource) {
+	if (!user) return '';
+	const first = user.firstName?.[0] || '';
+	const last = user.lastName?.[0] || '';
+	return (
+		(first + last).toUpperCase() ||
+		user.primaryEmailAddress?.emailAddress?.[0]?.toUpperCase() ||
+		'?'
+	);
+}
+
+/**
+ * Safe localStorage utilities that handle SecurityError in private/incognito mode
+ * and browsers with strict privacy settings.
+ */
+export const safeLocalStorage = {
+	getItem(key: string): string | null {
+		try {
+			return localStorage.getItem(key);
+		} catch {
+			return null;
+		}
+	},
+	setItem(key: string, value: string): void {
+		try {
+			localStorage.setItem(key, value);
+		} catch {
+			// localStorage unavailable
+		}
+	},
+	removeItem(key: string): void {
+		try {
+			localStorage.removeItem(key);
+		} catch {
+			// localStorage unavailable
+		}
+	},
+};

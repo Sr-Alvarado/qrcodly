@@ -1,0 +1,101 @@
+---
+title: API
+description: Get started with the QRcodly API
+---
+
+Welcome to the **QRcodly API documentation** 👋
+This guide will help you get started with the API, generate your API key, and understand plan limitations.
+
+## Overview
+
+The QRcodly API allows you to programmatically generate and manage QR codes using the same engine that powers **qrcodly.de**.
+It is designed to be simple, fast, and scalable for both small projects and production use cases.
+
+The API is fully documented using **OpenAPI** and can be integrated into any modern backend or frontend stack.
+
+<Callout type="warning">
+	API access is a **Pro plan feature**. A Pro subscription is required to create and use API
+	keys.
+</Callout>
+
+---
+
+## Step 1: Download the OpenAPI Specification
+
+QRcodly provides an OpenAPI (Swagger) specification that you can import into tools like:
+
+- Postman
+- Insomnia
+- ... other API Clients
+
+You can download the specification here:
+
+```
+https://api.qrcodly.de/api/v1/openapi.json
+```
+
+<Card>
+	<strong>Tip</strong>
+	<br />
+	Importing the OpenAPI file into Postman or other API Clients is the fastest way to explore and
+	test the API.
+</Card>
+
+---
+
+## Step 2: Create an API Key
+
+To authenticate requests, you need an **API key**. A Pro plan is required.
+
+### How to create an API key
+
+1. Log in to your QRcodly account
+2. Open **Dashboard → Settings → API Keys**
+3. Click **Create API Key**, give it a name and optional expiration
+4. Copy the secret **immediately** — it is shown only once
+
+<Callout type="warning">
+	<p>Keep your API key secret. Do not expose it in public repositories or client-side code.</p>
+
+    <p>
+    	Your API key is shown <strong>only once</strong> during creation and cannot be viewed again.
+    	Store it in a password manager or environment variable. If the key is lost or compromised,
+    	revoke it and generate a new one from the same settings page.
+    </p>
+
+</Callout>
+
+---
+
+## Authentication
+
+All API requests must be authenticated using your API key.
+
+Usage:
+
+```
+Authorization: Bearer YOUR_API_KEY
+```
+
+---
+
+## Rate Limits & Plans
+
+The API is available exclusively on the **Pro plan**.
+
+### Pro Plan
+
+- Generous per-user rate limits suitable for production workloads
+- Access to all REST endpoints (QR codes, templates, tags, analytics integrations)
+- Priority support for integration issues
+
+### Free Plan
+
+- API keys cannot be created on the Free plan
+- [Upgrade to Pro](/plans) to unlock API access
+
+---
+
+Happy building with the **QRcodly API** 🚀
+
+<br />

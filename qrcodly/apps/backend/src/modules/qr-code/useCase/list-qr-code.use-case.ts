@@ -1,0 +1,64 @@
+import { IBaseUseCase } from '@/core/interface/base-use-case.interface';
+import { inject, injectable } from 'tsyringe';
+import { ISqlQueryFindBy } from '@/core/interface/repository.interface';
+import QrCodeRepository from '../domain/repository/qr-code.repository';
+import { ImageService } from '@/core/services/image.service';
+import { TQrCode, TQrCodeWithRelations } from '../domain/entities/qr-code.entity';
+import { TQrCodeContentType } from '@shared/schemas';
+
+type ListParams = ISqlQueryFindBy<TQrCode> & {
+	contentType?: TQrCodeContentType[];
+	tagIds?: string[];
+};
+
+type ListResponse = {
+	total: number;
+	qrCodes: TQrCodeWithRelations[];
+};
+
+/**
+ * Use case for retrieving QR codes based on query parameters.
+ */
+@injectable()
+export class ListQrCodesUseCase implements IBaseUseCase {
+	constructor(
+		@inject(QrCodeRepository) private qrCodeRepository: QrCodeRepository,
+		@inject(ImageService) private imageService: ImageService,
+	) {}
+
+	/**
+	 * Executes the use case to retrieve QR codes based on the provided query parameters.
+	 * @param limit The maximum number of QR codes to retrieve.
+	 * @param page The page number for pagination.
+	 * @param where Optional filter criteria for the QR codes.
+	 * @param contentType Optional content type filter.
+	 * @returns An object containing the list of QR codes and the total count.
+	 */
+	async execute({ limit, page, where, contentType, tagIds }: ListParams): Promise<ListResponse> {
+		// Retrieve QR codes based on the query parameters
+		const qrCodes = await this.qrCodeRepository.findAll({
+			limit,
+			page,
+			where,
+			contentType,
+			tagIds,
+		});
+
+		for (const qrCode of qrCodes) {
+			if (qrCode.config.image) {
+				qrCode.config.image = this.imageService.getPublicUrl(qrCode.config.image);
+			}
+			if (qrCode.previewImage) {
+				qrCode.previewImage = this.imageService.getPublicUrl(qrCode.previewImage);
+			}
+		}
+
+		// Count the total number of QR codes
+		const total = await this.qrCodeRepository.countTotal(where, contentType, tagIds);
+
+		return {
+			qrCodes,
+			total,
+		};
+	}
+}
