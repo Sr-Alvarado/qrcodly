@@ -3,7 +3,7 @@ import { and, desc, eq, inArray, sql, SQL } from 'drizzle-orm';
 import AbstractRepository from '@/core/domain/repository/abstract.repository';
 import { type ISqlQueryFindBy, type WhereConditions } from '@/core/interface/repository.interface';
 import qrCode, { TQrCode, TQrCodeWithRelations } from '../entities/qr-code.entity';
-import { shortUrl, qrCodeTag, tag } from '@/core/db/schemas';
+import { shortUrl, qrCodeTag, tag, qrCodeShare } from '@/core/db/schemas';
 import { TShortUrl } from '@/modules/url-shortener/domain/entities/short-url.entity';
 import { TQrCodeContentType, type TTag } from '@shared/schemas';
 import { convertWhereConditionToDrizzle } from '@/core/db/utils';
@@ -116,12 +116,22 @@ class QrCodeRepository extends AbstractRepository<TQrCode> {
 	async findOneById(id: string): Promise<TQrCodeWithRelations | undefined> {
 		const qrCode = await this.db.query.qrCode.findFirst({
 			where: eq(this.table.id, id),
-			with: {
-				shortUrl: true,
-				share: true,
-			},
 		});
 		if (!qrCode) return undefined;
+
+		const shortUrlRow = await this.db
+			.select()
+			.from(shortUrl)
+			.where(eq(shortUrl.qrCodeId, id))
+			.limit(1)
+			.execute();
+
+		const shareRow = await this.db
+			.select()
+			.from(qrCodeShare)
+			.where(eq(qrCodeShare.qrCodeId, id))
+			.limit(1)
+			.execute();
 
 		const tagRows = await this.db
 			.select({ tag })
@@ -132,6 +142,8 @@ class QrCodeRepository extends AbstractRepository<TQrCode> {
 
 		return {
 			...qrCode,
+			shortUrl: shortUrlRow[0] ?? null,
+			share: shareRow[0] ?? null,
 			tags: tagRows.map((r) => r.tag as unknown as TTag),
 		} as unknown as TQrCodeWithRelations;
 	}

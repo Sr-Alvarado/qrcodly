@@ -411,21 +411,21 @@ export class ShortUrlController extends AbstractController {
 		return this.makeApiHttpResponse(
 			200,
 			AnalyticsResponseDto.parse({
-				pageviews: { value: 0, change: 0 },
-				visitors: { value: 0, change: 0 },
-				sessions: { value: 0, change: 0 },
-				bounceRate: { value: 0, change: 0 },
-				totalTime: { value: 0, change: 0 },
-				urls: [],
-				referrers: [],
-				browsers: [],
-				os: [],
-				devices: [],
-				countries: [],
-				events: [],
-				visits: [],
-				chart: [],
-				ipAddresses: [],
+				shortUrlStats: {
+					pageviews: 0,
+					visitors: 0,
+					visits: 0,
+					bounces: 0,
+					totaltime: 0,
+				},
+				viewsAndSessions: {
+					pageviews: [],
+					sessions: [],
+				},
+				browserMetrics: [],
+				osMetrics: [],
+				deviceMetrics: [],
+				countryMetrics: [],
 			}),
 		);
 	}

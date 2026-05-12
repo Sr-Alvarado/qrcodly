@@ -19,6 +19,8 @@ export const poolConnection = mysql.createPool({
 		minVersion: 'TLSv1.2',
 		rejectUnauthorized: true,
 	},
+	enableKeepAlive: true,
+	idleTimeout: 240000,
 });
 
 const db = drizzle(poolConnection, {
