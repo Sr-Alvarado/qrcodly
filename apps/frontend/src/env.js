@@ -20,7 +20,7 @@ export const env = createEnv({
 	 * `NEXT_PUBLIC_`.
 	 */
 	client: {
-		NEXT_PUBLIC_FRONTEND_URL: z.string().url(),
+		NEXT_PUBLIC_FRONTEND_URL: z.string().url().optional().default('http://localhost:3000'),
 		NEXT_PUBLIC_API_URL: z.string().url(),
 		NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z.string(),
 		NEXT_PUBLIC_POSTHOG_KEY: z.string().optional(),
