@@ -1,5 +1,4 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
-import { Logger } from 'next-axiom';
 import { type NextFetchEvent, type NextRequest, NextResponse } from 'next/server';
 import { processAnalyticsAndRedirect } from './middlewares/process-analytics-and-redirect.middleware';
 import createMiddleware from 'next-intl/middleware';
@@ -11,24 +10,20 @@ const isProtectedRoute = createRouteMatcher([
 	'(.*)/settings(.*)',
 ]);
 
-// Create the next-intl middleware
 const intlMiddleware = createMiddleware(routing);
 
-// Matches locale-prefixed paths to non-translated routes (docs only)
 const localePrefix = SUPPORTED_LANGUAGES.filter((l) => l !== 'en').join('|');
 const localePrefixedNonTranslatedRoute = new RegExp(`^/(${localePrefix})/(docs)(/.*)?$`);
 
-// Short URL scan pattern — no auth needed
 const scanPattern = /^\/u\/[a-z0-9]{5}$/;
 
-const clerkHandler = clerkMiddleware(async (auth, req, event) => {
+const clerkHandler = clerkMiddleware(async (auth, req) => {
 	const pathname = new URL(req.url).pathname;
 
 	if (pathname === '/sitemap.xml' || pathname === '/robots.txt') {
 		return NextResponse.next();
 	}
 
-	// 301 redirect locale-prefixed non-translated routes (e.g. /de/docs/api → /docs/api)
 	const localeMatch = pathname.match(localePrefixedNonTranslatedRoute);
 	if (localeMatch) {
 		const pathWithoutLocale = pathname.replace(`/${localeMatch[1]}`, '');
@@ -36,14 +31,8 @@ const clerkHandler = clerkMiddleware(async (auth, req, event) => {
 		return NextResponse.redirect(url, 301);
 	}
 
-	const logger = new Logger({ source: 'middleware' });
-	logger.middleware(req);
-	event.waitUntil(logger.flush());
-
-	// Handle protected routes
 	if (isProtectedRoute(req)) await auth.protect();
 
-	// Internationalization Middleware (exclude sitemap & api)
 	if (
 		!pathname.startsWith('/api') &&
 		!pathname.startsWith('/monitoring') &&
@@ -63,12 +52,10 @@ const clerkHandler = clerkMiddleware(async (auth, req, event) => {
 export default function middleware(req: NextRequest, event: NextFetchEvent) {
 	const pathname = new URL(req.url).pathname;
 
-	// .well-known paths bypass all middleware (MCP registry auth, etc.)
 	if (pathname.startsWith('/.well-known/')) {
 		return NextResponse.next();
 	}
 
-	// Scan routes bypass Clerk entirely — no auth needed
 	if (scanPattern.test(pathname)) {
 		return processAnalyticsAndRedirect(req);
 	}
