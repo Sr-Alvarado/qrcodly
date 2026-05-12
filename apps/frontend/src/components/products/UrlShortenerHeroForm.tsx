@@ -14,10 +14,8 @@ import { useCreateShortUrlMutation } from '@/lib/api/url-shortener';
 import { createLinkFromShortUrl } from '@/lib/utils';
 import { ArrowRightIcon, ClipboardIcon, CheckIcon } from '@heroicons/react/24/outline';
 import { useLocale } from 'next-intl';
-import posthog from 'posthog-js';
-import * as Sentry from '@sentry/nextjs';
 import type { ApiError } from '@/lib/api/ApiError';
-import type { TShortUrlWithCustomDomainResponseDto } from '@shared/schemas';
+import type { TShortUrlResponseDto } from '@shared/schemas';
 
 const shortenUrlSchema = z.object({
 	destinationUrl: z.httpUrl(),
@@ -33,7 +31,7 @@ export function UrlShortenerHeroForm() {
 	const { isSignedIn } = useAuth();
 	const clerk = useClerk();
 	const createMutation = useCreateShortUrlMutation();
-	const [result, setResult] = useState<TShortUrlWithCustomDomainResponseDto | null>(null);
+	const [result, setResult] = useState<TShortUrlResponseDto | null>(null);
 	const [copied, setCopied] = useState(false);
 
 	const form = useForm<ShortenUrlForm>({
@@ -53,13 +51,9 @@ export function UrlShortenerHeroForm() {
 			const created = await createMutation.mutateAsync({
 				destinationUrl: data.destinationUrl,
 				isActive: true,
-				customDomainId: null,
 				name: null,
 			});
-			posthog.capture('short-url-created', {
-				source: 'hero-form',
-				destinationDomain: new URL(data.destinationUrl).hostname,
-			});
+			
 			toast({
 				title: tShortUrl('create.success'),
 				description: tShortUrl('create.successDescription'),
@@ -68,16 +62,9 @@ export function UrlShortenerHeroForm() {
 		} catch (e: unknown) {
 			const error = e as ApiError;
 			if (error.code === 0 || error.code >= 500) {
-				Sentry.captureException(error, {
-					extra: {
-						destinationUrl: data.destinationUrl,
-						error: { code: error.code, message: error.message },
-					},
-				});
+				
 			}
-			posthog.capture('error:short-url-created', {
-				error: { code: error.code, message: error.message },
-			});
+			
 			toast({
 				variant: 'destructive',
 				title: tShortUrl('error.create.title'),

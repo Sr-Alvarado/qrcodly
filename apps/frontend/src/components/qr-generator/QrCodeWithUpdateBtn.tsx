@@ -11,7 +11,6 @@ export const QrCodeWithUpdateBtn = () => {
 			<Suspense fallback={null}>
 				<div className="flex justify-center space-y-6 lg:flex-col lg:justify-start">
 					<DynamicQrCode
-						hideDomainEdit
 						qrCode={{
 							content,
 							config,

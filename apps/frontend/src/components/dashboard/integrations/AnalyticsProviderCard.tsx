@@ -36,28 +36,20 @@ const INTEGRATION_ID_BY_PROVIDER: Record<TProviderType, string> = {
 	matomo: 'matomo',
 };
 import type { ApiError } from '@/lib/api/ApiError';
-import { EllipsisVerticalIcon, SparklesIcon } from '@heroicons/react/24/outline';
-import Link from 'next/link';
-import * as Sentry from '@sentry/nextjs';
-import posthog from 'posthog-js';
+import { EllipsisVerticalIcon } from '@heroicons/react/24/outline';
 
 interface AnalyticsProviderCardProps {
 	integration?: TAnalyticsIntegrationResponseDto;
 	providerType: TProviderType;
-	canConfigure: boolean;
 	hasOtherIntegration: boolean;
-	isProExpired?: boolean;
 }
 
 export function AnalyticsProviderCard({
 	integration,
 	providerType,
-	canConfigure,
 	hasOtherIntegration,
-	isProExpired,
 }: AnalyticsProviderCardProps) {
 	const t = useTranslations('settings.integrations');
-	const tGeneral = useTranslations('general');
 	const { toast } = useToast();
 	const [configOpen, setConfigOpen] = useState(false);
 	const [showDeleteDialog, setShowDeleteDialog] = useState(false);
@@ -76,7 +68,7 @@ export function AnalyticsProviderCard({
 				id: integration.id,
 				dto: { isEnabled: enabled },
 			});
-			posthog.capture('analytics-integration:toggled', { providerType, enabled });
+			
 			toast({
 				title: enabled ? t('enabled') : t('disabled'),
 				description: enabled ? t('enabledDescription') : t('disabledDescription'),
@@ -84,12 +76,9 @@ export function AnalyticsProviderCard({
 		} catch (e: unknown) {
 			const error = e as ApiError;
 			if (error.code === 0 || error.code >= 500) {
-				Sentry.captureException(error, { extra: { providerType, enabled } });
+				
 			}
-			posthog.capture('error:analytics-integration-toggle', {
-				providerType,
-				error: { code: error.code, message: error.message },
-			});
+			
 			toast({ title: t('error'), description: t('toggleError'), variant: 'destructive' });
 		}
 	};
@@ -98,17 +87,14 @@ export function AnalyticsProviderCard({
 		if (!integration) return;
 		try {
 			await deleteMutation.mutateAsync(integration.id);
-			posthog.capture('analytics-integration:deleted', { providerType });
+			
 			toast({ title: t('deleted'), description: t('deletedDescription') });
 		} catch (e: unknown) {
 			const error = e as ApiError;
 			if (error.code === 0 || error.code >= 500) {
-				Sentry.captureException(error, { extra: { providerType } });
+				
 			}
-			posthog.capture('error:analytics-integration-delete', {
-				providerType,
-				error: { code: error.code, message: error.message },
-			});
+			
 			toast({ title: t('error'), description: t('deleteError'), variant: 'destructive' });
 		}
 	};
@@ -117,11 +103,7 @@ export function AnalyticsProviderCard({
 		if (!integration) return;
 		try {
 			const result = await testMutation.mutateAsync(integration.id);
-			posthog.capture('analytics-integration:tested', {
-				providerType,
-				valid: result.valid,
-				credentialsVerified: result.credentialsVerified,
-			});
+			
 			if (!result.credentialsVerified) {
 				toast({
 					title: t('testUnverifiable'),
@@ -142,12 +124,9 @@ export function AnalyticsProviderCard({
 		} catch (e: unknown) {
 			const error = e as ApiError;
 			if (error.code === 0 || error.code >= 500) {
-				Sentry.captureException(error, { extra: { providerType } });
+				
 			}
-			posthog.capture('error:analytics-integration-test', {
-				providerType,
-				error: { code: error.code, message: error.message },
-			});
+			
 			toast({ title: t('error'), description: t('testError'), variant: 'destructive' });
 		}
 	};
@@ -194,7 +173,7 @@ export function AnalyticsProviderCard({
 							aria-label={providerName}
 							checked={integration.isEnabled}
 							onCheckedChange={handleToggle}
-							disabled={updateMutation.isPending || isProExpired}
+							disabled={updateMutation.isPending}
 						/>
 						<DropdownMenu>
 							<DropdownMenuTrigger asChild>
@@ -204,19 +183,15 @@ export function AnalyticsProviderCard({
 								</Button>
 							</DropdownMenuTrigger>
 							<DropdownMenuContent align="end">
-								{!isProExpired && (
-									<>
-										<DropdownMenuItem onClick={() => setConfigOpen(true)}>
-											{t('edit')}
-										</DropdownMenuItem>
-										{!isGA && (
-											<DropdownMenuItem onClick={handleTest} disabled={testMutation.isPending}>
-												{testMutation.isPending ? t('testing') : t('test')}
-											</DropdownMenuItem>
-										)}
-										<DropdownMenuSeparator />
-									</>
+								<DropdownMenuItem onClick={() => setConfigOpen(true)}>
+									{t('edit')}
+								</DropdownMenuItem>
+								{!isGA && (
+									<DropdownMenuItem onClick={handleTest} disabled={testMutation.isPending}>
+										{testMutation.isPending ? t('testing') : t('test')}
+									</DropdownMenuItem>
 								)}
+								<DropdownMenuSeparator />
 								<DropdownMenuItem
 									onClick={() => setShowDeleteDialog(true)}
 									className="text-destructive focus:text-destructive"
@@ -272,32 +247,21 @@ export function AnalyticsProviderCard({
 					className="size-8"
 				/>
 				<ItemContent>
-					<ItemTitle className="flex flex-wrap items-center gap-2">
-						{providerName}
-						{!canConfigure && (
-							<Link href="/dashboard/settings/billing">
-								<Badge
-									variant="secondary"
-									className="bg-teal-600 hover:bg-teal-700 text-white text-xs"
-								>
-									<SparklesIcon className="size-3 mr-1" />
-									{tGeneral('proRequired')}
-								</Badge>
-							</Link>
-						)}
-					</ItemTitle>
-					<ItemDescription>{isGA ? t('ga4Short') : t('matomoShort')}</ItemDescription>
-				</ItemContent>
-				<ItemActions>
-					<Button
-						variant="outline"
-						size="sm"
-						onClick={() => setConfigOpen(true)}
-						disabled={!canConfigure || hasOtherIntegration || isProExpired}
-					>
-						{t('configure')}
-					</Button>
-				</ItemActions>
+				<ItemTitle className="flex flex-wrap items-center gap-2">
+					{providerName}
+				</ItemTitle>
+				<ItemDescription>{isGA ? t('ga4Short') : t('matomoShort')}</ItemDescription>
+			</ItemContent>
+			<ItemActions>
+				<Button
+					variant="outline"
+					size="sm"
+					onClick={() => setConfigOpen(true)}
+					disabled={hasOtherIntegration}
+				>
+					{t('configure')}
+				</Button>
+			</ItemActions>
 			</Item>
 
 			<AnalyticsConfigureDialog

@@ -9,7 +9,6 @@ import type {
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '../utils';
 import { toast } from '@/components/ui/use-toast';
-import posthog from 'posthog-js';
 import { useTranslations } from 'next-intl';
 
 export const queryKeys = {
@@ -127,23 +126,20 @@ export function useUpdateConfigTemplateMutation() {
 				headers,
 			});
 		},
-		onSuccess: (data) => {
+		onSuccess: () => {
 			toast({
 				title: t('update.successTitle'),
 				description: t('update.successDescription'),
 				duration: 5000,
 			});
 
-			posthog.capture('config-template-updated', {
-				name: data.name,
-				config: data.config,
-			});
+			
 
 			void queryClient.refetchQueries({
 				queryKey: queryKeys.listConfigTemplates,
 			});
 		},
-		onError: (e) => {
+		onError: () => {
 			toast({
 				variant: 'destructive',
 				title: t('update.errorTitle'),
@@ -151,9 +147,7 @@ export function useUpdateConfigTemplateMutation() {
 				duration: 5000,
 			});
 
-			posthog.capture('error:config-template-updated', {
-				error: e,
-			});
+			
 		},
 	});
 }

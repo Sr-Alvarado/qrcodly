@@ -1,7 +1,7 @@
 import { defineRouting } from 'next-intl/routing';
 import { registerLocale, type LocaleData } from 'i18n-iso-countries';
 
-export const SUPPORTED_LANGUAGES = ['en', 'de', 'nl', 'fr', 'it', 'es', 'pl', 'pt', 'ru'] as const;
+export const SUPPORTED_LANGUAGES = ['en', 'es'] as const;
 export type SupportedLanguages = (typeof SUPPORTED_LANGUAGES)[number];
 
 export const routing = defineRouting({

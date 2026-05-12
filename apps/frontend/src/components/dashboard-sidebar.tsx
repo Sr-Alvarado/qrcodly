@@ -21,10 +21,8 @@ import {
 	useSidebar,
 } from '@/components/ui/sidebar';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
-import {
+	import {
 	CodeBracketIcon,
-	CreditCardIcon,
-	GlobeAltIcon,
 	LinkIcon,
 	PuzzlePieceIcon,
 	QrCodeIcon,
@@ -46,7 +44,6 @@ import { useListQrCodesQuery } from '@/lib/api/qr-code';
 import { useListConfigTemplatesQuery } from '@/lib/api/config-template';
 import { useListTagsQuery } from '@/lib/api/tag';
 import { useListShortUrlsQuery } from '@/lib/api/url-shortener';
-import posthog from 'posthog-js';
 
 export function DashboardSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 	const tNav = useTranslations('dashboard.nav');
@@ -96,19 +93,9 @@ export function DashboardSidebar({ ...props }: React.ComponentProps<typeof Sideb
 			icon: ShieldCheckIcon,
 		},
 		{
-			title: tSettings('billing'),
-			url: '/dashboard/settings/billing',
-			icon: CreditCardIcon,
-		},
-		{
 			title: tSettings('apiKeys'),
 			url: '/dashboard/settings/api-keys',
 			icon: CodeBracketIcon,
-		},
-		{
-			title: tSettings('domains'),
-			url: '/dashboard/settings/domains',
-			icon: GlobeAltIcon,
 		},
 		{
 			title: tSettings('integrations'),
@@ -135,7 +122,7 @@ export function DashboardSidebar({ ...props }: React.ComponentProps<typeof Sideb
 									open={tagsOpen}
 									onOpenChange={(open) => {
 										setTagsOpen(open);
-										posthog.capture('sidebar:tags-subnav-toggled', { open });
+										
 									}}
 									asChild
 								>

@@ -10,21 +10,20 @@ import {
 	AnalyticsResponseDto,
 	CreateShortUrlDto,
 	GetShortUrlQueryParamsSchema,
-	ShortUrlWithCustomDomainPaginatedResponseDto,
-	ShortUrlWithCustomDomainResponseDto,
+	ShortUrlPaginatedResponseDto,
+	ShortUrlResponseDto,
 	TAnalyticsResponseDto,
 	TCreateShortUrlDto,
 	TGetShortUrlQueryParamsDto,
 	TGetShortUrlRequestQueryDto,
-	TShortUrlWithCustomDomainPaginatedResponseDto,
-	TShortUrlWithCustomDomainResponseDto,
+	TShortUrlPaginatedResponseDto,
+	TShortUrlResponseDto,
 	TTrackScanDto,
 	TUpdateShortUrlDto,
 	TrackScanDto,
 	UpdateShortUrlDto,
 } from '@shared/schemas';
 import { GetReservedShortCodeUseCase } from '../../useCase/get-reserved-short-url.use-case';
-import { UmamiAnalyticsService } from '../../service/umami-analytics.service';
 import { UpdateShortUrlUseCase } from '../../useCase/update-short-url.use-case';
 import { CreateShortUrlUseCase } from '../../useCase/create-short-url.use-case';
 import { ListShortUrlsUseCase } from '../../useCase/list-short-urls.use-case';
@@ -54,7 +53,6 @@ export class ShortUrlController extends AbstractController {
 		private readonly listShortUrlsUseCase: ListShortUrlsUseCase,
 		@inject(DeleteShortUrlUseCase)
 		private readonly deleteShortUrlUseCase: DeleteShortUrlUseCase,
-		@inject(UmamiAnalyticsService) private readonly umamiAnalyticsService: UmamiAnalyticsService,
 		@inject(KeyCache) private readonly keyCache: KeyCache,
 		@inject(DispatchTrackingEventUseCase)
 		private readonly dispatchTrackingEventUseCase: DispatchTrackingEventUseCase,
@@ -72,7 +70,7 @@ export class ShortUrlController extends AbstractController {
 	@Get('', {
 		querySchema: GetShortUrlQueryParamsSchema,
 		responseSchema: {
-			200: ShortUrlWithCustomDomainPaginatedResponseDto,
+			200: ShortUrlPaginatedResponseDto,
 			400: DEFAULT_ERROR_RESPONSES[400],
 			401: DEFAULT_ERROR_RESPONSES[401],
 			429: DEFAULT_ERROR_RESPONSES[429],
@@ -89,7 +87,7 @@ export class ShortUrlController extends AbstractController {
 	})
 	async list(
 		request: IHttpRequest<unknown, unknown, TGetShortUrlQueryParamsDto>,
-	): Promise<IHttpResponse<TShortUrlWithCustomDomainPaginatedResponseDto>> {
+	): Promise<IHttpResponse<TShortUrlPaginatedResponseDto>> {
 		const { page, limit, where, standalone, tagIds } = request.query;
 		const { shortUrls, total } = await this.listShortUrlsUseCase.execute(
 			{ limit, page, where, standalone, tagIds },
@@ -105,14 +103,14 @@ export class ShortUrlController extends AbstractController {
 
 		return this.makeApiHttpResponse(
 			200,
-			ShortUrlWithCustomDomainPaginatedResponseDto.parse(pagination),
+			ShortUrlPaginatedResponseDto.parse(pagination),
 		);
 	}
 
 	@Post('', {
 		bodySchema: CreateShortUrlDto,
 		responseSchema: {
-			201: ShortUrlWithCustomDomainResponseDto,
+			201: ShortUrlResponseDto,
 			400: DEFAULT_ERROR_RESPONSES[400],
 			401: DEFAULT_ERROR_RESPONSES[401],
 			429: DEFAULT_ERROR_RESPONSES[429],
@@ -123,24 +121,24 @@ export class ShortUrlController extends AbstractController {
 			description:
 				'Creates a new standalone short URL (not linked to a QR code). ' +
 				'A unique 5-character short code is automatically generated. ' +
-				'Optionally assign a custom domain and set the active state.',
+				'Optionally set the active state.',
 			operationId: 'short-url/create-short-url',
 		},
 	})
 	async create(
 		request: IHttpRequest<TCreateShortUrlDto>,
-	): Promise<IHttpResponse<TShortUrlWithCustomDomainResponseDto>> {
+	): Promise<IHttpResponse<TShortUrlResponseDto>> {
 		const shortUrl = await this.createShortUrlUseCase.execute(request.body, request.user.id);
 
 		return this.makeApiHttpResponse(
 			201,
-			ShortUrlWithCustomDomainResponseDto.parse({ ...shortUrl, tags: [] }),
+			ShortUrlResponseDto.parse({ ...shortUrl, tags: [] }),
 		);
 	}
 
 	@Post('/:shortCode/duplicate', {
 		responseSchema: {
-			201: ShortUrlWithCustomDomainResponseDto,
+			201: ShortUrlResponseDto,
 			401: DEFAULT_ERROR_RESPONSES[401],
 			403: DEFAULT_ERROR_RESPONSES[403],
 			404: DEFAULT_ERROR_RESPONSES[404],
@@ -166,7 +164,7 @@ export class ShortUrlController extends AbstractController {
 	})
 	async duplicate(
 		request: IHttpRequest<unknown, TGetShortUrlRequestQueryDto>,
-	): Promise<IHttpResponse<TShortUrlWithCustomDomainResponseDto>> {
+	): Promise<IHttpResponse<TShortUrlResponseDto>> {
 		const source = await this.fetchShortUrl(request.params.shortCode, request.user.id);
 		const sourceWithDomain = await this.shortUrlRepository.findOneByShortCode(source.shortCode);
 		if (!sourceWithDomain) throw new ShortUrlNotFoundError();
@@ -175,7 +173,7 @@ export class ShortUrlController extends AbstractController {
 			{ ...sourceWithDomain, tags },
 			request.user.id,
 		);
-		return this.makeApiHttpResponse(201, ShortUrlWithCustomDomainResponseDto.parse(duplicated));
+		return this.makeApiHttpResponse(201, ShortUrlResponseDto.parse(duplicated));
 	}
 
 	@Delete('/:shortCode', {
@@ -216,7 +214,7 @@ export class ShortUrlController extends AbstractController {
 
 	@Get('/:shortCode/detail', {
 		responseSchema: {
-			200: ShortUrlWithCustomDomainResponseDto,
+			200: ShortUrlResponseDto,
 			401: DEFAULT_ERROR_RESPONSES[401],
 			403: DEFAULT_ERROR_RESPONSES[403],
 			404: DEFAULT_ERROR_RESPONSES[404],
@@ -226,7 +224,7 @@ export class ShortUrlController extends AbstractController {
 			tags: ['Short URLs'],
 			summary: 'Get short URL details',
 			description:
-				'Returns the full details of a short URL including its destination, custom domain, active state, and assigned tags. ' +
+				'Returns the full details of a short URL including its destination, active state, and assigned tags. ' +
 				'Only the owner can access their short URLs.',
 			operationId: 'short-url/get-short-url-detail',
 			params: {
@@ -239,12 +237,12 @@ export class ShortUrlController extends AbstractController {
 	})
 	async getDetail(
 		request: IHttpRequest<unknown, TGetShortUrlRequestQueryDto>,
-	): Promise<IHttpResponse<TShortUrlWithCustomDomainResponseDto>> {
+	): Promise<IHttpResponse<TShortUrlResponseDto>> {
 		const shortUrl = await this.fetchShortUrl(request.params.shortCode, request.user.id);
 		const tags = await this.tagRepository.findTagsByShortUrlId(shortUrl.id);
 		return this.makeApiHttpResponse(
 			200,
-			ShortUrlWithCustomDomainResponseDto.parse({ ...shortUrl, tags }),
+			ShortUrlResponseDto.parse({ ...shortUrl, tags }),
 		);
 	}
 
@@ -273,7 +271,7 @@ export class ShortUrlController extends AbstractController {
 	@Patch('/:shortCode', {
 		bodySchema: UpdateShortUrlDto,
 		responseSchema: {
-			200: ShortUrlWithCustomDomainResponseDto,
+			200: ShortUrlResponseDto,
 			400: DEFAULT_ERROR_RESPONSES[400],
 			401: DEFAULT_ERROR_RESPONSES[401],
 			403: DEFAULT_ERROR_RESPONSES[403],
@@ -297,7 +295,7 @@ export class ShortUrlController extends AbstractController {
 	})
 	async update(
 		request: IHttpRequest<TUpdateShortUrlDto, TGetShortUrlRequestQueryDto>,
-	): Promise<IHttpResponse<TShortUrlWithCustomDomainResponseDto>> {
+	): Promise<IHttpResponse<TShortUrlResponseDto>> {
 		const shortUrl = await this.fetchShortUrl(request.params.shortCode, request.user.id);
 
 		if (shortUrl.qrCodeId != null) {
@@ -315,13 +313,13 @@ export class ShortUrlController extends AbstractController {
 		const tags = await this.tagRepository.findTagsByShortUrlId(updatedShortUrl.id);
 		return this.makeApiHttpResponse(
 			200,
-			ShortUrlWithCustomDomainResponseDto.parse({ ...updatedShortUrl, tags }),
+			ShortUrlResponseDto.parse({ ...updatedShortUrl, tags }),
 		);
 	}
 
 	@Patch('/:shortCode/toggle-active-state', {
 		responseSchema: {
-			200: ShortUrlWithCustomDomainResponseDto,
+			200: ShortUrlResponseDto,
 			401: DEFAULT_ERROR_RESPONSES[401],
 			403: DEFAULT_ERROR_RESPONSES[403],
 			404: DEFAULT_ERROR_RESPONSES[404],
@@ -344,7 +342,7 @@ export class ShortUrlController extends AbstractController {
 	})
 	async toggleActiveState(
 		request: IHttpRequest<unknown, TGetShortUrlRequestQueryDto>,
-	): Promise<IHttpResponse<TShortUrlWithCustomDomainResponseDto>> {
+	): Promise<IHttpResponse<TShortUrlResponseDto>> {
 		const shortUrl = await this.fetchShortUrl(request.params.shortCode, request.user.id);
 		const updatedShortUrl = await this.updateShortUrlUseCase.execute(
 			shortUrl,
@@ -355,13 +353,13 @@ export class ShortUrlController extends AbstractController {
 		const tags = await this.tagRepository.findTagsByShortUrlId(updatedShortUrl.id);
 		return this.makeApiHttpResponse(
 			200,
-			ShortUrlWithCustomDomainResponseDto.parse({ ...updatedShortUrl, tags }),
+			ShortUrlResponseDto.parse({ ...updatedShortUrl, tags }),
 		);
 	}
 
 	@Get('/reserved', {
 		responseSchema: {
-			200: ShortUrlWithCustomDomainResponseDto,
+			200: ShortUrlResponseDto,
 			401: DEFAULT_ERROR_RESPONSES[401],
 			429: DEFAULT_ERROR_RESPONSES[429],
 		},
@@ -377,9 +375,9 @@ export class ShortUrlController extends AbstractController {
 	})
 	async reserveShortUrl(
 		request: IHttpRequest,
-	): Promise<IHttpResponse<TShortUrlWithCustomDomainResponseDto>> {
+	): Promise<IHttpResponse<TShortUrlResponseDto>> {
 		const shortUrl = await this.getReservedShortCodeUseCase.execute(request.user.id);
-		return this.makeApiHttpResponse(200, ShortUrlWithCustomDomainResponseDto.parse(shortUrl));
+		return this.makeApiHttpResponse(200, ShortUrlResponseDto.parse(shortUrl));
 	}
 
 	@Get('/:shortCode/analytics', {
@@ -409,12 +407,27 @@ export class ShortUrlController extends AbstractController {
 	async getAnalytics(
 		request: IHttpRequest<unknown, TGetShortUrlRequestQueryDto>,
 	): Promise<IHttpResponse<TAnalyticsResponseDto>> {
-		const shortUrl = await this.fetchShortUrl(request.params.shortCode, request.user.id);
-		const analyticsData = await this.umamiAnalyticsService.getAnalyticsForEndpoint(
-			`/u/${shortUrl.shortCode}`,
+		await this.fetchShortUrl(request.params.shortCode, request.user.id);
+		return this.makeApiHttpResponse(
+			200,
+			AnalyticsResponseDto.parse({
+				pageviews: { value: 0, change: 0 },
+				visitors: { value: 0, change: 0 },
+				sessions: { value: 0, change: 0 },
+				bounceRate: { value: 0, change: 0 },
+				totalTime: { value: 0, change: 0 },
+				urls: [],
+				referrers: [],
+				browsers: [],
+				os: [],
+				devices: [],
+				countries: [],
+				events: [],
+				visits: [],
+				chart: [],
+				ipAddresses: [],
+			}),
 		);
-
-		return this.makeApiHttpResponse(200, AnalyticsResponseDto.parse(analyticsData));
 	}
 
 	@Get('/:shortCode/get-views', {
@@ -453,18 +466,8 @@ export class ShortUrlController extends AbstractController {
 	async getViews(
 		request: IHttpRequest<unknown, TGetShortUrlRequestQueryDto>,
 	): Promise<IHttpResponse<{ views: number }>> {
-		const shortUrl = await this.fetchShortUrl(request.params.shortCode, request.user.id);
-
-		const cacheKey = this.getViewsCacheKey(shortUrl.shortCode);
-		const cached = await this.keyCache.get(cacheKey);
-		if (cached !== null) {
-			return this.makeApiHttpResponse(200, { views: Number(cached) });
-		}
-
-		const views = await this.umamiAnalyticsService.getViewsForEndpoint(`/u/${shortUrl.shortCode}`);
-		await this.keyCache.set(cacheKey, views, 3600);
-
-		return this.makeApiHttpResponse(200, { views });
+		await this.fetchShortUrl(request.params.shortCode, request.user.id);
+		return this.makeApiHttpResponse(200, { views: 0 });
 	}
 
 	@Post('/:shortCode/record-scan', {
@@ -486,20 +489,7 @@ export class ShortUrlController extends AbstractController {
 		// 1. Clear views cache
 		void this.keyCache.del(this.getViewsCacheKey(shortCode));
 
-		// 2. Send to Umami
-		void this.umamiAnalyticsService.sendEvent({
-			url: body.url,
-			userAgent: body.userAgent,
-			hostname: body.hostname,
-			language: body.language,
-			referrer: body.referrer,
-			screen: body.screen,
-			deviceType: body.deviceType,
-			browserName: body.browserName,
-			ip: body.ip,
-		});
-
-		// 3. Dispatch to user analytics integrations (GA4, Matomo)
+		// 2. Dispatch to user analytics integrations (GA4, Matomo)
 		const shortUrl = await this.shortUrlRepository.findOneByShortCode(shortCode);
 		if (shortUrl?.createdBy) {
 			this.dispatchTrackingEventUseCase.execute({

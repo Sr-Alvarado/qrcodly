@@ -7,7 +7,6 @@ import { useCallback, useMemo, useState } from 'react';
 import { useDeleteConfigTemplateMutation } from '@/lib/api/config-template';
 import { toast } from '@/components/ui/use-toast';
 import { Loader2 } from 'lucide-react';
-import posthog from 'posthog-js';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { fetchImageAsBase64 } from '@/lib/utils';
@@ -22,7 +21,6 @@ import {
 } from '@/components/ui/alert-dialog';
 import { AlertDialogAction } from '@radix-ui/react-alert-dialog';
 import React from 'react';
-import * as Sentry from '@sentry/nextjs';
 
 type TemplateListProps = {
 	templates: TConfigTemplateResponseDto[];
@@ -112,10 +110,7 @@ export const TemplatesList = ({ templates, onSelect, deletable }: TemplateListPr
 					template.config.image = await fetchImageAsBase64(template.config.image);
 				}
 				onSelect(template);
-				posthog.capture('config-template-selected', {
-					id: template.id,
-					templateName: template.name,
-				});
+				
 			} catch (error) {
 				console.error('Failed to convert image to base64:', error);
 			}
@@ -143,13 +138,10 @@ export const TemplatesList = ({ templates, onSelect, deletable }: TemplateListPr
 				t.dismiss();
 				setIsDeleting(false);
 				setSelectedTemplate(null);
-				posthog.capture('config-template-deleted', {
-					id: selectedTemplate.id,
-					templateName: selectedTemplate.name,
-				});
+				
 			},
-			onError: (error) => {
-				Sentry.captureException(error);
+			onError: () => {
+				
 				t.dismiss();
 				toast({
 					title: trans('delete.errorTitle'),

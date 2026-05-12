@@ -2,10 +2,6 @@ import { container } from 'tsyringe';
 import { type FastifyInstance } from 'fastify';
 import { resetTestState, TEST_USER_PRO_ID } from '@/tests/shared/test-context';
 import { ClerkApiKeysService } from '../../service/clerk-api-keys.service';
-import db from '@/core/db';
-import userSubscription from '@/modules/billing/domain/entities/user-subscription.entity';
-import { eq } from 'drizzle-orm';
-import { randomUUID } from 'crypto';
 import { KeyCache } from '@/core/cache';
 import {
 	ALL_API_KEY_SCOPES,
@@ -24,7 +20,6 @@ describe('api-key endpoints', () => {
 	let accessToken2Free: string;
 	let accessTokenPro: string;
 	const createdApiKeyIds: string[] = [];
-	let proSubscriptionId: string | null = null;
 
 	beforeAll(async () => {
 		await resetTestState();
@@ -33,40 +28,6 @@ describe('api-key endpoints', () => {
 		accessTokenFree = ctx.accessToken;
 		accessToken2Free = ctx.accessToken2;
 		accessTokenPro = ctx.accessTokenPro;
-
-		// Seed an active Pro subscription for the Pro test user so plan gating
-		// resolves to PRO. The middleware caches plan lookups, so also flush the
-		// cache to make sure subsequent requests see the seeded state.
-		await db
-			.delete(userSubscription)
-			.where(eq(userSubscription.userId, TEST_USER_PRO_ID))
-			.execute();
-
-		proSubscriptionId = randomUUID();
-		const now = new Date();
-		const periodEnd = new Date();
-		periodEnd.setDate(periodEnd.getDate() + 30);
-		await db
-			.insert(userSubscription)
-			.values({
-				id: proSubscriptionId,
-				userId: TEST_USER_PRO_ID,
-				stripeCustomerId: `cus_test_${randomUUID().slice(0, 8)}`,
-				stripeSubscriptionId: `sub_test_${randomUUID().slice(0, 8)}`,
-				stripePriceId: 'price_test_monthly',
-				status: 'active',
-				currentPeriodStart: now,
-				currentPeriodEnd: periodEnd,
-				cancelAtPeriodEnd: false,
-				gracePeriodEndsAt: null,
-				proFeaturesDisabledAt: null,
-				cancellationNotifiedAt: null,
-				cancellationReminderSentAt: null,
-				pastDueNotifiedAt: null,
-				createdAt: now,
-				updatedAt: now,
-			})
-			.execute();
 
 		await container.resolve(KeyCache).flushAllCache();
 
@@ -90,10 +51,6 @@ describe('api-key endpoints', () => {
 		// Hard-delete any keys created in this run so the next run starts clean.
 		const clerk = container.resolve(ClerkApiKeysService);
 		await Promise.allSettled(createdApiKeyIds.map((id) => clerk.apiKeys.delete(id)));
-
-		if (proSubscriptionId) {
-			await db.delete(userSubscription).where(eq(userSubscription.id, proSubscriptionId)).execute();
-		}
 	});
 
 	describe('POST /api-key', () => {

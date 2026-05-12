@@ -65,7 +65,7 @@ const LocationSectionBase = ({ onChange, value }: LocationSectionProps) => {
 
 	const { isLoaded } = useJsApiLoader({
 		id: 'google-maps-script',
-		googleMapsApiKey: env.NEXT_PUBLIC_GOOGLE_API_KEY,
+		googleMapsApiKey: env.NEXT_PUBLIC_GOOGLE_API_KEY || '',
 		libraries: GOOGLE_MAPS_LIBRARIES,
 	});
 

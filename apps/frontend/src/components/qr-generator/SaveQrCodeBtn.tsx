@@ -6,8 +6,6 @@ import { Button } from '@/components/ui/button';
 import { type TCreateQrCodeDto } from '@shared/schemas';
 import { toast } from '@/components/ui/use-toast';
 import { useTranslations } from 'next-intl';
-import posthog from 'posthog-js';
-import * as Sentry from '@sentry/nextjs';
 import { qrCodeQueryKeys, useCreateQrCodeMutation } from '@/lib/api/qr-code';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 import { LoginRequiredDialog } from './LoginRequiredDialog';
@@ -70,36 +68,16 @@ const SaveQrCodeBtn = ({
 							content: qrCode.content,
 						});
 
-						posthog.capture('qr-code-created', {
-							qrCodeName: qrCodeName,
-						});
+						
 					},
-					onError: (e: Error) => {
-						const error = e as ApiError;
+					onError: (err: Error) => {
+						const error = err as ApiError;
 
 						if (error.code === 0 || error.code >= 500) {
-							Sentry.captureException(error, {
-								extra: {
-									qrCodeName: qrCodeName,
-									qrCode,
-									error: {
-										code: error.code,
-										message: error.message,
-										fieldErrors: error?.fieldErrors,
-									},
-								},
-							});
+							
 						}
 
-						posthog.capture('error:qr-code-created', {
-							qrCodeName: qrCodeName,
-							qrCode,
-							error: {
-								code: error.code,
-								message: error.message,
-								fieldErrors: error?.fieldErrors,
-							},
-						});
+						
 
 						toast({
 							variant: 'destructive',

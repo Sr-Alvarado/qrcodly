@@ -16,7 +16,6 @@ describe('DeleteShortUrlUseCase', () => {
 		shortCode: 'ABC12',
 		name: null,
 		destinationUrl: 'https://example.com',
-		customDomainId: null,
 		isActive: true,
 		qrCodeId: null,
 		createdBy: 'user-123',

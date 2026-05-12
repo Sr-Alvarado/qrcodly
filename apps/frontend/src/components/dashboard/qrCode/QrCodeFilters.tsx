@@ -44,7 +44,6 @@ import {
 	type QrCodeColumn,
 	type QrCodeColumnVisibility,
 } from './hooks/useQrCodeColumnVisibility';
-import posthog from 'posthog-js';
 import { SmartTipPopover } from '@/components/dashboard/smart-tips/SmartTipPopover';
 
 type QrCodeFiltersProps = {
@@ -113,7 +112,7 @@ export const QrCodeFilters = ({
 			const current = filters.contentType ?? [];
 			const isAdding = !current.includes(type);
 			const updated = isAdding ? [...current, type] : current.filter((t) => t !== type);
-			posthog.capture('qr-list:filter-content-type-toggled', { type, active: isAdding });
+			
 			onFiltersChange({
 				...filters,
 				contentType: updated.length > 0 ? updated : undefined,
@@ -127,7 +126,7 @@ export const QrCodeFilters = ({
 			const current = filters.tagIds ?? [];
 			const isAdding = !current.includes(tagId);
 			const updated = isAdding ? [...current, tagId] : current.filter((id) => id !== tagId);
-			posthog.capture('qr-list:filter-tag-toggled', { tagId, active: isAdding });
+			
 			onFiltersChange({
 				...filters,
 				tagIds: updated.length > 0 ? updated : undefined,

@@ -14,8 +14,6 @@ export type SmartTipStateContext = {
 	totalQrCodes?: number;
 	totalTags?: number;
 	hasDynamicQr?: boolean;
-	hasCustomDomain?: boolean;
-	hasProPlan?: boolean;
 };
 
 export type TipDefinition = {
@@ -60,23 +58,6 @@ export const tips: TipDefinition[] = [
 		maxShowCount: 3,
 		cooldownDays: 14,
 		priority: 2,
-	},
-	{
-		id: 'custom-domain',
-		i18nKey: 'customDomain',
-		anchor: 'dynamic-url',
-		condition: {
-			type: 'state',
-			evaluate: (ctx) =>
-				(ctx.hasDynamicQr ?? false) &&
-				!(ctx.hasCustomDomain ?? false) &&
-				!(ctx.hasProPlan ?? false),
-		},
-		maxShowCount: 2,
-		cooldownDays: 14,
-		priority: 3,
-		delayMs: 70_000,
-		probability: 0.5,
 	},
 	{
 		id: 'organize-tags',

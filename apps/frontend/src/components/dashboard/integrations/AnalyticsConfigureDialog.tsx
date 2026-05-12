@@ -22,8 +22,6 @@ import {
 import { GoogleAnalyticsCredentialsSchema, MatomoCredentialsSchema } from '@shared/schemas';
 import type { TProviderType, TAnalyticsIntegrationResponseDto } from '@shared/schemas';
 import type { ApiError } from '@/lib/api/ApiError';
-import * as Sentry from '@sentry/nextjs';
-import posthog from 'posthog-js';
 
 interface AnalyticsConfigureDialogProps {
 	open: boolean;
@@ -115,26 +113,23 @@ export function AnalyticsConfigureDialog({
 					id: existing.id,
 					dto: { credentials },
 				});
-				posthog.capture('analytics-integration:updated', { providerType });
+				
 				toast({ title: t('updated'), description: t('updatedDescription') });
 			} else {
 				await createMutation.mutateAsync({
 					providerType,
 					credentials,
 				});
-				posthog.capture('analytics-integration:created', { providerType });
+				
 				toast({ title: t('created'), description: t('createdDescription') });
 			}
 			onOpenChange(false);
 		} catch (e: unknown) {
 			const error = e as ApiError;
 			if (error.code === 0 || error.code >= 500) {
-				Sentry.captureException(error, { extra: { providerType } });
+				
 			}
-			posthog.capture('error:analytics-integration-save', {
-				providerType,
-				error: { code: error.code, message: error.message },
-			});
+			
 			toast({
 				title: t('error'),
 				description: t('saveError'),

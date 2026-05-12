@@ -9,7 +9,6 @@ import { ShortUrlSchema } from '../../schemas/ShortUrl';
 export const CreateShortUrlDto = ShortUrlSchema.pick({
 	destinationUrl: true,
 	isActive: true,
-	customDomainId: true,
 	name: true,
 }).extend({
 	destinationUrl: z

@@ -5,12 +5,10 @@ import { GeneratorQrCodeDownloadBtn } from './download-buttons';
 import { useQrCodeGeneratorStore } from '../provider/QrCodeConfigStoreProvider';
 import SaveQrCodeBtn from './SaveQrCodeBtn';
 import { useGetReservedShortUrlQuery } from '@/lib/api/url-shortener';
-import { useHasProPlan } from '@/hooks/useHasProPlan';
 
 export const QrCodeWithDownloadBtn = () => {
 	const { config, content, bulkMode } = useQrCodeGeneratorStore((state) => state);
 	const { data: shortUrl } = useGetReservedShortUrlQuery();
-	const { hasProPlan } = useHasProPlan();
 
 	return (
 		<div>
@@ -22,7 +20,6 @@ export const QrCodeWithDownloadBtn = () => {
 							config,
 						}}
 						shortUrl={shortUrl || undefined}
-						hasProPlan={hasProPlan}
 					/>
 				</div>
 				{!bulkMode.isBulkMode && (

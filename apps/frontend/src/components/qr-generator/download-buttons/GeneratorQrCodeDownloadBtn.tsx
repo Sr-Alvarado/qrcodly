@@ -9,7 +9,6 @@ import {
 	DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useEffect, useState } from 'react';
-import posthog from 'posthog-js';
 import { type TFileExtension } from '@shared/schemas';
 import { qrCodeQueryKeys, useCreateQrCodeMutation } from '@/lib/api/qr-code';
 import { toast } from '@/components/ui/use-toast';
@@ -17,7 +16,6 @@ import { useTranslations } from 'next-intl';
 import { useQueryClient } from '@tanstack/react-query';
 import { urlShortenerQueryKeys } from '@/lib/api/url-shortener';
 import { useQrCodeGeneratorStore } from '@/components/provider/QrCodeConfigStoreProvider';
-import * as Sentry from '@sentry/nextjs';
 import type { ApiError } from '@/lib/api/ApiError';
 import { useUser } from '@clerk/nextjs';
 import {
@@ -94,32 +92,16 @@ export const GeneratorQrCodeDownloadBtn = ({
 
 								updateLatestQrCode({ name: name || null, config, content });
 							}
-							posthog.capture('qr-code-created', { data: content });
+							
 						},
-						onError: (e: Error) => {
-							const error = e as ApiError;
+						onError: (err: Error) => {
+							const error = err as ApiError;
 
 							if (error.code === 0 || error.code >= 500) {
-								Sentry.captureException(error, {
-									extra: {
-										qrCode: { config, content },
-										error: {
-											code: error.code,
-											message: error.message,
-											fieldErrors: error?.fieldErrors,
-										},
-									},
-								});
+								
 							}
 
-							posthog.capture('error:qr-code-created', {
-								qrCode: { config, content },
-								error: {
-									code: error.code,
-									message: error.message,
-									fieldErrors: error?.fieldErrors,
-								},
-							});
+							
 
 							if (isSignedIn) {
 								toast({

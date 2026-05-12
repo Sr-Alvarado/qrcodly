@@ -3,7 +3,6 @@ import pino, {
 	TransportTargetOptions,
 	type Logger as PinoLogger,
 } from 'pino';
-import { logger as sentryLogger } from '@sentry/node';
 import { singleton } from 'tsyringe';
 import { env } from '@/core/config/env';
 import { type ILogger } from '../interface/logger.interface';
@@ -23,19 +22,6 @@ export class Logger implements ILogger {
 		};
 
 		const targets: TransportTargetOptions[] = [pinoPrettyTransport];
-
-		if (env.AXIOM_DATASET && env.AXIOM_TOKEN) {
-			const axiomTransport: TransportTargetOptions = {
-				target: '@axiomhq/pino',
-				level: env.LOG_LEVEL,
-				options: {
-					dataset: env.AXIOM_DATASET,
-					token: env.AXIOM_TOKEN,
-				},
-			};
-
-			targets.push(axiomTransport);
-		}
 
 		const transports: TransportMultiOptions = {
 			targets: targets,
@@ -59,26 +45,21 @@ export class Logger implements ILogger {
 
 	debug(message: string, obj?: object): void {
 		this.logger.debug(obj, message);
-		sentryLogger.debug(message, obj as Record<string, unknown>);
 	}
 
 	info(message: string, obj?: object): void {
 		this.logger.info(obj, message);
-		sentryLogger.info(message, obj as Record<string, unknown>);
 	}
 
 	warn(message: string, obj?: object): void {
 		this.logger.warn(obj, message);
-		sentryLogger.warn(message, obj as Record<string, unknown>);
 	}
 
 	error(message: string, obj?: object): void {
 		this.logger.error(obj, message);
-		sentryLogger.error(message, obj as Record<string, unknown>);
 	}
 
 	fatal(message: string, obj?: object): void {
 		this.logger.fatal(obj, message);
-		sentryLogger.fatal(message, obj as Record<string, unknown>);
 	}
 }

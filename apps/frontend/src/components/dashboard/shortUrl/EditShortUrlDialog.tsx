@@ -18,9 +18,7 @@ import {
 } from '@/components/ui/form';
 import { toast } from '@/components/ui/use-toast';
 import { useUpdateShortUrlMutation } from '@/lib/api/url-shortener';
-import type { TShortUrlWithCustomDomainResponseDto } from '@shared/schemas';
-import posthog from 'posthog-js';
-import * as Sentry from '@sentry/nextjs';
+import type { TShortUrlResponseDto } from '@shared/schemas';
 import type { ApiError } from '@/lib/api/ApiError';
 
 const editShortUrlSchema = z.object({
@@ -31,7 +29,7 @@ const editShortUrlSchema = z.object({
 type EditShortUrlForm = z.infer<typeof editShortUrlSchema>;
 
 interface EditShortUrlDialogProps {
-	shortUrl: TShortUrlWithCustomDomainResponseDto;
+	shortUrl: TShortUrlResponseDto;
 	open: boolean;
 	onOpenChange: (open: boolean) => void;
 	onSuccess?: () => void;
@@ -71,27 +69,16 @@ export function EditShortUrlDialog({
 					destinationUrl: data.destinationUrl,
 				},
 			});
-			posthog.capture('short-url-updated', {
-				shortCode: shortUrl.shortCode,
-				destinationChanged: data.destinationUrl !== shortUrl.destinationUrl,
-			});
+			
 			toast({ title: t('edit.success') });
 			onOpenChange(false);
 			onSuccess?.();
 		} catch (e: unknown) {
 			const error = e as ApiError;
 			if (error.code === 0 || error.code >= 500) {
-				Sentry.captureException(error, {
-					extra: {
-						shortCode: shortUrl.shortCode,
-						error: { code: error.code, message: error.message },
-					},
-				});
+				
 			}
-			posthog.capture('error:short-url-updated', {
-				shortCode: shortUrl.shortCode,
-				error: { code: error.code, message: error.message },
-			});
+			
 			toast({
 				variant: 'destructive',
 				title: t('error.update.title'),

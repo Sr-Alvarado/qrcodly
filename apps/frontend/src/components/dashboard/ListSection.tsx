@@ -7,7 +7,6 @@ import {
 	QrCodeIcon,
 	StarIcon,
 	ArrowUpTrayIcon,
-	Cog6ToothIcon,
 } from '@heroicons/react/24/outline';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { TemplateList } from './templates/TemplateList';
@@ -128,12 +127,6 @@ export const ListSection = () => {
 								</span>
 							</Link>
 						)}
-						<Link
-							href="/dashboard/settings/domains"
-							className={cn(buttonVariants({ variant: 'outline' }), 'md:flex md:space-x-2')}
-						>
-							<Cog6ToothIcon className="size-5" />
-						</Link>
 					</div>
 				</div>
 				<div className="mx-auto flex-1">

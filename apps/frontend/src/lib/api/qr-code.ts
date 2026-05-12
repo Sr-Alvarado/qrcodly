@@ -95,8 +95,8 @@ export function useCreateQrCodeMutation() {
 				queryKey: qrCodeQueryKeys.listQrCodes,
 			});
 		},
-		onError: (e: Error) => {
-			const error = e as ApiError;
+		onError: (err: Error) => {
+			const error = err as ApiError;
 			updateLastError(error);
 		},
 	});

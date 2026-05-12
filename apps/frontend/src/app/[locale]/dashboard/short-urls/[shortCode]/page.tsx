@@ -1,7 +1,7 @@
 import { apiRequest } from '@/lib/utils';
 import { notFound } from 'next/navigation';
 import { auth } from '@clerk/nextjs/server';
-import type { TShortUrlWithCustomDomainResponseDto } from '@shared/schemas';
+import type { TShortUrlResponseDto } from '@shared/schemas';
 import { ShortUrlDetailContent } from '@/components/dashboard/shortUrl/ShortUrlDetailContent';
 
 interface ShortUrlDetailProps {
@@ -15,12 +15,12 @@ export const dynamic = 'force-dynamic';
 export default async function ShortUrlDetailPage({ params }: ShortUrlDetailProps) {
 	const { shortCode } = await params;
 
-	let shortUrl: TShortUrlWithCustomDomainResponseDto | null = null;
+	let shortUrl: TShortUrlResponseDto | null = null;
 	try {
 		const { getToken } = await auth();
 		const token = await getToken();
 
-		shortUrl = await apiRequest<TShortUrlWithCustomDomainResponseDto>(
+		shortUrl = await apiRequest<TShortUrlResponseDto>(
 			`/short-url/${shortCode}/detail`,
 			{
 				method: 'GET',

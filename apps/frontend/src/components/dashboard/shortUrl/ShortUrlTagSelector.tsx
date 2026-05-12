@@ -10,8 +10,6 @@ import { useTranslations } from 'next-intl';
 import { useListTagsQuery, useSetShortUrlTagsMutation } from '@/lib/api/tag';
 import { cn } from '@/lib/utils';
 import { toast } from '@/components/ui/use-toast';
-import posthog from 'posthog-js';
-import * as Sentry from '@sentry/nextjs';
 import type { TTagResponseDto } from '@shared/schemas';
 import type { ApiError } from '@/lib/api/ApiError';
 import { useDebouncedValue } from '@/hooks/use-debounced-value';
@@ -69,7 +67,7 @@ export const ShortUrlTagSelector = ({
 					tagIds: localTagIds,
 				});
 				onTagsUpdated?.(updatedTags);
-				posthog.capture('short-url-tags-updated', { shortUrlId, tagIds: localTagIds });
+				
 				toast({
 					title: t('toast.tagsUpdatedTitle'),
 					description: t('toast.tagsUpdatedDescription'),
@@ -79,13 +77,10 @@ export const ShortUrlTagSelector = ({
 				const error = e as ApiError;
 
 				if (error.code === 0 || error.code >= 500) {
-					Sentry.captureException(error, { extra: { shortUrlId, tagIds: localTagIds } });
+					
 				}
 
-				posthog.capture('error:short-url-tags-updated', {
-					shortUrlId,
-					error: { code: error.code, message: error.message },
-				});
+				
 
 				toast({
 					variant: 'destructive',

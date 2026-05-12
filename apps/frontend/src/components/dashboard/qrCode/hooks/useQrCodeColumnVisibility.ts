@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import posthog from 'posthog-js';
 
 export const QR_CODE_COLUMNS = ['content', 'status', 'scans', 'created', 'tags'] as const;
 
@@ -38,7 +37,7 @@ export function useQrCodeColumnVisibility() {
 		setVisibility((prev) => {
 			const next = { ...prev, [column]: !prev[column] };
 			localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-			posthog.capture('qr-table:column-toggled', { column, visible: next[column] });
+			
 			return next;
 		});
 	}, []);

@@ -1,7 +1,7 @@
 import { getTestContext, resetTestState } from '@/tests/shared/test-context';
 import { generateShortUrlDto } from '@/tests/shared/factories/short-url.factory';
 import type { FastifyInstance } from 'fastify';
-import type { TShortUrlWithCustomDomainResponseDto } from '@shared/schemas';
+import type { TShortUrlResponseDto } from '@shared/schemas';
 import { SHORT_URL_API_PATH } from './utils';
 
 describe('createShortUrl', () => {
@@ -33,7 +33,7 @@ describe('createShortUrl', () => {
 		const response = await createShortUrlRequest(dto, accessToken);
 		expect(response).toHaveStatusCode(201);
 
-		const shortUrl = JSON.parse(response.payload) as TShortUrlWithCustomDomainResponseDto;
+		const shortUrl = JSON.parse(response.payload) as TShortUrlResponseDto;
 		expect(shortUrl.id).toEqual(expect.any(String));
 		expect(shortUrl.shortCode).toHaveLength(5);
 		expect(shortUrl.createdBy).toBe(userId);
@@ -46,7 +46,7 @@ describe('createShortUrl', () => {
 	it('should generate a 5-character lowercase alphanumeric short code', async () => {
 		const dto = generateShortUrlDto();
 		const response = await createShortUrlRequest(dto, accessToken);
-		const shortUrl = JSON.parse(response.payload) as TShortUrlWithCustomDomainResponseDto;
+		const shortUrl = JSON.parse(response.payload) as TShortUrlResponseDto;
 
 		expect(shortUrl.shortCode).toHaveLength(5);
 		expect(shortUrl.shortCode).toMatch(/^[a-z0-9]{5}$/);
@@ -57,7 +57,7 @@ describe('createShortUrl', () => {
 		const response = await createShortUrlRequest(dto, accessToken);
 		expect(response).toHaveStatusCode(201);
 
-		const shortUrl = JSON.parse(response.payload) as TShortUrlWithCustomDomainResponseDto;
+		const shortUrl = JSON.parse(response.payload) as TShortUrlResponseDto;
 		expect(shortUrl.isActive).toBe(false);
 	});
 
@@ -66,7 +66,7 @@ describe('createShortUrl', () => {
 		const response = await createShortUrlRequest(dto, accessToken);
 		expect(response).toHaveStatusCode(201);
 
-		const shortUrl = JSON.parse(response.payload) as TShortUrlWithCustomDomainResponseDto;
+		const shortUrl = JSON.parse(response.payload) as TShortUrlResponseDto;
 		expect(shortUrl.isActive).toBe(true);
 	});
 
@@ -75,7 +75,7 @@ describe('createShortUrl', () => {
 		const response = await createShortUrlRequest(dto, accessToken);
 		expect(response).toHaveStatusCode(201);
 
-		const shortUrl = JSON.parse(response.payload) as TShortUrlWithCustomDomainResponseDto;
+		const shortUrl = JSON.parse(response.payload) as TShortUrlResponseDto;
 		expect(shortUrl.name).toBe('My Campaign Link');
 	});
 
@@ -84,7 +84,7 @@ describe('createShortUrl', () => {
 		const response = await createShortUrlRequest(dto, accessToken);
 		expect(response).toHaveStatusCode(201);
 
-		const shortUrl = JSON.parse(response.payload) as TShortUrlWithCustomDomainResponseDto;
+		const shortUrl = JSON.parse(response.payload) as TShortUrlResponseDto;
 		expect(shortUrl.name).toBeNull();
 	});
 
@@ -93,7 +93,7 @@ describe('createShortUrl', () => {
 		const response = await createShortUrlRequest(dto, accessToken);
 		expect(response).toHaveStatusCode(201);
 
-		const shortUrl = JSON.parse(response.payload) as TShortUrlWithCustomDomainResponseDto;
+		const shortUrl = JSON.parse(response.payload) as TShortUrlResponseDto;
 		expect(shortUrl.name).toHaveLength(50);
 	});
 
@@ -115,7 +115,7 @@ describe('createShortUrl', () => {
 
 	it('should return 400 for invalid destinationUrl format', async () => {
 		const response = await createShortUrlRequest(
-			{ destinationUrl: 'not-a-valid-url', isActive: true, customDomainId: null },
+			{ destinationUrl: 'not-a-valid-url', isActive: true },
 			accessToken,
 		);
 		expect(response).toHaveStatusCode(400);
@@ -123,7 +123,7 @@ describe('createShortUrl', () => {
 
 	it('should return 400 when destinationUrl is missing', async () => {
 		const response = await createShortUrlRequest(
-			{ isActive: true, customDomainId: null },
+			{ isActive: true },
 			accessToken,
 		);
 		expect(response).toHaveStatusCode(400);
@@ -131,7 +131,7 @@ describe('createShortUrl', () => {
 
 	it('should return 400 when destinationUrl is null', async () => {
 		const response = await createShortUrlRequest(
-			{ destinationUrl: null, isActive: true, customDomainId: null },
+			{ destinationUrl: null, isActive: true },
 			accessToken,
 		);
 		expect(response).toHaveStatusCode(400);

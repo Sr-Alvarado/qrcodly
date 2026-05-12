@@ -7,7 +7,6 @@ import { CtaSection } from './CtaSection';
 import { AnimateOnLoad, AnimateOnScroll } from '@/components/features/AnimateOnScroll';
 import {
 	TemplatesMockup,
-	CustomDomainMockup,
 	TagsMockup,
 	BulkOperationsMockup,
 	SecurityMockup,
@@ -86,16 +85,6 @@ export async function FeaturesPage({ locale }: { locale: string }) {
 				t('spotlight.templates.bullet3'),
 			],
 			visual: <TemplatesMockup />,
-		},
-		{
-			title: t('spotlight.customDomain.title'),
-			description: t('spotlight.customDomain.description'),
-			bullets: [
-				t('spotlight.customDomain.bullet1'),
-				t('spotlight.customDomain.bullet2'),
-				t('spotlight.customDomain.bullet3'),
-			],
-			visual: <CustomDomainMockup />,
 		},
 		{
 			title: t('spotlight.tags.title'),

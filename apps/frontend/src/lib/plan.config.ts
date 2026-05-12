@@ -38,7 +38,6 @@ export const PLAN_CONFIGS: Record<PlanId, PlanConfig> = {
 		name: 'Pro',
 		featureKeys: [
 			'features.pro.everythingInFree',
-			'features.pro.customDomains',
 			'features.pro.customShortCodes',
 			'features.pro.largerBulkImports',
 			'features.pro.apiAccess',

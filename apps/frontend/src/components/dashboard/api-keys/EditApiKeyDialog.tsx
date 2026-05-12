@@ -24,8 +24,6 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Form, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Loader2 } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
-import * as Sentry from '@sentry/nextjs';
-import posthog from 'posthog-js';
 import type { ApiKey } from './types';
 
 type ScopeKey = `scope${Capitalize<ApiKeyScope>}`;
@@ -64,7 +62,7 @@ export function EditApiKeyDialog({ apiKey, open, onOpenChange }: EditApiKeyDialo
 	const onSubmit = async (data: TUpdateApiKeyDto) => {
 		try {
 			await update.mutateAsync({ id: apiKey.id, dto: data });
-			posthog.capture('api-key:updated', { apiKeyId: apiKey.id });
+			
 			toast({ description: t('editSuccess') });
 			onOpenChange(false);
 		} catch (err: unknown) {
@@ -74,12 +72,8 @@ export function EditApiKeyDialog({ apiKey, open, onOpenChange }: EditApiKeyDialo
 				description: errorMessage,
 				variant: 'destructive',
 			});
-			Sentry.captureException(err);
-			posthog.capture('error:api-key-update', {
-				errorName: err instanceof Error ? err.name : 'UnknownError',
-				errorMessage: err instanceof Error ? err.message : String(err),
-				apiKeyId: apiKey.id,
-			});
+			
+			
 		}
 	};
 

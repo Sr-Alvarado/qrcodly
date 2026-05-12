@@ -4,12 +4,18 @@ import { apiRequest } from '../utils';
 import { qrCodeQueryKeys } from './qr-code';
 import type {
 	TAnalyticsResponseDto,
-	TCreateShortUrlDto,
-	TShortUrl,
-	TShortUrlWithCustomDomainPaginatedResponseDto,
-	TShortUrlWithCustomDomainResponseDto,
+	TShortUrlResponseDto,
+	TTagResponseDto,
 	TUpdateShortUrlDto,
 } from '@shared/schemas';
+
+export type TShortUrlListItem = TShortUrlResponseDto & { tags?: TTagResponseDto[] };
+export type TShortUrlPaginatedResponseDto = {
+	data: TShortUrlListItem[];
+	total: number;
+	page: number;
+	limit: number;
+};
 
 // Define query keys
 export const urlShortenerQueryKeys = {
@@ -23,9 +29,9 @@ export const urlShortenerQueryKeys = {
 export function useGetReservedShortUrlQuery() {
 	const { getToken, isSignedIn } = useAuth();
 
-	return useQuery<TShortUrl | null>({
+	return useQuery<TShortUrlResponseDto | null>({
 		queryKey: urlShortenerQueryKeys.reservedShortUrl,
-		queryFn: async (): Promise<TShortUrl | null> => {
+		queryFn: async (): Promise<TShortUrlResponseDto | null> => {
 			const token = await getToken();
 
 			if (!token) return null;
@@ -34,7 +40,7 @@ export function useGetReservedShortUrlQuery() {
 				'Content-Type': 'application/json',
 				Authorization: `Bearer ${token}`,
 			};
-			return await apiRequest<TShortUrl>(`/short-url/reserved`, {
+			return await apiRequest<TShortUrlResponseDto>(`/short-url/reserved`, {
 				method: 'GET',
 				headers,
 			});
@@ -50,12 +56,12 @@ export function useToggleActiveStateMutation() {
 	const { getToken } = useAuth();
 
 	return useMutation({
-		mutationFn: async (shortCode: string): Promise<TShortUrl> => {
+		mutationFn: async (shortCode: string): Promise<TShortUrlResponseDto> => {
 			const token = await getToken();
 			const headers: HeadersInit = {
 				Authorization: `Bearer ${token}`,
 			};
-			return await apiRequest<TShortUrl>(`/short-url/${shortCode}/toggle-active-state`, {
+			return await apiRequest<TShortUrlResponseDto>(`/short-url/${shortCode}/toggle-active-state`, {
 				method: 'PATCH',
 				headers,
 			});
@@ -125,7 +131,7 @@ export function useListShortUrlsQuery(page = 1, limit = 10, filters?: ShortUrlFi
 
 	return useQuery({
 		queryKey: [...urlShortenerQueryKeys.listShortUrls, page, limit, filters],
-		queryFn: async (): Promise<TShortUrlWithCustomDomainPaginatedResponseDto> => {
+		queryFn: async (): Promise<TShortUrlPaginatedResponseDto> => {
 			const token = await getToken();
 			const queryParams: Record<string, unknown> = { page, limit, standalone: true };
 
@@ -138,7 +144,7 @@ export function useListShortUrlsQuery(page = 1, limit = 10, filters?: ShortUrlFi
 				queryParams.tagIds = filters.tagIds;
 			}
 
-			return apiRequest<TShortUrlWithCustomDomainPaginatedResponseDto>(
+			return apiRequest<TShortUrlPaginatedResponseDto>(
 				'/short-url',
 				{
 					method: 'GET',
@@ -162,9 +168,9 @@ export function useCreateShortUrlMutation() {
 	const { getToken } = useAuth();
 
 	return useMutation({
-		mutationFn: async (dto: TCreateShortUrlDto): Promise<TShortUrlWithCustomDomainResponseDto> => {
+		mutationFn: async (dto: { name: string | null; destinationUrl: string; isActive: boolean }): Promise<TShortUrlListItem> => {
 			const token = await getToken();
-			return apiRequest<TShortUrlWithCustomDomainResponseDto>('/short-url', {
+			return apiRequest<TShortUrlListItem>('/short-url', {
 				method: 'POST',
 				body: JSON.stringify(dto),
 				headers: {
@@ -186,9 +192,9 @@ export function useDuplicateShortUrlMutation() {
 	const { getToken } = useAuth();
 
 	return useMutation({
-		mutationFn: async (shortCode: string): Promise<TShortUrlWithCustomDomainResponseDto> => {
+		mutationFn: async (shortCode: string): Promise<TShortUrlListItem> => {
 			const token = await getToken();
-			return apiRequest<TShortUrlWithCustomDomainResponseDto>(`/short-url/${shortCode}/duplicate`, {
+			return apiRequest<TShortUrlListItem>(`/short-url/${shortCode}/duplicate`, {
 				method: 'POST',
 				headers: { Authorization: `Bearer ${token}` },
 			});
@@ -234,9 +240,9 @@ export function useUpdateShortUrlNameMutation() {
 		}: {
 			shortCode: string;
 			name: string | null;
-		}): Promise<TShortUrlWithCustomDomainResponseDto> => {
+		}): Promise<TShortUrlListItem> => {
 			const token = await getToken();
-			return apiRequest<TShortUrlWithCustomDomainResponseDto>(`/short-url/${shortCode}`, {
+			return apiRequest<TShortUrlListItem>(`/short-url/${shortCode}`, {
 				method: 'PATCH',
 				body: JSON.stringify({ name }),
 				headers: {
@@ -264,9 +270,9 @@ export function useUpdateShortUrlMutation() {
 		}: {
 			shortCode: string;
 			data: TUpdateShortUrlDto;
-		}): Promise<TShortUrlWithCustomDomainResponseDto> => {
+		}): Promise<TShortUrlListItem> => {
 			const token = await getToken();
-			return apiRequest<TShortUrlWithCustomDomainResponseDto>(`/short-url/${shortCode}`, {
+			return apiRequest<TShortUrlListItem>(`/short-url/${shortCode}`, {
 				method: 'PATCH',
 				body: JSON.stringify(data),
 				headers: {

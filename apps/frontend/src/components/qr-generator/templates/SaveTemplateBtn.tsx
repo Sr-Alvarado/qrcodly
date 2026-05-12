@@ -9,9 +9,7 @@ import { Button } from '@/components/ui/button';
 import { objDiff, QrCodeDefaults, type TQrCodeOptions } from '@shared/schemas';
 import { useCreateConfigTemplateMutation } from '@/lib/api/config-template';
 import { toast } from '@/components/ui/use-toast';
-import posthog from 'posthog-js';
 import { useTranslations } from 'next-intl';
-import * as Sentry from '@sentry/nextjs';
 import type { ApiError } from '@/lib/api/ApiError';
 import { safeLocalStorage } from '@/lib/utils';
 
@@ -39,31 +37,16 @@ const QrCodeSaveTemplateBtn = ({ config }: { config: TQrCodeOptions }) => {
 							duration: 5000,
 						});
 
-						posthog.capture('config-template-created', {
-							templateName: templateName,
-						});
+						
 					},
-					onError: (e: Error) => {
-						const error = e as ApiError;
+					onError: (err: Error) => {
+						const error = err as ApiError;
 
 						if (error.code === 0 || error.code >= 500) {
-							Sentry.captureException(error, {
-								extra: {
-									templateName: templateName,
-									config,
-									error: {
-										code: error.code,
-										message: error.message,
-										fieldErrors: error?.fieldErrors,
-									},
-								},
-							});
+							
 						}
 
-						posthog.capture('error:config-template-created', {
-							templateName: templateName,
-							config,
-						});
+						
 
 						toast({
 							variant: 'destructive',

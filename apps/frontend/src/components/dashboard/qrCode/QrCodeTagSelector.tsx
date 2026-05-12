@@ -10,8 +10,6 @@ import { useTranslations } from 'next-intl';
 import { useListTagsQuery, useSetQrCodeTagsMutation } from '@/lib/api/tag';
 import { cn } from '@/lib/utils';
 import { toast } from '@/components/ui/use-toast';
-import posthog from 'posthog-js';
-import * as Sentry from '@sentry/nextjs';
 import type { TTagResponseDto } from '@shared/schemas';
 import type { ApiError } from '@/lib/api/ApiError';
 import { useDebouncedValue } from '@/hooks/use-debounced-value';
@@ -66,7 +64,7 @@ export const QrCodeTagSelector = ({
 			try {
 				const updatedTags = await setTagsMutation.mutateAsync({ qrCodeId, tagIds: localTagIds });
 				onTagsUpdated?.(updatedTags);
-				posthog.capture('qr-code-tags-updated', { qrCodeId, tagIds: localTagIds });
+				
 				toast({
 					title: t('toast.tagsUpdatedTitle'),
 					description: t('toast.tagsUpdatedDescription'),
@@ -76,13 +74,10 @@ export const QrCodeTagSelector = ({
 				const error = e as ApiError;
 
 				if (error.code === 0 || error.code >= 500) {
-					Sentry.captureException(error, { extra: { qrCodeId, tagIds: localTagIds } });
+					
 				}
 
-				posthog.capture('error:qr-code-tags-updated', {
-					qrCodeId,
-					error: { code: error.code, message: error.message },
-				});
+				
 
 				toast({
 					variant: 'destructive',

@@ -2,8 +2,6 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
-import posthog from 'posthog-js';
-import * as Sentry from '@sentry/nextjs';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import {
 	QrCodeGeneratorStoreProvider,
@@ -46,22 +44,15 @@ const CreateTemplateSaveSection = ({ onClose }: { onClose: () => void }) => {
 								description: t('templateCreatedDescription'),
 								duration: 5000,
 							});
-							posthog.capture('config-template-created', {
-								templateName,
-							});
+							
 							onClose();
 						},
 						onError: (e: Error) => {
 							const error = e as ApiError;
 							if (error.code === 0 || error.code >= 500) {
-								Sentry.captureException(error, {
-									extra: { templateName, config },
-								});
+								
 							}
-							posthog.capture('error:config-template-created', {
-								templateName,
-								config,
-							});
+							
 							toast({
 								variant: 'destructive',
 								title: t('templateCreatedErrorTitle'),

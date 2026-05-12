@@ -12,7 +12,6 @@ import type { ShortUrlFilters as ShortUrlFiltersType } from '@/lib/api/url-short
 import { cn } from '@/lib/utils';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { useListTagsQuery } from '@/lib/api/tag';
-import posthog from 'posthog-js';
 
 interface ShortUrlFiltersProps {
 	filters: ShortUrlFiltersType;
@@ -61,7 +60,7 @@ export function ShortUrlFilters({ filters, onFiltersChange }: ShortUrlFiltersPro
 			const current = filters.tagIds ?? [];
 			const isAdding = !current.includes(tagId);
 			const updated = isAdding ? [...current, tagId] : current.filter((id) => id !== tagId);
-			posthog.capture('short-url-list:filter-tag-toggled', { tagId, active: isAdding });
+			
 			onFiltersChange({
 				...filters,
 				tagIds: updated.length > 0 ? updated : undefined,

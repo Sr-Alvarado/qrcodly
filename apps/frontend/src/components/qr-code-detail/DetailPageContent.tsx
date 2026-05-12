@@ -13,7 +13,6 @@ import { toast } from '../ui/use-toast';
 import { QrCodeIcon } from '../dashboard/qrCode/QrCodeIcon';
 import { QrCodeTagBadges } from '../dashboard/qrCode/QrCodeTagBadges';
 import { useDeleteQrCodeMutation } from '@/lib/api/qr-code';
-import * as Sentry from '@sentry/nextjs';
 import { useRouter } from '@/i18n/navigation';
 import {
 	AlertDialog,
@@ -83,9 +82,8 @@ export const DetailPageContent = ({ qrCode }: { qrCode: TQrCodeWithRelationsResp
 			onSuccess: () => {
 				router.push('/dashboard/qr-codes');
 			},
-			onError: (error) => {
+			onError: () => {
 				setIsDeleting(false);
-				Sentry.captureException(error);
 				toast({
 					title: t('qrCode.error.delete.title'),
 					description: t('qrCode.error.delete.message'),
@@ -196,9 +194,8 @@ export const DetailPageContent = ({ qrCode }: { qrCode: TQrCodeWithRelationsResp
 						<div className="shrink-0">
 							<Suspense fallback={null}>
 								<div className="flex justify-center space-y-6 lg:flex-col lg:justify-start">
-									<DynamicQrCode
-										hideDomainEdit
-										qrCode={{
+								<DynamicQrCode
+									qrCode={{
 											content: qrCode.content,
 											config: qrCode.config,
 											qrCodeData: qrCode.qrCodeData,

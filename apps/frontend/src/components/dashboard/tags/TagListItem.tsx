@@ -10,8 +10,6 @@ import type { TTagResponseDto } from '@shared/schemas';
 import { TagEditDialog } from './TagEditDialog';
 import { useDeleteTagMutation } from '@/lib/api/tag';
 import { toast } from '@/components/ui/use-toast';
-import posthog from 'posthog-js';
-import * as Sentry from '@sentry/nextjs';
 import type { ApiError } from '@/lib/api/ApiError';
 import {
 	AlertDialog,
@@ -47,7 +45,7 @@ export const TagListItem = ({ tag }: TagListItemProps) => {
 	const handleDelete = async () => {
 		try {
 			await deleteMutation.mutateAsync(tag.id);
-			posthog.capture('tag-deleted', { id: tag.id, name: tag.name });
+			
 			toast({
 				title: t('toast.deletedTitle'),
 				description: t('toast.deletedDescription'),
@@ -57,13 +55,10 @@ export const TagListItem = ({ tag }: TagListItemProps) => {
 			const error = e as ApiError;
 
 			if (error.code === 0 || error.code >= 500) {
-				Sentry.captureException(error, { extra: { id: tag.id, name: tag.name } });
+				
 			}
 
-			posthog.capture('error:tag-deleted', {
-				id: tag.id,
-				error: { code: error.code, message: error.message },
-			});
+			
 
 			toast({
 				variant: 'destructive',

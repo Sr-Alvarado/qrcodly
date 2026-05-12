@@ -3,7 +3,6 @@ import { inject, injectable } from 'tsyringe';
 import { Logger } from '@/core/logging';
 import ShortUrlRepository from '../domain/repository/short-url.repository';
 import { TShortUrl, TShortUrlWithDomain } from '../domain/entities/short-url.entity';
-import { CustomDomainValidationService } from '@/modules/custom-domain/service/custom-domain-validation.service';
 import { shortUrlsCreated } from '@/core/metrics';
 
 /**
@@ -13,7 +12,6 @@ import { shortUrlsCreated } from '@/core/metrics';
 type CreateShortUrlInput = {
 	destinationUrl: string | null;
 	isActive: boolean;
-	customDomainId?: string | null;
 	name?: string | null;
 };
 
@@ -24,8 +22,6 @@ type CreateShortUrlInput = {
 export class CreateShortUrlUseCase implements IBaseUseCase {
 	constructor(
 		@inject(ShortUrlRepository) private shortUrlRepository: ShortUrlRepository,
-		@inject(CustomDomainValidationService)
-		private customDomainValidationService: CustomDomainValidationService,
 		@inject(Logger) private logger: Logger,
 	) {}
 
@@ -36,11 +32,6 @@ export class CreateShortUrlUseCase implements IBaseUseCase {
 	 * @returns A promise that resolves with the newly created ShortUrl entity.
 	 */
 	async execute(dto: CreateShortUrlInput, createdBy: string): Promise<TShortUrlWithDomain> {
-		// Validate custom domain ownership and readiness if provided
-		if (dto.customDomainId) {
-			await this.customDomainValidationService.validateForUserUse(dto.customDomainId, createdBy);
-		}
-
 		const newId = await this.shortUrlRepository.generateId();
 		const shortCode = await this.shortUrlRepository.generateShortCode();
 
@@ -49,7 +40,6 @@ export class CreateShortUrlUseCase implements IBaseUseCase {
 			shortCode,
 			name: dto.name ?? null,
 			qrCodeId: null,
-			customDomainId: dto.customDomainId ?? null,
 			destinationUrl: dto.destinationUrl,
 			isActive: dto.isActive,
 			createdBy,
@@ -63,15 +53,10 @@ export class CreateShortUrlUseCase implements IBaseUseCase {
 		const createdShortUrl = await this.shortUrlRepository.findOneById(newId);
 		if (!createdShortUrl) throw new Error('Failed to create ShortUrl');
 
-		// Emit the ShortUrlCreatedEvent.
-		// const event = new ShortUrlCreatedEvent(createdShortUrl);
-		// this.eventEmitter.emit(event);
-
 		this.logger.info('shortUrl.created', {
 			shortUrl: {
 				id: createdShortUrl.id,
 				createdBy: createdShortUrl.createdBy,
-				customDomainId: createdShortUrl.customDomainId,
 			},
 		});
 		shortUrlsCreated.add(1);

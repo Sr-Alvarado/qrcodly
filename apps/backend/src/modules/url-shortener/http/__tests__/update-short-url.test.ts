@@ -6,7 +6,6 @@ import type { FastifyInstance } from 'fastify';
 import type {
 	TQrCodeWithRelationsResponseDto,
 	TShortUrlResponseDto,
-	TShortUrlWithCustomDomainResponseDto,
 } from '@shared/schemas';
 import { SHORT_URL_API_PATH, reserveShortUrl } from './utils';
 import { env } from '@/core/config/env';
@@ -179,25 +178,6 @@ describe('updateShortUrl', () => {
 		expect(response).toHaveStatusCode(400);
 	});
 
-	it('should ignore customDomainId when sent in update payload', async () => {
-		const reserveResponse = await reserveShortUrl(testServer, accessToken);
-		const shortUrl = JSON.parse(reserveResponse.payload) as TShortUrlResponseDto;
-
-		const response = await updateShortUrlRequest(
-			shortUrl.shortCode,
-			{
-				destinationUrl: 'https://example.com',
-				customDomainId: '00000000-0000-0000-0000-000000000000',
-			},
-			accessToken,
-		);
-
-		// Should succeed but strip customDomainId (Zod strips unknown keys)
-		expect(response).toHaveStatusCode(200);
-		const updated = JSON.parse(response.payload) as TShortUrlWithCustomDomainResponseDto;
-		expect(updated.customDomain).toBeNull();
-	});
-
 	it('should update name successfully', async () => {
 		const reserveResponse = await reserveShortUrl(testServer, accessToken);
 		const shortUrl = JSON.parse(reserveResponse.payload) as TShortUrlResponseDto;
@@ -209,7 +189,7 @@ describe('updateShortUrl', () => {
 		);
 		expect(response).toHaveStatusCode(200);
 
-		const updated = JSON.parse(response.payload) as TShortUrlWithCustomDomainResponseDto;
+		const updated = JSON.parse(response.payload) as TShortUrlResponseDto;
 		expect(updated.name).toBe('My Updated Link');
 	});
 
@@ -224,7 +204,7 @@ describe('updateShortUrl', () => {
 		const response = await updateShortUrlRequest(shortUrl.shortCode, { name: null }, accessToken);
 		expect(response).toHaveStatusCode(200);
 
-		const updated = JSON.parse(response.payload) as TShortUrlWithCustomDomainResponseDto;
+		const updated = JSON.parse(response.payload) as TShortUrlResponseDto;
 		expect(updated.name).toBeNull();
 	});
 
@@ -239,7 +219,7 @@ describe('updateShortUrl', () => {
 		);
 		expect(response).toHaveStatusCode(200);
 
-		const updated = JSON.parse(response.payload) as TShortUrlWithCustomDomainResponseDto;
+		const updated = JSON.parse(response.payload) as TShortUrlResponseDto;
 		expect(updated.name).toHaveLength(50);
 	});
 

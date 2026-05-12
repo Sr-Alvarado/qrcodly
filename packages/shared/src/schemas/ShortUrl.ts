@@ -21,11 +21,6 @@ export const ShortUrlSchema = AbstractEntitySchema.extend({
 		.uuid()
 		.nullable()
 		.describe('ID of the linked QR code, or null for standalone short URLs'),
-	customDomainId: z
-		.uuid()
-		.nullable()
-		.default(null)
-		.describe('ID of the custom domain used for this short URL, or null for the default domain'),
 	isActive: z.boolean().describe('Whether the short URL is currently active and redirecting'),
 	createdBy: z.string().describe('User ID of the short URL owner'),
 	deletedAt: z

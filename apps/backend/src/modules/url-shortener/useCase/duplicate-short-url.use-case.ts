@@ -3,7 +3,6 @@ import { inject, injectable } from 'tsyringe';
 import { Logger } from '@/core/logging';
 import ShortUrlRepository from '../domain/repository/short-url.repository';
 import { type TShortUrlWithDomainAndTags } from '../domain/entities/short-url.entity';
-import { CustomDomainValidationService } from '@/modules/custom-domain/service/custom-domain-validation.service';
 import TagRepository from '@/modules/tag/domain/repository/tag.repository';
 import { UnitOfWork } from '@/core/db/unit-of-work';
 import { shortUrlsCreated } from '@/core/metrics';
@@ -13,8 +12,6 @@ import { SHORT_URL_NAME_MAX_LENGTH, buildCopyName } from '@shared/schemas';
 export class DuplicateShortUrlUseCase implements IBaseUseCase {
 	constructor(
 		@inject(ShortUrlRepository) private shortUrlRepository: ShortUrlRepository,
-		@inject(CustomDomainValidationService)
-		private customDomainValidationService: CustomDomainValidationService,
 		@inject(TagRepository) private tagRepository: TagRepository,
 		@inject(Logger) private logger: Logger,
 	) {}
@@ -23,10 +20,6 @@ export class DuplicateShortUrlUseCase implements IBaseUseCase {
 		source: TShortUrlWithDomainAndTags,
 		userId: string,
 	): Promise<TShortUrlWithDomainAndTags> {
-		if (source.customDomainId) {
-			await this.customDomainValidationService.validateForUserUse(source.customDomainId, userId);
-		}
-
 		const result = await UnitOfWork.run<TShortUrlWithDomainAndTags>(async () => {
 			const newId = this.shortUrlRepository.generateId();
 			const shortCode = await this.shortUrlRepository.generateShortCode();
@@ -38,7 +31,6 @@ export class DuplicateShortUrlUseCase implements IBaseUseCase {
 				name,
 				destinationUrl: source.destinationUrl,
 				qrCodeId: null,
-				customDomainId: source.customDomainId,
 				isActive: source.isActive,
 				createdBy: userId,
 				deletedAt: null,

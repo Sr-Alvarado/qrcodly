@@ -16,8 +16,6 @@ import { useState } from 'react';
 import type { ApiError } from '@/lib/api/ApiError';
 import { validateCsvFile, type CsvValidationResult } from '@/lib/csv-validation';
 import { CsvErrorDebugView } from './CsvErrorDebugView';
-import posthog from 'posthog-js';
-import * as Sentry from '@sentry/nextjs';
 import { useQueryClient } from '@tanstack/react-query';
 import { urlShortenerQueryKeys } from '@/lib/api/url-shortener';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -63,33 +61,16 @@ export const BulkImport = ({ contentType, onComplete }: BulkImportProps) => {
 							queryClient.refetchQueries({ queryKey: urlShortenerQueryKeys.reservedShortUrl }),
 						]);
 
-						posthog.capture('qr-code-bulk-import', {
-							contentType,
-							file: bulkMode.file?.name,
-						});
+						
 					},
-					onError: (e: Error) => {
-						const error = e as ApiError;
+					onError: (err: Error) => {
+						const error = err as ApiError;
 
 						if (error.code === 0 || error.code >= 500) {
-							Sentry.captureException(error, {
-								extra: {
-									error: {
-										code: error.code,
-										message: error.message,
-										fieldErrors: error?.fieldErrors,
-									},
-								},
-							});
+							
 						}
 
-						posthog.capture('error:qr-code-bulk-import', {
-							error: {
-								code: error.code,
-								message: error.message,
-								fieldErrors: error?.fieldErrors,
-							},
-						});
+						
 
 						toast({
 							variant: 'destructive',

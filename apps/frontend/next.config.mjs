@@ -1,5 +1,3 @@
-import { withSentryConfig } from '@sentry/nextjs';
-import { withAxiom } from 'next-axiom';
 import { env } from './src/env.js';
 import createNextIntlPlugin from 'next-intl/plugin';
 import path from 'path';
@@ -63,7 +61,6 @@ const config = {
 		config.resolve.fallback = { fs: false };
 		return config;
 	},
-	// This is required to support PostHog trailing slash API requests
 	skipTrailingSlashRedirect: true,
 	async rewrites() {
 		return [
@@ -95,26 +92,7 @@ const config = {
 	},
 };
 
-// Combine both Sentry and Axiom configurations
-const sentryOptions = {
-	org: 'fb-development',
-	project: 'qrcodly',
-	silent: !process.env.CI,
-	widenClientFileUpload: true,
-	tunnelRoute: '/monitoring',
-	dryRun: true,
-	telemetry: false,
-	sourcemaps: {
-		disable: true,
-	},
-	release: {
-		create: false,
-	},
-};
-
 const withNextIntl = createNextIntlPlugin();
 const withMDX = createMDX();
 
-export default withBundleAnalyzer(
-	withAxiom(withNextIntl(withMDX(withSentryConfig(config, sentryOptions)))),
-);
+export default withBundleAnalyzer(withNextIntl(withMDX(config)));

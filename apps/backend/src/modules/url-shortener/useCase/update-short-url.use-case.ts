@@ -1,23 +1,20 @@
 import { IBaseUseCase } from '@/core/interface/base-use-case.interface';
 import { inject, injectable } from 'tsyringe';
 import { Logger } from '@/core/logging';
-import { EventEmitter } from '@/core/event';
 import ShortUrlRepository from '../domain/repository/short-url.repository';
 import { TShortUrl } from '../domain/entities/short-url.entity';
 import QrCodeRepository from '@/modules/qr-code/domain/repository/qr-code.repository';
 import { QrCodeNotFoundError } from '@/modules/qr-code/error/http/qr-code-not-found.error';
 import { RedirectLoopError } from '../error/http/redirect-loop.error';
 import { buildShortUrl } from '../utils';
-import { CustomDomainValidationService } from '@/modules/custom-domain/service/custom-domain-validation.service';
 
 /**
  * Internal input type for updating a short URL.
- * Broader than the API DTO — allows customDomainId for internal flows (QR code strategies).
+ * Broader than the API DTO — allows internal flows (QR code strategies).
  */
 type UpdateShortUrlInput = {
 	destinationUrl?: string | null;
 	isActive?: boolean;
-	customDomainId?: string | null;
 	name?: string | null;
 };
 
@@ -28,11 +25,8 @@ type UpdateShortUrlInput = {
 export class UpdateShortUrlUseCase implements IBaseUseCase {
 	constructor(
 		@inject(ShortUrlRepository) private shortUrlRepository: ShortUrlRepository,
-		@inject(CustomDomainValidationService)
-		private customDomainValidationService: CustomDomainValidationService,
 		@inject(Logger) private logger: Logger,
 		@inject(QrCodeRepository) private qrCodeRepository: QrCodeRepository,
-		@inject(EventEmitter) private eventEmitter: EventEmitter,
 	) {}
 
 	/**
@@ -48,14 +42,6 @@ export class UpdateShortUrlUseCase implements IBaseUseCase {
 		updatedBy: string,
 		linkedQrCodeId?: string,
 	): Promise<TShortUrl> {
-		// Validate custom domain ownership and readiness if changing it
-		if (updatesDto.customDomainId !== undefined && updatesDto.customDomainId !== null) {
-			await this.customDomainValidationService.validateForUserUse(
-				updatesDto.customDomainId,
-				updatedBy,
-			);
-		}
-
 		const updates: Partial<TShortUrl> = {
 			...updatesDto,
 			updatedAt: new Date(),
@@ -84,15 +70,10 @@ export class UpdateShortUrlUseCase implements IBaseUseCase {
 		// Retrieve the updated ShortUrl entity from the database.
 		const result = await this.shortUrlRepository.findOneById(shortUrl.id);
 
-		// Emit the ShortUrlUpdatedEvent.
-		// const event = new ShortUrlUpdatedEvent(result);
-		// this.eventEmitter.emit(event);
-
 		this.logger.info('shortUrl.updated', {
 			shortUrl: {
 				id: shortUrl.id,
 				qrCodeId: shortUrl.qrCodeId,
-				customDomainId: result?.customDomainId,
 				updates,
 				updatedBy,
 			},

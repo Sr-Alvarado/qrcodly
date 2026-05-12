@@ -40,7 +40,7 @@ describe('getShortUrl (internal API - scan lookup)', () => {
 		expect(body.deletedAt).toBeNull();
 	});
 
-	it('should not expose sensitive fields (createdBy, qrCodeId, customDomain, id)', async () => {
+	it('should not expose sensitive fields (createdBy, qrCodeId, id)', async () => {
 		const shortUrl = await createShortUrl(testServer, accessToken);
 
 		const response = await getShortUrlRequest(shortUrl.shortCode, env.INTERNAL_API_SECRET);
@@ -49,8 +49,6 @@ describe('getShortUrl (internal API - scan lookup)', () => {
 		const body = JSON.parse(response.payload) as Record<string, unknown>;
 		expect(body).not.toHaveProperty('createdBy');
 		expect(body).not.toHaveProperty('qrCodeId');
-		expect(body).not.toHaveProperty('customDomain');
-		expect(body).not.toHaveProperty('customDomainId');
 		expect(body).not.toHaveProperty('id');
 		expect(body).not.toHaveProperty('shortCode');
 		expect(body).not.toHaveProperty('name');

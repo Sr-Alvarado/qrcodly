@@ -1,6 +1,6 @@
 import { getTestContext, resetTestState } from '@/tests/shared/test-context';
 import type { FastifyInstance } from 'fastify';
-import type { TShortUrlWithCustomDomainResponseDto } from '@shared/schemas';
+import type { TShortUrlResponseDto } from '@shared/schemas';
 import { SHORT_URL_API_PATH, createShortUrl } from './utils';
 import { API_BASE_PATH } from '@/core/config/constants';
 
@@ -34,7 +34,7 @@ describe('duplicateShortUrl', () => {
 		const response = await duplicateRequest(source.shortCode, accessToken);
 		expect(response).toHaveStatusCode(201);
 
-		const duplicate = JSON.parse(response.payload) as TShortUrlWithCustomDomainResponseDto;
+		const duplicate = JSON.parse(response.payload) as TShortUrlResponseDto;
 		expect(duplicate.id).not.toBe(source.id);
 		expect(duplicate.shortCode).not.toBe(source.shortCode);
 		expect(duplicate.destinationUrl).toBe(source.destinationUrl);
@@ -83,7 +83,7 @@ describe('duplicateShortUrl', () => {
 		const response = await duplicateRequest(source.shortCode, accessToken);
 		expect(response).toHaveStatusCode(201);
 
-		const duplicate = JSON.parse(response.payload) as TShortUrlWithCustomDomainResponseDto;
+		const duplicate = JSON.parse(response.payload) as TShortUrlResponseDto;
 		expect(duplicate.tags.map((t) => t.id)).toEqual([tag.id]);
 	});
 
@@ -92,12 +92,12 @@ describe('duplicateShortUrl', () => {
 
 		const firstResponse = await duplicateRequest(source.shortCode, accessToken);
 		expect(firstResponse).toHaveStatusCode(201);
-		const firstCopy = JSON.parse(firstResponse.payload) as TShortUrlWithCustomDomainResponseDto;
+		const firstCopy = JSON.parse(firstResponse.payload) as TShortUrlResponseDto;
 		expect(firstCopy.name).toBe('(Copy) My Link');
 
 		const secondResponse = await duplicateRequest(firstCopy.shortCode, accessToken);
 		expect(secondResponse).toHaveStatusCode(201);
-		const secondCopy = JSON.parse(secondResponse.payload) as TShortUrlWithCustomDomainResponseDto;
+		const secondCopy = JSON.parse(secondResponse.payload) as TShortUrlResponseDto;
 		expect(secondCopy.name).toBe('(Copy 2) My Link');
 	});
 });

@@ -5,11 +5,7 @@ import qs from 'qs';
 
 import { ApiError } from './api/ApiError';
 import type { z } from 'zod';
-import type {
-	TCustomDomainResponseDto,
-	TShortUrlResponseDto,
-	TShortUrlWithCustomDomainResponseDto,
-} from '@shared/schemas';
+import type { TShortUrl } from '@shared/schemas';
 import type { useUser } from '@clerk/nextjs';
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
@@ -29,31 +25,19 @@ export function getSystemDomain(): string {
 
 /**
  * Creates a full URL from a short URL object.
- * Automatically uses the custom domain if set, otherwise falls back to system domain.
- * @param shortUrl - The short URL object containing shortCode and optional customDomain
+ * @param shortUrl - The short URL object containing shortCode
  * @param options - Options object
  * @param options.short - If true, returns a shortened URL without protocol (for display)
- * @param options.customDomain - Optional custom domain to use (for when shortUrl only has customDomainId)
  * @returns The full or shortened URL
  */
 export function createLinkFromShortUrl(
-	shortUrl: TShortUrlWithCustomDomainResponseDto | TShortUrlResponseDto,
-	options: { short?: boolean; customDomain?: TCustomDomainResponseDto | null } = {},
+	shortUrl: TShortUrl,
+	options: { short?: boolean } = {},
 ): string {
-	const { short = false, customDomain: providedDomain } = options;
+	const { short = false } = options;
 	const { shortCode } = shortUrl;
 
-	// Use embedded customDomain first, then fall back to provided domain
-	const customDomain =
-		'customDomain' in shortUrl ? shortUrl.customDomain : (providedDomain ?? undefined);
-
-	let url: string;
-	if (customDomain) {
-		url = `https://${customDomain.domain}/u/${shortCode}`;
-	} else {
-		// System domain uses /u/ prefix (e.g., qrcodly.de/u/abc12)
-		url = `${env.NEXT_PUBLIC_FRONTEND_URL}/u/${shortCode}`;
-	}
+	const url = `${env.NEXT_PUBLIC_FRONTEND_URL}/u/${shortCode}`;
 
 	if (!short) return url;
 

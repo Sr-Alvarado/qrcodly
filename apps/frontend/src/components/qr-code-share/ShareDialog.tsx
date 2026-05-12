@@ -26,9 +26,7 @@ import {
 	useDeleteQrCodeShareMutation,
 } from '@/lib/api/qr-code-share';
 import type { TQrCodeShareConfig } from '@shared/schemas';
-import * as Sentry from '@sentry/nextjs';
 import { AlertCircle } from 'lucide-react';
-import posthog from 'posthog-js';
 
 interface ShareDialogProps {
 	qrCodeId: string;
@@ -81,14 +79,14 @@ export function ShareDialog({
 				qrCodeId,
 				data: config,
 			});
-			posthog.capture('qr-code-share:created', { qrCodeId, config });
+			
 			toast({
 				title: t('qrCode.share.created.title'),
 				description: t('qrCode.share.created.description'),
 			});
 		} catch (error) {
-			Sentry.captureException(error);
-			posthog.capture('error:qr-code-share-create', { qrCodeId, error });
+			
+			
 			toast({
 				title: t('qrCode.share.error.title'),
 				description: t('qrCode.share.error.description'),
@@ -103,14 +101,14 @@ export function ShareDialog({
 				qrCodeId,
 				data: config,
 			});
-			posthog.capture('qr-code-share:updated', { qrCodeId, config });
+			
 			toast({
 				title: t('qrCode.share.updated.title'),
 				description: t('qrCode.share.updated.description'),
 			});
 		} catch (error) {
-			Sentry.captureException(error);
-			posthog.capture('error:qr-code-share-update', { qrCodeId, error });
+			
+			
 			toast({
 				title: t('qrCode.share.error.title'),
 				description: t('qrCode.share.error.description'),
@@ -122,15 +120,15 @@ export function ShareDialog({
 	const handleDeleteShare = async () => {
 		try {
 			await deleteMutation.mutateAsync(qrCodeId);
-			posthog.capture('qr-code-share:deleted', { qrCodeId });
+			
 			toast({
 				title: t('qrCode.share.deleted.title'),
 				description: t('qrCode.share.deleted.description'),
 			});
 			setOpen(false);
 		} catch (error) {
-			Sentry.captureException(error);
-			posthog.capture('error:qr-code-share-delete', { qrCodeId, error });
+			
+			
 			toast({
 				title: t('qrCode.share.error.title'),
 				description: t('qrCode.share.error.description'),
@@ -143,13 +141,13 @@ export function ShareDialog({
 		if (shareLink) {
 			try {
 				await navigator.clipboard.writeText(shareLink);
-				posthog.capture('qr-code-share:link-copied', { qrCodeId });
+				
 				toast({
 					title: t('qrCode.share.linkCopied.title'),
 					description: t('qrCode.share.linkCopied.description'),
 				});
 			} catch (error) {
-				Sentry.captureException(error);
+				
 				toast({
 					title: t('qrCode.share.error.title'),
 					description: t('qrCode.share.copyError.description'),

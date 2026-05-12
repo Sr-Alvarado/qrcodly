@@ -16,10 +16,6 @@ const server = z.object({
 	DB_NAME: z.string(),
 	TEST_DB_NAME: z.string().default('qrcodly_test'),
 	DB_PORT: z.string(),
-	DB_MIGRATING: z
-		.union([z.boolean(), z.string().transform((val) => val === 'true')])
-		.default(false),
-	DB_SEEDING: z.union([z.boolean(), z.string().transform((val) => val === 'true')]).default(false),
 	NODE_ENV: z.enum(['development', 'test', 'production']).default('production'),
 	API_PORT: z.string().default('5001'),
 	API_HOST: z.string().default('127.0.0.1'),
@@ -27,36 +23,15 @@ const server = z.object({
 	REDIS_URL: z.url(),
 	JWT_SECRET: z.string().min(32),
 	COOKIE_SECRET: z.string().min(32),
-	SMTP_HOST: z.string(),
-	SMTP_PORT: z.string(),
-	SMTP_USER: z.string(),
-	SMTP_PASS: z.string(),
 	S3_ENDPOINT: z.string(),
 	S3_REGION: z.string(),
 	S3_UPLOAD_KEY: z.string(),
 	S3_UPLOAD_SECRET: z.string(),
 	S3_BUCKET_NAME: z.string(),
 	S3_PUBLIC_URL: z.url(),
-	SENTRY_DSN: z.url(),
-	SENTRY_ENVIRONMENT: z.enum(['development', 'production']).default('production'),
-	AXIOM_DATASET: z.string().optional(),
-	AXIOM_TOKEN: z.string().optional(),
 	CLERK_PUBLISHABLE_KEY: z.string(),
 	CLERK_SECRET_KEY: z.string(),
-	CLERK_WEBHOOK_SECRET_KEY: z.string(),
-	UMAMI_HOST: z.url(),
-	UMAMI_WEBSITE: z.string(),
-	UMAMI_USERNAME: z.string(),
-	UMAMI_PASSWORD: z.string(),
-	CUSTOM_DOMAIN_CNAME_TARGET: z.string().default('customers.qrcodly.de'),
-	CLOUDFLARE_API_TOKEN: z.string(),
-	CLOUDFLARE_ZONE_ID: z.string(),
-	CLOUDFLARE_DCV_DELEGATION_TARGET: z.string(), // Full DCV delegation target (e.g., d0a467ae32366c3f.dcv.cloudflare.com)
 	INTERNAL_API_SECRET: z.string().min(32),
-	STRIPE_SECRET_KEY: z.string(),
-	STRIPE_WEBHOOK_SECRET: z.string(),
-	STRIPE_PRO_PRICE_ID_MONTHLY: z.string(),
-	STRIPE_PRO_PRICE_ID_ANNUAL: z.string(),
 	ANALYTICS_ENCRYPTION_KEY: z
 		.string()
 		.length(64)
@@ -64,11 +39,6 @@ const server = z.object({
 	DISABLE_RATE_LIMITING: z
 		.union([z.boolean(), z.string().transform((val) => val === 'true')])
 		.default(false),
-
-	// OpenTelemetry — set the dataset name to enable, leave empty to disable
-	OTEL_METRICS_DATASET: z.string().optional(),
-	OTEL_METRICS_INTERVAL_MS: z.coerce.number().default(60000),
-	OTEL_TRACES_DATASET: z.string().optional(),
 });
 
 // Don't touch the part below

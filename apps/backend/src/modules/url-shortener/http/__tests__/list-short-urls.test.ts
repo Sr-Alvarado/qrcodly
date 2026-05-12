@@ -1,7 +1,7 @@
 import { getTestContext, resetTestState } from '@/tests/shared/test-context';
 import type { FastifyInstance } from 'fastify';
 import {
-	type TShortUrlWithCustomDomainPaginatedResponseDto,
+	type TShortUrlPaginatedResponseDto,
 	QrCodeDefaults,
 } from '@shared/schemas';
 import { SHORT_URL_API_PATH, createShortUrl } from './utils';
@@ -63,7 +63,7 @@ describe('listShortUrls', () => {
 		const response = await listShortUrlsRequest(accessToken, { standalone: true });
 		expect(response).toHaveStatusCode(200);
 
-		const data = JSON.parse(response.payload) as TShortUrlWithCustomDomainPaginatedResponseDto;
+		const data = JSON.parse(response.payload) as TShortUrlPaginatedResponseDto;
 		expect(data).toHaveProperty('page');
 		expect(data).toHaveProperty('limit');
 		expect(data).toHaveProperty('total');
@@ -77,10 +77,10 @@ describe('listShortUrls', () => {
 		const user2ShortUrl = await createShortUrl(testServer, accessToken2);
 
 		const response1 = await listShortUrlsRequest(accessToken, { standalone: true });
-		const data1 = JSON.parse(response1.payload) as TShortUrlWithCustomDomainPaginatedResponseDto;
+		const data1 = JSON.parse(response1.payload) as TShortUrlPaginatedResponseDto;
 
 		const response2 = await listShortUrlsRequest(accessToken2, { standalone: true });
-		const data2 = JSON.parse(response2.payload) as TShortUrlWithCustomDomainPaginatedResponseDto;
+		const data2 = JSON.parse(response2.payload) as TShortUrlPaginatedResponseDto;
 
 		// Each user should only see their own short URLs
 		expect(data1.data.every((su) => su.createdBy === userId)).toBe(true);
@@ -111,7 +111,7 @@ describe('listShortUrls', () => {
 		});
 		expect(response).toHaveStatusCode(200);
 
-		const data = JSON.parse(response.payload) as TShortUrlWithCustomDomainPaginatedResponseDto;
+		const data = JSON.parse(response.payload) as TShortUrlPaginatedResponseDto;
 		expect(data.data.length).toBeLessThanOrEqual(1);
 		expect(data.limit).toBe(1);
 	});
@@ -125,7 +125,7 @@ describe('listShortUrls', () => {
 		});
 		expect(response).toHaveStatusCode(200);
 
-		const data = JSON.parse(response.payload) as TShortUrlWithCustomDomainPaginatedResponseDto;
+		const data = JSON.parse(response.payload) as TShortUrlPaginatedResponseDto;
 		expect(data.data.length).toBeGreaterThanOrEqual(1);
 		expect(data.data.some((su) => su.shortCode === shortUrl.shortCode)).toBe(true);
 	});
@@ -144,7 +144,7 @@ describe('listShortUrls', () => {
 		const response = await listShortUrlsRequest(accessToken, { standalone: true });
 		expect(response).toHaveStatusCode(200);
 
-		const data = JSON.parse(response.payload) as TShortUrlWithCustomDomainPaginatedResponseDto;
+		const data = JSON.parse(response.payload) as TShortUrlPaginatedResponseDto;
 		const found = data.data.find((su) => su.id === shortUrl.id);
 		expect(found).toBeDefined();
 		expect(found!.name).toBe('List Tag Test');
@@ -164,7 +164,7 @@ describe('listShortUrls', () => {
 
 		// List should not include the deleted short URL
 		const response = await listShortUrlsRequest(accessToken, { standalone: true });
-		const data = JSON.parse(response.payload) as TShortUrlWithCustomDomainPaginatedResponseDto;
+		const data = JSON.parse(response.payload) as TShortUrlPaginatedResponseDto;
 		expect(data.data.find((su) => su.id === shortUrl.id)).toBeUndefined();
 	});
 
@@ -191,7 +191,7 @@ describe('listShortUrls', () => {
 
 			// List standalone short URLs - should NOT contain QR-linked ones
 			const response = await listShortUrlsRequest(accessToken, { standalone: true });
-			const data = JSON.parse(response.payload) as TShortUrlWithCustomDomainPaginatedResponseDto;
+			const data = JSON.parse(response.payload) as TShortUrlPaginatedResponseDto;
 
 			// Every returned short URL must have qrCodeId as null
 			for (const su of data.data) {
@@ -214,7 +214,7 @@ describe('listShortUrls', () => {
 			});
 
 			expect(response).toHaveStatusCode(200);
-			const data = JSON.parse(response.payload) as TShortUrlWithCustomDomainPaginatedResponseDto;
+			const data = JSON.parse(response.payload) as TShortUrlPaginatedResponseDto;
 			expect(data.total).toBe(1);
 			expect(data.data).toHaveLength(1);
 			expect(data.data[0].id).toBe(shortUrl.id);
@@ -229,7 +229,7 @@ describe('listShortUrls', () => {
 			});
 
 			expect(response).toHaveStatusCode(200);
-			const data = JSON.parse(response.payload) as TShortUrlWithCustomDomainPaginatedResponseDto;
+			const data = JSON.parse(response.payload) as TShortUrlPaginatedResponseDto;
 			expect(data.total).toBe(0);
 			expect(data.data).toHaveLength(0);
 		});
@@ -252,7 +252,7 @@ describe('listShortUrls', () => {
 			});
 
 			expect(response).toHaveStatusCode(200);
-			const data = JSON.parse(response.payload) as TShortUrlWithCustomDomainPaginatedResponseDto;
+			const data = JSON.parse(response.payload) as TShortUrlPaginatedResponseDto;
 			expect(data.total).toBe(2);
 			const ids = data.data.map((su) => su.id);
 			expect(ids).toContain(shortUrl1.id);
@@ -274,7 +274,7 @@ describe('listShortUrls', () => {
 			});
 
 			expect(response).toHaveStatusCode(200);
-			const data = JSON.parse(response.payload) as TShortUrlWithCustomDomainPaginatedResponseDto;
+			const data = JSON.parse(response.payload) as TShortUrlPaginatedResponseDto;
 			expect(data.total).toBe(2);
 			expect(data.data).toHaveLength(2);
 		});
@@ -293,7 +293,7 @@ describe('listShortUrls', () => {
 			});
 
 			expect(response).toHaveStatusCode(200);
-			const data = JSON.parse(response.payload) as TShortUrlWithCustomDomainPaginatedResponseDto;
+			const data = JSON.parse(response.payload) as TShortUrlPaginatedResponseDto;
 			expect(data.total).toBe(1);
 			expect(data.data[0].id).toBe(shortUrl.id);
 		});
@@ -309,7 +309,7 @@ describe('listShortUrls', () => {
 			});
 
 			expect(response).toHaveStatusCode(200);
-			const data = JSON.parse(response.payload) as TShortUrlWithCustomDomainPaginatedResponseDto;
+			const data = JSON.parse(response.payload) as TShortUrlPaginatedResponseDto;
 			const found = data.data.find((su) => su.id === shortUrl.id);
 			expect(found).toBeDefined();
 			expect(found!.tags).toHaveLength(1);

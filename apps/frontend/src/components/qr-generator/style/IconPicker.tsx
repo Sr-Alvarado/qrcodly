@@ -3,7 +3,6 @@
 import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import * as Icons from '@heroicons/react/24/outline';
 import ReactDOMServer from 'react-dom/server';
-import posthog from 'posthog-js';
 import { useTranslations } from 'next-intl';
 
 import {
@@ -108,18 +107,14 @@ const IconPicker: React.FC<IconPickerProps> = ({ onSelect }) => {
 
 				onSelect(svgToBase64(svgString), icon.key);
 
-				posthog.capture('predefined-icon-selected', {
-					iconName: icon.key,
-				});
+				
 			}
 
 			if (icon.type === 'custom') {
 				const base64 = await fetchSvgAsBase64(icon.src, color.value);
 				onSelect(base64, base64 ? icon.key : undefined);
 
-				posthog.capture('custom-icon-selected', {
-					iconName: icon.key,
-				});
+				
 			}
 		},
 		[color, onSelect],

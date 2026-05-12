@@ -27,8 +27,6 @@ describe('ListShortUrlsUseCase', () => {
 		shortCode: 'ABC12',
 		name: null,
 		destinationUrl: 'https://example.com',
-		customDomainId: null,
-		customDomain: null,
 		isActive: true,
 		qrCodeId: null,
 		createdBy: userId,

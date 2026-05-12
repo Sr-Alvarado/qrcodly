@@ -9,7 +9,6 @@ export const generateShortUrlDto = (
 ): TCreateShortUrlDto => ({
 	name: null,
 	destinationUrl: faker.internet.url(),
-	customDomainId: null,
 	isActive: true,
 	...overrides,
 });

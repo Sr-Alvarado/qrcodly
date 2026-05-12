@@ -1,7 +1,6 @@
 'use client';
 
 import { useMemo, useRef, useCallback, useState, useEffect } from 'react';
-import posthog from 'posthog-js';
 import { tips, type SmartTipStateContext, type TipDefinition } from '../tips.config';
 import { useBehaviorTracker } from '../SmartTipsBehaviorTracker';
 import { useSmartTipStorage } from './useSmartTipStorage';
@@ -96,7 +95,7 @@ export function useSmartTips(anchor: string, stateContext?: SmartTipStateContext
 		if (evaluatedTip) {
 			setDisplayedTip(evaluatedTip);
 			markShown(evaluatedTip.id);
-			posthog.capture('smart-tip:displayed', { tipId: evaluatedTip.id });
+			
 		}
 	}, [evaluatedTip, markShown]);
 
@@ -105,7 +104,7 @@ export function useSmartTips(anchor: string, stateContext?: SmartTipStateContext
 	const close = useCallback(() => {
 		if (displayedTip) {
 			closedThisSessionRef.current.add(displayedTip.id);
-			posthog.capture('smart-tip:closed', { tipId: displayedTip.id });
+			
 			setDisplayedTip(null);
 		}
 	}, [displayedTip]);
@@ -114,7 +113,7 @@ export function useSmartTips(anchor: string, stateContext?: SmartTipStateContext
 		if (displayedTip) {
 			markDismissed(displayedTip.id);
 			closedThisSessionRef.current.add(displayedTip.id);
-			posthog.capture('smart-tip:dismissed', { tipId: displayedTip.id });
+			
 			setDisplayedTip(null);
 		}
 	}, [displayedTip, markDismissed]);
@@ -122,7 +121,7 @@ export function useSmartTips(anchor: string, stateContext?: SmartTipStateContext
 	const disableAll = useCallback(() => {
 		setGloballyDisabled(true);
 		setDisplayedTip(null);
-		posthog.capture('smart-tip:all-disabled');
+		
 	}, [setGloballyDisabled]);
 
 	return { activeTip, close, dismiss, disableAll };

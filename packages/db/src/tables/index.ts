@@ -19,18 +19,6 @@ export {
 	type TShortUrlWithDomainAndTags,
 } from './short-url';
 export { default as shortUrlTag, shortUrlTagRelations, type TShortUrlTag } from './short-url-tag';
-export {
-	default as customDomain,
-	customDomainRelations,
-	type TCustomDomain,
-	VERIFICATION_PHASES,
-	SSL_STATUSES,
-	OWNERSHIP_STATUSES,
-	type TVerificationPhase,
-	type TCloudflareSSLStatus,
-	type TOwnershipStatus,
-} from './custom-domain';
-export { default as userSubscription, type TUserSubscription } from './user-subscription';
 export { default as tag, tagRelations, type TTag } from './tag';
 export { default as qrCodeTag, qrCodeTagRelations, type TQrCodeTag } from './qr-code-tag';
 export {

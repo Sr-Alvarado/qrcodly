@@ -3,7 +3,6 @@ import {
 	cleanupCreatedIntegrations,
 	createIntegrationDirectly,
 	testIntegrationViaApi,
-	ensureProSubscription,
 	ANALYTICS_INTEGRATION_API_PATH,
 	TEST_USER_PRO_ID,
 	TEST_USER_ID,
@@ -18,7 +17,6 @@ describe('POST /analytics-integration/:id/test (Test Credentials)', () => {
 	beforeAll(async () => {
 		await resetTestState();
 		ctx = await getTestContext();
-		await ensureProSubscription();
 	});
 
 	afterEach(async () => {

@@ -5,7 +5,6 @@ import {
 	ChartBarIcon,
 	ChevronLeftIcon,
 	ChevronRightIcon,
-	GlobeAltIcon,
 	LinkIcon,
 	QrCodeIcon,
 	RectangleStackIcon,
@@ -66,12 +65,6 @@ export function FeatureSlider() {
 			icon: <ChartBarIcon className="h-9 w-9 sm:h-11 sm:w-11" />,
 			headlineKey: 'statisticFeature.headline',
 			subHeadlineKey: 'statisticFeature.subHeadline',
-		},
-		{
-			icon: <GlobeAltIcon className="h-9 w-9 sm:h-11 sm:w-11" />,
-			headlineKey: 'customDomainFeature.headline',
-			subHeadlineKey: 'customDomainFeature.subHeadline',
-			badge: tGeneral('proRequired'),
 		},
 		{
 			icon: <RectangleStackIcon className="h-9 w-9 sm:h-11 sm:w-11" />,

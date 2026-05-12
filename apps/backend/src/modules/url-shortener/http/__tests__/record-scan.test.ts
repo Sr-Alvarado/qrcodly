@@ -2,7 +2,6 @@ import { env } from '@/core/config/env';
 import { getTestContext, resetTestState } from '@/tests/shared/test-context';
 import type { FastifyInstance } from 'fastify';
 import { SHORT_URL_API_PATH, createShortUrl } from './utils';
-import { mockFetchUmamiAllEndpoints, resetFetchMocks } from '@/tests/shared/mocks/umami.mock';
 
 const SCAN_PAYLOAD = {
 	url: 'https://example.com/u/abc12',
@@ -25,14 +24,6 @@ describe('recordScan (POST /:shortCode/record-scan)', () => {
 		const ctx = await getTestContext();
 		testServer = ctx.testServer;
 		accessToken = ctx.accessToken;
-	});
-
-	beforeEach(() => {
-		mockFetchUmamiAllEndpoints();
-	});
-
-	afterEach(() => {
-		resetFetchMocks();
 	});
 
 	const recordScanRequest = async (

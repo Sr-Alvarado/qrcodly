@@ -1,7 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 import { convertQRCodeDataToStringByType, isDynamic, type TQrCodeContent } from '@shared/schemas';
 import { buildShortUrl } from '@/modules/url-shortener/utils';
-import CustomDomainRepository from '@/modules/custom-domain/domain/repository/custom-domain.repository';
 import ShortUrlRepository from '@/modules/url-shortener/domain/repository/short-url.repository';
 
 /**
@@ -12,12 +11,11 @@ import ShortUrlRepository from '@/modules/url-shortener/domain/repository/short-
 export class QrCodeDataService {
 	constructor(
 		@inject(ShortUrlRepository) private shortUrlRepository: ShortUrlRepository,
-		@inject(CustomDomainRepository) private customDomainRepository: CustomDomainRepository,
 	) {}
 
 	/**
 	 * Computes the qrCodeData string for a QR code.
-	 * For dynamic/editable content, this resolves the short URL with custom domain.
+	 * For dynamic/editable content, this resolves the short URL.
 	 * For static content, this returns the raw content string.
 	 *
 	 * @param qrCodeId - The QR code ID
@@ -30,7 +28,7 @@ export class QrCodeDataService {
 			return convertQRCodeDataToStringByType(content);
 		}
 
-		// For dynamic content, we need to resolve the short URL with its custom domain
+		// For dynamic content, we need to resolve the short URL
 		const shortUrl = await this.shortUrlRepository.findOneByQrCodeId(qrCodeId);
 
 		if (!shortUrl) {
@@ -38,17 +36,8 @@ export class QrCodeDataService {
 			return convertQRCodeDataToStringByType(content);
 		}
 
-		// Resolve custom domain if set
-		let customDomainHost: string | null = null;
-		if (shortUrl.customDomainId) {
-			const customDomain = await this.customDomainRepository.findOneById(shortUrl.customDomainId);
-			if (customDomain) {
-				customDomainHost = customDomain.domain;
-			}
-		}
-
-		// Build the full short URL with custom domain
-		const fullShortUrl = buildShortUrl(shortUrl.shortCode, customDomainHost);
+		// Build the full short URL
+		const fullShortUrl = buildShortUrl(shortUrl.shortCode);
 
 		// Compute the qrCodeData
 		return convertQRCodeDataToStringByType(content, fullShortUrl);

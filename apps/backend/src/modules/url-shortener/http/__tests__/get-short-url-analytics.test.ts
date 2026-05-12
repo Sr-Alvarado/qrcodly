@@ -2,7 +2,6 @@ import { getTestContext, resetTestState } from '@/tests/shared/test-context';
 import type { FastifyInstance } from 'fastify';
 import type { TShortUrlResponseDto, TAnalyticsResponseDto } from '@shared/schemas';
 import { SHORT_URL_API_PATH, reserveShortUrl } from './utils';
-import { mockFetchUmamiAllEndpoints, resetFetchMocks } from '@/tests/shared/mocks/umami.mock';
 
 describe('getShortUrlAnalytics', () => {
 	let testServer: FastifyInstance;
@@ -15,14 +14,6 @@ describe('getShortUrlAnalytics', () => {
 		testServer = ctx.testServer;
 		accessToken = ctx.accessToken;
 		accessToken2 = ctx.accessToken2;
-	});
-
-	beforeEach(() => {
-		mockFetchUmamiAllEndpoints();
-	});
-
-	afterEach(() => {
-		resetFetchMocks();
 	});
 
 	const getAnalyticsRequest = async (shortCode: string, token: string) =>

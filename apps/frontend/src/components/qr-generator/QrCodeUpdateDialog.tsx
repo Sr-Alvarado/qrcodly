@@ -12,7 +12,6 @@ import { useTranslations } from 'next-intl';
 import { DialogClose } from '@radix-ui/react-dialog';
 import { Checkbox } from '../ui/checkbox';
 import { useState } from 'react';
-import posthog from 'posthog-js';
 import { safeLocalStorage } from '@/lib/utils';
 
 export const UPDATE_DIALOG_DO_NOT_SHOW_AGAIN_KEY = 'qrCodeUpdateInfoDialogDoNotShowAgain';
@@ -30,7 +29,7 @@ export function QrCodeUpdateDialog({ isOpen, setIsOpen, onSubmit }: TNameDialogP
 		// TODO move to user settings
 		if (doNotShowAgain) {
 			safeLocalStorage.setItem(UPDATE_DIALOG_DO_NOT_SHOW_AGAIN_KEY, 'true');
-			posthog.capture('qrcode.update.dontShowAgainChecked');
+			
 		}
 		onSubmit();
 	};

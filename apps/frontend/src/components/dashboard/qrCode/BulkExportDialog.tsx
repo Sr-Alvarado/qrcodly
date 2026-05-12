@@ -36,7 +36,6 @@ import {
 } from '@/components/ui/pagination';
 import { getPageNumbers } from '@/lib/utils';
 import { DynamicQrCode } from '@/components/qr-generator/DynamicQrCode';
-import posthog from 'posthog-js';
 
 const EXPORT_PAGE_LIMIT = 50;
 
@@ -224,12 +223,7 @@ export function BulkExportDialog({ open, onOpenChange }: BulkExportDialogProps) 
 			document.body.removeChild(a);
 			URL.revokeObjectURL(url);
 
-			posthog.capture('bulk-export:downloaded', {
-				format: fileExtension,
-				totalSelected: totalItems,
-				successCount,
-				failCount,
-			});
+			
 
 			toast({
 				title: t('success'),

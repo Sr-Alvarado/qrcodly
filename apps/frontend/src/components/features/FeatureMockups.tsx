@@ -301,41 +301,6 @@ export function TemplatesMockup() {
 	);
 }
 
-export function CustomDomainMockup() {
-	return (
-		<div className="relative bg-gradient-to-br from-sky-50 to-blue-50 rounded-3xl p-4 sm:p-6 min-h-[350px] sm:min-h-[426px] flex flex-col overflow-hidden">
-			<div className="bg-white rounded-2xl shadow-xl border border-slate-200/60 p-4 sm:p-6 flex-1 flex flex-col">
-				<div className="flex items-center gap-2 mb-3 sm:mb-4">
-					<GlobeAltIcon className="h-4 w-4 sm:h-5 sm:w-5 text-slate-400" />
-					<span className="text-xs sm:text-sm font-medium text-slate-600">Custom Domain</span>
-				</div>
-
-				<div className="flex-1 flex flex-col justify-center gap-3 sm:gap-4">
-					<div className="bg-slate-50 rounded-lg p-2.5 sm:p-3">
-						<div className="text-[10px] sm:text-xs text-slate-400 mb-1">Default</div>
-						<div className="text-[10px] sm:text-xs font-mono text-slate-500">qrcodly.de/abc123</div>
-					</div>
-
-					<div className="flex justify-center">
-						<ArrowsRightLeftIcon className="h-4 w-4 text-slate-300" />
-					</div>
-
-					<div className="bg-blue-50 rounded-lg p-2.5 sm:p-3 border border-blue-200">
-						<div className="text-[10px] sm:text-xs text-blue-500 mb-1">Your Domain</div>
-						<div className="text-[10px] sm:text-xs font-mono text-blue-700 font-medium">
-							go.yourbrand.com/abc123
-						</div>
-						<div className="flex items-center gap-1 mt-1.5">
-							<CheckIcon className="h-3 w-3 text-emerald-500" />
-							<span className="text-[9px] sm:text-[10px] text-emerald-600">SSL Active</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	);
-}
-
 export function TagsMockup() {
 	const tags = [
 		{ label: 'Marketing', color: 'bg-blue-500', count: 14 },

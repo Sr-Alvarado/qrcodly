@@ -6,7 +6,7 @@ import { Logger } from '@/core/logging';
 import { sleep } from '@/utils/general';
 
 @EventHandler(UserDeletedEvent.eventName)
-export class UserCreatedEventHandler extends AbstractEventHandler<UserDeletedEvent> {
+export class UserDeletedEventHandler extends AbstractEventHandler<UserDeletedEvent> {
 	constructor() {
 		super();
 	}

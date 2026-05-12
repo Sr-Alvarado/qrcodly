@@ -4,7 +4,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import { useTranslations } from 'next-intl';
 import { TableCell } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
-import type { TShortUrlWithCustomDomainResponseDto } from '@shared/schemas';
+import type { TShortUrlResponseDto, TTagResponseDto } from '@shared/schemas';
 import { useIsTruncated } from '@/hooks/use-is-truncated';
 import { ShortUrlTagBadges } from './ShortUrlTagBadges';
 import { ShortUrlTagSelector } from './ShortUrlTagSelector';
@@ -12,7 +12,7 @@ import { ShortUrlTagSelector } from './ShortUrlTagSelector';
 const stopPropagation = (e: React.MouseEvent) => e.stopPropagation();
 
 type ShortUrlNameCellProps = {
-	shortUrl: TShortUrlWithCustomDomainResponseDto;
+	shortUrl: TShortUrlResponseDto & { tags?: TTagResponseDto[] };
 	onEditName: () => void;
 };
 

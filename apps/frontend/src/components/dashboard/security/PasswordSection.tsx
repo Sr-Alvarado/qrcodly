@@ -7,8 +7,6 @@ import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import * as Sentry from '@sentry/nextjs';
-import posthog from 'posthog-js';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -106,7 +104,7 @@ export function PasswordSection() {
 		try {
 			await updatePasswordWithReverification(data);
 
-			posthog.capture('password-change:success');
+			
 
 			toast({
 				title: t('passwordUpdated'),
@@ -117,10 +115,8 @@ export function PasswordSection() {
 		} catch (error) {
 			const errorMessage = getClerkErrorMessage(error, t('passwordUpdateError'));
 
-			Sentry.captureException(error, {
-				tags: { action: 'password-change' },
-			});
-			posthog.capture('error:password-change', { errorMessage });
+			
+			
 
 			toast({
 				variant: 'destructive',

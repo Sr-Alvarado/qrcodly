@@ -1,14 +1,5 @@
 import { singleton } from 'tsyringe';
-import { env } from '../config/env';
 import { OnShutdown } from '../decorators/on-shutdown.decorator';
-import {
-	init,
-	type NodeClient,
-	captureException,
-	isInitialized,
-	consoleLoggingIntegration,
-} from '@sentry/node';
-import { IN_PRODUCTION } from '../config/constants';
 
 export type TErrorLevel = 'fatal' | 'error' | 'warning' | 'info';
 
@@ -17,27 +8,12 @@ export type TReportingOptions = {
 };
 
 /**
- * AppCache class for caching data using Redis.
+ * Error reporter (Sentry disabled — no-op).
  */
 @singleton()
 export class ErrorReporter {
-	private client: NodeClient | undefined;
-
-	constructor() {
-		this.client = init({
-			enabled: IN_PRODUCTION,
-			dsn: env.SENTRY_DSN,
-			profileSessionSampleRate: 1.0,
-			environment: env.SENTRY_ENVIRONMENT,
-			enableLogs: true,
-			integrations: [consoleLoggingIntegration({ levels: ['log', 'warn', 'error'] })],
-		});
-	}
-
-	private report(error: Error | string, options?: TReportingOptions) {
-		if (!this.client || !isInitialized()) return;
-
-		return captureException(error, options);
+	private report(_error: Error | string, _options?: TReportingOptions) {
+		// no-op
 	}
 
 	error(e: Error, options?: TReportingOptions) {
@@ -46,6 +22,6 @@ export class ErrorReporter {
 
 	@OnShutdown()
 	onShutdown() {
-		this.client?.close();
+		// no-op
 	}
 }

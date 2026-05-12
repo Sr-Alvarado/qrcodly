@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import posthog from 'posthog-js';
-import * as Sentry from '@sentry/nextjs';
 import type { TQrCodeWithRelationsResponseDto, TFileExtension } from '@shared/schemas';
 import { objDiff, QrCodeDefaults } from '@shared/schemas';
 import { getQrCodeStylingOptions } from '@/lib/qr-code-helpers';
@@ -40,11 +38,7 @@ export function useQrCodeActionHandlers(qr: TQrCodeWithRelationsResponseDto) {
 	const handleQrCodeDownload = async (fileExt: TFileExtension) => {
 		if (!qrCodeInstance) return;
 
-		posthog.capture('dashboard.qr-code-download', {
-			qrCode: qr.id,
-			name: qr.name || 'qr-code',
-			extension: fileExt,
-		});
+		
 		trackAction('qr-download');
 
 		await qrCodeInstance.download({
@@ -83,33 +77,16 @@ export function useQrCodeActionHandlers(qr: TQrCodeWithRelationsResponseDto) {
 							duration: 5000,
 						});
 
-						posthog.capture('config-template-created-from-qr', {
-							templateName: templateName,
-							qrCodeId: qr.id,
-						});
+						
 					},
 					onError: (e: Error) => {
 						const error = e as ApiError;
 
 						if (error.code === 0 || error.code >= 500) {
-							Sentry.captureException(error, {
-								extra: {
-									templateName: templateName,
-									config: qr.config,
-									qrCodeId: qr.id,
-									error: {
-										code: error.code,
-										message: error.message,
-										fieldErrors: error?.fieldErrors,
-									},
-								},
-							});
+							
 						}
 
-						posthog.capture('error:config-template-created-from-qr', {
-							templateName: templateName,
-							qrCodeId: qr.id,
-						});
+						
 
 						toast({
 							variant: 'destructive',

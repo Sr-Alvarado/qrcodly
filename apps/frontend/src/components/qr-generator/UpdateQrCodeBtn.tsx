@@ -4,9 +4,7 @@ import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { isDynamic, objDiff, type TQrCodeWithRelationsResponseDto } from '@shared/schemas';
 import { toast } from '@/components/ui/use-toast';
-import posthog from 'posthog-js';
 import { useTranslations } from 'next-intl';
-import * as Sentry from '@sentry/nextjs';
 import { qrCodeQueryKeys, useUpdateQrCodeMutation } from '@/lib/api/qr-code';
 import { QrCodeUpdateDialog, UPDATE_DIALOG_DO_NOT_SHOW_AGAIN_KEY } from './QrCodeUpdateDialog';
 import { useQueryClient } from '@tanstack/react-query';
@@ -66,36 +64,16 @@ const UpdateQrCodeBtn = ({ qrCode }: { qrCode: UpdateBtnDto }) => {
 						});
 
 						void queryClient.refetchQueries({ queryKey: qrCodeQueryKeys.listQrCodes });
-						posthog.capture('qr-code-updated', {
-							name: qrCode.name,
-							config: qrCode.config,
-							content: qrCode.content,
-						});
+						
 					},
-					onError: (e: Error) => {
-						const error = e as ApiError;
+					onError: (err: Error) => {
+						const error = err as ApiError;
 
 						if (error.code === 0 || error.code >= 500) {
-							Sentry.captureException(error, {
-								extra: {
-									error: {
-										name: qrCode.name,
-										config: qrCode.config,
-										content: qrCode.content,
-										message: error.message,
-										fieldErrors: error?.fieldErrors,
-									},
-								},
-							});
+							
 						}
 
-						posthog.capture('error:qr-code-updated', {
-							name: qrCode.name,
-							config: qrCode.config,
-							content: qrCode.content,
-							message: error.message,
-							fieldErrors: error?.fieldErrors,
-						});
+						
 
 						toast({
 							variant: 'destructive',

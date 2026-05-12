@@ -4,7 +4,6 @@ import { useCallback, useEffect, useState } from 'react';
 import { useAuth, useUser } from '@clerk/nextjs';
 import { useTranslations } from 'next-intl';
 import { HandThumbUpIcon, HandThumbDownIcon } from '@heroicons/react/24/outline';
-import posthog from 'posthog-js';
 import {
 	Dialog,
 	DialogContent,
@@ -76,11 +75,11 @@ export default function SatisfactionSurvey() {
 		if (dismissed || !statusData || statusData.hasResponded || !accountOldEnough) return;
 
 		setOpen(true);
-		posthog.capture('survey:shown');
+		
 	}, [dismissed, statusData, accountOldEnough]);
 
 	const handleThumbsUp = () => {
-		posthog.capture('survey:submitted', { rating: 'up' });
+		
 		submitMutation.mutate(
 			{ rating: 'up' },
 			{
@@ -97,7 +96,7 @@ export default function SatisfactionSurvey() {
 	};
 
 	const handleSubmitFeedback = () => {
-		posthog.capture('survey:submitted', { rating: 'down', hasFeedback: !!feedback.trim() });
+		
 		submitMutation.mutate(
 			{ rating: 'down', feedback: feedback.trim() || null },
 			{
@@ -110,7 +109,7 @@ export default function SatisfactionSurvey() {
 	};
 
 	const handleSkipFeedback = () => {
-		posthog.capture('survey:submitted', { rating: 'down', hasFeedback: false });
+		
 		submitMutation.mutate(
 			{ rating: 'down', feedback: null },
 			{
@@ -123,7 +122,7 @@ export default function SatisfactionSurvey() {
 	};
 
 	const handleDismiss = () => {
-		posthog.capture('survey:skipped');
+		
 		// Don't save to DB — just snooze for 2 weeks via localStorage
 		localStorage.setItem(STORAGE_KEY_SKIPPED, String(Date.now()));
 		setDismissed(true);

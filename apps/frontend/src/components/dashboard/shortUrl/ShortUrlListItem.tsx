@@ -36,13 +36,11 @@ import { EditShortUrlDialog } from './EditShortUrlDialog';
 import { DeleteShortUrlDialog } from './DeleteShortUrlDialog';
 import { ShortUrlNameCell } from './ShortUrlNameCell';
 import { NameDialog } from '@/components/qr-generator/NameDialog';
-import type { TShortUrlWithCustomDomainResponseDto } from '@shared/schemas';
-import posthog from 'posthog-js';
-import * as Sentry from '@sentry/nextjs';
+import type { TShortUrlResponseDto, TTagResponseDto } from '@shared/schemas';
 import type { ApiError } from '@/lib/api/ApiError';
 
 interface ShortUrlListItemProps {
-	shortUrl: TShortUrlWithCustomDomainResponseDto;
+	shortUrl: TShortUrlResponseDto & { tags?: TTagResponseDto[] };
 }
 
 const stopContextMenu = (e: React.MouseEvent) => e.stopPropagation();
@@ -66,26 +64,16 @@ export function ShortUrlListItem({ shortUrl }: ShortUrlListItemProps) {
 	const handleDelete = () => {
 		deleteMutation.mutate(shortUrl.shortCode, {
 			onSuccess: () => {
-				posthog.capture('short-url-deleted', {
-					shortCode: shortUrl.shortCode,
-				});
+				
 				toast({ title: t('delete.success') });
 				setDeleteOpen(false);
 			},
-			onError: (e) => {
-				const error = e as ApiError;
+			onError: (err) => {
+				const error = err as ApiError;
 				if (error.code === 0 || error.code >= 500) {
-					Sentry.captureException(error, {
-						extra: {
-							shortCode: shortUrl.shortCode,
-							error: { code: error.code, message: error.message },
-						},
-					});
+					
 				}
-				posthog.capture('error:short-url-deleted', {
-					shortCode: shortUrl.shortCode,
-					error: { code: error.code, message: error.message },
-				});
+				
 				toast({
 					variant: 'destructive',
 					title: t('error.delete.title'),
@@ -98,13 +86,9 @@ export function ShortUrlListItem({ shortUrl }: ShortUrlListItemProps) {
 	const handleToggle = () => {
 		toggleMutation.mutate(shortUrl.shortCode, {
 			onSuccess: () => {
-				posthog.capture('short-url-toggled', {
-					shortCode: shortUrl.shortCode,
-					isActive: !shortUrl.isActive,
-				});
+				
 			},
-			onError: (error) => {
-				Sentry.captureException(error);
+			onError: () => {
 				toast({
 					title: t('error.toggleActiveState.title'),
 					description: t('error.toggleActiveState.message'),
@@ -117,15 +101,12 @@ export function ShortUrlListItem({ shortUrl }: ShortUrlListItemProps) {
 	const handleDuplicate = () => {
 		duplicateMutation.mutate(shortUrl.shortCode, {
 			onSuccess: () => {
-				posthog.capture('short-url-duplicated', { shortCode: shortUrl.shortCode });
+				
 				toast({ title: tGeneral('duplicated'), duration: 3000 });
 			},
-			onError: (error) => {
-				Sentry.captureException(error);
-				posthog.capture('error:short-url-duplicated', {
-					shortCode: shortUrl.shortCode,
-					error,
-				});
+			onError: () => {
+				
+				
 				toast({
 					title: tGeneral('duplicateError'),
 					variant: 'destructive',
@@ -139,8 +120,7 @@ export function ShortUrlListItem({ shortUrl }: ShortUrlListItemProps) {
 		updateNameMutation.mutate(
 			{ shortCode: shortUrl.shortCode, name: name || null },
 			{
-				onError: (error) => {
-					Sentry.captureException(error);
+				onError: () => {
 					toast({
 						title: t('error.update.title'),
 						variant: 'destructive',

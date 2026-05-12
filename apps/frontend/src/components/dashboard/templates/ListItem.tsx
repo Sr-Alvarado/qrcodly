@@ -6,10 +6,8 @@ import { Loader2 } from 'lucide-react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { useCallback, useMemo, useState } from 'react';
-import posthog from 'posthog-js';
 import { fetchImageAsBase64, formatDate, safeLocalStorage } from '@/lib/utils';
 import type { TConfigTemplate, TQrCode } from '@shared/schemas';
-import * as Sentry from '@sentry/nextjs';
 import { TableCell, TableRow } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import {
@@ -89,10 +87,10 @@ export const TemplateListItem = ({
 			onSuccess: () => {
 				toastId.dismiss();
 				setIsDeleting(false);
-				posthog.capture('config-template-deleted', { id: template.id, name: template.name });
+				
 			},
-			onError: (error) => {
-				Sentry.captureException(error);
+			onError: () => {
+				
 				toastId.dismiss();
 				setIsDeleting(false);
 				toast({
@@ -108,12 +106,12 @@ export const TemplateListItem = ({
 	const handleDuplicate = useCallback(() => {
 		duplicateMutation.mutate(template.id, {
 			onSuccess: () => {
-				posthog.capture('config-template-duplicated', { id: template.id });
+				
 				toast({ title: t('general.duplicated'), duration: 3000 });
 			},
-			onError: (error) => {
-				Sentry.captureException(error);
-				posthog.capture('error:config-template-duplicated', { id: template.id, error });
+			onError: () => {
+				
+				
 				toast({
 					title: t('general.duplicateError'),
 					variant: 'destructive',
@@ -136,10 +134,7 @@ export const TemplateListItem = ({
 			if (configToSave.image) {
 				configToSave.image = await fetchImageAsBase64(configToSave.image);
 			}
-			posthog.capture('create-qr-code-from-config-template', {
-				id: template.id,
-				templateName: template.name,
-			});
+			
 		} catch {}
 		safeLocalStorage.setItem('unsavedQrConfig', JSON.stringify(configToSave));
 		router.push('/');

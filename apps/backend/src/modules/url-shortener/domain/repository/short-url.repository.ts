@@ -94,9 +94,6 @@ class ShortUrlRepository extends AbstractRepository<TShortUrl> {
 	async findOneById(id: string): Promise<TShortUrlWithDomain | undefined> {
 		const result = await this.db.query.shortUrl.findFirst({
 			where: eq(this.table.id, id),
-			with: {
-				customDomain: true,
-			},
 		});
 		return result;
 	}
@@ -109,9 +106,6 @@ class ShortUrlRepository extends AbstractRepository<TShortUrl> {
 	async findOneByShortCode(shortCode: string): Promise<TShortUrlWithDomain | undefined> {
 		const result = await this.db.query.shortUrl.findFirst({
 			where: eq(this.table.shortCode, shortCode),
-			with: {
-				customDomain: true,
-			},
 		});
 		return result;
 	}
@@ -124,9 +118,6 @@ class ShortUrlRepository extends AbstractRepository<TShortUrl> {
 	async findOneByQrCodeId(qrCodeId: string): Promise<TShortUrlWithDomain | undefined> {
 		const result = await this.db.query.shortUrl.findFirst({
 			where: eq(this.table.qrCodeId, qrCodeId),
-			with: {
-				customDomain: true,
-			},
 		});
 		return result;
 	}
@@ -150,7 +141,6 @@ class ShortUrlRepository extends AbstractRepository<TShortUrl> {
 		const safePage = Math.max(0, (page || 1) - 1);
 		const results = await this.db.query.shortUrl.findMany({
 			where: and(...conditions),
-			with: { customDomain: true },
 			orderBy: [desc(this.table.createdAt)],
 			limit: limit || 10,
 			offset: safePage * (limit || 10),
@@ -214,7 +204,6 @@ class ShortUrlRepository extends AbstractRepository<TShortUrl> {
 				destinationUrl: shortUrl.destinationUrl,
 				shortCode: shortUrl.shortCode,
 				isActive: shortUrl.isActive,
-				customDomainId: shortUrl.customDomainId,
 				qrCodeId: shortUrl.qrCodeId,
 				createdAt: new Date(),
 				createdBy: shortUrl.createdBy,

@@ -35,15 +35,13 @@ import {
 } from '@/lib/api/url-shortener';
 import { createLinkFromShortUrl } from '@/lib/utils';
 import { EditShortUrlDialog } from './EditShortUrlDialog';
-import type { TShortUrlWithCustomDomainResponseDto } from '@shared/schemas';
+import type { TShortUrlResponseDto } from '@shared/schemas';
 import { Link } from '@/i18n/navigation';
 import { useQueryClient } from '@tanstack/react-query';
-import posthog from 'posthog-js';
-import * as Sentry from '@sentry/nextjs';
 import type { ApiError } from '@/lib/api/ApiError';
 
 interface ShortUrlDetailContentProps {
-	shortUrl: TShortUrlWithCustomDomainResponseDto;
+	shortUrl: TShortUrlResponseDto;
 }
 
 export function ShortUrlDetailContent({ shortUrl }: ShortUrlDetailContentProps) {
@@ -63,26 +61,16 @@ export function ShortUrlDetailContent({ shortUrl }: ShortUrlDetailContentProps) 
 		setIsDeleting(true);
 		deleteMutation.mutate(shortUrl.shortCode, {
 			onSuccess: () => {
-				posthog.capture('short-url-deleted', {
-					shortCode: shortUrl.shortCode,
-				});
+				
 				router.push('/dashboard/short-urls');
 			},
-			onError: (e) => {
-				const error = e as ApiError;
+			onError: (err) => {
+				const error = err as ApiError;
 				setIsDeleting(false);
 				if (error.code === 0 || error.code >= 500) {
-					Sentry.captureException(error, {
-						extra: {
-							shortCode: shortUrl.shortCode,
-							error: { code: error.code, message: error.message },
-						},
-					});
+					
 				}
-				posthog.capture('error:short-url-deleted', {
-					shortCode: shortUrl.shortCode,
-					error: { code: error.code, message: error.message },
-				});
+				
 				toast({
 					variant: 'destructive',
 					title: t('shortUrl.error.delete.title'),
@@ -95,17 +83,13 @@ export function ShortUrlDetailContent({ shortUrl }: ShortUrlDetailContentProps) 
 	const handleToggle = () => {
 		toggleMutation.mutate(shortUrl.shortCode, {
 			onSuccess: () => {
-				posthog.capture('short-url-toggled', {
-					shortCode: shortUrl.shortCode,
-					isActive: !shortUrl.isActive,
-				});
+				
 				void queryClient.refetchQueries({
 					queryKey: urlShortenerQueryKeys.listShortUrls,
 				});
 				router.refresh();
 			},
-			onError: (error) => {
-				Sentry.captureException(error);
+			onError: () => {
 				toast({
 					title: t('shortUrl.error.toggleActiveState.title'),
 					description: t('shortUrl.error.toggleActiveState.message'),

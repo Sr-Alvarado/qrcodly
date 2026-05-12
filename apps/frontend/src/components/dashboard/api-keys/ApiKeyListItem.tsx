@@ -10,8 +10,6 @@ import { cn } from '@/lib/utils';
 import type { ApiKey } from './types';
 import { API_KEY_SCOPES } from '@shared/schemas';
 import { useTranslations } from 'next-intl';
-import * as Sentry from '@sentry/nextjs';
-import posthog from 'posthog-js';
 
 interface ApiKeyListItemProps {
 	apiKey: ApiKey;
@@ -37,15 +35,11 @@ export function ApiKeyListItem({ apiKey, handleRevalidate }: ApiKeyListItemProps
 	async function onRevoke() {
 		try {
 			await revoke.mutateAsync(apiKey.id);
-			posthog.capture('api-key:revoked', { apiKeyId: apiKey.id });
+			
 			handleRevalidate();
 		} catch (error) {
-			Sentry.captureException(error);
-			posthog.capture('error:api-key-revoke', {
-				errorName: error instanceof Error ? error.name : 'UnknownError',
-				errorMessage: error instanceof Error ? error.message : String(error),
-				apiKeyId: apiKey.id,
-			});
+			
+			
 			throw error;
 		}
 	}

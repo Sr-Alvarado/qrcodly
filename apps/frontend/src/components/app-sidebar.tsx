@@ -6,8 +6,6 @@ import { NavMain } from '@/components/nav-main';
 import { Sidebar, SidebarContent, SidebarHeader, SidebarMenu } from '@/components/ui/sidebar';
 import {
 	CodeBracketIcon,
-	CreditCardIcon,
-	GlobeAltIcon,
 	ShieldCheckIcon,
 	UserIcon,
 } from '@heroicons/react/24/outline';
@@ -28,19 +26,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 			icon: ShieldCheckIcon,
 		},
 		{
-			title: t('billing'),
-			url: 'billing',
-			icon: CreditCardIcon,
-		},
-		{
 			title: t('apiKeys'),
 			url: 'api-keys',
 			icon: CodeBracketIcon,
-		},
-		{
-			title: t('domains'),
-			url: 'domains',
-			icon: GlobeAltIcon,
 		},
 	];
 

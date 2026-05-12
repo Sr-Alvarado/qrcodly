@@ -18,8 +18,6 @@ import { PlusIcon } from '@heroicons/react/24/outline';
 import { useTranslations } from 'next-intl';
 import { useCreateTagMutation } from '@/lib/api/tag';
 import { toast } from '@/components/ui/use-toast';
-import posthog from 'posthog-js';
-import * as Sentry from '@sentry/nextjs';
 import { TAG_NAME_MAX_LENGTH } from '@shared/schemas';
 import type { ApiError } from '@/lib/api/ApiError';
 
@@ -47,7 +45,7 @@ export const TagCreateDialog = () => {
 
 		try {
 			await createTag.mutateAsync({ name: name.trim(), color });
-			posthog.capture('tag-created', { name: name.trim(), color });
+			
 			toast({
 				title: t('toast.createdTitle'),
 				description: t('toast.createdDescription'),
@@ -60,12 +58,10 @@ export const TagCreateDialog = () => {
 			const error = e as ApiError;
 
 			if (error.code === 0 || error.code >= 500) {
-				Sentry.captureException(error, { extra: { name: name.trim(), color } });
+				
 			}
 
-			posthog.capture('error:tag-created', {
-				error: { code: error.code, message: error.message },
-			});
+			
 
 			toast({
 				variant: 'destructive',

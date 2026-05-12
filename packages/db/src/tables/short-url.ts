@@ -2,7 +2,6 @@ import { relations } from 'drizzle-orm';
 import { boolean, datetime, index, text, varchar } from 'drizzle-orm/mysql-core';
 import { createTable } from '../utils';
 import qrCode from './qr-code';
-import customDomain, { type TCustomDomain } from './custom-domain';
 import { type TTag } from './tag';
 import shortUrlTag from './short-url-tag';
 
@@ -22,7 +21,7 @@ const shortUrl = createTable(
 			.unique(),
 		customDomainId: varchar({
 			length: 36,
-		}).references(() => customDomain.id, { onDelete: 'set null' }),
+		}),
 		isActive: boolean().notNull(),
 		createdBy: varchar({ length: 255 }).notNull(),
 		createdAt: datetime().notNull(),
@@ -35,18 +34,14 @@ const shortUrl = createTable(
 		index('i_short_url_qr_code_id').on(t.qrCodeId),
 		// Composite index for reserved URL lookups (WHERE createdBy=? AND qrCodeId IS NULL AND destinationUrl IS NULL)
 		index('i_short_url_reserved').on(t.createdBy, t.qrCodeId),
-		// Index for custom domain lookups
-		index('i_short_url_custom_domain_id').on(t.customDomainId),
 	],
 );
 
 export type TShortUrl = typeof shortUrl.$inferSelect;
-// Extended type that includes the custom domain name (for API responses)
-export type TShortUrlWithDomain = TShortUrl & {
-	customDomain: TCustomDomain | null;
-};
-// Extended type that includes custom domain and tags
-export type TShortUrlWithDomainAndTags = TShortUrlWithDomain & {
+// Extended type that includes tags
+export type TShortUrlWithDomain = TShortUrl;
+// Extended type that includes tags
+export type TShortUrlWithDomainAndTags = TShortUrl & {
 	tags: TTag[];
 };
 export default shortUrl;
@@ -56,10 +51,6 @@ export const shortUrlRelations = relations(shortUrl, ({ one, many }) => ({
 	qrCode: one(qrCode, {
 		fields: [shortUrl.qrCodeId],
 		references: [qrCode.id],
-	}),
-	customDomain: one(customDomain, {
-		fields: [shortUrl.customDomainId],
-		references: [customDomain.id],
 	}),
 	shortUrlTags: many(shortUrlTag),
 }));

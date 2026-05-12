@@ -4,8 +4,6 @@ import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import Link from 'next/link';
-import { useHasProPlan } from '@/hooks/useHasProPlan';
 import { useCreateApiKeyMutation } from '@/lib/api/api-key';
 import { API_KEY_SCOPES, CreateApiKeyDto, type TCreateApiKeyDto } from '@shared/schemas';
 import {
@@ -31,8 +29,6 @@ import {
 } from '@/components/ui/form';
 import { Loader2, Copy } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
-import * as Sentry from '@sentry/nextjs';
-import posthog from 'posthog-js';
 import {
 	Select,
 	SelectContent,
@@ -50,7 +46,6 @@ export function CreateApiKeyDialog() {
 	const [createdKey, setCreatedKey] = useState<string | null>(null);
 	const createMutation = useCreateApiKeyMutation();
 	const isCreating = createMutation.isPending;
-	const { hasProPlan, isLoading: isPlanLoading } = useHasProPlan();
 
 	const form = useForm<CreateApiKeyFormData>({
 		resolver: zodResolver(CreateApiKeyDto),
@@ -72,7 +67,7 @@ export function CreateApiKeyDialog() {
 			});
 			setCreatedKey(key.secret);
 			form.reset();
-			posthog.capture('api-key:created', { name: data.name });
+			
 		} catch (err: unknown) {
 			const errorMessage = err instanceof Error ? err.message : t('errorDescription');
 			toast({
@@ -80,11 +75,8 @@ export function CreateApiKeyDialog() {
 				description: errorMessage,
 				variant: 'destructive',
 			});
-			Sentry.captureException(err);
-			posthog.capture('error:api-key-create', {
-				errorName: err instanceof Error ? err.name : 'UnknownError',
-				errorMessage: err instanceof Error ? err.message : String(err),
-			});
+			
+			
 		}
 	};
 
@@ -115,14 +107,6 @@ export function CreateApiKeyDialog() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [open]);
 
-	if (!isPlanLoading && !hasProPlan) {
-		return (
-			<Button asChild size="sm" variant="outline">
-				<Link href="/dashboard/settings/billing">{t('upgradeCta')}</Link>
-			</Button>
-		);
-	}
-
 	return (
 		<Dialog
 			open={open}
@@ -131,7 +115,7 @@ export function CreateApiKeyDialog() {
 			}}
 		>
 			<DialogTrigger asChild>
-				<Button size="sm" disabled={isPlanLoading}>
+				<Button size="sm">
 					{t('create')}
 				</Button>
 			</DialogTrigger>

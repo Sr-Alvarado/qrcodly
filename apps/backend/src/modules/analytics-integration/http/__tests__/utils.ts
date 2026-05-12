@@ -199,9 +199,6 @@ export const findIntegrationById = async (
 	return result;
 };
 
-// Re-export shared helper
-export { ensureProSubscription } from '@/tests/shared/helpers';
-
 /**
  * Generate a valid GA4 create DTO.
  */

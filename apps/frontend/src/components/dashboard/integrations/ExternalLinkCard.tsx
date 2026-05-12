@@ -3,7 +3,6 @@
 import { useTranslations } from 'next-intl';
 import { SparklesIcon } from 'lucide-react';
 import Link from 'next/link';
-import posthog from 'posthog-js';
 import { Item, ItemActions, ItemContent, ItemDescription, ItemTitle } from '@/components/ui/item';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -19,10 +18,7 @@ export function ExternalLinkCard({ entry }: ExternalLinkCardProps) {
 	const tGeneral = useTranslations('general');
 
 	const handleClick = () => {
-		posthog.capture('integrations:external-link-clicked', {
-			integrationId: entry.id,
-			href: entry.href,
-		});
+		
 	};
 
 	return (

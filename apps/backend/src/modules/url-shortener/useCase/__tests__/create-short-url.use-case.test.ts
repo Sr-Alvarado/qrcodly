@@ -1,6 +1,5 @@
 import { CreateShortUrlUseCase } from '../create-short-url.use-case';
 import type ShortUrlRepository from '../../domain/repository/short-url.repository';
-import type { CustomDomainValidationService } from '@/modules/custom-domain/service/custom-domain-validation.service';
 import { type Logger } from '@/core/logging';
 import { mock } from 'jest-mock-extended';
 import type { TShortUrlWithDomain } from '../../domain/entities/short-url.entity';
@@ -8,16 +7,13 @@ import type { TShortUrlWithDomain } from '../../domain/entities/short-url.entity
 describe('CreateShortUrlUseCase', () => {
 	let useCase: CreateShortUrlUseCase;
 	let mockRepository: jest.Mocked<ShortUrlRepository>;
-	let mockCustomDomainValidationService: jest.Mocked<CustomDomainValidationService>;
 	let mockLogger: jest.Mocked<Logger>;
 
 	beforeEach(() => {
 		mockRepository = mock<ShortUrlRepository>();
-		mockCustomDomainValidationService = mock<CustomDomainValidationService>();
 		mockLogger = mock<Logger>();
 		useCase = new CreateShortUrlUseCase(
 			mockRepository,
-			mockCustomDomainValidationService,
 			mockLogger,
 		);
 	});
@@ -29,7 +25,6 @@ describe('CreateShortUrlUseCase', () => {
 	describe('execute', () => {
 		const mockDto = {
 			destinationUrl: 'https://example.com',
-			customDomainId: null,
 			isActive: true,
 		};
 
@@ -42,8 +37,6 @@ describe('CreateShortUrlUseCase', () => {
 			shortCode: mockShortCode,
 			name: null,
 			destinationUrl: mockDto.destinationUrl,
-			customDomainId: null,
-			customDomain: null,
 			isActive: mockDto.isActive,
 			qrCodeId: null,
 			createdBy: mockUserId,
@@ -77,7 +70,6 @@ describe('CreateShortUrlUseCase', () => {
 		it('should create short URL with null destinationUrl for reserved URLs', async () => {
 			const reservedDto = {
 				destinationUrl: null as string | null,
-				customDomainId: null,
 				isActive: false,
 			};
 
@@ -121,7 +113,6 @@ describe('CreateShortUrlUseCase', () => {
 				shortUrl: {
 					id: mockId,
 					createdBy: mockUserId,
-					customDomainId: mockDto.customDomainId,
 				},
 			});
 		});
@@ -161,7 +152,6 @@ describe('CreateShortUrlUseCase', () => {
 				shortCode: mockShortCode,
 				name: null,
 				destinationUrl: mockDto.destinationUrl,
-				customDomainId: mockDto.customDomainId,
 				isActive: mockDto.isActive,
 				qrCodeId: null,
 				createdBy: mockUserId,

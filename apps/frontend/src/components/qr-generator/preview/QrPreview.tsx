@@ -11,7 +11,6 @@ import { Button } from '@/components/ui/button';
 import { QrPreviewModal } from './QrPreviewModal';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
-import posthog from 'posthog-js';
 import { useUser } from '@clerk/nextjs';
 import { LoginRequiredDialog } from '../LoginRequiredDialog';
 
@@ -33,7 +32,7 @@ export function QrPreview({ variant = 'outline', size = 'default', className }: 
 			return;
 		}
 		setOpen(true);
-		posthog.capture('qr-code.preview.open');
+		
 	};
 
 	return (

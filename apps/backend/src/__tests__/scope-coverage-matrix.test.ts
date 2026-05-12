@@ -6,11 +6,9 @@ import { ApiKeyController } from '@/modules/api-key/http/controller/api-key.cont
 import { AnalyticsIntegrationController } from '@/modules/analytics-integration/http/controller/analytics-integration.controller';
 import { QrCodeController } from '@/modules/qr-code/http/controller/qr-code.controller';
 import { QrCodeShareController } from '@/modules/qr-code/http/controller/qr-code-share.controller';
-import { CustomDomainController } from '@/modules/custom-domain/http/controller/custom-domain.controller';
 import { ConfigTemplateController } from '@/modules/config-template/http/controller/config-template.controller';
 import { TagController } from '@/modules/tag/http/controller/tag.controller';
 import { ShortUrlController } from '@/modules/url-shortener/http/controller/short-url.controller';
-import { BillingController } from '@/modules/billing/http/controller/billing.controller';
 import { UserSurveyController } from '@/modules/user-survey/http/controller/user-survey.controller';
 
 const CONTROLLERS = [
@@ -18,11 +16,9 @@ const CONTROLLERS = [
 	AnalyticsIntegrationController,
 	QrCodeController,
 	QrCodeShareController,
-	CustomDomainController,
 	ConfigTemplateController,
 	TagController,
 	ShortUrlController,
-	BillingController,
 	UserSurveyController,
 ];
 

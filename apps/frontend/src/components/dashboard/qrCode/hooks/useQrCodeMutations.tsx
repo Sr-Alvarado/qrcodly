@@ -1,7 +1,5 @@
 import { useCallback, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import posthog from 'posthog-js';
-import * as Sentry from '@sentry/nextjs';
 import { Loader2 } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
 import {
@@ -26,13 +24,9 @@ export const useQrCodeMutations = (qr: TQrCodeWithRelationsResponseDto) => {
 
 		toggleMutation.mutate(qr.shortUrl.shortCode, {
 			onSuccess: () => {
-				posthog.capture('short-url-toggled', {
-					id: qr.shortUrl!.id,
-					isActive: qr.shortUrl?.isActive,
-				});
+				
 			},
-			onError: (error) => {
-				Sentry.captureException(error);
+			onError: () => {
 				toast({
 					title: t('shortUrl.error.toggleActiveState.title'),
 					description: t('shortUrl.error.toggleActiveState.message'),
@@ -46,15 +40,13 @@ export const useQrCodeMutations = (qr: TQrCodeWithRelationsResponseDto) => {
 	const handleDuplicate = useCallback(() => {
 		duplicateMutation.mutate(qr.id, {
 			onSuccess: () => {
-				posthog.capture('qr-code-duplicated', { id: qr.id });
+				
 				toast({
 					title: t('general.duplicated'),
 					duration: 3000,
 				});
 			},
-			onError: (error) => {
-				Sentry.captureException(error);
-				posthog.capture('error:qr-code-duplicated', { id: qr.id, error });
+			onError: () => {
 				toast({
 					title: t('general.duplicateError'),
 					variant: 'destructive',
@@ -81,10 +73,9 @@ export const useQrCodeMutations = (qr: TQrCodeWithRelationsResponseDto) => {
 			onSuccess: () => {
 				toastId.dismiss();
 				setIsDeleting(false);
-				posthog.capture('qr-code-deleted', { id: qr.id, content: qr.content });
+				
 			},
-			onError: (error) => {
-				Sentry.captureException(error);
+			onError: () => {
 				toastId.dismiss();
 				setIsDeleting(false);
 				toast({
@@ -102,13 +93,9 @@ export const useQrCodeMutations = (qr: TQrCodeWithRelationsResponseDto) => {
 				{ qrCodeId: qr.id, data: { name: newName } },
 				{
 					onSuccess: () => {
-						posthog.capture('qr-code-updated', {
-							id: qr.id,
-							data: { name: newName },
-						});
+						
 					},
-					onError: (error) => {
-						Sentry.captureException(error);
+					onError: () => {
 						toast({
 							title: t('qrCode.error.update.title'),
 							description: t('qrCode.error.update.message'),

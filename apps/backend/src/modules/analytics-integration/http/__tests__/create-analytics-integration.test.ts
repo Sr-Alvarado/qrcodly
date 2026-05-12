@@ -3,7 +3,6 @@ import { resetTestState } from '@/tests/shared/test-context';
 import {
 	getTestContext,
 	cleanupIntegrationsForUser,
-	ensureProSubscription,
 	createIntegrationViaApi,
 	createIntegrationDirectly,
 	generateGA4CreateDto,
@@ -20,8 +19,6 @@ describe('POST /analytics-integration (Create)', () => {
 	beforeAll(async () => {
 		await resetTestState();
 		ctx = await getTestContext();
-		// Ensure pro user has an active subscription so plan checks pass
-		await ensureProSubscription();
 	});
 
 	beforeEach(async () => {

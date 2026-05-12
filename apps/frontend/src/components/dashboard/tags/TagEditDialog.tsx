@@ -16,8 +16,6 @@ import { CharacterCounter } from '@/components/qr-generator/content/CharacterCou
 import { useTranslations } from 'next-intl';
 import { useUpdateTagMutation } from '@/lib/api/tag';
 import { toast } from '@/components/ui/use-toast';
-import posthog from 'posthog-js';
-import * as Sentry from '@sentry/nextjs';
 import { TAG_NAME_MAX_LENGTH, type TTagResponseDto } from '@shared/schemas';
 import type { ApiError } from '@/lib/api/ApiError';
 
@@ -57,7 +55,7 @@ export const TagEditDialog = ({ tag, open, onOpenChange }: TagEditDialogProps) =
 
 		try {
 			await updateTag.mutateAsync({ id: tag.id, data: { name: name.trim(), color } });
-			posthog.capture('tag-updated', { id: tag.id, name: name.trim(), color });
+			
 			toast({
 				title: t('toast.updatedTitle'),
 				description: t('toast.updatedDescription'),
@@ -68,13 +66,10 @@ export const TagEditDialog = ({ tag, open, onOpenChange }: TagEditDialogProps) =
 			const error = e as ApiError;
 
 			if (error.code === 0 || error.code >= 500) {
-				Sentry.captureException(error, { extra: { id: tag.id, name: name.trim(), color } });
+				
 			}
 
-			posthog.capture('error:tag-updated', {
-				id: tag.id,
-				error: { code: error.code, message: error.message },
-			});
+			
 
 			toast({
 				variant: 'destructive',
