@@ -4,7 +4,7 @@ import type { FastifyInstance } from 'fastify';
 import { SHORT_URL_API_PATH, createShortUrl } from './utils';
 
 const SCAN_PAYLOAD = {
-	url: 'https://example.com/u/abc12',
+	url: 'https://example.com/abc12',
 	userAgent: 'Mozilla/5.0 Test',
 	hostname: 'example.com',
 	language: 'en-US',

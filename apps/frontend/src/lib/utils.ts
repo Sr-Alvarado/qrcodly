@@ -37,7 +37,7 @@ export function createLinkFromShortUrl(
 	const { short = false } = options;
 	const { shortCode } = shortUrl;
 
-	const url = `${env.NEXT_PUBLIC_FRONTEND_URL}/u/${shortCode}`;
+	const url = `${env.NEXT_PUBLIC_FRONTEND_URL}/${shortCode}`;
 
 	if (!short) return url;
 

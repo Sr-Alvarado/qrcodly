@@ -118,7 +118,7 @@ describe('updateShortUrl', () => {
 		const reserveResponse = await reserveShortUrl(testServer, accessToken);
 		const shortUrl = JSON.parse(reserveResponse.payload) as TShortUrlResponseDto;
 
-		const selfReferencingUrl = `${env.FRONTEND_URL}/u/${shortUrl.shortCode}`;
+		const selfReferencingUrl = `${env.FRONTEND_URL}/${shortUrl.shortCode}`;
 
 		const response = await updateShortUrlRequest(
 			shortUrl.shortCode,
