@@ -175,7 +175,7 @@ export class Server {
 			allowedHeaders: ['Content-Type', 'Authorization', 'Set-Cookie'],
 			credentials: true,
 			methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-			origin: true,
+			origin: env.NODE_ENV === 'production' ? env.FRONTEND_URL : true,
 		});
 
 		await this.server.register(clerkPlugin, {

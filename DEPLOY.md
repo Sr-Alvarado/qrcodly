@@ -7,6 +7,8 @@
 - **Upstash** → Redis (cache, rate limiting, sessions)
 - **Cloudflare R2** → File storage (already configured)
 
+> **Northflank free tier limit:** 2 services + 1 addon max. MySQL consumes the only addon slot, so Redis stays external (Upstash).
+
 ---
 
 ## 1. Frontend — Vercel
@@ -51,7 +53,7 @@ These are backend-only secrets.
 
 ---
 
-## 2. Backend — Northflask
+## 2. Backend — Northflank
 
 ### Project Settings (Dashboard)
 
@@ -61,14 +63,14 @@ These are backend-only secrets.
 | Root Directory | `apps/backend` |
 | Build Command | `cd ../.. && pnpm install --frozen-lockfile && pnpm run build:shared-packages && cd apps/backend && pnpm run build` |
 | Start Command | `cd apps/backend && pnpm run start` |
-| Port | `8080` (or whatever Northflask assigns) |
+| Port | `8080` (or whatever Northflank assigns) |
 
-### Environment Variables (Northflask Dashboard)
+### Environment Variables (Northflank Dashboard)
 
 Copy everything from `apps/backend/.env` EXCEPT:
-- Remove `API_HOST=0.0.0.0` (Northflask handles binding)
-- Change `API_PORT` to match Northflask port (e.g., `8080`)
-- Change `BASE_URL` and `BACKEND_URL` to your Northflask domain
+- Remove `API_HOST=0.0.0.0` (Northflank handles binding)
+- Change `API_PORT` to match Northflank port (e.g., `8080`)
+- Change `BASE_URL` and `BACKEND_URL` to your Northflank domain
 - Change `FRONTEND_URL` to your Vercel domain
 - Use **production** Clerk keys (`pk_live_` / `sk_live_`)
 - Keep TiDB, Redis, S3, JWT, etc. exactly as they are
@@ -126,7 +128,7 @@ Clerk has **separate environments** per application (Development vs Production).
    - `https://yourapp.com/sso-callback`
 6. **Enable API Keys feature** in production (same as you did in dev)
 7. If using webhooks, update webhook URL to production backend
-8. Update env vars in both Vercel and Northflask with new live keys
+8. Update env vars in both Vercel and Northflank with new live keys
 
 ### Important
 
@@ -138,19 +140,13 @@ Clerk has **separate environments** per application (Development vs Production).
 
 ## 4. CORS / Security
 
-After deployment, backend CORS is configured in `apps/backend/src/core/server.ts`:
+Backend CORS in `apps/backend/src/core/server.ts` already restricts origins in production:
 
 ```ts
-await this.server.register(fastifyCors, {
-    origin: true,  // ← change this in production
-});
+origin: env.NODE_ENV === 'production' ? env.FRONTEND_URL : true,
 ```
 
-For production, restrict to your exact frontend domain:
-
-```ts
-origin: env.FRONTEND_URL,
-```
+No manual change needed — ensure `FRONTEND_URL` env var points to your Vercel domain.
 
 ---
 
@@ -165,7 +161,7 @@ pnpm run build:shared-packages  # builds packages/shared + packages/db
 # Then each app builds itself
 ```
 
-`vercel.json` and Northflask Build Command handle this automatically.
+`vercel.json` and Northflank Build Command handle this automatically.
 
 ---
 
